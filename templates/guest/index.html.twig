@@ -3,9 +3,9 @@
 {% block title %}Guest index{% endblock %}
 
 {% block body %}
-    <h1>Guest index</h1>
-
-    <table class="table">
+    <a class="btn-floating btn-large waves-effect waves-light teal right" href="{{ path('guest_new') }}"><i class="material-icons left">add</i></a>
+    <h3 class="section-title teal-text">Guests</h3>
+    <table class="responsive-table  highlight">
         <thead>
             <tr>
                 <th>Id</th>
@@ -35,5 +35,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('guest_new') }}">Create new</a>
 {% endblock %}

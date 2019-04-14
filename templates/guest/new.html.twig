@@ -3,9 +3,9 @@
 {% block title %}New Guest{% endblock %}
 
 {% block body %}
-    <h1>Create new Guest</h1>
+    <a class="waves-effect waves-light btn" href="{{ path('room_index') }}">back to list</a>
+    <h3 class="section-title teal-text">Create new Guest</h3>
+        <p> {{ include('guest/_form.html.twig') }}</p>
 
-    {{ include('guest/_form.html.twig') }}
 
-    <a href="{{ path('guest_index') }}">back to list</a>
 {% endblock %}
