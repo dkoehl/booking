@@ -1,0 +1,13 @@
+/*@import 'material-icons/iconfont/material-icons.scss';*/
+@import "~material-icons/iconfont/material-icons.css";
+html{
+    background-color: white;
+}
+table{
+    background-color:#fff;
+    margin-bottom:20px;
+    border:20px solid #fff;
+}
+select{
+    display:block;
+}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Room{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col s12 m6">
+
+            <div class="card white center-block">
+                <div class="card-content white-text">
+                    <span class="card-title teal-text">Create new Room</span>
+                    <p>{ {{ include('room/_form.html.twig') }}</p>
+                </div>
+                <div class="card-action">
+                    <a class="" href="{{ path('room_index') }}">back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Guest{% endblock %}
+
+{% block body %}
+    <h1>Edit Guest</h1>
+
+    {{ include('guest/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('guest_index') }}">back to list</a>
+
+    {{ include('guest/_delete_form.html.twig') }}
+{% endblock %}

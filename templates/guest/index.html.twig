@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guest index{% endblock %}
+
+{% block body %}
+    <h1>Guest index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Birthday</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for guest in guests %}
+            <tr>
+                <td>{{ guest.id }}</td>
+                <td>{{ guest.lastname }}</td>
+                <td>{{ guest.firstname }}</td>
+                <td>{{ guest.birthday ? guest.birthday|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('guest_show', {'id': guest.id}) }}">show</a>
+                    <a href="{{ path('guest_edit', {'id': guest.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('guest_new') }}">Create new</a>
+{% endblock %}

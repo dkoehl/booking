@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Room{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card white">
+                <div class="card-content white-text">
+                    <span class="card-title teal-text">Edit Room</span>
+                    <p>{{ include('room/_form.html.twig', {'button_label': 'Update'}) }}</p>
+                </div>
+                <div class="card-action">
+                    <a href="{{ path('room_index') }}">back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ include('room/_delete_form.html.twig') }}
+
+{% endblock %}
