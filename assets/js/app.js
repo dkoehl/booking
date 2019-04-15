@@ -21,12 +21,12 @@ import Button from '@material-ui/core/Button';
 import icons from "@material-ui/core/Icon";
 
 
-// topbar
-import {MDCTopAppBar} from '@material/top-app-bar/index';
-
-// Instantiation
-const topAppBarElement = document.querySelector('.mdc-top-app-bar');
-const topAppBar = new MDCTopAppBar(topAppBarElement);
+// // topbar
+// import {MDCTopAppBar} from '@material/top-app-bar/index';
+//
+// // Instantiation
+// const topAppBarElement = document.querySelector('.mdc-top-app-bar');
+// const topAppBar = new MDCTopAppBar(topAppBarElement);
 
 
 

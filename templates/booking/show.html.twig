@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Booking{% endblock %}
+
+{% block body %}
+    <h1>Booking</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ booking.id }}</td>
+            </tr>
+            <tr>
+                <th>Bookingfrom</th>
+                <td>{{ booking.bookingfrom ? booking.bookingfrom|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Bookingtill</th>
+                <td>{{ booking.bookingtill ? booking.bookingtill|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Deleted</th>
+                <td>{{ booking.deleted ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Hidden</th>
+                <td>{{ booking.hidden ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Crdate</th>
+                <td>{{ booking.crdate }}</td>
+            </tr>
+            <tr>
+                <th>Tstamp</th>
+                <td>{{ booking.tstamp }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('booking_index') }}">back to list</a>
+
+    <a href="{{ path('booking_edit', {'id': booking.id}) }}">edit</a>
+
+    {{ include('booking/_delete_form.html.twig') }}
+{% endblock %}
