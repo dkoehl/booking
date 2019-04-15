@@ -3,18 +3,14 @@
 {% block title %}Booking index{% endblock %}
 
 {% block body %}
-    <h1>Booking index</h1>
-
-    <table class="table">
+    <a class="btn-floating btn-large waves-effect waves-light teal right" href="{{ path('booking_new') }}"><i class="material-icons left">add</i></a>
+    <h3 class="section-title teal-text">Bookings</h3>
+    <table class="responsive-table  highlight">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Bookingfrom</th>
                 <th>Bookingtill</th>
-                <th>Deleted</th>
-                <th>Hidden</th>
-                <th>Crdate</th>
-                <th>Tstamp</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,10 +20,6 @@
                 <td>{{ booking.id }}</td>
                 <td>{{ booking.bookingfrom ? booking.bookingfrom|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ booking.bookingtill ? booking.bookingtill|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.deleted ? 'Yes' : 'No' }}</td>
-                <td>{{ booking.hidden ? 'Yes' : 'No' }}</td>
-                <td>{{ booking.crdate }}</td>
-                <td>{{ booking.tstamp }}</td>
                 <td>
                     <a href="{{ path('booking_show', {'id': booking.id}) }}">show</a>
                     <a href="{{ path('booking_edit', {'id': booking.id}) }}">edit</a>
@@ -41,5 +33,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('booking_new') }}">Create new</a>
 {% endblock %}
