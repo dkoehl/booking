@@ -11,38 +11,33 @@
     {% endblock %}
 </head>
 <body>
-<div id="sitebar" class="" style="position:absolute; left:0px; top:0px; bottom:0px; padding:30px; background-color:#e8eaf6;">
-    <ul class="center">
-        <li><a href="/index" class="btn-floating"><i class="material-icons">home</i></a></li>
-        <br>
-        <br>
-        <li><a href="/room"><i class="material-icons teal-text">hotel</i></a></li>
-        <br>
-        <li><a href="/booking"><i class="material-icons teal-text">assignment_ind</i></a></li>
-        <br>
-        <li><a href="/guest"><i class="material-icons teal-text">account_circle</i></a></li>
-        <br>
-        <li><a href=""><i class="material-icons grey-text">alarm</i></a></li>
-        <br>
-        <li><a href=""><i class="material-icons grey-text">today</i></a></li>
-    </ul>
-</div>
+
+<div class="row">
+    <div class="col s1 m1 l1" style="position:absolute; height:100%; bottom:0px; padding:30px; background-color:#e8eaf6;">
+        <ul class="center">
+            <li><a href="/index" class="btn-floating"><i class="material-icons">home</i></a></li>
+            <br>
+            <br>
+            <li><a href="/room"><i class="material-icons teal-text">hotel</i></a></li>
+            <br>
+            <li><a href="/booking"><i class="material-icons teal-text">assignment_ind</i></a></li>
+            <br>
+            <li><a href="/guest"><i class="material-icons teal-text">account_circle</i></a></li>
+            <br>
+            <li><a href=""><i class="material-icons grey-text">alarm</i></a></li>
+            <br>
+            <li><a href=""><i class="material-icons grey-text">today</i></a></li>
+        </ul>
+    </div>
+    <div class="col s11 m11 l11">
+        <div class="content-container" style="position:absolute; float:right; width:92%; left:8%; padding:20px;">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
 
 </div>
-{#<div class="navbar-fixed blue">#}
-{#<nav>#}
-{#<div class="nav-wrapper" style="padding-left:20px; padding-right:20px;">#}
-{#<a href="#" class="brand-logo right"><i class="material-icons left">cloud</i>cloud</a>#}
-{#<ul id="nav-mobile" class="left hide-on-med-and-down">#}
-{#<li><a href="/room/">Rooms</a></li>#}
-{#<li><a href="collapsible.html">JavaScript</a></li>#}
-{#</ul>#}
-{#</div>#}
-{#</nav>#}
-{#</div>#}
-<div class="content-container" style="position: absolute; right:0px; padding:30px; width:94%; float:right;">
-    {% block body %}{% endblock %}
-</div>
+
+
 
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}

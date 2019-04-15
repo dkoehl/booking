@@ -2,6 +2,7 @@
 @import "~material-icons/iconfont/material-icons.css";
 html{
     background-color: white;
+    height: 100%;
 }
 table{
     background-color:#fff;
