@@ -41,7 +41,7 @@
             <h4 class="section-title teal-text">Room</h4>
             <div class="card horizontal teal">
                 <div class="card-content white-text">
-                    <span class="card-title">Room: <b>{{ room.name }}</b></span>
+                    <span class="card-title">{{ room.name }}</span>
                     <p>
                         <b>Beds:</b> {{ room.beds }} <br/>
                         <b>Floor:</b> {{ room.floor }} <br/>
@@ -62,9 +62,8 @@
             <h4 class="section-title teal-text">User</h4>
             <div class="card horizontal blue">
                 <div class="card-content white-text">
-                    <span class="card-title">User: <b>{{ booking.guest.id }}</b></span>
+                    <span class="card-title">{{ booking.guest.lastname }}, {{ booking.guest.firstname }}</span>
                     <p>
-                        <b>Name:</b> {{ booking.guest.lastname }}, {{ booking.guest.firstname }} <br/>
                         <b>Birthday:</b> {{ booking.guest.birthday|date('d.m.Y') }} <br/>
                     </p>
                 </div>

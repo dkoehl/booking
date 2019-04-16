@@ -19,17 +19,24 @@ import '../css/app.css';
 
 
 
-import $ from "jquery";
-import "jquery-ui";
-import "jquery-datetimepicker";
-import "datatables.net-dt/js/dataTables.dataTables.min";
-import "datatables.net-buttons-dt/js/buttons.dataTables.min";
+// import $ from "jquery";
+var $ = require('jquery');
 
-import M from 'materialize-css'
 import 'material-icons';
 import '@material-ui/core/Button';
 import "@material-ui/core/Icon";
 import 'materialize-css';
+
+import "jquery-datetimepicker";
+import "datatables.net-jqui";
+import "datatables.net-buttons";
+import "datatables.net-buttons-dt";
+import "jquery-ui";
+import "datatables.net-buttons/js/buttons.colVis.min";
+import "datatables.net-buttons/js/buttons.flash.min";
+import "datatables.net-buttons/js/buttons.html5";
+import "datatables.net-buttons/js/buttons.print.min";
+import "jquery-datetimepicker";
 
 
 if (typeof window !== 'undefined') {
@@ -87,10 +94,21 @@ $(document).ready(
             {
                 // "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 stateSave: true,
+                columnDefs: [
+                    {
+                        targets: [ 0, 1, 2 ],
+                        className: 'mdl-data-table__cell--non-numeric',
+                    }
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
             }
         );
         $('.js-datepicker').datetimepicker(
             {
+                format:'Y-m-d H:i:s',
                 dateFormat: "dd.mm.yy",
                 firstDay: 1,
                 minDate: 0,

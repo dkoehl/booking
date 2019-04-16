@@ -19,14 +19,14 @@ class BookingType extends AbstractType
         $builder
             ->add('bookingfrom', DateTimeType::class, [
                 'widget' => 'single_text',
-                'html5' => true,
+                'html5' => false,
                 'label' => 'Booking from',
-//                'attr' => ['class' => 'js-datepicker'],
+                'attr' => ['class' => 'js-datepicker'],
             ])
             ->add('bookingtill', DateTimeType::class, [
                 'widget' => 'single_text',
-                'html5' => true,
-//                'attr' => ['class' => 'js-datepicker'],
+                'html5' => false,
+                'attr' => ['class' => 'js-datepicker'],
                 'label' => 'Booking till',
             ])
             ->add('room', EntityType::class, [
