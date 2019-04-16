@@ -30,14 +30,14 @@ Official booking application.
 
 
 #### Screens
-![screen](assets/_screenshots/20.53.08.png)
-![screen](assets/_screenshots/20.53.20.png)
-![screen](assets/_screenshots/20.53.31.png)
-![screen](assets/_screenshots/20.53.53.png)
-![screen](assets/_screenshots/20.54.07.png)
-![screen](assets/_screenshots/20.54.24.png)
-![screen](assets/_screenshots/21.10.21.png)
-![screen](assets/_screenshots/21.11.24.png)
+![screen](assets/_screens/screen1.png)
+![screen](assets/_screens/screen2.png)
+![screen](assets/_screens/screen3.png)
+![screen](assets/_screens/screen4.png)
+![screen](assets/_screens/screen5.png)
+![screen](assets/_screens/screen6.png)
+![screen](assets/_screens/screen7.png)
+![screen](assets/_screens/screen8.png)
 
  
 
