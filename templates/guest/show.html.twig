@@ -3,48 +3,59 @@
 {% block title %}Guest{% endblock %}
 
 {% block body %}
-    <a class="waves-effect waves-light btn right" href="{{ path('guest_index') }}">back to list</a>
-    <h1>Guest</h1>
+    {{ dump(guest) }}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ guest.id }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ guest.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ guest.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Birthday</th>
-                <td>{{ guest.birthday ? guest.birthday|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Hidden</th>
-                <td>{{ guest.hidden ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Deleted</th>
-                <td>{{ guest.deleted ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Crdate</th>
-                <td>{{ guest.crdate }}</td>
-            </tr>
-            <tr>
-                <th>Tstamp</th>
-                <td>{{ guest.tstamp }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col m1">
+            <a class="waves-effect waves-light btn right" href="{{ path('guest_index') }}">back to list</a>
+        </div>
+        <div class="col m2">
+            <a class="waves-effect waves-light btn blue" href="{{ path('guest_edit', {'id': guest.id}) }}">edit</a>
+        </div>
+        <div class="col m8">
+            {{ include('guest/_delete_form.html.twig') }}
+        </div>
+    </div>
+
+    <ul class="collection with-header">
+        <li class="collection-header"><h4>{{ guest.lastname }}, {{ guest.firstname }}<span class="badge teal white-text">{{ guest.id }}</span></h4></li>
+        {#<li class="collection-item">#}
+            {#<i class="material-icons">local_hotel</i> {{ room.beds }}#}
+        {#</li>#}
+        {#<li class="collection-item">#}
+            {#<i class="material-icons">home</i> {{ room.house }}#}
+        {#</li>#}
+        {#<li class="collection-item">#}
+            {#<i class="material-icons">edit</i> {{ room.tstamp|date("d.m.Y H:i") }}#}
+        {#</li>#}
+    </ul>
 
 
-    <a class="waves-effect waves-light btn blue" href="{{ path('guest_edit', {'id': guest.id}) }}">edit</a>
+    {% if bookings %}
+        <h4 class="section-title teal-text">Bookings</h4>
+        <div class="row">
+            {% for booked in bookings %}
+                <div class="col s12 m4">
+                    <div class="card horizontal teal">
+                        <div class="card-content white-text">
+                            <span class="card-title">BookingNo: <b>{{ booked.id }}</b></span>
+                            <p>
+                                <b>From:</b> {{ booked.bookingfrom|date('d.m.Y H:i') }} <br/>
+                                <b>Till:</b> {{ booked.bookingtill|date('d.m.Y H:i') }} <br/>
+                            </p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ path('booking_show', {'id': booked.id}) }}">show</a>
+                            <a href="{{ path('booking_edit', {'id': booked.id}) }}">edit</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col s12 m4">
+                    <p>no records found</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
-    {{ include('guest/_delete_form.html.twig') }}
 {% endblock %}

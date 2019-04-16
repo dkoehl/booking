@@ -15,10 +15,6 @@ class GuestType extends AbstractType
             ->add('lastname')
             ->add('firstname')
             ->add('birthday')
-            ->add('hidden')
-            ->add('deleted')
-            ->add('crdate')
-            ->add('tstamp')
         ;
     }
 

@@ -8,6 +8,7 @@
         "sensio/framework-extra-bundle": "^5.3",
         "symfony/asset": "4.2.*",
         "symfony/console": "4.2.*",
+        "symfony/debug": "4.2.*",
         "symfony/dotenv": "4.2.*",
         "symfony/expression-language": "4.2.*",
         "symfony/flex": "^1.1",
@@ -27,10 +28,12 @@
         "symfony/yaml": "4.2.*"
     },
     "require-dev": {
+        "symfony/apache-pack": "^1.0",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.11",
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "*",
+        "symfony/var-dumper": "4.2.*",
         "symfony/web-server-bundle": "4.2.*"
     },
     "config": {

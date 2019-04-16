@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Entity\Room;
 use App\Form\RoomType;
 use App\Repository\RoomRepository;
@@ -57,8 +58,13 @@ class RoomController extends AbstractController
      */
     public function show(Room $room): Response
     {
+        $bookings = $this->getDoctrine()
+            ->getRepository(Booking::class)
+            ->findBy(['bookedroom' => $room->getId()]);
+
         return $this->render('room/show.html.twig', [
             'room' => $room,
+            'booking' => $bookings
         ]);
     }
 
@@ -71,7 +77,6 @@ class RoomController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $room->setTstamp(time());
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('room_index', [

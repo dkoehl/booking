@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -55,6 +57,21 @@ class Room
      * @ORM\Column(type="integer", nullable=true)
      */
     private $tstamp;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="room")
+     */
+    private $booking;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="bookedroom")
+     */
+    private $bookings;
+
+    public function __construct()
+    {
+        $this->bookings = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -153,6 +170,49 @@ class Room
     public function setTstamp(?int $tstamp): self
     {
         $this->tstamp = $tstamp;
+
+        return $this;
+    }
+
+    public function getBooking(): ?Booking
+    {
+        return $this->booking;
+    }
+
+    public function setBooking(?Booking $booking): self
+    {
+        $this->booking = $booking;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Booking[]
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Booking $booking): self
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings[] = $booking;
+            $booking->setBookedroom($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Booking $booking): self
+    {
+        if ($this->bookings->contains($booking)) {
+            $this->bookings->removeElement($booking);
+            // set the owning side to null (unless already changed)
+            if ($booking->getBookedroom() === $this) {
+                $booking->setBookedroom(null);
+            }
+        }
 
         return $this;
     }

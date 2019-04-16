@@ -36,7 +36,6 @@ class BookingRepository extends ServiceEntityRepository
     }
     */
 
-    /*
     public function findOneBySomeField($value): ?Booking
     {
         return $this->createQueryBuilder('b')
@@ -46,5 +45,4 @@ class BookingRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
 }

@@ -1,5 +1,7 @@
 @import "~materialize-css/dist/css/materialize.css";
 @import "~@material/top-app-bar/dist/mdc.top-app-bar.min.css";
+@import "~jquery-datetimepicker/jquery.datetimepicker.css";
+@import "~datatables.net-dt/css/jquery.dataTables.min.css";
 @import "custom.css";
 body {
     background-color: lightgray;

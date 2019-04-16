@@ -2140,6 +2140,38 @@ d@1:
   dependencies:
     es5-ext "^0.10.9"
 
+datatables.net-buttons-dt@^1.5.6:
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/datatables.net-buttons-dt/-/datatables.net-buttons-dt-1.5.6.tgz#550dbaf1f3fd37acf1f732ea059b3e73a943bf59"
+  integrity sha512-+5D6x6fbVIibQOKMrKaC84l2fwsEGuIaakDph1Nr3xVRtglahjptltwJHYee4uaLKlsMa4ZirHGpUk+aL8joYQ==
+  dependencies:
+    datatables.net-buttons "1.5.6"
+    datatables.net-dt "^1.10.15"
+    jquery ">=1.7"
+
+datatables.net-buttons@1.5.6, datatables.net-buttons@^1.5.6:
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/datatables.net-buttons/-/datatables.net-buttons-1.5.6.tgz#30305a2ebc6c5e2ce5d32a8ef3649e0d5943d73a"
+  integrity sha512-FlJtjQ8dsr6xeHWETUCtUJEa7ZqKlphFb22+LXZs80LmJqpVbW84BkppwSoKK+F4k8eRr1tYr38dxcCvIIy0rw==
+  dependencies:
+    datatables.net "^1.10.15"
+    jquery ">=1.7"
+
+datatables.net-dt@^1.10.15, datatables.net-dt@^1.10.19:
+  version "1.10.19"
+  resolved "https://registry.yarnpkg.com/datatables.net-dt/-/datatables.net-dt-1.10.19.tgz#fc668e4942ac6e331be2707975d0f33e01afb60f"
+  integrity sha512-joFHYjLYvr9VnC9Fx3e+8jtXnQ/fP/mPFWt9p0NhZ3Zm5N0jlYyWhJQbnLkihOLuDcDFMaGdBQSvmIdTVdgGyw==
+  dependencies:
+    datatables.net "1.10.19"
+    jquery ">=1.7"
+
+datatables.net@1.10.19, datatables.net@^1.10.15:
+  version "1.10.19"
+  resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-1.10.19.tgz#97a1ed41c85e62d61040603481b59790a172dd1f"
+  integrity sha512-+ljXcI6Pj3PTGy5pesp3E5Dr3x3AV45EZe0o1r0gKENN2gafBKXodVnk2ypKwl2tTmivjxbkiqoWnipTefyBTA==
+  dependencies:
+    jquery ">=1.7"
+
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
@@ -3607,7 +3639,26 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-jquery@^3.4.0:
+jquery-datetimepicker@^2.5.21:
+  version "2.5.21"
+  resolved "https://registry.yarnpkg.com/jquery-datetimepicker/-/jquery-datetimepicker-2.5.21.tgz#00c388a78df2732fedfdb5c6529b6e84d53e0235"
+  integrity sha512-wDTpZ4f1PWd1XGaIIE0n6jLynlm+akBJ7/NjaB1bk2UJSS593CHJPZ3+FNEXoyvNVUeBlBC0oX6WTfCyfUhX/w==
+  dependencies:
+    jquery ">= 1.7.2"
+    jquery-mousewheel ">= 3.1.13"
+    php-date-formatter "^1.3.4"
+
+"jquery-mousewheel@>= 3.1.13":
+  version "3.1.13"
+  resolved "https://registry.yarnpkg.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
+  integrity sha1-BvAzXxbjU6aV5yBr9QUDy1I6buU=
+
+jquery-ui@^1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.12.1.tgz#bcb4045c8dd0539c134bc1488cdd3e768a7a9e51"
+  integrity sha1-vLQEXI3QU5wTS8FIjN0+dop6nlE=
+
+"jquery@>= 1.7.2", jquery@>=1.7, jquery@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.0.tgz#8de513fa0fa4b2c7d2e48a530e26f0596936efdf"
   integrity sha512-ggRCXln9zEqv6OqAGXFEcshF5dSBvCkzj6Gm2gzuR5fWawaX8t7cxKVkkygKODrDAzKdoYw3l/e3pm3vlT4IbQ==
@@ -4575,6 +4626,11 @@ pbkdf2@^3.0.3:
     ripemd160 "^2.0.1"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+php-date-formatter@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/php-date-formatter/-/php-date-formatter-1.3.4.tgz#09a15ae0766ba0beb1900c27c1ec319ef2e4563e"
+  integrity sha1-CaFa4HZroL6xkAwnwewxnvLkVj4=
 
 pify@^2.0.0:
   version "2.3.0"

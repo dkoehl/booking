@@ -3,16 +3,21 @@
 {% block title %}Booking index{% endblock %}
 
 {% block body %}
-    <a class="btn-floating btn-large waves-effect waves-light teal right" href="{{ path('booking_new') }}"><i class="material-icons left">add</i></a>
+
+    <a class="btn-floating btn-large waves-effect waves-light teal right" href="{{ path('booking_new') }}">
+        <i class="material-icons left">add</i>
+    </a>
     <h3 class="section-title teal-text">Bookings</h3>
-    <table class="responsive-table  highlight">
+
+
+    <table class="display" id="dataTable">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Bookingfrom</th>
-                <th>Bookingtill</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Bookingfrom</th>
+            <th>Bookingtill</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for booking in bookings %}

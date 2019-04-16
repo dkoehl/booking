@@ -15,7 +15,7 @@ class RoomType extends AbstractType
         $builder
             ->add('name')
             ->add('beds')
-            ->add('floor',ChoiceType::class, [
+            ->add('floor', ChoiceType::class, [
                 'choices' => [
                     'Please choose' => null,
                     'EG' => 'EG',

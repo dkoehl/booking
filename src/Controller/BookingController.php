@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Booking;
-use App\Form\Booking1Type;
+use App\Entity\Guest;
+use App\Entity\Room;
+use App\Form\BookingType;
 use App\Repository\BookingRepository;
+use App\Repository\RoomRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,12 +34,37 @@ class BookingController extends AbstractController
     public function new(Request $request): Response
     {
         $booking = new Booking();
-        $form = $this->createForm(Booking1Type::class, $booking);
+        $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
+
+        $requestReg = $request->request->get('booking');
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            // sets room
+            if (is_array($requestReg['room'])) {
+                foreach ($requestReg['room'] as $roomId) {
+                    $room = $this->getDoctrine()
+                        ->getRepository(Room::class)
+                        ->findOneBy(['id' => $roomId]);
+                    $booking->setBookedroom($room);
+                    $booking->addRoom($room);
+                }
+            }
+            // Sets guest
+            if (isset($requestReg['guest'])) {
+                $guest = $this->getDoctrine()
+                    ->getRepository(Guest::class)
+                    ->findOneBy(['id' => $requestReg['guest']]);
+                $booking->setGuest($guest);
+            }
+            $booking->setTstamp(time());
+            $booking->setHidden(0);
+            $booking->setDeleted(0);
+            $booking->setCrdate(time());
             $entityManager->persist($booking);
+
             $entityManager->flush();
 
             return $this->redirectToRoute('booking_index');
@@ -53,8 +81,12 @@ class BookingController extends AbstractController
      */
     public function show(Booking $booking): Response
     {
+        $room = $this->getDoctrine()
+            ->getRepository(Room::class)
+            ->findOneBy(['id' => $booking->getBookedroom()]);
         return $this->render('booking/show.html.twig', [
             'booking' => $booking,
+            'room' => $room
         ]);
     }
 
@@ -63,7 +95,7 @@ class BookingController extends AbstractController
      */
     public function edit(Request $request, Booking $booking): Response
     {
-        $form = $this->createForm(Booking1Type::class, $booking);
+        $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -85,7 +117,7 @@ class BookingController extends AbstractController
      */
     public function delete(Request $request, Booking $booking): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$booking->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $booking->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($booking);
             $entityManager->flush();

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,6 +47,26 @@ class Booking
      * @ORM\Column(type="integer", nullable=true)
      */
     private $tstamp;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Room", mappedBy="booking")
+     */
+    private $room;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Room", inversedBy="bookings")
+     */
+    private $bookedroom;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Guest", inversedBy="bookings")
+     */
+    private $guest;
+
+    public function __construct()
+    {
+        $this->room = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,6 +141,61 @@ class Booking
     public function setTstamp(?int $tstamp): self
     {
         $this->tstamp = $tstamp;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Room[]
+     */
+    public function getRoom(): Collection
+    {
+        return $this->room;
+    }
+
+    public function addRoom(Room $room): self
+    {
+        if (!$this->room->contains($room)) {
+            $this->room = $room;
+            $room->setBooking($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRoom(Room $room): self
+    {
+        if ($this->room->contains($room)) {
+            $this->room->removeElement($room);
+            // set the owning side to null (unless already changed)
+            if ($room->getBooking() === $this) {
+                $room->setBooking(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getBookedroom(): ?Room
+    {
+        return $this->bookedroom;
+    }
+
+    public function setBookedroom(?Room $bookedroom): self
+    {
+        $this->bookedroom = $bookedroom;
+
+        return $this;
+    }
+
+    public function getGuest(): ?Guest
+    {
+        return $this->guest;
+    }
+
+    public function setGuest(?Guest $guest): self
+    {
+        $this->guest = $guest;
 
         return $this;
     }

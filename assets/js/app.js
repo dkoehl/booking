@@ -16,15 +16,20 @@ import '../css/app.css';
 
 
 // import M from "materialize";
-import React from "react";
-import ReactDOM from "react-dom";
-import Button from '@material-ui/core/Button';
-import icons from "@material-ui/core/Icon";
-import css from 'materialize-css';
-import $ from 'jquery/dist/jquery.min';
+
+
+
+import $ from "jquery";
+import "jquery-ui";
+import "jquery-datetimepicker";
+import "datatables.net-dt/js/dataTables.dataTables.min";
+import "datatables.net-buttons-dt/js/buttons.dataTables.min";
 
 import M from 'materialize-css'
 import 'material-icons';
+import '@material-ui/core/Button';
+import "@material-ui/core/Icon";
+import 'materialize-css';
 
 
 if (typeof window !== 'undefined') {
@@ -32,20 +37,31 @@ if (typeof window !== 'undefined') {
     window.jQuery = $;
     require('materialize-css');
 }
-// var elems = document.querySelectorAll('.sidenav');
-// var instance = M.Sidenav.getInstance(elem);
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, {
-        edge: 'left',
-        draggable: true,
-        inDuration: 250,
-        outDuration: 200,
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     var elems = document.querySelectorAll('.sidenav');
+//     var instances = M.Sidenav.init(elems, {
+//         edge: 'left',
+//         draggable: true,
+//         inDuration: 250,
+//         outDuration: 200,
+//         onOpenStart: true,
+//         onOpenEnd: true,
+//         onCloseStart: false,
+//         onCloseEnd: false,
+//         preventScrolling: true
+//     });
+// });
+
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, {
+        accordion: 'true',
         onOpenStart: true,
         onOpenEnd: true,
         onCloseStart: false,
-        onCloseEnd: false,
-        preventScrolling: true
+        onCloseEnd: false
     });
 });
 
@@ -65,6 +81,32 @@ document.addEventListener('DOMContentLoaded', function() {
 // const topAppBarElement = document.querySelector('.mdc-top-app-bar');
 // const topAppBar = new MDCTopAppBar(topAppBarElement);
 
+$(document).ready(
+    function () {
+        $('#dataTable').DataTable(
+            {
+                // "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                stateSave: true,
+            }
+        );
+        $('.js-datepicker').datetimepicker(
+            {
+                dateFormat: "dd.mm.yy",
+                firstDay: 1,
+                minDate: 0,
+                showButtonPanel: true,
+                closeText: 'Kalender schließen',
+                currentText: 'Heute',
+                dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+                dayNamesMin: ['SO', 'MO', 'DI', 'MI', 'DO', 'FR', 'SA'],
+                monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai',
+                    'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                showAnim: 'blind'
+            }
+        );
 
+
+    }
+);
 
 

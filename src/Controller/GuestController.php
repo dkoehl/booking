@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Entity\Guest;
 use App\Form\GuestType;
 use App\Repository\GuestRepository;
@@ -57,8 +58,12 @@ class GuestController extends AbstractController
      */
     public function show(Guest $guest): Response
     {
+        $bookings = $this->getDoctrine()
+            ->getRepository(Booking::class)
+            ->findBy(['guest' => $guest->getId()]);
         return $this->render('guest/show.html.twig', [
             'guest' => $guest,
+            'bookings' => $bookings
         ]);
     }
 
