@@ -28,3 +28,18 @@ Official booking application.
 * composer create-project symfony/website-skeleton
 * php bin/console server:start 0.0.0.0:8000
 
+
+#### Screens
+![screen](assets/_screenshots/20.53.08.png)
+![screen](assets/_screenshots/20.53.20.png)
+![screen](assets/_screenshots/20.53.31.png)
+![screen](assets/_screenshots/20.53.53.png)
+![screen](assets/_screenshots/20.54.07.png)
+![screen](assets/_screenshots/20.54.24.png)
+![screen](assets/_screenshots/21.10.21.png)
+![screen](assets/_screenshots/21.11.24.png)
+
+ 
+
+ 
+ 
