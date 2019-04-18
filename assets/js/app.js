@@ -23,10 +23,12 @@ import '../css/app.css';
 var $ = require('jquery');
 
 import 'material-icons';
+//https://datatables.net/extensions/buttons/config
 import '@material-ui/core/Button';
 import "@material-ui/core/Icon";
 import 'materialize-css';
-
+import '@material/textfield';
+//https://xdsoft.net/jqplugins/datetimepicker/
 import "jquery-datetimepicker";
 import "datatables.net-jqui";
 import "datatables.net-buttons";
@@ -36,7 +38,8 @@ import "datatables.net-buttons/js/buttons.colVis.min";
 import "datatables.net-buttons/js/buttons.flash.min";
 import "datatables.net-buttons/js/buttons.html5";
 import "datatables.net-buttons/js/buttons.print.min";
-import "jquery-datetimepicker";
+import "select2/dist/js/select2.min";
+
 
 
 if (typeof window !== 'undefined') {
@@ -69,6 +72,13 @@ document.addEventListener('DOMContentLoaded', function () {
         onOpenEnd: true,
         onCloseStart: false,
         onCloseEnd: false
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+        direction : 'top',
     });
 });
 
@@ -106,23 +116,28 @@ $(document).ready(
                 ]
             }
         );
+        // https://xdsoft.net/jqplugins/datetimepicker/
         $('.js-datepicker').datetimepicker(
             {
                 format:'Y-m-d H:i:s',
                 dateFormat: "dd.mm.yy",
-                firstDay: 1,
-                minDate: 0,
-                showButtonPanel: true,
-                closeText: 'Kalender schließen',
-                currentText: 'Heute',
-                dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
-                dayNamesMin: ['SO', 'MO', 'DI', 'MI', 'DO', 'FR', 'SA'],
-                monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai',
-                    'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-                showAnim: 'blind'
-            }
-        );
 
+                // dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+                // dayNamesMin: ['SO', 'MO', 'DI', 'MI', 'DO', 'FR', 'SA'],
+                // monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai',
+                //     'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                showAnim: 'blind',
+                inline:true,
+                // allowTimes:[
+                //     '12:00', '13:00', '14:00', '15:00','16:00', '17:00', '18:05', '17:20', '19:00', '20:00'
+                // ]
+            },
+        );
+        $.datetimepicker.setLocale('de');
+
+        // $('.fixed-action-btn').floatingActionButton();
+        // https://select2.org/getting-started/basic-usage
+        $('.js-example-basic-multiple').select2();
 
     }
 );

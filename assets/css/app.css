@@ -1,13 +1,13 @@
 @import "~materialize-css/dist/css/materialize.css";
 @import "~@material/top-app-bar/dist/mdc.top-app-bar.min.css";
 @import "~datatables.net-dt/css/jquery.dataTables.min.css";
-@import "~jquery-ui/themes/base/core.css";
-@import "~jquery-ui/themes/base/all.css";
-@import "~jquery-ui/themes/base/theme.css";
-@import "~datatables.net-jqui";
+@import "~datatables.net-jqui/css/dataTables.jqueryui.min.css";
 @import "~jquery-datetimepicker/build/jquery.datetimepicker.min.css";
+@import "~material-icons/iconfont/material-icons.css";
+@import "~select2/dist/css/select2.min.css";
 
 @import "custom.css";
+
 body {
     background-color: lightgray;
 }

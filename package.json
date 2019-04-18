@@ -27,7 +27,9 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@material/textfield": "^1.1.1",
         "datatables.net-buttons-dt": "^1.5.6",
-        "datatables.net-responsive-jqui": "^2.2.3"
+        "datatables.net-responsive-jqui": "^2.2.3",
+        "select2": "^4.0.6-rc.1"
     }
 }

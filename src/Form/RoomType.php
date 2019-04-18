@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Room;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,7 +14,9 @@ class RoomType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', \Symfony\Component\Form\Extension\Core\Type\TextType::class,[
+                'attr' => ['class' => 'mdc-text-field__input'],
+            ])
             ->add('beds')
             ->add('floor', ChoiceType::class, [
                 'choices' => [

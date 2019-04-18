@@ -1,5 +1,5 @@
 /*@import 'material-icons/iconfont/material-icons.scss';*/
-@import "~material-icons/iconfont/material-icons.css";
+
 html{
     background-color: white;
     height: 100%;
@@ -11,4 +11,9 @@ table{
 }
 select{
     display:block;
+}
+
+.sitebar{
+    height:100%;
+    border:1px solid red;
 }

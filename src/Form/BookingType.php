@@ -21,7 +21,7 @@ class BookingType extends AbstractType
                 'widget' => 'single_text',
                 'html5' => false,
                 'label' => 'Booking from',
-                'attr' => ['class' => 'js-datepicker'],
+                'attr' => ['class' => 'js-datepicker '],
             ])
             ->add('bookingtill', DateTimeType::class, [
                 'widget' => 'single_text',
@@ -32,15 +32,14 @@ class BookingType extends AbstractType
             ->add('room', EntityType::class, [
                 'class' => Room::class,
                 'choice_label' => 'name',
-                'multiple' => true
+                'multiple' => true,
+                'attr' => ['class' => 'js-example-basic-multiple'],
             ])
             ->add('guest', EntityType::class, [
                 'class' => Guest::class,
                 'choice_label' => 'lastname',
                 'multiple' => false
-            ])
-
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
