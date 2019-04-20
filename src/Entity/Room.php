@@ -68,6 +68,14 @@ class Room
      */
     private $bookings;
 
+
+    private $housename;
+
+    public function getHouseName():?string
+    {
+        return $this->houseName = $this->house . ', ' . $this->name;
+    }
+
     public function __construct()
     {
         $this->bookings = new ArrayCollection();

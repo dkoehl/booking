@@ -3,28 +3,33 @@
 {% block title %}Guest index{% endblock %}
 
 {% block body %}
+
     <a class="btn-floating btn-large waves-effect waves-light teal right" href="{{ path('guest_new') }}"><i class="material-icons left">add</i></a>
     <h3 class="section-title teal-text">Guests</h3>
     <table class="responsive-table highlight display" id="dataTable">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Lastname</th>
                 <th>Firstname</th>
                 <th>Birthday</th>
+                <th>Bookings</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for guest in guests %}
             <tr>
-                <td>{{ guest.id }}</td>
                 <td>{{ guest.lastname }}</td>
                 <td>{{ guest.firstname }}</td>
                 <td>{{ guest.birthday ? guest.birthday|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ guest.bookings|length }}</td>
                 <td>
-                    <a href="{{ path('guest_show', {'id': guest.id}) }}">show</a>
-                    <a href="{{ path('guest_edit', {'id': guest.id}) }}">edit</a>
+                    <a href="{{ path('guest_show', {'id': guest.id}) }}"><i class="material-icons" title="Show ">
+                            remove_red_eye
+                        </i></a>
+                    <a href="{{ path('guest_edit', {'id': guest.id}) }}"><i class="material-icons" title="Edit">
+                            edit
+                        </i></a>
                 </td>
             </tr>
         {% else %}

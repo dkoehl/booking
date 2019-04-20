@@ -13,7 +13,6 @@
     <table class="responsive-table highlight display" id="dataTable">
         <thead>
         <tr>
-            <th>Id</th>
             <th>Bookingfrom</th>
             <th>Bookingtill</th>
             <th>actions</th>
@@ -22,12 +21,15 @@
         <tbody>
         {% for booking in bookings %}
             <tr>
-                <td>{{ booking.id }}</td>
                 <td>{{ booking.bookingfrom ? booking.bookingfrom|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ booking.bookingtill ? booking.bookingtill|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('booking_show', {'id': booking.id}) }}">show</a>
-                    <a href="{{ path('booking_edit', {'id': booking.id}) }}">edit</a>
+                    <a href="{{ path('booking_show', {'id': booking.id}) }}"><i class="material-icons" title="Show ">
+                            remove_red_eye
+                        </i></a>
+                    <a href="{{ path('booking_edit', {'id': booking.id}) }}"><i class="material-icons" title="Edit">
+                            edit
+                        </i></a>
                 </td>
             </tr>
         {% else %}

@@ -58,6 +58,14 @@ class Guest
      */
     private $bookings;
 
+
+    private $lastnameFirstname;
+
+    public function getLastnameFirstname(): ?string
+    {
+        return $this->firstnameLastname = $this->lastname . ', ' . $this->firstname;
+    }
+
     public function __construct()
     {
         $this->bookings = new ArrayCollection();

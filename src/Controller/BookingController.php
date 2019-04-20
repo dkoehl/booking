@@ -125,4 +125,13 @@ class BookingController extends AbstractController
 
         return $this->redirectToRoute('booking_index');
     }
+
+    /**
+     * @Route("/showAllBookingsChart", name="booking_showAllBookingsChart")
+     */
+    public function showAllBookingsChart(): Response
+    {
+        echo 'hello world';
+    }
+
 }

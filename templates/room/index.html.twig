@@ -10,7 +10,6 @@
     <table class="responsive-table highlight display" id="dataTable">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Beds</th>
                 <th>Floor</th>
@@ -21,14 +20,17 @@
         <tbody>
         {% for room in rooms %}
             <tr>
-                <td>{{ room.id }}</td>
                 <td>{{ room.name }}</td>
                 <td>{{ room.beds }}</td>
                 <td>{{ room.floor }}</td>
                 <td>{{ room.house }}</td>
                 <td>
-                    <a href="{{ path('room_show', {'id': room.id}) }}">show</a>
-                    <a href="{{ path('room_edit', {'id': room.id}) }}">edit</a>
+                    <a href="{{ path('room_show', {'id': room.id}) }}"><i class="material-icons" title="Show ">
+                            remove_red_eye
+                        </i</a>
+                    <a href="{{ path('room_edit', {'id': room.id}) }}"><i class="material-icons" title="Edit">
+                            edit
+                        </i></a>
                 </td>
             </tr>
         {% else %}

@@ -36,13 +36,20 @@ class BookingRepository extends ServiceEntityRepository
     }
     */
 
-    public function findOneBySomeField($value): ?Booking
+    public function findBetweenDates($date)
     {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+
+        dump($date);
+
+        $qb = $this->createQueryBuilder('b')
+            ->andWhere('b.bookingfrom >= :bookingfrom')
+            ->setParameter('bookingfrom', new \DateTime($date))
+            ->orderBy('b.bookingfrom', 'ASC')
+            ->getQuery();
+
+        $return = $qb->execute();
+
+        dump($return);
+
     }
 }

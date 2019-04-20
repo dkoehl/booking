@@ -31,10 +31,10 @@ class RoomType extends AbstractType
             ->add('house', ChoiceType::class, [
                 'choices' => [
                     'Please choose' => null,
-                    'House 1' => 'House 1',
-                    'House 2' => 'House 2',
-                    'House 3' => 'House 3',
-                    'House 4' => 'House 4',
+                    'Haus Nord' => 'Haus Nord',
+                    'Haus Süd' => 'Haus Süd',
+                    'Haus Ost' => 'Haus Ost',
+                    'Haus West' => 'Haus West',
                 ],
             ]);
     }

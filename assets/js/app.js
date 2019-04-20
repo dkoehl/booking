@@ -18,7 +18,6 @@ import '../css/app.css';
 // import M from "materialize";
 
 
-
 // import $ from "jquery";
 var $ = require('jquery');
 
@@ -38,8 +37,8 @@ import "datatables.net-buttons/js/buttons.colVis.min";
 import "datatables.net-buttons/js/buttons.flash.min";
 import "datatables.net-buttons/js/buttons.html5";
 import "datatables.net-buttons/js/buttons.print.min";
-import "select2/dist/js/select2.min";
-
+import "select2";
+import Highcharts from "highcharts";
 
 
 if (typeof window !== 'undefined') {
@@ -65,39 +64,151 @@ if (typeof window !== 'undefined') {
 // });
 
 document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, {
+
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    var Collapseelems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(Collapseelems, {
         accordion: 'true',
         onOpenStart: true,
         onOpenEnd: true,
         onCloseStart: false,
         onCloseEnd: false
     });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, {
-        direction : 'top',
+
+    var fixedelems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(fixedelems, {
+        direction: 'top',
     });
+
+
+    /**
+     * Hicharts
+     */
+    var request = new XMLHttpRequest();
+    request.open("GET", "/showAllBookingsChart", false);
+    request.send(null);
+    var bookingperday = JSON.parse(request.responseText);
+    Highcharts.chart('bookingMonthContainer', {
+        chart: {
+            type: 'areaspline'
+        },
+        title: {
+            text: 'Bookings this month'
+        },
+
+        // subtitle: {
+        //     text: 'Source: thesolarfoundation.com'
+        // },
+        xAxis: {
+            categories: bookingperday.dates
+            // plotBands: [{ // visualize the weekend
+            //     from: 4.5,
+            //     to: 6.5,
+            //     color: 'rgba(68, 170, 213, .2)'
+            // }]
+        },
+        yAxis: {
+            title: {
+                text: 'Bookings '
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            verticalAlign: 'top',
+            x: 150,
+            y: 100,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+        },
+
+        // plotOptions: {
+        //     series: {
+        //         label: {
+        //             connectorAllowed: true
+        //         },
+        //         pointStart: 2019,
+        //         pointInterval: 24 * 3600 * 1000 // one day
+        //     }
+        // },
+
+        series: [{
+            name : 'booking/day',
+            data : bookingperday.bookings
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        },
+
+    });
+
+
+    var request = new XMLHttpRequest();
+    request.open("GET", "/showBookedRooms", false);
+    request.send(null);
+    var Rooms = JSON.parse(request.responseText);
+    Highcharts.chart('roomsChartContainer', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Rooms'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'blue'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Rooms',
+            colorByPoint: true,
+            data: [{
+                name: 'Rooms free',
+                y: Rooms.rooms,
+                // sliced: true,
+                // selected: true
+            }, {
+                name: 'Booked rooms',
+                y: Rooms.bookings
+            }]
+        }]
+    });
+
+
 });
 
-// Initialize collapsible (uncomment the lines below if you use the dropdown variation)
-// var collapsibleElem = document.querySelector('.collapsible');
-// var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
 
 // Or with jQuery
-
-// $(document).ready(function(){
-//     // $('.sidenav').sidenav();
-// });
-// // topbar
-// import {MDCTopAppBar} from '@material/top-app-bar/index';
-//
-// // Instantiation
-// const topAppBarElement = document.querySelector('.mdc-top-app-bar');
-// const topAppBar = new MDCTopAppBar(topAppBarElement);
-
 $(document).ready(
     function () {
         $('#dataTable').DataTable(
@@ -106,7 +217,7 @@ $(document).ready(
                 stateSave: true,
                 columnDefs: [
                     {
-                        targets: [ 0, 1, 2 ],
+                        targets: [0, 1, 2],
                         className: 'mdl-data-table__cell--non-numeric',
                     }
                 ],
@@ -119,7 +230,7 @@ $(document).ready(
         // https://xdsoft.net/jqplugins/datetimepicker/
         $('.js-datepicker').datetimepicker(
             {
-                format:'Y-m-d H:i:s',
+                format: 'Y-m-d H:i:s',
                 dateFormat: "dd.mm.yy",
 
                 // dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
@@ -127,7 +238,7 @@ $(document).ready(
                 // monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai',
                 //     'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
                 showAnim: 'blind',
-                inline:true,
+                inline: true,
                 // allowTimes:[
                 //     '12:00', '13:00', '14:00', '15:00','16:00', '17:00', '18:05', '17:20', '19:00', '20:00'
                 // ]

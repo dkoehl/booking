@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\Booking;
 use App\Entity\Guest;
 use App\Entity\Room;
-use Doctrine\DBAL\Types\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -20,25 +19,27 @@ class BookingType extends AbstractType
             ->add('bookingfrom', DateTimeType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'label' => 'Booking from',
+                'label' => 'From: ',
                 'attr' => ['class' => 'js-datepicker '],
             ])
             ->add('bookingtill', DateTimeType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker'],
-                'label' => 'Booking till',
+                'label' => 'To:',
             ])
             ->add('room', EntityType::class, [
                 'class' => Room::class,
-                'choice_label' => 'name',
+                'choice_label' => 'houseName',
                 'multiple' => true,
                 'attr' => ['class' => 'js-example-basic-multiple'],
             ])
             ->add('guest', EntityType::class, [
                 'class' => Guest::class,
-                'choice_label' => 'lastname',
-                'multiple' => false
+                'choice_label' => 'lastnameFirstname',
+                'multiple' => false,
+                'attr' => ['class' => 'js-example-basic-multiple'],
+
             ]);
     }
 
