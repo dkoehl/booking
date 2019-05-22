@@ -30,7 +30,7 @@
     {#{{ dump(app.request) }}#}
     <div class="col s1 m1 l1" id="sitebar">
         <ul class="center sitebar" >
-            <li><a href="/index" class="btn-floating"><i class="material-icons">home</i></a></li>
+            <li><a href="/" class="btn-floating"><i class="material-icons">home</i></a></li>
             <br>
             <br>
             <li><a href="/room" class="{{ app.request.attributes.get('_route') starts with 'room' ? 'active' }}"><i class="material-icons">hotel</i><br>Rooms</a></li>
