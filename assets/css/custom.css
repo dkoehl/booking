@@ -1,19 +1,64 @@
 /*@import 'material-icons/iconfont/material-icons.scss';*/
 
-html{
+html {
     background-color: white;
     height: 100%;
 }
-table{
-    background-color:#fff;
-    margin-bottom:20px;
-    border:20px solid #fff;
-}
-select{
-    display:block;
+
+table {
+    background-color: #fff;
+    margin-bottom: 20px;
+    border: 20px solid #fff;
 }
 
-.sitebar{
-    height:100%;
-    border:1px solid red;
+select {
+    display: block;
 }
+
+#sitebar {
+    position: fixed;
+    height: 100%;
+    bottom: 0px;
+    padding: 0px;
+    background-color: #e8eaf6;
+}
+
+.sitebar {
+    height: 100%;
+}
+
+.sitebar a {
+    color: #666666;
+    font-size: 12px;
+}
+
+.sitebar a.active,
+#sitebar > ul > li > a.active > i{
+    color: dodgerblue;
+
+}
+.sitebar a.active{
+    display:block;
+    padding:10px;
+    position:relative;
+    width:100%;
+    border-left:5px solid dodgerblue;
+    /*margin-right:-20px;*/
+    /*text-align: left;*/
+    background:#ffffff;
+}
+
+#booking label {
+    display: block;
+    color: #000000;
+    padding: 7px;
+    font-size: 14px;
+}
+
+#booking > div {
+    width: 50%;
+    float: left;
+    min-height: 150px;
+    padding: 10px;
+}
+

@@ -26,21 +26,22 @@
 <body>
 
 <div class="row">
-    <div class="col s1 m1 l1"
-         style="position:absolute; height:100%; bottom:0px; padding:30px; background-color:#e8eaf6;">
-        <ul class="center">
+
+    {#{{ dump(app.request) }}#}
+    <div class="col s1 m1 l1" id="sitebar">
+        <ul class="center sitebar" >
             <li><a href="/index" class="btn-floating"><i class="material-icons">home</i></a></li>
             <br>
             <br>
-            <li><a href="/room"><i class="material-icons teal-text">hotel</i></a></li>
+            <li><a href="/room" class="{{ app.request.attributes.get('_route') starts with 'room' ? 'active' }}"><i class="material-icons">hotel</i><br>Rooms</a></li>
             <br>
-            <li><a href="/booking"><i class="material-icons teal-text">assignment_ind</i></a></li>
+            <li><a href="/booking" class="{{ app.request.attributes.get('_route') starts with 'booking' ? 'active' }}"><i class="material-icons">assignment_ind</i><br>Bookings</a></li>
             <br>
-            <li><a href="/guest"><i class="material-icons teal-text">account_circle</i></a></li>
+            <li><a href="/guest" class="{{ app.request.attributes.get('_route') starts with 'guest' ? 'active' }}"><i class="material-icons" >account_circle</i><br>Guests</a></li>
             <br>
-            <li><a href=""><i class="material-icons grey-text">alarm</i></a></li>
+            <li><a href=""><i class="material-icons grey-text">alarm</i><br>Arrivals</a></li>
             <br>
-            <li><a href=""><i class="material-icons grey-text">today</i></a></li>
+            <li><a href=""><i class="material-icons grey-text">today</i><br>Calendar</a></li>
         </ul>
     </div>
     <div class="col s11 m11 l11">
@@ -49,16 +50,16 @@
         </div>
     </div>
 
-    <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red">
+    <div class="fixed-action-btn ">
+        <a class="btn-floating btn-large teal-text">
             <i class="large material-icons">mode_edit</i>
         </a>
         <ul>
             <li>
-                <a class="btn-floating red" href="{{ path('room_new') }}"><i class="material-icons">insert_chart</i></a>
+                <a class="btn-floating red" href="{{ path('room_new') }}"><i class="material-icons">hotel</i></a>
             </li>
-            <li><a class="btn-floating yellow darken-1" href="{{ path('booking_new') }}"><i class="material-icons">format_quote</i></a></li>
-            <li><a class="btn-floating green" href="{{ path('guest_new') }}"><i class="material-icons">publish</i></a></li>
+            <li><a class="btn-floating yellow darken-1" href="{{ path('booking_new') }}"><i class="material-icons">assignment_ind</i></a></li>
+            <li><a class="btn-floating green" href="{{ path('guest_new') }}"><i class="material-icons" >account_circle</i></a></li>
             {#<li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>#}
         </ul>
     </div>

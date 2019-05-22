@@ -60,7 +60,7 @@ class GuestController extends AbstractController
     {
         $bookings = $this->getDoctrine()
             ->getRepository(Booking::class)
-            ->findBy(['guest' => $guest->getId()]);
+            ->findBy(['guest' => $guest->getId()], ['bookingfrom' => 'ASC']);
         return $this->render('guest/show.html.twig', [
             'guest' => $guest,
             'bookings' => $bookings

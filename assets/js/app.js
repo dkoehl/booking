@@ -40,6 +40,23 @@ import "datatables.net-buttons/js/buttons.print.min";
 import "select2";
 import Highcharts from "highcharts";
 
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import timeLinePlugin from "@fullcalendar/timeline";
+
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new Calendar(calendarEl, {
+        plugins: [ dayGridPlugin, timeGridPlugin, timeLinePlugin],
+        refetchResourcesOnNavigate: true,
+        resources: 'https://fullcalendar.io/demo-resources.json?with-nesting'
+    });
+
+    calendar.render();
+});
+
 
 if (typeof window !== 'undefined') {
     window.$ = $;
@@ -160,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     var request = new XMLHttpRequest();
-    request.open("GET", "/showBookedRooms", false);
+    request.open("GET", "/showBookedRoomsbymonth", false);
     request.send(null);
     var Rooms = JSON.parse(request.responseText);
     Highcharts.chart('roomsChartContainer', {
@@ -171,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'pie'
         },
         title: {
-            text: 'Rooms'
+            text: 'Room utilization'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -193,12 +210,12 @@ document.addEventListener('DOMContentLoaded', function () {
             name: 'Rooms',
             colorByPoint: true,
             data: [{
-                name: 'Rooms free',
+                name: 'Rooms vacant',
                 y: Rooms.rooms,
                 // sliced: true,
                 // selected: true
             }, {
-                name: 'Booked rooms',
+                name: 'Booked room',
                 y: Rooms.bookings
             }]
         }]

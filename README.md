@@ -2,8 +2,8 @@
 Official booking application.
 
 ## Symfony
-* Creating Entities: https://symfony.com/doc/current/doctrine.html
-* Creating CRUD: https://symfony.com/doc/master/bundles/SensioGeneratorBundle/commands/generate_doctrine_crud.html
+* Creating Entities: <https://symfony.com/doc/current/doctrine.html>
+* Creating CRUD: <https://symfony.com/doc/master/bundles/SensioGeneratorBundle/commands/generate_doctrine_crud.html>
 
 
 ## Server
@@ -19,15 +19,16 @@ Official booking application.
 
 
 ### Demo
-* https://material.io/develop/web/
-* https://dribbble.com/shots/6321346-Mission-Control-Full-view/attachments
-* http://preview.themeforest.net/item/material-design-admin-with-angularjs/full_screen_preview/13582227
+* <https://material.io/develop/web/>
+* <https://dribbble.com/shots/6321346-Mission-Control-Full-view/attachments>
+* <http://preview.themeforest.net/item/material-design-admin-with-angularjs/full_screen_preview/13582227>
+* <https://materializecss.com>
 
 
 ### Commands
-* composer create-project symfony/website-skeleton
+* Project init: ```composer create-project symfony/website-keleton```
 * php bin/console server:start 0.0.0.0:8000
-
+* Watcher starten: ```yarn run encore dev --watch```
 
 #### Screens
 ![screen](assets/_screens/screen1.png)

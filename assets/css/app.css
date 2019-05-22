@@ -6,6 +6,11 @@
 @import "~material-icons/iconfont/material-icons.css";
 @import "~select2/dist/css/select2.min.css";
 
+@import '~@fullcalendar/core/main.min.css';
+@import "~@fullcalendar/daygrid/main.min.css";
+@import "~@fullcalendar/timegrid/main.min.css";
+@import "~@fullcalendar/timeline/main.min.css";
+
 @import "custom.css";
 
 body {

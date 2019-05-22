@@ -29,8 +29,6 @@ class IndexController extends AbstractController
         $allBookings = $this->getDoctrine()
             ->getRepository(Booking::class)
             ->findAll();
-
-
         $daysOfThisMonth = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
         $yearAndMonth = date('Y-m');
 
@@ -71,6 +69,24 @@ class IndexController extends AbstractController
 
         $allBookings = $this->getDoctrine()
             ->getRepository(Booking::class)
+            ->findAll();
+
+        $rooms = count($allRooms);
+        $bookings = count($allBookings);
+
+        $freeRooms = $rooms - $bookings;
+
+        return $this->json(['rooms'=> $rooms, 'bookings' => $bookings, 'free'=>$freeRooms]);
+    }
+    /**
+     * @Route("/showBookedRoomsbymonth", name="showBookedRoomsbymonth")
+     */
+    public function showBookedRoomsbymonth(){
+        $allBookings = $this->getDoctrine()
+            ->getRepository(Booking::class)
+            ->showBookedRoomsbymonth();
+        $allRooms = $this->getDoctrine()
+            ->getRepository(Room::class)
             ->findAll();
 
         $rooms = count($allRooms);

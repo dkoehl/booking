@@ -36,20 +36,37 @@ class BookingRepository extends ServiceEntityRepository
     }
     */
 
-    public function findBetweenDates($date)
+    public function showBookedRoomsbymonth()
     {
-
-        dump($date);
-
-        $qb = $this->createQueryBuilder('b')
-            ->andWhere('b.bookingfrom >= :bookingfrom')
-            ->setParameter('bookingfrom', new \DateTime($date))
+        $startdate = new \DateTime(date('Y-m') . '-01');
+        $enddate = new \DateTime(date('Y-m') . '-30');
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.bookingfrom >= :bookingfrom AND b.bookingtill <= :bookingtill')
+            ->setParameter('bookingfrom', $startdate)
+            ->setParameter('bookingtill', $enddate)
             ->orderBy('b.bookingfrom', 'ASC')
+            ->getQuery()
+            ->execute();
+    }
+
+
+    /**
+     * @param $price
+     * @return Product[]
+     */
+    public function findAllGreaterThanPrice($price): array
+    {
+        // automatically knows to select Products
+        // the "p" is an alias you'll use in the rest of the query
+        $qb = $this->createQueryBuilder('p')
+            ->andWhere('p.price > :price')
+            ->setParameter('price', $price)
+            ->orderBy('p.price', 'ASC')
             ->getQuery();
 
-        $return = $qb->execute();
+        return $qb->execute();
 
-        dump($return);
-
+        // to get just one result:
+        // $product = $qb->setMaxResults(1)->getOneOrNullResult();
     }
 }

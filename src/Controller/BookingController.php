@@ -92,6 +92,7 @@ class BookingController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="booking_edit", methods={"GET","POST"})
+     *
      */
     public function edit(Request $request, Booking $booking): Response
     {
@@ -126,12 +127,5 @@ class BookingController extends AbstractController
         return $this->redirectToRoute('booking_index');
     }
 
-    /**
-     * @Route("/showAllBookingsChart", name="booking_showAllBookingsChart")
-     */
-    public function showAllBookingsChart(): Response
-    {
-        echo 'hello world';
-    }
 
 }
