@@ -20,7 +20,7 @@ select {
     height: 100%;
     bottom: 0px;
     padding: 0px;
-    background-color: #e8eaf6;
+    /*background-color: #e8eaf6;*/
 }
 
 .sitebar {
@@ -28,13 +28,13 @@ select {
 }
 
 .sitebar a {
-    color: #666666;
+    /*color: #666666;*/
     font-size: 12px;
 }
 
 .sitebar a.active,
 #sitebar > ul > li > a.active > i{
-    color: dodgerblue;
+    /*color: dodgerblue;*/
 
 }
 .sitebar a.active{
@@ -47,6 +47,11 @@ select {
     /*text-align: left;*/
     background:#ffffff;
 }
+
+
+
+
+
 
 #booking label {
     display: block;

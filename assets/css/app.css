@@ -1,4 +1,5 @@
-@import "~materialize-css/dist/css/materialize.css";
+/*@import "~materialize-css/dist/css/materialize.css";*/
+@import "~materialize-css/dist/css/materialize.min.css";
 @import "~@material/top-app-bar/dist/mdc.top-app-bar.min.css";
 @import "~datatables.net-dt/css/jquery.dataTables.min.css";
 @import "~datatables.net-jqui/css/dataTables.jqueryui.min.css";

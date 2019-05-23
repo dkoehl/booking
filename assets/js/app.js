@@ -20,11 +20,12 @@ import '../css/app.css';
 
 // import $ from "jquery";
 var $ = require('jquery');
-
 import 'material-icons';
+
 //https://datatables.net/extensions/buttons/config
 import '@material-ui/core/Button';
 import "@material-ui/core/Icon";
+import 'materialize';
 import 'materialize-css';
 import '@material/textfield';
 //https://xdsoft.net/jqplugins/datetimepicker/
@@ -40,16 +41,16 @@ import "datatables.net-buttons/js/buttons.print.min";
 import "select2";
 import Highcharts from "highcharts";
 
-import { Calendar } from '@fullcalendar/core';
+import {Calendar} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import timeLinePlugin from "@fullcalendar/timeline";
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new Calendar(calendarEl, {
-        plugins: [ dayGridPlugin, timeGridPlugin, timeLinePlugin],
+        plugins: [dayGridPlugin, timeGridPlugin, timeLinePlugin],
         refetchResourcesOnNavigate: true,
         resources: 'https://fullcalendar.io/demo-resources.json?with-nesting'
     });
@@ -92,6 +93,11 @@ document.addEventListener('DOMContentLoaded', function () {
         onOpenEnd: true,
         onCloseStart: false,
         onCloseEnd: false
+    });
+
+    var DropDownElems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(DropDownElems, {
+        alignment : 'right'
     });
 
 
@@ -154,8 +160,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // },
 
         series: [{
-            name : 'booking/day',
-            data : bookingperday.bookings
+            name: 'booking/day',
+            data: bookingperday.bookings
         }],
 
         responsive: {
@@ -266,7 +272,6 @@ $(document).ready(
         // $('.fixed-action-btn').floatingActionButton();
         // https://select2.org/getting-started/basic-usage
         $('.js-example-basic-multiple').select2();
-
     }
 );
 

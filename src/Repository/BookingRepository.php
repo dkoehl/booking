@@ -36,6 +36,25 @@ class BookingRepository extends ServiceEntityRepository
     }
     */
 
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public function showBookingsInFuture()
+    {
+        $startdate = new \DateTime(date('Y-m-d') . '23:59:59');
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.bookingtill > :bookingfrom')
+            ->setParameter('bookingfrom', $startdate)
+            ->orderBy('b.bookingfrom', 'ASC')
+            ->getQuery()
+            ->execute();
+    }
+
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
     public function showBookedRoomsbymonth()
     {
         $startdate = new \DateTime(date('Y-m') . '-01');
@@ -49,7 +68,39 @@ class BookingRepository extends ServiceEntityRepository
             ->execute();
     }
 
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public function findCheckInsToday()
+    {
+        $startdate = new \DateTime(date('Y-m-d') . '00:00:00');
+        $enddate = new \DateTime(date('Y-m-d') . '23:59:59');
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.bookingfrom >= :bookingfrom AND b.bookingfrom <= :bookingtill')
+            ->setParameter('bookingfrom', $startdate)
+            ->setParameter('bookingtill', $enddate)
+            ->orderBy('b.bookingfrom', 'ASC')
+            ->getQuery()
+            ->execute();
+    }
 
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public function findCheckOutsToday()
+    {
+        $startdate = new \DateTime(date('Y-m-d') . '00:00:00');
+        $enddate = new \DateTime(date('Y-m-d') . '23:59:59');
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.bookingtill >= :bookingfrom AND b.bookingtill <= :bookingtill')
+            ->setParameter('bookingfrom', $startdate)
+            ->setParameter('bookingtill', $enddate)
+            ->orderBy('b.bookingfrom', 'ASC')
+            ->getQuery()
+            ->execute();
+    }
     /**
      * @param $price
      * @return Product[]
