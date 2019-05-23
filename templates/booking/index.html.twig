@@ -11,7 +11,7 @@
     {% if bookingsCheckInsToday %}
         <ul class="collapsible">
             <li class="collapsible-header">
-                <h5 class="section-title blue-text"><i class="material-icons">flight_land</i> Arrivals </h5>
+                <h5 class="section-title blue-text"><i class="material-icons">flight_land</i>Arrivals</h5>
             </li>
             {% for booking in bookingsCheckInsToday %}
                 {#{{ dump(booking.guest) }}#}
@@ -22,7 +22,7 @@
                             {{ booking.guest.lastnameFirstname|trim }}
                         </div>
                         <div class="col s5">
-                            <i class="material-icons">flight_land</i>{{ booking.bookingfrom ? booking.bookingfrom|date("H:i"): '' }}
+                            <i class="material-icons">access_time</i>{{ booking.bookingfrom ? booking.bookingfrom|date("H:i"): '' }}
                         </div>
                         <div class="col s4">
                             {#<i class="material-icons">alarm</i>{{ booking.bookingfrom ? booking.bookingfrom|date("D d M", "Europe/Paris"): '' }}#}
@@ -33,7 +33,48 @@
                     </div>
                     <div class="collapsible-body grey lighten-5 grey-text">
                         <div class="row">
-                            <div class="col s12" style="text-align:right;">
+                            <div class="col s4">
+                                <p>
+                                    <strong>Name</strong><br>
+                                    <a href="{{ path('guest_show', {'id': booking.guest.id}) }}">
+                                        {{ booking.guest.firstname |trim }} {{ booking.guest.lastname|trim }}
+                                    </a>
+                                </p>
+                                <p>
+                                    <strong>Birthday</strong><br>
+                                    <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
+                                </p>
+                            </div>
+                            <div class="col s4">
+                                <p>
+                                    <strong>Booked on</strong><br>
+                                    <span class="black-text">{{ booking.crdate ? booking.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+                                    <br>
+                                    <br>
+                                    <strong>Checkin</strong><br>
+                                    <span class="black-text">{{ booking.bookingfrom ? booking.bookingfrom|date("D d.m.Y H:i"): '' }}</span>
+                                    <br>
+                                    <br>
+                                    <strong>Checkout</strong><br>
+                                    <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
+                                </p>
+                            </div>
+                            <div class="col s3">
+                                <p>
+                                    <strong>Room:</strong>
+                                    <span class="black-text"> {{ booking.bookedroom.name }}</span>
+                                    <br>
+                                    <strong>Beds:</strong>
+                                    <span class="black-text"> {{ booking.bookedroom.beds }}</span>
+                                    <br>
+                                    <strong>House:</strong>
+                                    <span class="black-text">{{ booking.bookedroom.house }}</span>
+                                    <br>
+                                    <strong>Etage:</strong>
+                                   <span class="black-text">{{ booking.bookedroom.floor }}</span>
+                                </p>
+                            </div>
+                            <div class="col s1" style="text-align:right;">
                                 <a class='dropdown-trigger'  href='#' data-target='dropdown0{{ booking.id }}'>
                                     <i class="material-icons">more_vert</i>
                                 </a>
@@ -52,43 +93,6 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col s4">
-                                <p>
-                                    <strong>Name</strong><br>
-                                    <a href="{{ path('guest_show', {'id': booking.guest.id}) }}">
-                                        {{ booking.guest.firstname |trim }} {{ booking.guest.lastname|trim }}
-                                    </a>
-                                </p>
-                                <p>
-                                    <strong>Birthday</strong><br>
-                                    <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
-                                </p>
-                            </div>
-                            <div class="col s4">
-                                <p>
-                                    <strong>Checkin</strong><br>
-                                    <span class="black-text">{{ booking.bookingfrom ? booking.bookingfrom|date("D d.m.Y H:i"): '' }}</span>
-                                    <br>
-                                    <br>
-                                    <strong>Checkout</strong><br>
-                                    <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
-                                </p>
-                            </div>
-                            <div class="col s4">
-                                <p>
-                                    <strong>Room:</strong>
-                                    <span class="black-text"> {{ booking.bookedroom.name }}</span>
-                                    <br>
-                                    <strong>Beds:</strong>
-                                    <span class="black-text"> {{ booking.bookedroom.beds }}</span>
-                                    <br>
-                                    <strong>House:</strong>
-                                    <span class="black-text">{{ booking.bookedroom.house }}</span>
-                                    <br>
-                                    <strong>Etage:</strong>
-                                   <span class="black-text">{{ booking.bookedroom.floor }}</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </li>
@@ -103,7 +107,7 @@
     {% if bookingsCheckOutsToday %}
         <ul class="collapsible">
             <li class="collapsible-header">
-                <h5 class="section-title blue-text"><i class="material-icons">flight_takeoff</i> Departures</h5>
+                <h5 class="section-title blue-text"><i class="material-icons">flight_takeoff</i>Departures</h5>
             </li>
             {% for booking in bookingsCheckOutsToday %}
                 <li>
@@ -113,7 +117,7 @@
                             {{ booking.guest.lastnameFirstname|trim }}
                         </div>
                         <div class="col s5">
-                            <i class="material-icons">flight_takeoff</i>{{ booking.bookingtill ? booking.bookingtill|date("D d M", "Europe/Paris"): '' }}
+                            <i class="material-icons">access_time</i>{{ booking.bookingtill ? booking.bookingtill|date("H:i", "Europe/Paris"): '' }}
                         </div>
                         <div class="col s4">
                             {#<i class="material-icons">alarm</i>{{ booking.bookingfrom ? booking.bookingfrom|date("D d M", "Europe/Paris"): '' }}#}
@@ -124,7 +128,48 @@
                     </div>
                     <div class="collapsible-body grey lighten-5 grey-text">
                         <div class="row">
-                            <div class="col s12" style="text-align:right;">
+                            <div class="col s4">
+                                <p>
+                                    <strong>Name</strong><br>
+                                    <a href="{{ path('guest_show', {'id': booking.guest.id}) }}">
+                                        {{ booking.guest.firstname |trim }} {{ booking.guest.lastname|trim }}
+                                    </a>
+                                </p>
+                                <p>
+                                    <strong>Birthday</strong><br>
+                                    <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
+                                </p>
+                            </div>
+                            <div class="col s4">
+                                <p>
+                                    <strong>Booked on</strong><br>
+                                    <span class="black-text">{{ booking.crdate ? booking.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+                                    <br>
+                                    <br>
+                                    <strong>Checkin</strong><br>
+                                    <span class="black-text">{{ booking.bookingfrom ? booking.bookingfrom|date("D d.m.Y H:i"): '' }}</span>
+                                    <br>
+                                    <br>
+                                    <strong>Checkout</strong><br>
+                                    <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
+                                </p>
+                            </div>
+                            <div class="col s3">
+                                <p>
+                                    <strong>Room:</strong>
+                                    <span class="black-text"> {{ booking.bookedroom.name }}</span>
+                                    <br>
+                                    <strong>Beds:</strong>
+                                    <span class="black-text"> {{ booking.bookedroom.beds }}</span>
+                                    <br>
+                                    <strong>House:</strong>
+                                    <span class="black-text">{{ booking.bookedroom.house }}</span>
+                                    <br>
+                                    <strong>Etage:</strong>
+                                    <span class="black-text">{{ booking.bookedroom.floor }}</span>
+                                </p>
+                            </div>
+                            <div class="col s1" style="text-align:right;">
                                 <a class='dropdown-trigger'  href='#' data-target='dropdown1{{ booking.id }}'>
                                     <i class="material-icons">more_vert</i>
                                 </a>
@@ -142,43 +187,6 @@
                                         <a href="#" class="blue-text">Print</a>
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="col s4">
-                                <p>
-                                    <strong>Name</strong><br>
-                                    <a href="{{ path('guest_show', {'id': booking.guest.id}) }}">
-                                        {{ booking.guest.firstname |trim }} {{ booking.guest.lastname|trim }}
-                                    </a>
-                                </p>
-                                <p>
-                                    <strong>Birthday</strong><br>
-                                    <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
-                                </p>
-                            </div>
-                            <div class="col s4">
-                                <p>
-                                    <strong>Checkin</strong><br>
-                                    <span class="black-text">{{ booking.bookingfrom ? booking.bookingfrom|date("D d.m.Y H:i"): '' }}</span>
-                                    <br>
-                                    <br>
-                                    <strong>Checkout</strong><br>
-                                    <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
-                                </p>
-                            </div>
-                            <div class="col s4">
-                                <p>
-                                    <strong>Room:</strong>
-                                    <span class="black-text"> {{ booking.bookedroom.name }}</span>
-                                    <br>
-                                    <strong>Beds:</strong>
-                                    <span class="black-text"> {{ booking.bookedroom.beds }}</span>
-                                    <br>
-                                    <strong>House:</strong>
-                                    <span class="black-text">{{ booking.bookedroom.house }}</span>
-                                    <br>
-                                    <strong>Etage:</strong>
-                                    <span class="black-text">{{ booking.bookedroom.floor }}</span>
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -219,7 +227,48 @@
                     </div>
                     <div class="collapsible-body grey lighten-5 grey-text">
                         <div class="row">
-                            <div class="col s12" style="text-align:right;">
+                            <div class="col s4">
+                                <p>
+                                    <strong>Name</strong><br>
+                                    <a href="{{ path('guest_show', {'id': booking.guest.id}) }}">
+                                        {{ booking.guest.firstname |trim }} {{ booking.guest.lastname|trim }}
+                                    </a>
+                                </p>
+                                <p>
+                                    <strong>Birthday</strong><br>
+                                    <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
+                                </p>
+                            </div>
+                            <div class="col s4">
+                                <p>
+                                    <strong>Booked on</strong><br>
+                                    <span class="black-text">{{ booking.crdate ? booking.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+                                    <br>
+                                    <br>
+                                    <strong>Checkin</strong><br>
+                                    <span class="black-text">{{ booking.bookingfrom ? booking.bookingfrom|date("D d.m.Y H:i"): '' }}</span>
+                                    <br>
+                                    <br>
+                                    <strong>Checkout</strong><br>
+                                    <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
+                                </p>
+                            </div>
+                            <div class="col s3">
+                                <p>
+                                    <strong>Room:</strong>
+                                    <span class="black-text"> {{ booking.bookedroom.name }}</span>
+                                    <br>
+                                    <strong>Beds:</strong>
+                                    <span class="black-text"> {{ booking.bookedroom.beds }}</span>
+                                    <br>
+                                    <strong>House:</strong>
+                                    <span class="black-text">{{ booking.bookedroom.house }}</span>
+                                    <br>
+                                    <strong>Etage:</strong>
+                                    <span class="black-text">{{ booking.bookedroom.floor }}</span>
+                                </p>
+                            </div>
+                            <div class="col s1" style="text-align:right;">
                                 <a class='dropdown-trigger'  href='#' data-target='dropdown2{{ booking.id }}'>
                                     <i class="material-icons">more_vert</i>
                                 </a>
@@ -237,43 +286,6 @@
                                         <a href="#" class="blue-text">Print</a>
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="col s4">
-                                <p>
-                                    <strong>Name</strong><br>
-                                    <a href="{{ path('guest_show', {'id': booking.guest.id}) }}">
-                                        {{ booking.guest.firstname |trim }} {{ booking.guest.lastname|trim }}
-                                    </a>
-                                </p>
-                                <p>
-                                    <strong>Birthday</strong><br>
-                                    <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
-                                </p>
-                            </div>
-                            <div class="col s4">
-                                <p>
-                                    <strong>Checkin</strong><br>
-                                    <span class="black-text">{{ booking.bookingfrom ? booking.bookingfrom|date("D d.m.Y H:i"): '' }}</span>
-                                    <br>
-                                    <br>
-                                    <strong>Checkout</strong><br>
-                                    <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
-                                </p>
-                            </div>
-                            <div class="col s4">
-                                <p>
-                                    <strong>Room:</strong>
-                                    <span class="black-text"> {{ booking.bookedroom.name }}</span>
-                                    <br>
-                                    <strong>Beds:</strong>
-                                    <span class="black-text"> {{ booking.bookedroom.beds }}</span>
-                                    <br>
-                                    <strong>House:</strong>
-                                    <span class="black-text">{{ booking.bookedroom.house }}</span>
-                                    <br>
-                                    <strong>Etage:</strong>
-                                    <span class="black-text">{{ booking.bookedroom.floor }}</span>
-                                </p>
                             </div>
                         </div>
                     </div>
