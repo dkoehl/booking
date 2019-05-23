@@ -13,7 +13,3 @@
 @import "~@fullcalendar/timeline/main.min.css";
 
 @import "custom.css";
-
-body {
-    background-color: lightgray;
-}

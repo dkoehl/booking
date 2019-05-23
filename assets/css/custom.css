@@ -67,3 +67,11 @@ select {
     padding: 10px;
 }
 
+/*.col{*/
+    /*border:1px solid red;*/
+/*}*/
+
+
+.collapsible-header i {
+    vertical-align: bottom !important;
+}

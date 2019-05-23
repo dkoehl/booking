@@ -3,40 +3,81 @@
 {% block title %}Guest{% endblock %}
 
 {% block body %}
-    {{ dump(guest) }}
+    {#{{ dump(guest) }}#}
 
-    <div class="row">
-        <div class="col m1">
-            <a class="waves-effect waves-light btn right" href="{{ path('guest_index') }}">back to list</a>
-        </div>
-        <div class="col m2">
-            <a class="waves-effect waves-light btn blue" href="{{ path('guest_edit', {'id': guest.id}) }}">edit</a>
-        </div>
-        <div class="col m8">
-            {{ include('guest/_delete_form.html.twig') }}
-        </div>
-    </div>
 
-    <ul class="collection with-header">
-        <li class="collection-header"><h4>{{ guest.lastname }}, {{ guest.firstname }}<span class="badge teal white-text">{{ guest.id }}</span></h4></li>
-        {#<li class="collection-item">#}
-            {#<i class="material-icons">local_hotel</i> {{ room.beds }}#}
-        {#</li>#}
-        {#<li class="collection-item">#}
-            {#<i class="material-icons">home</i> {{ room.house }}#}
-        {#</li>#}
-        {#<li class="collection-item">#}
-            {#<i class="material-icons">edit</i> {{ room.tstamp|date("d.m.Y H:i") }}#}
-        {#</li>#}
+
+
+
+    <ul class="collection with-header z-depth-1 blue-grey-text">
+        <li class="collection-header">
+            <h5 class="section-title blue-text">{{ guest.lastnameFirstname }}
+
+                <div class="right right-align right-aligned">
+                    <a class='dropdown-trigger' href='#' data-target='dropdown0{{ guest.id }}'>
+                        <i class="material-icons small grey-text">more_vert</i>
+                    </a>
+                    <!-- Dropdown Structure -->
+                    <p>
+                    <ul id='dropdown0{{ guest.id }}' class='dropdown-content'>
+                        <li>
+                            <a class="blue-text" href="{{ path('guest_index') }}">
+                                Back
+                            </a>
+                        </li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li>
+                            <a class="blue-text" href="{{ path('guest_edit', {'id': guest.id}) }}">Edit</a>
+                        </li>
+                        <li class="divider" tabindex="-1"></li>
+
+                        <li>
+                            {{ include('guest/_delete_form.html.twig') }}
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </h5>
+
+
+        </li>
+        <li class="collection-item grey lighten-5 grey-text">
+            <div class="row">
+                <div class="col s4">
+                    <p>
+                        <strong>Lastname</strong><br>
+                        <span class="black-text">{{ guest.lastname }}</span>
+                    </p>
+                    <p>
+                        <strong>Firstname</strong><br>
+                        <span class="black-text">{{ guest.firstname }}</span>
+                    </p>
+                    <p>
+                        <strong>Birthday</strong><br>
+                        <span class="black-text">{{ guest.birthday ? guest.birthday|date("d.m.Y") : '' }}</span>
+                    </p>
+                </div>
+                <div class="col s4">
+                    <p>
+                        <strong>Registered: </strong>
+                        <span class="black-text">{{ guest.crdate ? guest.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+                    </p>
+                </div>
+                <div class="col s4"></div>
+            </div>
+        </li>
+
+        {#<li class="divider"></li>#}
+
     </ul>
 
 
     {% if bookings %}
-        <h4 class="section-title teal-text">Bookings</h4>
+        <h5 class="section-title blue-text">Bookings</h5>
         <div class="row">
             {% for booked in bookings %}
                 <div class="col s12 m4">
-                    <div class="card horizontal teal">
+                    <div class="card horizontal blue">
                         <div class="card-content white-text">
                             <span class="card-title">BookingNo: <b>{{ booked.id }}</b></span>
                             <p>
