@@ -3,7 +3,7 @@
         <p>
             <strong>Name</strong><br>
             <a href="{{ path('guest_show', {'id': booking.guest.id}) }}">
-                {{ booking.guest.firstname |trim }} {{ booking.guest.lastname|trim }}
+                {{ booking.guest.lastnameFirstname|trim }}
             </a>
         </p>
         <p>
@@ -40,25 +40,6 @@
             <span class="black-text">{{ booking.bookedroom.floor }}</span>
         </p>
     </div>
-    <div class="col s1" style="text-align:right;">
-        <a class='dropdown-trigger' href='#' data-target='dropdown{{ booking.crdate }}'>
-            <i class="material-icons grey-text">more_vert</i>
-        </a>
-        <!-- Dropdown Structure -->
-        <ul id='dropdown{{ booking.crdate }}' class='dropdown-content'>
-            <li>
-                <a href="{{ path('booking_edit', {'id': booking.id}) }}"
-                   class="blue-text">Edit</a>
-            </li>
-            <li class="divider" tabindex="-1"></li>
-            <li>
-                <a href="{{ path('booking_show', {'id': booking.id}) }}"
-                   class="blue-text">Show</a>
-            </li>
-            <li class="divider" tabindex="-1"></li>
-            <li>
-                <a href="#" class="blue-text">Print</a>
-            </li>
-        </ul>
-    </div>
 </div>
+
+

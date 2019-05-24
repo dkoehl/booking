@@ -6,13 +6,9 @@
     {#{{ dump(guest) }}#}
 
 
-
-
-
     <ul class="collection with-header z-depth-1 blue-grey-text">
         <li class="collection-header">
             <h5 class="section-title blue-text">{{ guest.lastnameFirstname }}
-
                 <div class="right right-align right-aligned">
                     <a class='dropdown-trigger' href='#' data-target='dropdown0{{ guest.id }}'>
                         <i class="material-icons small grey-text">more_vert</i>
@@ -42,19 +38,23 @@
                     </p>
                 </div>
             </h5>
-
-
         </li>
         <li class="collection-item grey lighten-5 grey-text">
             <div class="row">
                 <div class="col s4">
                     <p>
-                        <b>Lastname</b><br>
-                        <span class="black-text">{{ guest.lastname }}</span>
+                        <b>Name</b><br>
+                        <span class="black-text">{{ guest.lastnameFirstname|trim }}</span>
                     </p>
                     <p>
-                        <b>Firstname</b><br>
-                        <span class="black-text">{{ guest.firstname }}</span>
+                        <b>Registered</b><br>
+                        <span class="black-text">{{ guest.crdate ? guest.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+                    </p>
+                </div>
+                <div class="col s4">
+                    <p>
+                        <b>Lastname</b><br>
+                        <span class="black-text">{{ guest.lastname }}</span>
                     </p>
                     <p>
                         <b>Birthday</b><br>
@@ -63,29 +63,72 @@
                 </div>
                 <div class="col s4">
                     <p>
-                        <b>Registered: </b>
-                        <span class="black-text">{{ guest.crdate ? guest.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+                        <b>Firstname</b><br>
+                        <span class="black-text">{{ guest.firstname }}</span>
                     </p>
                 </div>
-                <div class="col s4"></div>
             </div>
         </li>
-        {#Booking Data#}
-        <li class="collection-header">
-            <h5 class="section-title blue-text">
-                Reservations
-            </h5>
-        </li>
-        {% for booking in guest.bookings %}
-            <li class="collection-item grey lighten-5 grey-text">
-                {{ include('booking/_booking_body_small.html.twig') }}
-            </li>
-        {% else %}
-            <li class="collection-item grey lighten-5 grey-text">
-                <p>no records found</p>
-            </li>
-        {% endfor %}
     </ul>
 
 
+
+    {#Bookings#}
+    <ul class="collapsible">
+        <li class="collapsible-header">
+            <h5 class="section-title blue-text">
+                <i class="material-icons">today</i>
+                Bookings
+            </h5>
+        </li>
+        {% for booking in guest.bookings %}
+            <li>
+                <div class="collapsible-header blue-grey-text">
+                    <div class="col s3">
+                        <i class="material-icons">today</i>
+                        {{ booking.bookingfrom ? booking.bookingfrom|date("D d M", "Europe/Paris"): '' }}
+                    </div>
+                    <div class="col s3">
+                        <i class="material-icons">today</i>
+                        {{ booking.bookingtill ? booking.bookingtill|date("D d M", "Europe/Paris"): '' }}
+                    </div>
+                    <div class="col s5">
+                        <i class="material-icons">home</i>{{ booking.bookedroom.house }}
+                        / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
+                    </div>
+                    <div class="col s1" style="text-align:right;">
+                        <a class='dropdown-trigger' href='#' data-target='dropdown{{ booking.crdate }}'>
+                            <i class="material-icons grey-text">more_vert</i>
+                        </a>
+                        <!-- Dropdown Structure -->
+                        <ul id='dropdown{{ booking.crdate }}' class='dropdown-content'>
+                            <li>
+                                <a href="{{ path('booking_edit', {'id': booking.id}) }}"
+                                   class="blue-text">Edit</a>
+                            </li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li>
+                                <a href="{{ path('booking_show', {'id': booking.id}) }}"
+                                   class="blue-text">Show</a>
+                            </li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li>
+                                <a href="#" class="blue-text">Print</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-body grey lighten-5 grey-text">
+                    {{ include('booking/_booking_body_small.html.twig') }}
+                    {{ include('booking/_booking_room_body.html.twig') }}
+                </div>
+            </li>
+        {% else %}
+            <li>
+                <div class="collapsible-header blue-grey-text">
+                    <p>no records founds</p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

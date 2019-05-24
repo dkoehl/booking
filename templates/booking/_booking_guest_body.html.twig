@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col s3">
+        <p>
+            <b>Name</b><br>
+            <a href="{{ path('guest_show', {'id': booking.guest.id}) }}">
+                {{ booking.guest.lastnameFirstname|trim }}
+            </a>
+        </p>
+        <p>
+            <b>Lastname</b><br>
+            <span class="black-text">{{ booking.guest.lastname }}</span>
+        </p>
+        <p>
+            <b>Firstname</b><br>
+            <span class="black-text">{{ booking.guest.firstname }}</span>
+        </p>
+
+    </div>
+    <div class="col s3">
+        <p>
+            <b>Address</b><br>
+            <span class="black-text">n/a</span>
+        </p>
+    </div>
+    <div class="col s3">
+        <p>
+            <b>Registered</b><br>
+            <span class="black-text">{{ booking.guest.crdate ? booking.guest.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+        </p>
+        <p>
+            <b>Birthday</b><br>
+            <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
+        </p>
+    </div>
+    <div class="col s3">
+
+    </div>
+</div>

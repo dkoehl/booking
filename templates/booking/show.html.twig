@@ -75,55 +75,13 @@
 
         {#Guest Data#}
         <li class="collection-item grey lighten-5 grey-text">
-            <div class="row">
-                <div class="col s4">
-                    <p>
-                        <b>Lastname</b><br>
-                        <span class="black-text">{{ booking.guest.lastname }}</span>
-                    </p>
-                    <p>
-                        <b>Firstname</b><br>
-                        <span class="black-text">{{ booking.guest.firstname }}</span>
-                    </p>
-                </div>
-                <div class="col s4">
-                    <p>
-                        <b>Birthday</b><br>
-                        <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
-                    </p>
-                    <p>
-                        <b>Registered</b><br>
-                        <span class="black-text">{{ booking.guest.crdate ? booking.guest.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
-                    </p>
-                </div>
-                <div class="col s4"></div>
-            </div>
+            {{ include('booking/_booking_guest_body.html.twig') }}
         </li>
 
 
         {#Room#}
         <li class="collection-item grey lighten-5 grey-text">
-            <div class="row">
-                <div class="col s4">
-                    <p>
-                        <b>Room</b><br>
-                        <span class="black-text"> {{ booking.bookedroom.name }}</span>
-                        <br><br>
-                        <b>Floor</b><br>
-                        <span class="black-text">{{ booking.bookedroom.floor }}</span>
-                    </p>
-                </div>
-                <div class="col s4">
-                    <p>
-                        <b>House</b><br>
-                        <span class="black-text">{{ booking.bookedroom.house }}</span>
-                        <br><br>
-                        <b>Beds</b><br>
-                        <span class="black-text"> {{ booking.bookedroom.beds }}</span>
-                    </p>
-                </div>
-                <div class="col s4"></div>
-            </div>
+            {{ include('booking/_booking_room_body.html.twig') }}
         </li>
     </ul>
 

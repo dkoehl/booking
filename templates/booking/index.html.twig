@@ -17,18 +17,36 @@
                 {#{{ dump(booking.guest) }}#}
                 <li>
                     <div class="collapsible-header blue-grey-text">
-                        <div class="col s4">
+                        <div class="col s3">
                             {{ booking.guest.lastnameFirstname|trim }}
                         </div>
-                        <div class="col s5">
+                        <div class="col s4">
                             <i class="material-icons">access_time</i>{{ booking.bookingfrom ? booking.bookingfrom|date("H:i"): '' }}
                         </div>
                         <div class="col s4">
-                            {#<i class="material-icons">alarm</i>{{ booking.bookingfrom ? booking.bookingfrom|date("D d M", "Europe/Paris"): '' }}#}
-                            {#- {{ booking.bookingtill ? booking.bookingtill|date("D d M", "Europe/Berlin") : '' }}#}
                             <i class="material-icons">home</i>{{ booking.bookedroom.house }}
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
-                            {#<span class="new badge" data-badge-caption=" ">{{ booking.bookedroom.name }}</span>#}
+                        </div>
+                        <div class="col s1" style="text-align:right;">
+                            <a class='dropdown-trigger' href='#' data-target='dropdown_bookingsCheckInsToday_{{ booking.crdate }}'>
+                                <i class="material-icons grey-text">more_vert</i>
+                            </a>
+                            <!-- Dropdown Structure -->
+                            <ul id='dropdown_bookingsCheckInsToday_{{ booking.crdate }}' class='dropdown-content'>
+                                <li>
+                                    <a href="{{ path('booking_edit', {'id': booking.id}) }}"
+                                       class="blue-text">Edit</a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li>
+                                    <a href="{{ path('booking_show', {'id': booking.id}) }}"
+                                       class="blue-text">Show</a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li>
+                                    <a href="#" class="blue-text">Print</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="collapsible-body grey lighten-5 grey-text">
@@ -56,16 +74,37 @@
             {% for booking in bookingsCheckOutsToday %}
                 <li>
                     <div class="collapsible-header blue-grey-text">
-                        <div class="col s4">
+                        <div class="col s3">
                             <i class="material-icons">person</i>
                             {{ booking.guest.lastnameFirstname|trim }}
                         </div>
-                        <div class="col s5">
+                        <div class="col s3">
                             <i class="material-icons">access_time</i>{{ booking.bookingtill ? booking.bookingtill|date("H:i", "Europe/Paris"): '' }}
                         </div>
-                        <div class="col s4">
+                        <div class="col s5">
                             <i class="material-icons">home</i>{{ booking.bookedroom.house }}
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
+                        </div>
+                        <div class="col s1" style="text-align:right;">
+                            <a class='dropdown-trigger' href='#' data-target='dropdown_bookingsCheckOutsToday_{{ booking.crdate }}'>
+                                <i class="material-icons grey-text">more_vert</i>
+                            </a>
+                            <!-- Dropdown Structure -->
+                            <ul id='dropdown_bookingsCheckOutsToday_{{ booking.crdate }}' class='dropdown-content'>
+                                <li>
+                                    <a href="{{ path('booking_edit', {'id': booking.id}) }}"
+                                       class="blue-text">Edit</a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li>
+                                    <a href="{{ path('booking_show', {'id': booking.id}) }}"
+                                       class="blue-text">Show</a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li>
+                                    <a href="#" class="blue-text">Print</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="collapsible-body grey lighten-5 grey-text">
@@ -95,20 +134,41 @@
                 {#{{ dump(booking.guest) }}#}
                 <li>
                     <div class="collapsible-header blue-grey-text">
-                        <div class="col s4">
-                            <i class="material-icons">person</i>
+                        <div class="col s3">
                             {{ booking.guest.lastnameFirstname|trim }}
                         </div>
-                        <div class="col s5">
-                            <i class="material-icons">today</i>{{ booking.bookingfrom ? booking.bookingfrom|date("D d M", "Europe/Paris"): '' }}
-                            - {{ booking.bookingtill ? booking.bookingtill|date("D d M", "Europe/Paris"): '' }}
+                        <div class="col s2">
+                            <i class="material-icons">flight_land</i>
+                            {{ booking.bookingfrom ? booking.bookingfrom|date("D d M", "Europe/Paris"): '' }}
+                        </div>
+                        <div class="col s2">
+                            <i class="material-icons">flight_takeoff</i>
+                            {{ booking.bookingtill ? booking.bookingtill|date("D d M", "Europe/Paris"): '' }}
                         </div>
                         <div class="col s4">
-                            {#<i class="material-icons">alarm</i>{{ booking.bookingfrom ? booking.bookingfrom|date("D d M", "Europe/Paris"): '' }}#}
-                            {#- {{ booking.bookingtill ? booking.bookingtill|date("D d M", "Europe/Berlin") : '' }}#}
                             <i class="material-icons">home</i>{{ booking.bookedroom.house }}
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
-                            {#<span class="new badge" data-badge-caption=" ">{{ booking.bookedroom.name }}</span>#}
+                        </div>
+                        <div class="col s1" style="text-align:right;">
+                            <a class='dropdown-trigger' href='#' data-target='dropdown_bookingsCheckOutsToday_{{ booking.crdate }}'>
+                                <i class="material-icons grey-text">more_vert</i>
+                            </a>
+                            <!-- Dropdown Structure -->
+                            <ul id='dropdown_bookingsCheckOutsToday_{{ booking.crdate }}' class='dropdown-content'>
+                                <li>
+                                    <a href="{{ path('booking_edit', {'id': booking.id}) }}"
+                                       class="blue-text">Edit</a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li>
+                                    <a href="{{ path('booking_show', {'id': booking.id}) }}"
+                                       class="blue-text">Show</a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li>
+                                    <a href="#" class="blue-text">Print</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="collapsible-body grey lighten-5 grey-text">
