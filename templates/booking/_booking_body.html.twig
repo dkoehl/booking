@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col s4">
+        <p>
+            <strong>Name</strong><br>
+            <a href="{{ path('guest_show', {'id': booking.guest.id}) }}">
+                {{ booking.guest.firstname |trim }} {{ booking.guest.lastname|trim }}
+            </a>
+        </p>
+        <p>
+            <strong>Birthday</strong><br>
+            <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
+        </p>
+    </div>
+    <div class="col s4">
+        <p>
+            <strong>Booked on</strong><br>
+            <span class="black-text">{{ booking.crdate ? booking.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+            <br>
+            <br>
+            <strong>Checkin</strong><br>
+            <span class="black-text">{{ booking.bookingfrom ? booking.bookingfrom|date("D d.m.Y H:i"): '' }}</span>
+            <br>
+            <br>
+            <strong>Checkout</strong><br>
+            <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
+        </p>
+    </div>
+    <div class="col s3">
+        <p>
+            <strong>Room:</strong>
+            <span class="black-text"> {{ booking.bookedroom.name }}</span>
+            <br>
+            <strong>Beds:</strong>
+            <span class="black-text"> {{ booking.bookedroom.beds }}</span>
+            <br>
+            <strong>House:</strong>
+            <span class="black-text">{{ booking.bookedroom.house }}</span>
+            <br>
+            <strong>Floor:</strong>
+            <span class="black-text">{{ booking.bookedroom.floor }}</span>
+        </p>
+    </div>
+    <div class="col s1" style="text-align:right;">
+        <a class='dropdown-trigger' href='#' data-target='dropdown{{ booking.crdate }}'>
+            <i class="material-icons grey-text">more_vert</i>
+        </a>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown{{ booking.crdate }}' class='dropdown-content'>
+            <li>
+                <a href="{{ path('booking_edit', {'id': booking.id}) }}"
+                   class="blue-text">Edit</a>
+            </li>
+            <li class="divider" tabindex="-1"></li>
+            <li>
+                <a href="{{ path('booking_show', {'id': booking.id}) }}"
+                   class="blue-text">Show</a>
+            </li>
+            <li class="divider" tabindex="-1"></li>
+            <li>
+                <a href="#" class="blue-text">Print</a>
+            </li>
+        </ul>
+    </div>
+</div>

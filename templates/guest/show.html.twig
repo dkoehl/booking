@@ -30,7 +30,11 @@
                             <a class="blue-text" href="{{ path('guest_edit', {'id': guest.id}) }}">Edit</a>
                         </li>
                         <li class="divider" tabindex="-1"></li>
-
+                        <li>
+                            <a class="blue-text" href="#">
+                                Print
+                            </a>
+                        </li>
                         <li>
                             {{ include('guest/_delete_form.html.twig') }}
                         </li>
@@ -45,21 +49,21 @@
             <div class="row">
                 <div class="col s4">
                     <p>
-                        <strong>Lastname</strong><br>
+                        <b>Lastname</b><br>
                         <span class="black-text">{{ guest.lastname }}</span>
                     </p>
                     <p>
-                        <strong>Firstname</strong><br>
+                        <b>Firstname</b><br>
                         <span class="black-text">{{ guest.firstname }}</span>
                     </p>
                     <p>
-                        <strong>Birthday</strong><br>
+                        <b>Birthday</b><br>
                         <span class="black-text">{{ guest.birthday ? guest.birthday|date("d.m.Y") : '' }}</span>
                     </p>
                 </div>
                 <div class="col s4">
                     <p>
-                        <strong>Registered: </strong>
+                        <b>Registered: </b>
                         <span class="black-text">{{ guest.crdate ? guest.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
                     </p>
                 </div>
