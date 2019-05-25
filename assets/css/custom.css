@@ -50,7 +50,7 @@ select {
     border-left:5px solid dodgerblue;
     /*margin-right:-20px;*/
     /*text-align: left;*/
-    background:#ffffff;
+    background:#fafafa;
 }
 
 
@@ -84,4 +84,13 @@ select {
 .collapsible{
     box-shadow:none;
     /*border:none;*/
+}
+
+
+#roomsChartContainer,
+#seconddemoContainer,
+#demoContainer,
+#bookingMonthContainer{
+    height:340px;
+    border:1px solid #DDDDDD;
 }

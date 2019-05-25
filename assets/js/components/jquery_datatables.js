@@ -55,15 +55,15 @@ if (dataTableRooms) {
                         // dom: '<flip>',
                         dom: "<'col s12'" +
                             "<'row'" +
-                            "<'col s1'l>" +
-                            "<'col s11'B>" +
+                            "<'col s6'l>" +
+                            "<'col s6'B>" +
                             "<'col s12'f>" +
                             ">" +
                             "<'row dt-table'" +
                             "<'sixteen wide column'tr>" +
                             ">" +
                             "<'row'" +
-                            "<'seven wide column'i>" +
+                            "<'footerline wide column'i>" +
                             "<'right aligned nine wide column'p>" +
                             ">" +
                             ">",
@@ -157,15 +157,15 @@ if (dataTableGuests) {
                         // dom: '<flip>',
                         dom: "<'col s12'" +
                             "<'row'" +
-                            "<'col s1'l>" +
-                            "<'col s11'B>" +
+                            "<'col s6'l>" +
+                            "<'col s6'B>" +
                             "<'col s12'f>" +
                             ">" +
                             "<'row dt-table'" +
                             "<'sixteen wide column'tr>" +
                             ">" +
                             "<'row'" +
-                            "<'seven wide column'i>" +
+                            "<'footerline wide column'i>" +
                             "<'right aligned nine wide column'p>" +
                             ">" +
                             ">",

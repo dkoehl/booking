@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Booking;
+use App\Entity\Guest;
 use App\Entity\Room;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -55,14 +56,15 @@ class IndexController extends AbstractController
             $dayBookingArray[] = count($bookingsHits);
             $searchDates[] = $searchDate;
         }
-        return $this->json(['dates' => $searchDates, 'bookings'=>$dayBookingArray]);
+        return $this->json(['dates' => $searchDates, 'bookings' => $dayBookingArray]);
 
     }
 
     /**
      * @Route("/showBookedRooms", name="showBookedRooms")
      */
-    public function showBookedRooms(){
+    public function showBookedRooms()
+    {
         $allRooms = $this->getDoctrine()
             ->getRepository(Room::class)
             ->findAll();
@@ -76,12 +78,14 @@ class IndexController extends AbstractController
 
         $freeRooms = $rooms - $bookings;
 
-        return $this->json(['rooms'=> $rooms, 'bookings' => $bookings, 'free'=>$freeRooms]);
+        return $this->json(['rooms' => $rooms, 'bookings' => $bookings, 'free' => $freeRooms]);
     }
+
     /**
      * @Route("/showBookedRoomsbymonth", name="showBookedRoomsbymonth")
      */
-    public function showBookedRoomsbymonth(){
+    public function showBookedRoomsbymonth()
+    {
         $allBookings = $this->getDoctrine()
             ->getRepository(Booking::class)
             ->showBookedRoomsbymonth();
@@ -94,6 +98,20 @@ class IndexController extends AbstractController
 
         $freeRooms = $rooms - $bookings;
 
-        return $this->json(['rooms'=> $rooms, 'bookings' => $bookings, 'free'=>$freeRooms]);
+        return $this->json(['rooms' => $rooms, 'bookings' => $bookings, 'free' => $freeRooms]);
     }
+
+    /**
+     * @Route("/showallguests", name="showallguests")
+     */
+    public function showCountAllGuests()
+    {
+        $allGuests = $this->getDoctrine()
+            ->getRepository(Guest::class)
+            ->findAll();
+
+        $allGuestCount = count($allGuests);
+        return $this->json(['guests' => $allGuestCount]);
+    }
+
 }

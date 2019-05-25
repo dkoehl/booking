@@ -5,21 +5,22 @@
 {% block body %}
 
     <div class="row">
-        <div class="col s12 m6">
-            <div class="card white">
-                <div class="card-content white-text">
-                    <div id="bookingMonthContainer"></div>
-                </div>
-            </div>
+        <div class="col s12">
+            <div id="bookingMonthContainer"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s4 ">
+            <div id="roomsChartContainer" class="white"></div>
         </div>
 
 
-        <div class="col s12 m6">
-            <div class="card white">
-                <div class="card-content white-text">
-                    <div id="roomsChartContainer"></div>
-                </div>
-            </div>
+        <div class="col s4 ">
+            <div id="demoContainer" class="white"></div>
+        </div>
+        <div class="col s4 ">
+            <div id="seconddemoContainer" class="white"></div>
         </div>
     </div>
 
@@ -27,12 +28,12 @@
 
 
     {#<div class="example-wrapper">#}
-        {#<h1>Hello {{ controller_name }}! ✅</h1>#}
+    {#<h1>Hello {{ controller_name }}! ✅</h1>#}
 
-        {#This friendly message is coming from:#}
-        {#<ul>#}
-        {#<li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/booking/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>#}
-        {#<li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/booking/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>#}
-        {#</ul>#}
+    {#This friendly message is coming from:#}
+    {#<ul>#}
+    {#<li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/booking/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>#}
+    {#<li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/booking/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>#}
+    {#</ul>#}
     {#</div>#}
 {% endblock %}
