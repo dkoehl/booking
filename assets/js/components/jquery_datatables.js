@@ -30,14 +30,23 @@ if (dataTableRooms) {
                             {data: 'beds'},
                             {
                                 "data": null,
+                            },
+                            {
+                                "data": null,
                             }
                         ],
                         columnDefs: [
                             {
                                 targets: 4,
                                 render: function (data, type, row, meta) {
+                                    return data.bookings.length;
+                                }
+                            },
+                            {
+                                targets: 5,
+                                render: function (data, type, row, meta) {
                                     if (type === 'display') {
-                                        data = '<a class="blue-grey-text" href="/guest/' + data.id + '"><i class="material-icons">more_horiz</i></a>';
+                                        data = '<a class="blue-grey-text" href="/room/' + data.id + '"><i class="material-icons">more_horiz</i></a>';
                                     }
                                     return data;
                                 }

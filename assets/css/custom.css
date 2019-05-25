@@ -33,6 +33,10 @@ select {
     font-size: 12px;
 }
 
+.content-container{
+    overflow:scroll;
+}
+
 .sitebar a.active,
 #sitebar > ul > li > a.active > i{
     /*color: dodgerblue;*/
@@ -73,8 +77,6 @@ select {
 /*}*/
 
 
-.collapsible-header i,
-.card-title i,
 .material-icons{
     vertical-align: bottom !important;
 }
