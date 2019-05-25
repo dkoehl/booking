@@ -23,16 +23,17 @@ import 'material-icons';
 //https://datatables.net/extensions/buttons/config
 
 //https://xdsoft.net/jqplugins/datetimepicker/
-import "jquery-datetimepicker";
-import "select2";
+
+
 
 
 const Highcharts = require ("./components/highcharts");
 const Collapsed = require ("./components/collapsed");
 const DropDownButtons = require("./components/dropdownbuttons");
 const Actionbuttons = require("./components/actionbuttons");
-
-
+/**
+ * Nativ JS stuff
+ */
 document.addEventListener('DOMContentLoaded', function () {
     Highcharts;
     Collapsed;
@@ -40,18 +41,31 @@ document.addEventListener('DOMContentLoaded', function () {
     Actionbuttons;
 });
 
-
-
+/**
+ *
+ *
+ *
+ * jquery stuff
+ *
+ *
+ *
+ *
+ *
+ */
 if (typeof window !== 'undefined') {
     window.$ = $;
     window.jQuery = $;
     require('materialize-css');
 }
-const DataTables = require ("./components/datatables");
+const DataTables = require ("./components/jquery_datatables");
+const DateTimePicker = require ("./components/jquery_datetimepicker");
+const MultipleSelect = require ("./components/jquery_multipleselect");
 // Or with jQuery
 $(document).ready(
     function () {
         DataTables;
+        DateTimePicker;
+        MultipleSelect
     }
 );
 

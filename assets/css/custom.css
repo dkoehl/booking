@@ -74,6 +74,9 @@ select {
 
 
 .collapsible-header i,
-.card-title i{
+.card-title i,
+.material-icons{
     vertical-align: bottom !important;
 }
+
+

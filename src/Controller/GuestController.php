@@ -7,15 +7,41 @@ use App\Entity\Guest;
 use App\Form\GuestType;
 use App\Repository\GuestRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 /**
  * @Route("/guest")
  */
 class GuestController extends AbstractController
 {
+
+    /**
+     * @Route("/overview")
+     */
+    public function overview(GuestRepository $guestRepository): Response
+    {
+        $guests = $guestRepository->findAll();
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new GetSetMethodNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $response = new JsonResponse();
+        $jsonObject = $serializer->serialize($guests, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]);
+        $response->setData(json_decode($jsonObject));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
     /**
      * @Route("/", name="guest_index", methods={"GET"})
      */

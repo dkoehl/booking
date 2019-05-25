@@ -3,16 +3,33 @@
 {% block title %}Room index{% endblock %}
 
 {% block body %}
-    <table id="dataTable" class="responsive-table highlight display hidden">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>House</th>
-            <th>Floor</th>
-            <th>Beds</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <div id="datatableLoading">
+        <div class="spinner">
+            <div class="spinner-wrapper">
+                <div class="rotator">
+                    <div class="inner-spin"></div>
+                    <div class="inner-spin"></div>
+                </div>
+            </div>
+            <center class="blue-grey-text">Loading Table</center>
+        </div>
+    </div>
+
+
+    <div id="datatablewrapper" style="display:none">
+        <table id="dataTableRooms" class="responsive-table highlight display blue-grey-text card">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>House</th>
+                <th>Floor</th>
+                <th>Beds</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
 {% endblock %}

@@ -12,4 +12,5 @@
 @import "~@fullcalendar/timegrid/main.min.css";
 @import "~@fullcalendar/timeline/main.min.css";
 
+@import "./components/jquery_datatable.css";
 @import "custom.css";
