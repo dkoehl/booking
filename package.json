@@ -1,6 +1,6 @@
 {
     "devDependencies": {
-        "@material-ui/core": "^3.9.3",
+        "@material-ui/core": "^4.0.0",
         "@material/top-app-bar": "^1.1.1",
         "@symfony/webpack-encore": "^0.27.0",
         "bootstrap": "4",
@@ -32,6 +32,7 @@
         "@fullcalendar/timegrid": "^4.1.0",
         "@fullcalendar/timeline": "^4.1.0",
         "@material/textfield": "^1.1.1",
+        "axios": "^0.18.0",
         "datatables.net-buttons-dt": "^1.5.6",
         "datatables.net-responsive-jqui": "^2.2.3",
         "fullcalendar": "^3.10.0",

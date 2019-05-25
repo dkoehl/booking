@@ -3,42 +3,16 @@
 {% block title %}Room index{% endblock %}
 
 {% block body %}
-
-
-    {#<a class="btn-floating btn-large waves-effect waves-light teal right" href="{{ path('room_new') }}"><i class="material-icons left">add</i></a>#}
-    {#<h3 class="section-title teal-text">Rooms</h3>#}
-    <table class="responsive-table highlight display" id="dataTable">
+    <table id="dataTable" class="responsive-table highlight display hidden">
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Beds</th>
-                <th>Floor</th>
-                <th>House</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Name</th>
+            <th>House</th>
+            <th>Floor</th>
+            <th>Beds</th>
+        </tr>
         </thead>
         <tbody>
-        {% for room in rooms %}
-            <tr>
-                <td>{{ room.name }}</td>
-                <td>{{ room.beds }}</td>
-                <td>{{ room.floor }}</td>
-                <td>{{ room.house }}</td>
-                <td>
-                    <a href="{{ path('room_show', {'id': room.id}) }}"><i class="material-icons" title="Show ">
-                            remove_red_eye
-                        </i</a>
-                    <a href="{{ path('room_edit', {'id': room.id}) }}"><i class="material-icons" title="Edit">
-                            edit
-                        </i></a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
         </tbody>
     </table>
-
 {% endblock %}

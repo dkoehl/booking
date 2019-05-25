@@ -78,10 +78,10 @@
                             <i class="material-icons">person</i>
                             {{ booking.guest.lastnameFirstname|trim }}
                         </div>
-                        <div class="col s3">
+                        <div class="col s4">
                             <i class="material-icons">access_time</i>{{ booking.bookingtill ? booking.bookingtill|date("H:i", "Europe/Paris"): '' }}
                         </div>
-                        <div class="col s5">
+                        <div class="col s4">
                             <i class="material-icons">home</i>{{ booking.bookedroom.house }}
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
                         </div>

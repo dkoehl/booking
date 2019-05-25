@@ -7,15 +7,43 @@ use App\Entity\Room;
 use App\Form\RoomType;
 use App\Repository\RoomRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 /**
  * @Route("/room")
  */
 class RoomController extends AbstractController
 {
+
+    /**
+     * @Route("/overview")
+     */
+    public function overview(RoomRepository $roomRepository): Response
+    {
+        $rooms = $roomRepository->findAll();
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new GetSetMethodNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $response = new JsonResponse();
+        $jsonObject = $serializer->serialize($rooms, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]);
+        $response->setData(json_decode($jsonObject));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+
     /**
      * @Route("/", name="room_index", methods={"GET"})
      */
@@ -90,12 +118,13 @@ class RoomController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/{id}", name="room_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Room $room): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$room->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $room->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($room);
             $entityManager->flush();
