@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 
 html {
-    background-color: white;
+    background-color: #fafafa !important;
     height: 100%;
 }
 
@@ -79,4 +79,7 @@ select {
     vertical-align: bottom !important;
 }
 
-
+.collapsible{
+    box-shadow:none;
+    /*border:none;*/
+}

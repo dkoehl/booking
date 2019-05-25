@@ -37,7 +37,7 @@ if (dataTableRooms) {
                                 targets: 4,
                                 render: function (data, type, row, meta) {
                                     if (type === 'display') {
-                                        data = '<a href="/guest/' + data.id + '">Show</a>';
+                                        data = '<a class="blue-grey-text" href="/guest/' + data.id + '"><i class="material-icons">more_horiz</i></a>';
                                     }
                                     return data;
                                 }
@@ -116,17 +116,30 @@ if (dataTableGuests) {
                             {data: 'id'},
                             {data: 'lastname'},
                             {data: 'firstname'},
-                            {data: 'birthday'},
+                            {data: 'birthday',type: 'date-dd-mmm-yyyy', targets: 0 },
                             {
                                 "data": null,
                             }
                         ],
                         columnDefs: [
                             {
+                                targets: 3,
+                                render: function (data, type, row, meta) {
+                                    var utcSeconds = data.timestamp;
+                                    var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+                                    d.setUTCSeconds(utcSeconds);
+                                    let newDate = new Date(d);
+                                    let date = d.toLocaleString('de-DE');
+                                    let dataArray = date.split(",");
+                                    return dataArray[0];
+
+                                }
+                            },
+                            {
                                 targets: 4,
                                 render: function (data, type, row, meta) {
                                     if (type === 'display') {
-                                        data = '<a href="/guest/' + data.id + '">Show</a>';
+                                        data = '<a class="blue-grey-text" href="/guest/' + data.id + '"><i class="material-icons">more_horiz</i></a>';
                                     }
                                     return data;
                                 }

@@ -6,7 +6,7 @@
 
     {#{{ dump(booking) }}#}
 
-    <ul class="collection with-header z-depth-1 blue-grey-text">
+    <ul class="collection with-header blue-grey-text">
         <li class="collection-header">
             Booking No.
             <h5 class="section-title blue-text">{{ booking.id }}
@@ -35,7 +35,7 @@
         </li>
 
         {#Booking Data#}
-        <li class="collection-item grey lighten-5 grey-text">
+        <li class="collection-item lighten-5 grey-text">
             <div class="row">
                 <div class="col s3">
                     <p>
@@ -74,13 +74,13 @@
 
 
         {#Guest Data#}
-        <li class="collection-item grey lighten-5 grey-text">
+        <li class="collection-item  lighten-5 grey-text">
             {{ include('booking/_booking_guest_body.html.twig') }}
         </li>
 
 
         {#Room#}
-        <li class="collection-item grey lighten-5 grey-text">
+        <li class="collection-item lighten-5 grey-text">
             {{ include('booking/_booking_room_body.html.twig') }}
         </li>
     </ul>
