@@ -63,11 +63,16 @@
 
     {#Bookings#}
     <ul class="collapsible">
-        <li class="collapsible-header">
-            <h5 class="section-title blue-text">
-                <i class="material-icons">today</i>
-                Bookings
-            </h5>
+        <li class="collapsible-header" style="border-bottom:0px;">
+            <div class="col s12">
+                <h5 class="section-title blue-text"><i class="material-icons">today</i> Bookings</h5>
+            </div>
+        </li>
+        <li class="collapsible-header grey-text" style="border-top:0px;">
+            <div class="col s3">Check in</div>
+            <div class="col s3">Check out</div>
+            <div class="col s5">Room</div>
+            <div class="col s1"></div>
         </li>
         {% for booking in room.bookings %}
             <li>

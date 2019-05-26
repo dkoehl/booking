@@ -23,14 +23,13 @@
 
 </head>
 <body>
-
 <div class="row">
 
     {#{{ dump(app.request) }}#}
     <div class="col s1 m1 l1 blue-grey darken-3" id="sitebar">
-        <ul class="center sitebar white-text" >
+        <ul class="center sitebar white-text">
             <li>
-                <a href="/" class="btn-floating light-blue">
+                <a href="/" class="btn-floating light-blue medium">
                     <i class="material-icons">home</i>
                 </a>
             </li>
@@ -39,16 +38,18 @@
             <br>
             <br>
             <li>
-                <a href="/room" class="{{ app.request.attributes.get('_route') starts with 'room' ? 'active light-blue-text' : 'white-text' }}">
-                    <i class="material-icons">hotel</i>
+                <a href="/room"
+                   class="{{ app.request.attributes.get('_route') starts with 'room' ? 'active light-blue-text' : 'white-text' }}">
+                    <i class="material-icons ">meeting_room</i>
                     <br>Rooms
                 </a>
             </li>
             <br>
 
             <li>
-                <a href="/booking" class="{{ app.request.attributes.get('_route') starts with 'booking' ? 'active light-blue-text' : 'white-text' }}">
-                    <i class="material-icons">assignment_ind</i>
+                <a href="/booking"
+                   class="{{ app.request.attributes.get('_route') starts with 'booking' ? 'active light-blue-text' : 'white-text' }}">
+                    <i class="material-icons ">event_available</i>
                     <br>
                     Bookings
                 </a>
@@ -56,8 +57,9 @@
             <br>
 
             <li>
-                <a href="/guest" class="{{ app.request.attributes.get('_route') starts with 'guest' ? 'active light-blue-text' : 'white-text' }}">
-                    <i class="material-icons" >account_circle</i>
+                <a href="/guest"
+                   class="{{ app.request.attributes.get('_route') starts with 'guest' ? 'active light-blue-text' : 'white-text' }}">
+                    <i class="material-icons ">group</i>
                     <br>
                     Guests
                 </a>
@@ -70,14 +72,15 @@
         </ul>
     </div>
     <div class="col s11 m11 l11">
-        <div class="content-container grey lighten-5" style="position:absolute; top:0px; bottom:0px; right:0px; width:92%; left:8%; padding:20px; ">
+        <div class="content-container grey lighten-5"
+             style="position:absolute; top:0px; bottom:0px; right:0px; width:92%; left:8%; padding:20px; ">
             {% block body %}{% endblock %}
         </div>
     </div>
 
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large light-blue">
-            <i class="large material-icons">add</i>
+            <i class="material-icons">add</i>
         </a>
         <ul>
             <li>
@@ -92,7 +95,7 @@
             </li>
             <li>
                 <a class="btn-floating green" href="{{ path('guest_new') }}">
-                    <i class="material-icons" >account_circle</i>
+                    <i class="material-icons">account_circle</i>
                 </a>
             </li>
             {#<li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>#}

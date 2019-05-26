@@ -11,25 +11,9 @@
             Booking No.
             <h5 class="section-title blue-text">{{ booking.id }}
                 <div class="right right-align right-aligned">
-                    <a class='dropdown-trigger' href='#' data-target='dropdown0{{ booking.id }}'>
-                        <i class="material-icons small grey-text">more_vert</i>
+                    <a href="javascript:history.back()">
+                        <i class="material-icons small grey-text">close</i>
                     </a>
-                    <!-- Dropdown Structure -->
-                    <ul id='dropdown0{{ booking.id }}' class='dropdown-content'>
-                        <li>
-                            <a class="blue-text" href="{{ path('booking_index') }}">
-                                Back
-                            </a>
-                        </li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li>
-                            <a class="blue-text" href="{{ path('booking_edit', {'id': booking.id}) }}">Edit</a>
-                        </li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li>
-                            {{ include('booking/_delete_form.html.twig') }}
-                        </li>
-                    </ul>
                 </div>
             </h5>
         </li>
@@ -49,7 +33,7 @@
                         <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
                     </p>
                 </div>
-                <div class="col s3">
+                <div class="col s2">
                     <p>
                         <b>Days</b><br>
                         <span class="black-text">
@@ -68,6 +52,20 @@
                         <b>Booked on</b><br>
                         <span class="black-text">{{ booking.crdate ? booking.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
                     </p>
+                </div>
+                <div class="col s1" style="text-align:right;">
+                    <a class='dropdown-trigger' href='#'
+                       data-target='dropdown_bookingsCheckInsToday_{{ booking.crdate }}'>
+                        <i class="material-icons grey-text">more_vert</i>
+                    </a>
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown_bookingsCheckInsToday_{{ booking.crdate }}' class='dropdown-content'>
+                        <li>
+                            <a href="{{ path('booking_edit', {'id': booking.id}) }}" class="blue-text">
+                                Edit
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </li>

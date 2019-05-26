@@ -37,6 +37,7 @@
         "datatables.net-responsive-jqui": "^2.2.3",
         "fullcalendar": "^3.10.0",
         "highcharts": "^7.1.1",
+        "material-components-web": "^2.2.0",
         "moment": "^2.24.0",
         "select2": "^4.0.6-rc.1"
     }

@@ -22,7 +22,7 @@
             <span class="black-text">n/a</span>
         </p>
     </div>
-    <div class="col s3">
+    <div class="col s2">
         <p>
             <b>Registered</b><br>
             <span class="black-text">{{ booking.guest.crdate ? booking.guest.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
@@ -34,5 +34,25 @@
     </div>
     <div class="col s3">
 
+    </div>
+    <div class="col s1" style="text-align:right;">
+        <a class='dropdown-trigger' href='#'
+           data-target='dropdown_guests_{{ booking.crdate }}'>
+            <i class="material-icons grey-text">more_vert</i>
+        </a>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown_guests_{{ booking.crdate }}' class='dropdown-content'>
+            <li>
+                <a href="{{ path('guest_show', {'id': booking.guest.id}) }}" class="blue-text">
+                    Show
+                </a>
+            </li>
+            <li class="divider" tabindex="-1"></li>
+            <li>
+                <a href="{{ path('guest_edit', {'id': booking.guest.id}) }}" class="blue-text">
+                    Edit
+                </a>
+            </li>
+        </ul>
     </div>
 </div>

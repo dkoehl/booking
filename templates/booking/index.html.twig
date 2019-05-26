@@ -3,48 +3,72 @@
 {% block title %}Booking index{% endblock %}
 
 {% block body %}
+    <!-- Required MDC Web JavaScript library -->
 
     {#<a class="btn-floating btn-large waves-effect waves-light teal right" href="{{ path('booking_new') }}">#}
     {#<i class="material-icons left">add</i>#}
     {#</a>#}
     {#<h3 class="section-title teal-text">Bookings</h3>#}
     <ul class="collapsible">
-        <li class="collapsible-header">
-            <h5 class="section-title blue-text"><i class="material-icons">flight_land</i>Arrivals</h5>
+        <li class="collapsible-header" style="border-bottom:0px;">
+            <div class="col s12">
+                <h5 class="section-title blue-text"><i class="material-icons">flight_land</i>Arrivals</h5>
+            </div>
+
+        </li>
+        <li class="collapsible-header grey-text" style="border-top:0px;">
+            <div class="col s1 left">Date</div>
+            <div class="col s3">Guest</div>
+            <div class="col s3">Check in time</div>
+            <div class="col s4">Room</div>
+            <div class="col s1"></div>
         </li>
         {% if bookingsCheckInsToday %}
             {% for booking in bookingsCheckInsToday %}
                 {#{{ dump(booking.guest) }}#}
                 <li>
                     <div class="collapsible-header blue-grey-text">
+                        <div class="col s1 left" style="padding:0px;">
+                            <span class="col s12 bookingdateday">
+                                {{ booking.bookingtill ? booking.bookingfrom|date("d"): '' }}
+                            </span>
+                            <span class="col s12 bookingdatemonth">
+                                {{ booking.bookingtill ? booking.bookingfrom|date("M"): '' }}
+                            </span>
+                        </div>
                         <div class="col s3">
                             {{ booking.guest.lastnameFirstname|trim }}
                         </div>
-                        <div class="col s4">
+                        <div class="col s3">
                             <i class="material-icons">access_time</i>{{ booking.bookingfrom ? booking.bookingfrom|date("H:i"): '' }}
                         </div>
                         <div class="col s4">
-                            <i class="material-icons">home</i>{{ booking.bookedroom.house }}
+                            {{ booking.bookedroom.house }}
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
                         </div>
                         <div class="col s1" style="text-align:right;">
-                            <a class='dropdown-trigger' href='#' data-target='dropdown_bookingsCheckInsToday_{{ booking.crdate }}'>
+                            <a class='dropdown-trigger' href='#'
+                               data-target='dropdown_bookingsCheckInsToday_{{ booking.crdate }}'>
                                 <i class="material-icons grey-text">more_vert</i>
                             </a>
                             <!-- Dropdown Structure -->
                             <ul id='dropdown_bookingsCheckInsToday_{{ booking.crdate }}' class='dropdown-content'>
                                 <li>
-                                    <a href="{{ path('booking_edit', {'id': booking.id}) }}"
-                                       class="blue-text">Edit</a>
+                                    <a href="{{ path('booking_edit', {'id': booking.id}) }}" class="blue-text">
+                                        Edit
+                                    </a>
                                 </li>
                                 <li class="divider" tabindex="-1"></li>
                                 <li>
-                                    <a href="{{ path('booking_show', {'id': booking.id}) }}"
-                                       class="blue-text">Show</a>
+                                    <a href="{{ path('booking_show', {'id': booking.id}) }}" class="blue-text">
+                                        Show
+                                    </a>
                                 </li>
                                 <li class="divider" tabindex="-1"></li>
                                 <li>
-                                    <a href="#" class="blue-text">Print</a>
+                                    <a href="#" class="blue-text">
+                                        Print
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -67,26 +91,44 @@
 
 
     <ul class="collapsible">
-        <li class="collapsible-header">
-            <h5 class="section-title blue-text"><i class="material-icons">flight_takeoff</i>Departures</h5>
+        <li class="collapsible-header" style="border-bottom:0px;">
+            <div class="col s12">
+                <h5 class="section-title blue-text"><i class="material-icons">flight_takeoff</i>Departures</h5>
+
+            </div>
+        </li>
+        <li class="collapsible-header grey-text" style="border-top:0px;">
+            <div class="col s1 left">Date</div>
+            <div class="col s3">Guest</div>
+            <div class="col s3">Check out time</div>
+            <div class="col s4">Room</div>
+            <div class="col s1"></div>
         </li>
         {% if bookingsCheckOutsToday %}
             {% for booking in bookingsCheckOutsToday %}
                 <li>
                     <div class="collapsible-header blue-grey-text">
+                        <div class="col s1 left" style="padding:0px;">
+                            <span class="col s12 bookingdateday">
+                                {{ booking.bookingtill ? booking.bookingfrom|date("d"): '' }}
+                            </span>
+                            <span class="col s12 bookingdatemonth">
+                                {{ booking.bookingtill ? booking.bookingfrom|date("M"): '' }}
+                            </span>
+                        </div>
                         <div class="col s3">
-                            <i class="material-icons">person</i>
                             {{ booking.guest.lastnameFirstname|trim }}
                         </div>
-                        <div class="col s4">
-                            <i class="material-icons">access_time</i>{{ booking.bookingtill ? booking.bookingtill|date("H:i", "Europe/Paris"): '' }}
+                        <div class="col s3">
+                            <i class="material-icons">access_time</i>{{ booking.bookingtill ? booking.bookingtill|date("H:i"): '' }}
                         </div>
                         <div class="col s4">
-                            <i class="material-icons">home</i>{{ booking.bookedroom.house }}
+                            {{ booking.bookedroom.house }}
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
                         </div>
                         <div class="col s1" style="text-align:right;">
-                            <a class='dropdown-trigger' href='#' data-target='dropdown_bookingsCheckOutsToday_{{ booking.crdate }}'>
+                            <a class='dropdown-trigger' href='#'
+                               data-target='dropdown_bookingsCheckOutsToday_{{ booking.crdate }}'>
                                 <i class="material-icons grey-text">more_vert</i>
                             </a>
                             <!-- Dropdown Structure -->
@@ -126,31 +168,50 @@
 
 
     <ul class="collapsible">
-        <li class="collapsible-header">
-            <h5 class="section-title blue-text"><i class="material-icons">today</i> Bookings</h5>
+        <li class="collapsible-header" style="border-bottom:0px;">
+            <div class="col s12">
+                <h5 class="section-title blue-text"><i class="material-icons">today</i> Bookings</h5>
+            </div>
         </li>
+        <li class="collapsible-header grey-text" style="border-top:0px;">
+            <div class="col s1 left">Date</div>
+            <div class="col s3">Guest</div>
+            <div class="col s3">Check out</div>
+            <div class="col s4">Room</div>
+            <div class="col s1"></div>
+        </li>
+
         {% if bookings %}
             {% for booking in bookings %}
                 {#{{ dump(booking.guest) }}#}
                 <li>
                     <div class="collapsible-header blue-grey-text">
+                        <div class="col s1 left" style="padding:0px;">
+                            <span class="col s12 bookingdateday">
+                                {{ booking.bookingtill ? booking.bookingfrom|date("d"): '' }}
+                            </span>
+                            <span class="col s12 bookingdatemonth">
+                                {{ booking.bookingtill ? booking.bookingfrom|date("M"): '' }}
+                            </span>
+                        </div>
                         <div class="col s3">
                             {{ booking.guest.lastnameFirstname|trim }}
                         </div>
-                        <div class="col s2">
-                            <i class="material-icons">flight_land</i>
-                            {{ booking.bookingfrom ? booking.bookingfrom|date("D d M", "Europe/Paris"): '' }}
-                        </div>
-                        <div class="col s2">
+                        {#<div class="col s2">#}
+                            {#<i class="material-icons">flight_land</i>#}
+                            {#{{ booking.bookingfrom ? booking.bookingfrom|date("D d M", "Europe/Paris"): '' }}#}
+                        {#</div>#}
+                        <div class="col s3">
                             <i class="material-icons">flight_takeoff</i>
                             {{ booking.bookingtill ? booking.bookingtill|date("D d M", "Europe/Paris"): '' }}
                         </div>
                         <div class="col s4">
-                            <i class="material-icons">home</i>{{ booking.bookedroom.house }}
+                            {{ booking.bookedroom.house }}
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
                         </div>
                         <div class="col s1" style="text-align:right;">
-                            <a class='dropdown-trigger' href='#' data-target='dropdown_bookingsCheckOutsToday_{{ booking.crdate }}'>
+                            <a class='dropdown-trigger' href='#'
+                               data-target='dropdown_bookingsCheckOutsToday_{{ booking.crdate }}'>
                                 <i class="material-icons grey-text">more_vert</i>
                             </a>
                             <!-- Dropdown Structure -->

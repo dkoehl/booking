@@ -18,7 +18,7 @@
 
         </p>
     </div>
-    <div class="col s3">
+    <div class="col s2">
         <p>
             <b>House</b><br>
             <span class="black-text">{{ booking.bookedroom.house }}</span>
@@ -29,5 +29,25 @@
             <b>Floor</b><br>
             <span class="black-text">{{ booking.bookedroom.floor }}</span>
         </p>
+    </div>
+    <div class="col s1" style="text-align:right;">
+        <a class='dropdown-trigger' href='#'
+           data-target='dropdown_rooms_{{ booking.crdate }}'>
+            <i class="material-icons grey-text">more_vert</i>
+        </a>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown_rooms_{{ booking.crdate }}' class='dropdown-content'>
+            <li>
+                <a href="{{ path('room_show', {'id': booking.bookedroom.id}) }}" class="blue-text">
+                    Show
+                </a>
+            </li>
+            <li class="divider" tabindex="-1"></li>
+            <li>
+                <a href="{{ path('room_edit', {'id': booking.bookedroom.id}) }}" class="blue-text">
+                    Edit
+                </a>
+            </li>
+        </ul>
     </div>
 </div>

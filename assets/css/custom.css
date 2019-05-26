@@ -1,5 +1,6 @@
 /*@import 'material-icons/iconfont/material-icons.scss';*/
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 html {
     background-color: #fafafa !important;
@@ -30,7 +31,7 @@ select {
 
 .sitebar a {
     /*color: #666666;*/
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .content-container{
@@ -94,3 +95,23 @@ select {
     height:340px;
     border:1px solid #DDDDDD;
 }
+
+.bookingdateday{
+    font-size: 1.64rem;
+    float:left;
+    margin-right:4px;
+    font-weight:600;
+    line-height:26px;
+    opacity: 0.7;
+}
+.bookingdatemonth{
+    font-size: 0.9rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+
+.collapsible-header{
+    padding:10px;
+}
+
+

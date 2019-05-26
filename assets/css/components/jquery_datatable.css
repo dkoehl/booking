@@ -1,3 +1,7 @@
+@import "~datatables.net-dt/css/jquery.dataTables.min.css";
+@import "~datatables.net-jqui/css/dataTables.jqueryui.min.css";
+
+
 #dataTableRooms,
 #dataTableGuests{
     border: none;
@@ -13,7 +17,6 @@
     border:1px solid #ddd;
     padding-top:10px;
     padding-bottom:10px;
-    border-radius:7px 7px 7px 0px;
 }
 .footerline{
     padding:10px;
