@@ -26,7 +26,7 @@
         {% if bookingsCheckInsToday %}
             {% for booking in bookingsCheckInsToday %}
                 {#{{ dump(booking.guest) }}#}
-                <li>
+                <li class="hoverable">
                     <div class="collapsible-header blue-grey-text">
                         <div class="col s1 left" style="padding:0px;">
                             <span class="col s12 bookingdateday">
@@ -106,7 +106,7 @@
         </li>
         {% if bookingsCheckOutsToday %}
             {% for booking in bookingsCheckOutsToday %}
-                <li>
+                <li class="hoverable">
                     <div class="collapsible-header blue-grey-text">
                         <div class="col s1 left" style="padding:0px;">
                             <span class="col s12 bookingdateday">
@@ -184,7 +184,7 @@
         {% if bookings %}
             {% for booking in bookings %}
                 {#{{ dump(booking.guest) }}#}
-                <li>
+                <li class="hoverable">
                     <div class="collapsible-header blue-grey-text">
                         <div class="col s1 left" style="padding:0px;">
                             <span class="col s12 bookingdateday">

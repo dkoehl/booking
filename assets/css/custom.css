@@ -115,3 +115,6 @@ select {
 }
 
 
+li.hoverable.active{
+    /*box-shadow: 0px 0px 7px #ddd;*/
+}
