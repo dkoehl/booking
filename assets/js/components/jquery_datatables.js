@@ -6,7 +6,7 @@ import "datatables.net-buttons/js/buttons.colVis.min";
 import "datatables.net-buttons/js/buttons.flash.min";
 import "datatables.net-buttons/js/buttons.html5";
 import "datatables.net-buttons/js/buttons.print.min";
-
+//https://datatables.net/extensions/buttons/config
 const axios = require("axios");
 
 let dataTableRooms = document.getElementById('dataTableRooms');
@@ -207,7 +207,3 @@ if (dataTableGuests) {
 
         });
 }
-
-
-
-$('#dataTableRooms_filter > label > input[type=search]').attr("placeholder", "enter seach terms here");

@@ -13,4 +13,5 @@
 /*@import "~@fullcalendar/timeline/main.min.css";*/
 
 @import "./components/jquery_datatable.css";
+@import "./components/jquery_datetimepicker.css";
 @import "custom.css";

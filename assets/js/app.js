@@ -18,10 +18,6 @@ import 'materialize';
 import 'materialize-css';
 import 'material-icons';
 import * as mdc from 'material-components-web';
-
-//https://datatables.net/extensions/buttons/config
-
-//https://xdsoft.net/jqplugins/datetimepicker/
 mdc.autoInit();
 
 const Highcharts = require ("./components/highcharts");

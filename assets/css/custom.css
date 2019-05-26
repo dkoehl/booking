@@ -59,19 +59,7 @@ select {
 
 
 
-#booking label {
-    display: block;
-    color: #000000;
-    padding: 7px;
-    font-size: 14px;
-}
 
-#booking > div {
-    width: 50%;
-    float: left;
-    min-height: 150px;
-    padding: 10px;
-}
 
 /*.col{*/
     /*border:1px solid red;*/

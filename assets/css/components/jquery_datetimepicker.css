@@ -1,0 +1,42 @@
+.xdsoft_datetimepicker.xdsoft_inline{
+    /*border:1px solid red;*/
+    width:100%;
+    border:none;
+}
+
+.xdsoft_datetimepicker .xdsoft_datepicker.active, .xdsoft_datetimepicker .xdsoft_timepicker.active{
+    width:100%;
+    /*border:1px solid red;*/
+}
+
+.xdsoft_datetimepicker *{
+    line-height:30px;
+}
+
+.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box>div>div{
+    height:auto;
+    /*line-height:unset;*/
+    /*font-size:2rem;*/
+}
+div.xdsoft_datepicker.active > div.xdsoft_calendar > table{
+    border:none;
+}
+.collection.with-header .collection-item{
+    padding:10px;
+}
+#booking label {
+    display: block;
+    color: #000000;
+    padding: 7px;
+    font-size: 14px;
+    /*display:none;*/
+}
+
+#booking > div {
+    width: 50%;
+    float: left;
+    min-height: 150px;
+    padding: 10px;
+}
+
+

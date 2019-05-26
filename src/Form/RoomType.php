@@ -14,9 +14,13 @@ class RoomType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', \Symfony\Component\Form\Extension\Core\Type\TextType::class,[
-                'attr' => ['class' => 'mdc-text-field__input'],
-            ])
+            ->add('name', \Symfony\Component\Form\Extension\Core\Type\TextType::class,
+                [
+                    'attr' => [
+                        'class' => 'mdc-text-field__input'
+                    ],
+                ]
+            )
             ->add('beds')
             ->add('floor', ChoiceType::class, [
                 'choices' => [

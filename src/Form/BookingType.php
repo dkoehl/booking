@@ -32,13 +32,14 @@ class BookingType extends AbstractType
                 'class' => Room::class,
                 'choice_label' => 'houseName',
                 'multiple' => true,
-                'attr' => ['class' => 'js-example-basic-multiple'],
+                'attr' => ['class' => 'multipleRoomSelect'],
             ])
             ->add('guest', EntityType::class, [
                 'class' => Guest::class,
                 'choice_label' => 'lastnameFirstname',
                 'multiple' => false,
-                'attr' => ['class' => 'js-example-basic-multiple'],
+                'label' => 'Guest',
+                'attr' => ['class' => 'singleGuestSelect'],
 
             ]);
     }

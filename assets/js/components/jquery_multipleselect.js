@@ -3,4 +3,11 @@
 import "select2";
 
 
-$('.js-example-basic-multiple').select2();
+$('.multipleRoomSelect').select2({
+    placeholder: 'Select a room',
+    width: 'resolve'
+});
+$('.singleGuestSelect').select2({
+    placeholder: 'Select a guest',
+    width: 'resolve'
+});
