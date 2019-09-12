@@ -110,10 +110,10 @@
                     <div class="collapsible-header blue-grey-text">
                         <div class="col s1 left" style="padding:0px;">
                             <span class="col s12 bookingdateday">
-                                {{ booking.bookingtill ? booking.bookingfrom|date("d"): '' }}
+                                {{ booking.bookingtill ? booking.bookingtill|date("d"): '' }}
                             </span>
                             <span class="col s12 bookingdatemonth">
-                                {{ booking.bookingtill ? booking.bookingfrom|date("M"): '' }}
+                                {{ booking.bookingtill ? booking.bookingtill|date("M"): '' }}
                             </span>
                         </div>
                         <div class="col s3">
