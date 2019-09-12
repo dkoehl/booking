@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inventory index{% endblock %}
+
+{% block body %}
+    <h1>Inventory index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Beds</th>
+                <th>Closets</th>
+                <th>Tables</th>
+                <th>Chairs</th>
+                <th>Floor</th>
+                <th>Walls</th>
+                <th>Windows</th>
+                <th>Doors</th>
+                <th>Roomsspecial</th>
+                <th>Hidden</th>
+                <th>Deleted</th>
+                <th>Crdate</th>
+                <th>Tstamp</th>
+                <th>Text</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inventory in inventories %}
+            <tr>
+                <td>{{ inventory.id }}</td>
+                <td>{{ inventory.beds }}</td>
+                <td>{{ inventory.closets }}</td>
+                <td>{{ inventory.tables }}</td>
+                <td>{{ inventory.chairs }}</td>
+                <td>{{ inventory.floor }}</td>
+                <td>{{ inventory.walls }}</td>
+                <td>{{ inventory.windows }}</td>
+                <td>{{ inventory.doors }}</td>
+                <td>{{ inventory.roomsspecial }}</td>
+                <td>{{ inventory.hidden }}</td>
+                <td>{{ inventory.deleted }}</td>
+                <td>{{ inventory.crdate }}</td>
+                <td>{{ inventory.tstamp }}</td>
+                <td>{{ inventory.text }}</td>
+                <td>
+                    <a href="{{ path('inventory_show', {'id': inventory.id}) }}">show</a>
+                    <a href="{{ path('inventory_edit', {'id': inventory.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('inventory_new') }}">Create new</a>
+{% endblock %}

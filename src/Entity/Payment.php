@@ -51,6 +51,11 @@ class Payment
      */
     private $tstamp;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="payments")
+     */
+    private $payments;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +141,18 @@ class Payment
     public function setTstamp(?int $tstamp): self
     {
         $this->tstamp = $tstamp;
+
+        return $this;
+    }
+
+    public function getPayments(): ?Booking
+    {
+        return $this->payments;
+    }
+
+    public function setPayments(?Booking $payments): self
+    {
+        $this->payments = $payments;
 
         return $this;
     }

@@ -63,9 +63,39 @@ class Booking
      */
     private $guest;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Inventory", mappedBy="inventory")
+     */
+    private $inventories;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Parking", mappedBy="parking")
+     */
+    private $parkings;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Payment", mappedBy="payments")
+     */
+    private $payments;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Damage", mappedBy="damage")
+     */
+    private $damages;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Price", mappedBy="prices")
+     */
+    private $prices;
+
     public function __construct()
     {
         $this->room = new ArrayCollection();
+        $this->inventories = new ArrayCollection();
+        $this->parkings = new ArrayCollection();
+        $this->payments = new ArrayCollection();
+        $this->damages = new ArrayCollection();
+        $this->prices = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -196,6 +226,161 @@ class Booking
     public function setGuest(?Guest $guest): self
     {
         $this->guest = $guest;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Inventory[]
+     */
+    public function getInventories(): Collection
+    {
+        return $this->inventories;
+    }
+
+    public function addInventory(Inventory $inventory): self
+    {
+        if (!$this->inventories->contains($inventory)) {
+            $this->inventories[] = $inventory;
+            $inventory->setInventory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInventory(Inventory $inventory): self
+    {
+        if ($this->inventories->contains($inventory)) {
+            $this->inventories->removeElement($inventory);
+            // set the owning side to null (unless already changed)
+            if ($inventory->getInventory() === $this) {
+                $inventory->setInventory(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Parking[]
+     */
+    public function getParkings(): Collection
+    {
+        return $this->parkings;
+    }
+
+    public function addParking(Parking $parking): self
+    {
+        if (!$this->parkings->contains($parking)) {
+            $this->parkings[] = $parking;
+            $parking->setParking($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParking(Parking $parking): self
+    {
+        if ($this->parkings->contains($parking)) {
+            $this->parkings->removeElement($parking);
+            // set the owning side to null (unless already changed)
+            if ($parking->getParking() === $this) {
+                $parking->setParking(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Payment[]
+     */
+    public function getPayments(): Collection
+    {
+        return $this->payments;
+    }
+
+    public function addPayment(Payment $payment): self
+    {
+        if (!$this->payments->contains($payment)) {
+            $this->payments[] = $payment;
+            $payment->setPayments($this);
+        }
+
+        return $this;
+    }
+
+    public function removePayment(Payment $payment): self
+    {
+        if ($this->payments->contains($payment)) {
+            $this->payments->removeElement($payment);
+            // set the owning side to null (unless already changed)
+            if ($payment->getPayments() === $this) {
+                $payment->setPayments(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Damage[]
+     */
+    public function getDamages(): Collection
+    {
+        return $this->damages;
+    }
+
+    public function addDamage(Damage $damage): self
+    {
+        if (!$this->damages->contains($damage)) {
+            $this->damages[] = $damage;
+            $damage->setDamage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDamage(Damage $damage): self
+    {
+        if ($this->damages->contains($damage)) {
+            $this->damages->removeElement($damage);
+            // set the owning side to null (unless already changed)
+            if ($damage->getDamage() === $this) {
+                $damage->setDamage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Price[]
+     */
+    public function getPrices(): Collection
+    {
+        return $this->prices;
+    }
+
+    public function addPrice(Price $price): self
+    {
+        if (!$this->prices->contains($price)) {
+            $this->prices[] = $price;
+            $price->setPrices($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrice(Price $price): self
+    {
+        if ($this->prices->contains($price)) {
+            $this->prices->removeElement($price);
+            // set the owning side to null (unless already changed)
+            if ($price->getPrices() === $this) {
+                $price->setPrices(null);
+            }
+        }
 
         return $this;
     }

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parking index{% endblock %}
+
+{% block body %}
+    <h1>Parking index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Carplate</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Hidden</th>
+                <th>Deleted</th>
+                <th>Crdate</th>
+                <th>Tstamp</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for parking in parkings %}
+            <tr>
+                <td>{{ parking.id }}</td>
+                <td>{{ parking.carplate }}</td>
+                <td>{{ parking.startdate ? parking.startdate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ parking.enddate ? parking.enddate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ parking.hidden }}</td>
+                <td>{{ parking.deleted }}</td>
+                <td>{{ parking.crdate }}</td>
+                <td>{{ parking.tstamp }}</td>
+                <td>
+                    <a href="{{ path('parking_show', {'id': parking.id}) }}">show</a>
+                    <a href="{{ path('parking_edit', {'id': parking.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('parking_new') }}">Create new</a>
+{% endblock %}

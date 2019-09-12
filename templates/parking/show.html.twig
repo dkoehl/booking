@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parking{% endblock %}
+
+{% block body %}
+    <h1>Parking</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ parking.id }}</td>
+            </tr>
+            <tr>
+                <th>Carplate</th>
+                <td>{{ parking.carplate }}</td>
+            </tr>
+            <tr>
+                <th>Startdate</th>
+                <td>{{ parking.startdate ? parking.startdate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Enddate</th>
+                <td>{{ parking.enddate ? parking.enddate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Hidden</th>
+                <td>{{ parking.hidden }}</td>
+            </tr>
+            <tr>
+                <th>Deleted</th>
+                <td>{{ parking.deleted }}</td>
+            </tr>
+            <tr>
+                <th>Crdate</th>
+                <td>{{ parking.crdate }}</td>
+            </tr>
+            <tr>
+                <th>Tstamp</th>
+                <td>{{ parking.tstamp }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('parking_index') }}">back to list</a>
+
+    <a href="{{ path('parking_edit', {'id': parking.id}) }}">edit</a>
+
+    {{ include('parking/_delete_form.html.twig') }}
+{% endblock %}

@@ -56,6 +56,11 @@ class Price
      */
     private $tstamp;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="prices")
+     */
+    private $prices;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -153,6 +158,18 @@ class Price
     public function setTstamp(?int $tstamp): self
     {
         $this->tstamp = $tstamp;
+
+        return $this;
+    }
+
+    public function getPrices(): ?Booking
+    {
+        return $this->prices;
+    }
+
+    public function setPrices(?Booking $prices): self
+    {
+        $this->prices = $prices;
 
         return $this;
     }

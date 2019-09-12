@@ -31,6 +31,11 @@ class Damage
      */
     private $price;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="damages")
+     */
+    private $damage;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class Damage
     public function setPrice(?string $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getDamage(): ?Booking
+    {
+        return $this->damage;
+    }
+
+    public function setDamage(?Booking $damage): self
+    {
+        $this->damage = $damage;
 
         return $this;
     }
