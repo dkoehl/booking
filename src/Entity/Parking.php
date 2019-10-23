@@ -32,12 +32,12 @@ class Parking
     private $enddate;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $hidden;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $deleted;
 
@@ -97,50 +97,26 @@ class Parking
         return $this;
     }
 
-    public function getHidden(): ?int
+    public function getHidden(): ?bool
     {
         return $this->hidden;
     }
 
-    public function setHidden(?int $hidden): self
+    public function setHidden(?bool $hidden): self
     {
         $this->hidden = $hidden;
 
         return $this;
     }
 
-    public function getDeleted(): ?int
+    public function getDeleted(): ?bool
     {
         return $this->deleted;
     }
 
-    public function setDeleted(?int $deleted): self
+    public function setDeleted(?bool $deleted): self
     {
         $this->deleted = $deleted;
-
-        return $this;
-    }
-
-    public function getCrdate(): ?int
-    {
-        return $this->crdate;
-    }
-
-    public function setCrdate(?int $crdate): self
-    {
-        $this->crdate = $crdate;
-
-        return $this;
-    }
-
-    public function getTstamp(): ?int
-    {
-        return $this->tstamp;
-    }
-
-    public function setTstamp(?int $tstamp): self
-    {
-        $this->tstamp = $tstamp;
 
         return $this;
     }

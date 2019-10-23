@@ -69,17 +69,17 @@
                 </div>
             </div>
         </li>
-
+        {#Room#}
+        <li class="collection-item lighten-5 grey-text">
+            {{ include('booking/_booking_room_body.html.twig') }}
+        </li>
 
         {#Guest Data#}
         <li class="collection-item  lighten-5 grey-text">
             {{ include('booking/_booking_guest_body.html.twig') }}
         </li>
-
-
-        {#Room#}
-        <li class="collection-item lighten-5 grey-text">
-            {{ include('booking/_booking_room_body.html.twig') }}
+        <li class="collection-item  lighten-5 grey-text">
+            {{ include('room/_form.html.twig') }}
         </li>
     </ul>
 

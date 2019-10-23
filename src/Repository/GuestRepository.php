@@ -19,6 +19,23 @@ class GuestRepository extends ServiceEntityRepository
         parent::__construct($registry, Guest::class);
     }
 
+
+    /**
+     * @param $input
+     * @return mixed
+     */
+    public function getGuestByAjaxSearch($input){
+        $fields = ['g.id', 'g.lastname', 'g.firstname'];
+        return $this->createQueryBuilder('g')
+            ->select($fields)
+            ->andWhere('g.firstname LIKE :input')
+            ->orWhere('g.lastname LIKE :input')
+            ->setParameter('input', '%'.$input.'%')
+            ->getQuery()
+            ->execute();
+    }
+
+
     // /**
     //  * @return Guest[] Returns an array of Guest objects
     //  */

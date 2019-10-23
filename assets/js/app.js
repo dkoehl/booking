@@ -10,6 +10,9 @@ import '../css/app.css';
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 
+
+
+
 var $ = require('jquery');
 import "jquery-ui";
 
@@ -24,6 +27,8 @@ const Highcharts = require ("./components/highcharts");
 const Collapsed = require ("./components/collapsed");
 const DropDownButtons = require("./components/dropdownbuttons");
 const Actionbuttons = require("./components/actionbuttons");
+const BookingVacancies = require ("./components/bookingform");
+const BookingUserSearch = require ("./components/bookingform_searchguest");
 /**
  * Nativ JS stuff
  */
@@ -33,10 +38,11 @@ document.addEventListener('DOMContentLoaded', function () {
     Collapsed;
     DropDownButtons;
     Actionbuttons;
+    BookingVacancies;
 
 });
-
 /**
+ *
  *
  *
  *
@@ -60,7 +66,8 @@ $(document).ready(
     function () {
         DataTables;
         DateTimePicker;
-        MultipleSelect
+        MultipleSelect;
+
     }
 );
 

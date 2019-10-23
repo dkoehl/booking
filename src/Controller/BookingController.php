@@ -4,14 +4,19 @@ namespace App\Controller;
 
 use App\Entity\Booking;
 use App\Entity\Guest;
+use App\Entity\Price;
 use App\Entity\Room;
 use App\Form\BookingType;
+use App\Form\GuestType;
+use App\Form\PriceType;
+use App\Form\RoomType;
 use App\Repository\BookingRepository;
 use App\Repository\RoomRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 /**
  * @Route("/booking")
@@ -30,6 +35,52 @@ class BookingController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/getvacanciesbydate/{bookingfrom}/{bookingtill}", name="getvacanciesbydate")
+     */
+    public function getVacanciesbydate(Request $request)
+    {
+//        $bookingFrom = '2019-05-01';
+//        $bookingTill = '2019-05-30';
+
+        $requestUri = explode('/', $request->getRequestUri());
+        $bookingFrom = $requestUri[3];
+        $bookingTill = $requestUri[4];
+        // gets all bookings
+        $rentedRoomIds = $this->getDoctrine()
+            ->getRepository(Booking::class)
+            ->getVacanciesbydate($bookingFrom, $bookingTill);
+        if (!empty($rentedRoomIds)) {
+            $freeRooms = $this->getDoctrine()
+                ->getRepository(Room::class)
+                ->getFreeRooms($rentedRoomIds);
+        }else{
+            // no bookings
+            $freeRooms = $this->getDoctrine()
+                ->getRepository(Room::class)
+                ->findAll();
+        }
+
+        /**
+         * @todo: check this function again, soon!
+         */
+        foreach ($freeRooms as $room) {
+            if (!$room->getHidden() && !$room->getDeleted()) {
+                $freeRoomsArray[] = [
+                    'id' => $room->getId(),
+                    'name' => $room->getName(),
+                    'beds' => $room->getBeds(),
+                    'floor' => $room->getFloor(),
+                    'house' => $room->getHouse()
+                ];
+            }
+        }
+
+        return $this->json($freeRoomsArray);
+    }
+
+
     /**
      * @Route("/new", name="booking_new", methods={"GET","POST"})
      */
@@ -40,7 +91,6 @@ class BookingController extends AbstractController
         $form->handleRequest($request);
 
         $requestReg = $request->request->get('booking');
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -61,6 +111,10 @@ class BookingController extends AbstractController
                     ->findOneBy(['id' => $requestReg['guest']]);
                 $booking->setGuest($guest);
             }
+            $booking->setBookingfrom(\DateTime::createFromFormat('Y-m-d H:i:s',
+                date('Y-m-d H:i:s', strtotime($requestReg['bookingfrom']))));
+            $booking->setBookingtill(\DateTime::createFromFormat('Y-m-d H:i:s',
+                date('Y-m-d H:i:s', strtotime($requestReg['bookingtill']))));
             $booking->setTstamp(time());
             $booking->setHidden(0);
             $booking->setDeleted(0);
@@ -69,7 +123,10 @@ class BookingController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('booking_index');
+            $newBookingID = $booking->getId();
+
+
+            return $this->redirectToRoute('booking_show', ['id' => $newBookingID]);
         }
 
         return $this->render('booking/new.html.twig', [
@@ -86,9 +143,16 @@ class BookingController extends AbstractController
         $room = $this->getDoctrine()
             ->getRepository(Room::class)
             ->findOneBy(['id' => $booking->getBookedroom()]);
+
+        $guestForm = $this->createForm(GuestType::class, new Guest());
+        $priceForm = $this->createForm(PriceType::class, new Price());
+        $roomForm = $this->createForm(RoomType::class, new Room());
         return $this->render('booking/show.html.twig', [
             'booking' => $booking,
-            'room' => $room
+            'room' => $room,
+            'guestForm' => $guestForm->createView(),
+            'roomForm' => $roomForm->createView()
+
         ]);
     }
 

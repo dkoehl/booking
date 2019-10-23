@@ -61,6 +61,26 @@ class Guest
 
     private $lastnameFirstname;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $placeofbirth;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $country;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $email;
+
     public function getLastnameFirstname(): ?string
     {
         return $this->firstnameLastname = $this->lastname . ', ' . $this->firstname;
@@ -187,6 +207,54 @@ class Guest
                 $booking->setGuest(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPlaceofbirth(): ?string
+    {
+        return $this->placeofbirth;
+    }
+
+    public function setPlaceofbirth(?string $placeofbirth): self
+    {
+        $this->placeofbirth = $placeofbirth;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

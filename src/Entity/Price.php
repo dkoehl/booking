@@ -37,14 +37,14 @@ class Price
     private $amount;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $deleted;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $hidden;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $deleted;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -114,26 +114,38 @@ class Price
         return $this;
     }
 
-    public function getDeleted(): ?int
+    public function getHidden(): ?bool
+    {
+        return $this->hidden;
+    }
+
+    public function setHidden(?bool $hidden): self
+    {
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    public function getDeleted(): ?bool
     {
         return $this->deleted;
     }
 
-    public function setDeleted(?int $deleted): self
+    public function setDeleted(?bool $deleted): self
     {
         $this->deleted = $deleted;
 
         return $this;
     }
 
-    public function getHidden(): ?int
+    public function getPrices(): ?Booking
     {
-        return $this->hidden;
+        return $this->prices;
     }
 
-    public function setHidden(?int $hidden): self
+    public function setPrices(?Booking $prices): self
     {
-        $this->hidden = $hidden;
+        $this->prices = $prices;
 
         return $this;
     }
@@ -158,18 +170,6 @@ class Price
     public function setTstamp(?int $tstamp): self
     {
         $this->tstamp = $tstamp;
-
-        return $this;
-    }
-
-    public function getPrices(): ?Booking
-    {
-        return $this->prices;
-    }
-
-    public function setPrices(?Booking $prices): self
-    {
-        $this->prices = $prices;
 
         return $this;
     }

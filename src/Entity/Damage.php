@@ -32,6 +32,26 @@ class Damage
     private $price;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $hidden;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $deleted;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $crdate;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $tstamp;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="damages")
      */
     private $damage;
@@ -88,4 +108,29 @@ class Damage
 
         return $this;
     }
+
+    public function getHidden(): ?bool
+    {
+        return $this->hidden;
+    }
+
+    public function setHidden(?bool $hidden): self
+    {
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    public function getDeleted(): ?bool
+    {
+        return $this->deleted;
+    }
+
+    public function setDeleted(?bool $deleted): self
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
 }

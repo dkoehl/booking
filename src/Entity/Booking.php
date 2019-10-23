@@ -183,7 +183,7 @@ class Booking
         return $this->room;
     }
 
-    public function addRoom(Room $room): self
+    public function addRoom($room): self
     {
         if (!$this->room->contains($room)) {
             $this->room = $room;

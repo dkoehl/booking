@@ -18,7 +18,26 @@
             <div class="col s12 m12">
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
-                <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" name="action">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ button_label|default('Save') }}
+
+
+                <div id="radios">
+                    <div>
+                        <input type="radio" id="ez" name="roomtype" value="ez" style="position:relative; opacity: 1; pointer-events: all;">
+                        <label for="ez">Einzel- Zimmer</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="dz" name="roomtype" value="dz" style="position:relative; opacity: 1; pointer-events: all;">
+                        <label for="dz">Doppel- Zimmer</label>
+                    </div>
+                </div>
+
+                <div>
+                    <ul id="bookingVacancies"></ul>
+                </div>
+
+
+
+                <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" id="booking_submit" name="action">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ button_label|default('Save') }}
                     <i class="material-icons right">send</i>
                 </button>
                 {{ form_end(form) }}

@@ -3,10 +3,11 @@ import "jquery-datetimepicker";
 
 $('.js-datepicker').datetimepicker(
     {
-        format: 'Y-m-d H:i:s',
+        format: 'Y-m-d',
         dateFormat: "dd.mm.yy",
         showAnim: 'blind',
-        inline: true,
+        inline: false,
+        timepicker : false,
     },
 );
 $.datetimepicker.setLocale('de');

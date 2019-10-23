@@ -37,6 +37,41 @@ class BookingRepository extends ServiceEntityRepository
     */
 
     /**
+     * @param array $bookingFrom
+     * @param array $bookingTill
+     * @return array
+     */
+    public function getVacanciesbydate($bookingFrom = [], $bookingTill = [])
+    {
+        //select * from booking
+        //where
+        //bookingfrom <= '2019-05-01'
+        //AND
+        //bookingtill >= '2019-05-30'
+        //or
+        //bookingfrom >= '2019-05-01'
+        //AND
+        //bookingtill <= '2019-05-30'
+
+        $vancancies =  $this->createQueryBuilder('b')
+            ->andWhere('b.bookingfrom <= :bookingfrom AND b.bookingtill >= :bookingtill')
+            ->orWhere('b.bookingfrom >= :bookingfrom AND b.bookingtill <= :bookingtill')
+            ->setParameter('bookingtill', $bookingTill)
+            ->setParameter('bookingfrom' , $bookingFrom)
+            ->getQuery()
+            ->execute();
+        $vacanceIds = [];
+        if(is_array($vacanceIds)){
+            foreach($vancancies as $vancance){
+                if(!in_array($vancance->getBookedRoom()->getId(), $vacanceIds)){
+                    $vacanceIds[] = $vancance->getBookedRoom()->getId();
+                }
+            }
+            return $vacanceIds;
+        }
+    }
+
+    /**
      * @return mixed
      * @throws \Exception
      */

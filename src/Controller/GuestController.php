@@ -15,33 +15,50 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 /**
  * @Route("/guest")
  */
 class GuestController extends AbstractController
 {
+    /**
+     * @Route("/getguestbyajaxsearch/{input}", name="getguestbyajaxsearch")
+     *
+     */
+    public function getGuestByAjaxSearch(Request $request, GuestRepository $guestRepository){
+        $requestUri = explode('/', $request->getRequestUri());
+        if(!empty($requestUri[3])){
+            $input = $requestUri[3];
+            $guest = $guestRepository->getGuestByAjaxSearch($input);
 
+            return $this->json($guest);
+        }
+    }
     /**
      * @Route("/overview")
      */
     public function overview(GuestRepository $guestRepository): Response
     {
-        $guests = $guestRepository->findAll();
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new GetSetMethodNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-
-        $response = new JsonResponse();
-        $jsonObject = $serializer->serialize($guests, 'json', [
-            'circular_reference_handler' => function ($object) {
-                return $object->getId();
-            }
-        ]);
-        $response->setData(json_decode($jsonObject));
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
+//        $guests = $guestRepository->findAll();
+//        $encoders = array(new XmlEncoder(), new JsonEncoder());
+//        $normalizers = array(new GetSetMethodNormalizer());
+//        $serializer = new Serializer($normalizers, $encoders);
+//
+//        $response = new JsonResponse();
+//        $jsonObject = $serializer->serialize($guests, 'json', [
+//            'circular_reference_handler' => function ($object) {
+//                return $object->getId();
+//            }
+//        ]);
+//        $response->setData(json_decode($jsonObject));
+//        $response->headers->set('Content-Type', 'application/json');
+//        return $response;
     }
+
+
+
+
+
     /**
      * @Route("/", name="guest_index", methods={"GET"})
      */

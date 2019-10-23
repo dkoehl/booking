@@ -47,4 +47,18 @@ class RoomRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @param string $rentedRoomIds
+     * @return mixed
+     */
+    public function getFreeRooms($rentedRoomIds = '')
+    {
+        return $this->createQueryBuilder('r')
+            ->where('r.id NOT IN (:roomid)')
+            ->setParameter('roomid', $rentedRoomIds)
+            ->getQuery()
+            ->setMaxResults(5)
+            ->execute();
+    }
 }
