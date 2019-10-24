@@ -26,8 +26,8 @@
                 <td>{{ parking.carplate }}</td>
                 <td>{{ parking.startdate ? parking.startdate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ parking.enddate ? parking.enddate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ parking.hidden }}</td>
-                <td>{{ parking.deleted }}</td>
+                <td>{{ parking.hidden ? 'Yes' : 'No' }}</td>
+                <td>{{ parking.deleted ? 'Yes' : 'No' }}</td>
                 <td>{{ parking.crdate }}</td>
                 <td>{{ parking.tstamp }}</td>
                 <td>

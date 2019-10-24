@@ -61,6 +61,11 @@ class Price
      */
     private $prices;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="price")
+     */
+    private $booking;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -173,4 +178,5 @@ class Price
 
         return $this;
     }
+
 }

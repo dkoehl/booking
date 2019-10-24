@@ -27,6 +27,7 @@ class InventoryType extends AbstractType
             ->add('tstamp')
             ->add('text')
             ->add('inventory')
+            ->add('booking')
         ;
     }
 

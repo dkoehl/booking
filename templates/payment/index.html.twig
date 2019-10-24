@@ -26,8 +26,8 @@
                 <td>{{ payment.payment }}</td>
                 <td>{{ payment.number }}</td>
                 <td>{{ payment.securitynumber }}</td>
-                <td>{{ payment.hidden }}</td>
-                <td>{{ payment.deleted }}</td>
+                <td>{{ payment.hidden ? 'Yes' : 'No' }}</td>
+                <td>{{ payment.deleted ? 'Yes' : 'No' }}</td>
                 <td>{{ payment.crdate }}</td>
                 <td>{{ payment.tstamp }}</td>
                 <td>

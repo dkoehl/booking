@@ -13,8 +13,8 @@
                 <th>Price</th>
                 <th>Tax</th>
                 <th>Amount</th>
-                <th>Deleted</th>
                 <th>Hidden</th>
+                <th>Deleted</th>
                 <th>Crdate</th>
                 <th>Tstamp</th>
                 <th>actions</th>
@@ -28,8 +28,8 @@
                 <td>{{ price.price }}</td>
                 <td>{{ price.tax }}</td>
                 <td>{{ price.amount }}</td>
-                <td>{{ price.deleted }}</td>
-                <td>{{ price.hidden }}</td>
+                <td>{{ price.hidden ? 'Yes' : 'No' }}</td>
+                <td>{{ price.deleted ? 'Yes' : 'No' }}</td>
                 <td>{{ price.crdate }}</td>
                 <td>{{ price.tstamp }}</td>
                 <td>

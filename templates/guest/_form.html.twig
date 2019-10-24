@@ -1,3 +1,5 @@
+
+
 <ul class="collection with-header blue-grey-text">
     <li class="collapsible-header" style="border-bottom:0px;">
         <div class="col s12">
@@ -15,6 +17,9 @@
     <li class="collection-item lighten-5 grey-text">
         <div class="row">
             <div class="col s12 m12">
+                <input name="User" type="text" placeholder="Enter name" id="guestajaxsearch">
+                <div id="guestajaxsearchresult" class="collection"></div>
+
                 {{ form_start(guestForm) }}
                 {{ form_widget(guestForm) }}
                 <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" name="action">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ button_label|default('Save') }}

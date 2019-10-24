@@ -20,6 +20,7 @@ class ParkingType extends AbstractType
             ->add('crdate')
             ->add('tstamp')
             ->add('parking')
+            ->add('booking')
         ;
     }
 

@@ -91,6 +91,11 @@ class Inventory
      */
     private $inventory;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="inventory")
+     */
+    private $booking;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -275,4 +280,18 @@ class Inventory
 
         return $this;
     }
+
+    public function getBooking(): ?Booking
+    {
+        return $this->booking;
+    }
+
+    public function setBooking(?Booking $booking): self
+    {
+        $this->booking = $booking;
+
+        return $this;
+    }
+
+
 }

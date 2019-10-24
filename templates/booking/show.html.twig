@@ -4,7 +4,9 @@
 
 {% block body %}
 
-    {#{{ dump(booking) }}#}
+    {{ dump(booking) }}
+
+
 
     <ul class="collection with-header blue-grey-text">
         <li class="collection-header">
@@ -75,11 +77,41 @@
         </li>
 
         {#Guest Data#}
+
         <li class="collection-item  lighten-5 grey-text">
-            {{ include('booking/_booking_guest_body.html.twig') }}
+            {% if booking.guest.id == 1 %}
+                {{ include('guest/_form.html.twig') }}
+            {% else %}
+                {{ include('booking/_booking_guest_body.html.twig') }}
+{#                {{ include('guest/_form.html.twig') }}#}
+            {% endif %}
         </li>
+
+
+
+
+{#        <li class="collection-item  lighten-5 grey-text">#}
+{#            {{ include('guest/_form.html.twig') }}#}
+{#        </li>#}
         <li class="collection-item  lighten-5 grey-text">
-            {{ include('room/_form.html.twig') }}
+            {{ include('damage/_form.html.twig') }}
+        </li>
+
+        <li class="collection-item  lighten-5 grey-text">
+            {{ include('inventory/_form.html.twig') }}
+        </li>
+
+
+        <li class="collection-item  lighten-5 grey-text">
+            {{ include('price/_form.html.twig') }}
+        </li>
+
+        <li class="collection-item  lighten-5 grey-text">
+            {{ include('payment/_form.html.twig') }}
+        </li>
+
+        <li class="collection-item  lighten-5 grey-text">
+            {{ include('parking/_form.html.twig') }}
         </li>
     </ul>
 

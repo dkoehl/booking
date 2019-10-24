@@ -88,6 +88,31 @@ class Booking
      */
     private $prices;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Price", mappedBy="booking")
+     */
+    private $price;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Damage", mappedBy="booking")
+     */
+    private $damage;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Inventory", mappedBy="booking")
+     */
+    private $inventory;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Parking", mappedBy="booking")
+     */
+    private $parking;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Payment", mappedBy="booking")
+     */
+    private $payment;
+
     public function __construct()
     {
         $this->room = new ArrayCollection();
@@ -96,6 +121,11 @@ class Booking
         $this->payments = new ArrayCollection();
         $this->damages = new ArrayCollection();
         $this->prices = new ArrayCollection();
+        $this->price = new ArrayCollection();
+        $this->damage = new ArrayCollection();
+        $this->inventory = new ArrayCollection();
+        $this->parking = new ArrayCollection();
+        $this->payment = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -383,5 +413,45 @@ class Booking
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Price[]
+     */
+    public function getPrice(): Collection
+    {
+        return $this->price;
+    }
+
+    /**
+     * @return Collection|Damage[]
+     */
+    public function getDamage(): Collection
+    {
+        return $this->damage;
+    }
+
+    /**
+     * @return Collection|Inventory[]
+     */
+    public function getInventory(): Collection
+    {
+        return $this->inventory;
+    }
+
+    /**
+     * @return Collection|Parking[]
+     */
+    public function getParking(): Collection
+    {
+        return $this->parking;
+    }
+
+    /**
+     * @return Collection|Payment[]
+     */
+    public function getPayment(): Collection
+    {
+        return $this->payment;
     }
 }

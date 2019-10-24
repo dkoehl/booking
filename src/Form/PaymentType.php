@@ -20,6 +20,7 @@ class PaymentType extends AbstractType
             ->add('crdate')
             ->add('tstamp')
             ->add('payments')
+            ->add('booking')
         ;
     }
 

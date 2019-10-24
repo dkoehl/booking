@@ -16,11 +16,12 @@ class PriceType extends AbstractType
             ->add('price')
             ->add('tax')
             ->add('amount')
-//            ->add('deleted')
-//            ->add('hidden')
-//            ->add('crdate')
-//            ->add('tstamp')
+            ->add('hidden')
+            ->add('deleted')
+            ->add('crdate')
+            ->add('tstamp')
             ->add('prices')
+            ->add('booking')
         ;
     }
 

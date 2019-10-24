@@ -15,7 +15,12 @@ class DamageType extends AbstractType
             ->add('damageart')
             ->add('damagetext')
             ->add('price')
+            ->add('hidden')
+            ->add('deleted')
+            ->add('crdate')
+            ->add('tstamp')
             ->add('damage')
+            ->add('booking')
         ;
     }
 

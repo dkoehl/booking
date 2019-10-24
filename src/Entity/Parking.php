@@ -56,6 +56,11 @@ class Parking
      */
     private $parking;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="parking")
+     */
+    private $booking;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -132,4 +137,42 @@ class Parking
 
         return $this;
     }
+
+    public function getBooking(): ?Booking
+    {
+        return $this->booking;
+    }
+
+    public function setBooking(?Booking $booking): self
+    {
+        $this->booking = $booking;
+
+        return $this;
+    }
+
+
+    public function getCrdate(): ?int
+    {
+        return $this->crdate;
+    }
+
+    public function setCrdate(?int $crdate): self
+    {
+        $this->crdate = $crdate;
+
+        return $this;
+    }
+
+    public function getTstamp(): ?int
+    {
+        return $this->tstamp;
+    }
+
+    public function setTstamp(?int $tstamp): self
+    {
+        $this->tstamp = $tstamp;
+
+        return $this;
+    }
+
 }

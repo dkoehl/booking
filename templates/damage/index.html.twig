@@ -12,6 +12,10 @@
                 <th>Damageart</th>
                 <th>Damagetext</th>
                 <th>Price</th>
+                <th>Hidden</th>
+                <th>Deleted</th>
+                <th>Crdate</th>
+                <th>Tstamp</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,6 +26,10 @@
                 <td>{{ damage.damageart }}</td>
                 <td>{{ damage.damagetext }}</td>
                 <td>{{ damage.price }}</td>
+                <td>{{ damage.hidden ? 'Yes' : 'No' }}</td>
+                <td>{{ damage.deleted ? 'Yes' : 'No' }}</td>
+                <td>{{ damage.crdate }}</td>
+                <td>{{ damage.tstamp }}</td>
                 <td>
                     <a href="{{ path('damage_show', {'id': damage.id}) }}">show</a>
                     <a href="{{ path('damage_edit', {'id': damage.id}) }}">edit</a>
@@ -29,7 +37,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="9">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
