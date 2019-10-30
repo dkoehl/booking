@@ -422,6 +422,13 @@ class Booking
     {
         return $this->price;
     }
+    
+    public function setPrice(?Price $price): self
+    {
+        $this->price = $price;
+        
+        return $this;
+    }
 
     /**
      * @return Collection|Damage[]

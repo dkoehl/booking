@@ -29,6 +29,8 @@ const DropDownButtons = require("./components/dropdownbuttons");
 const Actionbuttons = require("./components/actionbuttons");
 const BookingVacancies = require ("./components/bookingform");
 const BookingUserSearch = require ("./components/bookingform_searchguest");
+const BookingFormAddForms = require("./components/booking_add_formulars");
+const BokkingFormSaveForms = require('./components/booking_save_formulars');
 /**
  * Nativ JS stuff
  */
@@ -39,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
     DropDownButtons;
     Actionbuttons;
     BookingVacancies;
+    BookingUserSearch;
+    BookingFormAddForms;
 
 });
 /**

@@ -36,6 +36,10 @@ class DamageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $damage->setTstamp(time());
+            $damage->setHidden(0);
+            $damage->setDeleted(0);
+            $damage->setCrdate(time());
             $entityManager->persist($damage);
             $entityManager->flush();
 
@@ -85,7 +89,9 @@ class DamageController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$damage->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($damage);
+            $damage->setTstamp(time());
+            $damage->setDeleted(1);
+//            $entityManager->remove($damage);
             $entityManager->flush();
         }
 

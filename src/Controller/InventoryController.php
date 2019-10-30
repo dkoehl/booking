@@ -36,6 +36,10 @@ class InventoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $inventory->setTstamp(time());
+            $inventory->setHidden(0);
+            $inventory->setDeleted(0);
+            $inventory->setCrdate(time());
             $entityManager->persist($inventory);
             $entityManager->flush();
 
@@ -85,7 +89,9 @@ class InventoryController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$inventory->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($inventory);
+            $inventory->setTstamp(time());
+            $inventory->setDeleted(1);
+//            $entityManager->remove($inventory);
             $entityManager->flush();
         }
 

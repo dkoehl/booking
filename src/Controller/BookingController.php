@@ -13,6 +13,10 @@ use App\Entity\Room;
 use App\Form\BookingType;
 use App\Form\DamageType;
 use App\Form\GuestType;
+use App\Form\InventoryType;
+use App\Form\ParkingType;
+use App\Form\PaymentType;
+use App\Form\PriceType;
 use App\Form\RoomType;
 use App\Repository\BookingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -102,6 +106,9 @@ class BookingController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             // sets room
+            /**
+             * @todo: check this function, no multiple rooms possible
+             */
             if (is_array($requestReg['room'])) {
                 foreach ($requestReg['room'] as $roomId) {
                     $room = $this->getDoctrine()
@@ -112,6 +119,9 @@ class BookingController extends AbstractController
                 }
             }
             // Sets guest
+            /**
+             * @todo: check this function, no multiple guests possible
+             */
             if (isset($requestReg['guest'])) {
                 $guest = $this->getDoctrine()
                     ->getRepository(Guest::class)
@@ -129,10 +139,7 @@ class BookingController extends AbstractController
             $entityManager->persist($booking);
 
             $entityManager->flush();
-
             $newBookingID = $booking->getId();
-
-
             return $this->redirectToRoute('booking_show', ['id' => $newBookingID]);
         }
 
@@ -151,79 +158,30 @@ class BookingController extends AbstractController
             ->getRepository(Room::class)
             ->findOneBy(['id' => $booking->getBookedroom()]);
 
+//        $price = $this->getDoctrine()
+//            ->getRepository(Price::class)
+//            ->findOneBy(['price_id'=> $booking->getInventory()]);
+        
+        
+        
+//        dump($booking->getPrices()->getValues());
+//        dump($booking->getPrice()->getValues());
+        
         $guestForm = $this->createForm(GuestType::class, new Guest());
-        $roomForm = $this->createForm(RoomType::class, new Room());
-
-        $price = new Price();
-        $priceForm = $this->createFormBuilder($price)
-            ->add('type', TextType::class)
-            ->add('price', TextType::class)
-            ->add('tax', TextType::class)
-            ->add('amount', TextType::class)
-            ->add('prices', TextType::class)
-            ->getForm();
-        $damage = new Damage();
-        $damageForm = $this->createFormBuilder($damage)
-            ->add('damageart', ChoiceType::class, [
-                'choices' => [
-                    'Please choose' => null,
-                    'Small damage' => 'Small damage',
-                    'Middle damage' => 'Middle damage',
-                    'Full damage' => 'Full damage',
-                ],
-            ])
-            ->add('damagetext', TextareaType::class)
-            ->add('price', TextType::class)
-            ->add('damage', TextareaType::class)
-            ->getForm();
-        $inventory = new Inventory();
-        $inventoryForm = $this->createFormBuilder($inventory)
-            ->add('beds', IntegerType::class)
-            ->add('closets', IntegerType::class)
-            ->add('tables', IntegerType::class)
-            ->add('chairs', IntegerType::class)
-            ->add('floor', TextType::class)
-            ->add('walls', TextType::class)
-            ->add('windows', IntegerType::class)
-            ->add('doors', IntegerType::class)
-            ->add('roomsspecial', TextareaType::class)
-            ->getForm();
-        $payment = new Payment();
-        $paymentForm = $this->createFormBuilder($payment)
-            ->add('payment', IntegerType::class)
-            ->add('number', TextType::class)
-            ->add('securitynumber', TextType::class)
-            ->getForm();
-        $parking = new Parking();
-        $parkingForm = $this->createFormBuilder($parking)
-            ->add('carplate', TextType::class)
-            ->add('startdate', DateType::class, [
-                'widget' => 'single_text',
-                'html5' => true,
-                'format' => 'YYYY-mm-dd',
-                'placeholder' => 'dd.mm.YYYY',
-                'attr' => ['class' => 'js-datepicker'],
-                'label' => 'From:',
-            ])
-            ->add('enddate', DateType::class, [
-                'widget' => 'single_text',
-                'html5' => true,
-                'format' => 'YYYY-mm-dd',
-                'placeholder' => 'dd.mm.YYYY',
-                'attr' => ['class' => 'js-datepicker'],
-                'label' => 'To:',
-            ])
-            ->getForm();
-
+        $priceForm = $this->createForm(PriceType::class, new Price());
+        $paymentForm = $this->createForm(PaymentType::class, new Payment());
+        $parkingForm = $this->createForm(ParkingType::class, new Parking());
+        $inventoryForm = $this->createForm(InventoryType::class, new Inventory());
+        $damageForm = $this->createForm(DamageType::class, new Damage());
         return $this->render('booking/show.html.twig', [
             'booking' => $booking,
             'room' => $room,
             'guestForm' => $guestForm->createView(),
             'priceForm' => $priceForm->createView(),
-            'damageForm' => $damageForm->createView(),
-            'inventoryForm' => $inventoryForm->createView(),
             'paymentForm' => $paymentForm->createView(),
             'parkingForm' => $parkingForm->createView(),
+            'inventoryForm' => $inventoryForm->createView(),
+            'damageForm' => $damageForm->createView(),
 
         ]);
     }

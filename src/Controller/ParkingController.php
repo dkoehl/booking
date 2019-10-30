@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Entity\Parking;
 use App\Form\ParkingType;
 use App\Repository\ParkingRepository;
@@ -34,17 +35,26 @@ class ParkingController extends AbstractController
         $form = $this->createForm(ParkingType::class, $parking);
         $form->handleRequest($request);
 
+        $booking = new Booking();
+        $parking->setBooking($booking);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $parking->setTstamp(time());
+            $parking->setHidden(0);
+            $parking->setDeleted(0);
+            $parking->setCrdate(time());
             $entityManager->persist($parking);
             $entityManager->flush();
 
             return $this->redirectToRoute('parking_index');
         }
 
+//        dump($parking);
+//        die('here');
         return $this->render('parking/new.html.twig', [
             'parking' => $parking,
-            'form' => $form->createView(),
+            'parkingForm' => $form->createView(),
         ]);
     }
 
@@ -85,7 +95,9 @@ class ParkingController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$parking->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($parking);
+            $parking->setTstamp(time());
+            $parking->setDeleted(1);
+//            $entityManager->remove($parking);
             $entityManager->flush();
         }
 

@@ -15,12 +15,12 @@ class PaymentType extends AbstractType
             ->add('payment')
             ->add('number')
             ->add('securitynumber')
-            ->add('hidden')
-            ->add('deleted')
-            ->add('crdate')
-            ->add('tstamp')
-            ->add('payments')
-            ->add('booking')
+//            ->add('hidden')
+//            ->add('deleted')
+//            ->add('crdate')
+//            ->add('tstamp')
+//            ->add('payments')
+//            ->add('booking')
         ;
     }
 

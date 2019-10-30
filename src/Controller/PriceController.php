@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Entity\Price;
 use App\Form\PriceType;
 use App\Repository\PriceRepository;
@@ -30,21 +31,38 @@ class PriceController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $price = new Price();
-        $form = $this->createForm(PriceType::class, $price);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        $requestReg = $request->request->get('price');
+        $booking = $request->request->get('price')['booking'];
+        $request->request->remove('price')['booking'];
+    
+        if ($booking) {
+            $price = new Price();
+            $price->setType($requestReg['type']);
+            $price->setPrice($requestReg['price']);
+            $price->setTax($requestReg['tax']);
+            $price->setAmount($requestReg['amount']);
+            $price->setTstamp(time());
+            $price->setHidden(0);
+            $price->setDeleted(0);
+            $price->setCrdate(time());
+//            dump($price);
+//            die('a');
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($price);
             $entityManager->flush();
+    
+            $entityManager = $this->getDoctrine()->getManager();
+            $booking = $entityManager->getRepository(Booking::class)->find($booking);
+            $booking->addPrice($price);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('price_index');
+            return $this->redirectToRoute('booking_index');
         }
-
+        $priceForm = $this->createForm(PriceType::class, new Price());
+        $price = new Price();
         return $this->render('price/new.html.twig', [
             'price' => $price,
-            'form' => $form->createView(),
+            'priceForm' => $priceForm->createView(),
         ]);
     }
 
@@ -74,7 +92,7 @@ class PriceController extends AbstractController
 
         return $this->render('price/edit.html.twig', [
             'price' => $price,
-            'form' => $form->createView(),
+            'priceForm' => $form->createView(),
         ]);
     }
 
@@ -85,7 +103,9 @@ class PriceController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$price->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($price);
+            $price->setTstamp(time());
+            $price->setDeleted(1);
+//            $entityManager->remove($price);
             $entityManager->flush();
         }
 

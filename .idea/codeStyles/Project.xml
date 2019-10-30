@@ -7,8 +7,12 @@
       <option name="RIGHT_MARGIN" value="72" />
     </MarkdownNavigatorCodeStyleSettings>
     <PHPCodeStyleSettings>
+      <option name="INDENT_CODE_IN_PHP_TAGS" value="true" />
+      <option name="PHPDOC_BLANK_LINE_BEFORE_TAGS" value="true" />
+      <option name="PHPDOC_BLANK_LINES_AROUND_PARAMETERS" value="true" />
       <option name="LOWER_CASE_BOOLEAN_CONST" value="true" />
       <option name="LOWER_CASE_NULL_CONST" value="true" />
+      <option name="ELSE_IF_STYLE" value="COMBINE" />
       <option name="KEEP_RPAREN_AND_LBRACE_ON_ONE_LINE" value="true" />
     </PHPCodeStyleSettings>
     <codeStyleSettings language="PHP">
@@ -25,6 +29,9 @@
       <option name="DOWHILE_BRACE_FORCE" value="3" />
       <option name="WHILE_BRACE_FORCE" value="3" />
       <option name="FOR_BRACE_FORCE" value="3" />
+      <indentOptions>
+        <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
+      </indentOptions>
     </codeStyleSettings>
   </code_scheme>
 </component>

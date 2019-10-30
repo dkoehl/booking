@@ -7,15 +7,10 @@ use App\Entity\Guest;
 use App\Form\GuestType;
 use App\Repository\GuestRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+
 /**
  * @Route("/guest")
  */
@@ -74,25 +69,48 @@ class GuestController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $guest = new Guest();
-        $form = $this->createForm(GuestType::class, $guest);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        $requestReg = $request->request->get('guest');
+        $booking = $request->request->get('guest')['bookings'];
+        $request->request->remove('guest')['bookings'];
+    
+        if ($booking) {
+            $guest = new Guest();
+            $guest->setLastname($requestReg['lastname']);
+            $guest->setFirstname($requestReg['firstname']);
+            $guest->setBirthday(\DateTime::createFromFormat(
+                'Y-m-d H:i:s',
+                date(
+                    'Y-m-d H:i:s',
+                    strtotime($requestReg['birthday']
+                    )
+                )
+            ));
+            $guest->setCountry($requestReg['country']);
+            $guest->setPhone($requestReg['phone']);
+            $guest->setEmail($requestReg['email']);
+            $guest->setPersonalid($requestReg['personalid']);
+            $guest->setType($requestReg['type']);
             $guest->setTstamp(time());
             $guest->setHidden(0);
             $guest->setDeleted(0);
             $guest->setCrdate(time());
+        
+        
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($guest);
             $entityManager->flush();
-
-            return $this->redirectToRoute('guest_index');
+        
+            $entityManager = $this->getDoctrine()->getManager();
+            $booking = $entityManager->getRepository(Booking::class)->find($booking);
+            $booking->setGuest($guest);
+            $entityManager->flush();
+        
+            return $this->redirectToRoute('booking_index');
         }
 
         return $this->render('guest/new.html.twig', [
             'guest' => $guest,
-            'form' => $form->createView(),
+            'guestForm' => $form->createView(),
         ]);
     }
 

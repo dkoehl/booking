@@ -81,6 +81,21 @@ class Guest
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $personalid;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $bookingids;
+
     public function getLastnameFirstname(): ?string
     {
         return $this->firstnameLastname = $this->lastname . ', ' . $this->firstname;
@@ -255,6 +270,42 @@ class Guest
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPersonalid(): ?string
+    {
+        return $this->personalid;
+    }
+
+    public function setPersonalid(?string $personalid): self
+    {
+        $this->personalid = $personalid;
+
+        return $this;
+    }
+
+    public function getType(): ?int
+    {
+        return $this->type;
+    }
+
+    public function setType(?int $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getBookingids(): ?string
+    {
+        return $this->bookingids;
+    }
+
+    public function setBookingids(?string $bookingids): self
+    {
+        $this->bookingids = $bookingids;
 
         return $this;
     }

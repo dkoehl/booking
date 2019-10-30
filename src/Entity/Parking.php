@@ -61,6 +61,9 @@ class Parking
      */
     private $booking;
 
+    private $booking_id;
+
+
     public function getId(): ?int
     {
         return $this->id;

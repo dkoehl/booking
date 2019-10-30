@@ -36,6 +36,10 @@ class PaymentController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $payment->setTstamp(time());
+            $payment->setHidden(0);
+            $payment->setDeleted(0);
+            $payment->setCrdate(time());
             $entityManager->persist($payment);
             $entityManager->flush();
 
@@ -85,7 +89,9 @@ class PaymentController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$payment->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($payment);
+            $payment->setTstamp(time());
+            $payment->setDeleted(1);
+//            $entityManager->remove($payment);
             $entityManager->flush();
         }
 

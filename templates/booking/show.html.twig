@@ -75,44 +75,82 @@
         <li class="collection-item lighten-5 grey-text">
             {{ include('booking/_booking_room_body.html.twig') }}
         </li>
+{#        {% if booking.guest.id == 1 %}#}
 
-        {#Guest Data#}
+{#        {% else %}#}
 
-        <li class="collection-item  lighten-5 grey-text">
-            {% if booking.guest.id == 1 %}
-                {{ include('guest/_form.html.twig') }}
-            {% else %}
-                {{ include('booking/_booking_guest_body.html.twig') }}
-{#                {{ include('guest/_form.html.twig') }}#}
-            {% endif %}
-        </li>
-
-
-
+{#        {% endif %}#}
 
 {#        <li class="collection-item  lighten-5 grey-text">#}
 {#            {{ include('guest/_form.html.twig') }}#}
 {#        </li>#}
+
+        {#Guest Data#}
+
+        <li class="collection-item  lighten-5 grey-text" id="booking_guest">
+            {% if booking.guest.id == 1 %}
+                    <button class="btn waves-effect waves-light light-blue z-depth-0" type="submit" name="action" id="button_booking_guest">
+                        guest
+                        <i class="material-icons right">add</i>
+                    </button>
+                <br>
+                {{ include('guest/_form.html.twig') }}
+            {% else %}
+                {{ include('booking/_booking_guest_body.html.twig') }}
+                {{ include('damage/_form.html.twig') }}
+{#                {{ include('guest/_form.html.twig') }}#}
+            {% endif %}
+        </li>
+{#        {{dump(booking.prices.0)}}#}
+        <li class="collection-item  lighten-5 grey-text" id="booking_price">
+            {% if booking.prices.0.id is defined  %}
+                {{ include('booking/_booking_price_body.html.twig') }}
+            {% else %}
+                <button class="btn waves-effect waves-light  light-blue z-depth-0" type="submit" name="action" id="button_booking_price">
+                    Price
+                    <i class="material-icons right">add</i>
+                </button>
+                {{ include('price/_form.html.twig') }}
+            {% endif %}
+        </li>
+
+
         <li class="collection-item  lighten-5 grey-text">
+            <button class="btn waves-effect waves-light  light-blue z-depth-0" type="submit" name="action" id="button_booking_payment">
+                Payment
+                <i class="material-icons right">add</i>
+            </button>
+            {{ include('payment/_form.html.twig') }}
+        </li>
+        <li class="collection-item  lighten-5 grey-text">
+            <button class="btn waves-effect waves-light  light-blue z-depth-0" type="submit" name="action" id="button_booking_parking">
+                Parking
+                <i class="material-icons right">add</i>
+            </button>
+            {{ include('parking/_form.html.twig') }}
+        </li>
+        <li class="collection-item  lighten-5 grey-text">
+            <button class="btn waves-effect waves-light  light-blue z-depth-0" type="submit" name="action" id="button_booking_inventory">
+                Inventory
+                <i class="material-icons right">add</i>
+            </button>
+            {{ include('inventory/_form.html.twig') }}
+        </li>
+        <li class="collection-item  lighten-5 grey-text">
+                <button class="btn waves-effect waves-light  light-blue z-depth-0" type="submit" name="action" id="button_booking_damage">
+                    damages
+                    <i class="material-icons right">add</i>
+                </button>
             {{ include('damage/_form.html.twig') }}
         </li>
 
-        <li class="collection-item  lighten-5 grey-text">
-            {{ include('inventory/_form.html.twig') }}
-        </li>
 
 
-        <li class="collection-item  lighten-5 grey-text">
-            {{ include('price/_form.html.twig') }}
-        </li>
 
-        <li class="collection-item  lighten-5 grey-text">
-            {{ include('payment/_form.html.twig') }}
-        </li>
 
-        <li class="collection-item  lighten-5 grey-text">
-            {{ include('parking/_form.html.twig') }}
-        </li>
+
+
+
     </ul>
 
 

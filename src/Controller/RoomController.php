@@ -79,7 +79,7 @@ class RoomController extends AbstractController
 
         return $this->render('room/new.html.twig', [
             'room' => $room,
-            'form' => $form->createView(),
+            'roomForm' => $form->createView(),
         ]);
     }
 
@@ -128,7 +128,9 @@ class RoomController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $room->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($room);
+            $room->setTstamp(time());
+            $room->setDeleted(1);
+//            $entityManager->remove($room);
             $entityManager->flush();
         }
 

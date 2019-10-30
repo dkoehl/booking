@@ -21,13 +21,13 @@ class InventoryType extends AbstractType
             ->add('windows')
             ->add('doors')
             ->add('roomsspecial')
-            ->add('hidden')
-            ->add('deleted')
-            ->add('crdate')
-            ->add('tstamp')
             ->add('text')
-            ->add('inventory')
-            ->add('booking')
+//            ->add('hidden')
+//            ->add('deleted')
+//            ->add('crdate')
+//            ->add('tstamp')
+//            ->add('inventory')
+//            ->add('booking')
         ;
     }
 
