@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    {{ dump(booking) }}
+{#    {{ dump(booking) }}#}
 
 
 
@@ -101,7 +101,9 @@
 {#                {{ include('guest/_form.html.twig') }}#}
             {% endif %}
         </li>
-{#        {{dump(booking.prices.0)}}#}
+
+
+
         <li class="collection-item  lighten-5 grey-text" id="booking_price">
             {% if booking.prices.0.id is defined  %}
                 {{ include('booking/_booking_price_body.html.twig') }}
@@ -114,14 +116,23 @@
             {% endif %}
         </li>
 
-
-        <li class="collection-item  lighten-5 grey-text">
-            <button class="btn waves-effect waves-light  light-blue z-depth-0" type="submit" name="action" id="button_booking_payment">
-                Payment
-                <i class="material-icons right">add</i>
-            </button>
-            {{ include('payment/_form.html.twig') }}
+{#                {{dump(booking.payments.0)}}#}
+        <li class="collection-item  lighten-5 grey-text" id="booking_payment">
+            {% if booking.payments.0.id is defined  %}
+                {{ include('booking/_booking_payment_body.html.twig') }}
+            {% else %}
+                <button class="btn waves-effect waves-light  light-blue z-depth-0" type="submit" name="action" id="button_booking_payment">
+                    Payment
+                    <i class="material-icons right">add</i>
+                </button>
+                {{ include('payment/_form.html.twig') }}
+            {% endif %}
         </li>
+
+
+
+
+
         <li class="collection-item  lighten-5 grey-text">
             <button class="btn waves-effect waves-light  light-blue z-depth-0" type="submit" name="action" id="button_booking_parking">
                 Parking

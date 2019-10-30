@@ -461,4 +461,11 @@ class Booking
     {
         return $this->payment;
     }
+    
+    public function setPayment(?Payment $payment): self
+    {
+        $this->payment = $payment;
+        
+        return $this;
+    }
 }

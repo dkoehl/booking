@@ -55,11 +55,13 @@ class PriceController extends AbstractController
             $booking = $entityManager->getRepository(Booking::class)->find($booking);
             $booking->addPrice($price);
             $entityManager->flush();
-
-            return $this->redirectToRoute('booking_index');
+            return $this->redirectToRoute('booking_show', [
+                'id' => $booking->getId(),
+            ]);
+            
         }
-        $priceForm = $this->createForm(PriceType::class, new Price());
         $price = new Price();
+        $priceForm = $this->createForm(PriceType::class, $price);
         return $this->render('price/new.html.twig', [
             'price' => $price,
             'priceForm' => $priceForm->createView(),

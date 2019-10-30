@@ -157,15 +157,6 @@ class BookingController extends AbstractController
         $room = $this->getDoctrine()
             ->getRepository(Room::class)
             ->findOneBy(['id' => $booking->getBookedroom()]);
-
-//        $price = $this->getDoctrine()
-//            ->getRepository(Price::class)
-//            ->findOneBy(['price_id'=> $booking->getInventory()]);
-        
-        
-        
-//        dump($booking->getPrices()->getValues());
-//        dump($booking->getPrice()->getValues());
         
         $guestForm = $this->createForm(GuestType::class, new Guest());
         $priceForm = $this->createForm(PriceType::class, new Price());
@@ -173,9 +164,10 @@ class BookingController extends AbstractController
         $parkingForm = $this->createForm(ParkingType::class, new Parking());
         $inventoryForm = $this->createForm(InventoryType::class, new Inventory());
         $damageForm = $this->createForm(DamageType::class, new Damage());
+        $roomForm = $this->createForm(DamageType::class, new Damage());
         return $this->render('booking/show.html.twig', [
             'booking' => $booking,
-            'room' => $room,
+            'room' => $roomForm->createView(),
             'guestForm' => $guestForm->createView(),
             'priceForm' => $priceForm->createView(),
             'paymentForm' => $paymentForm->createView(),

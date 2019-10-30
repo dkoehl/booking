@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Entity\Payment;
 use App\Form\PaymentType;
 use App\Repository\PaymentRepository;
@@ -30,25 +31,39 @@ class PaymentController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $payment = new Payment();
-        $form = $this->createForm(PaymentType::class, $payment);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        $requestReg = $request->request->get('payment');
+        $booking = $request->request->get('payment')['booking'];
+        $request->request->remove('payment')['booking'];
+        
+        if($booking){
+            $payment = new Payment();
+            $payment->setPayment($requestReg['payment']);
+            $payment->setNumber($requestReg['number']);
+            $payment->setSecuritynumber($requestReg['securitynumber']);
             $payment->setTstamp(time());
             $payment->setHidden(0);
             $payment->setDeleted(0);
             $payment->setCrdate(time());
+    
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($payment);
             $entityManager->flush();
-
-            return $this->redirectToRoute('payment_index');
+    
+            $entityManager = $this->getDoctrine()->getManager();
+            $booking = $entityManager->getRepository(Booking::class)->find($booking);
+            $booking->addPayment($payment);
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('booking_show', [
+                'id' => $booking->getId(),
+            ]);
         }
-
+        
+        $payment = new Payment();
+        $paymentForm = $this->createForm(PaymentType::class, $payment);
         return $this->render('payment/new.html.twig', [
             'payment' => $payment,
-            'form' => $form->createView(),
+            'paymentForm' => $paymentForm->createView(),
         ]);
     }
 

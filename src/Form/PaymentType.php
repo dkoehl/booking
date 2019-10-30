@@ -12,6 +12,7 @@ class PaymentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->setAction('/payment/new')
             ->add('payment')
             ->add('number')
             ->add('securitynumber')

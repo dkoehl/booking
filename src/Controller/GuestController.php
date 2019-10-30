@@ -104,8 +104,10 @@ class GuestController extends AbstractController
             $booking = $entityManager->getRepository(Booking::class)->find($booking);
             $booking->setGuest($guest);
             $entityManager->flush();
-        
-            return $this->redirectToRoute('booking_index');
+    
+            return $this->redirectToRoute('booking_show', [
+                'id' => $booking->getId(),
+            ]);
         }
 
         return $this->render('guest/new.html.twig', [
