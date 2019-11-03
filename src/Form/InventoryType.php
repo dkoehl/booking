@@ -12,6 +12,7 @@ class InventoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->setAction('/inventory/new')
             ->add('beds')
             ->add('closets')
             ->add('tables')

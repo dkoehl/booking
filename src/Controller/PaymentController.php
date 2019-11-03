@@ -40,6 +40,7 @@ class PaymentController extends AbstractController
             $payment->setPayment($requestReg['payment']);
             $payment->setNumber($requestReg['number']);
             $payment->setSecuritynumber($requestReg['securitynumber']);
+            
             $payment->setTstamp(time());
             $payment->setHidden(0);
             $payment->setDeleted(0);

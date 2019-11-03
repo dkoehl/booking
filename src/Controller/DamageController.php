@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Entity\Damage;
 use App\Form\DamageType;
 use App\Repository\DamageRepository;
@@ -30,25 +31,42 @@ class DamageController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $damage = new Damage();
-        $form = $this->createForm(DamageType::class, $damage);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        $requestReg = $request->request->get('damage');
+        $booking = $request->request->get('damage')['booking'];
+        $request->request->remove('damage')['booking'];
+    
+        if ($booking) {
+            $damage = new Damage();
+            $damage->setDamageart($requestReg['damageart']);
+            $damage->setDamagetext($requestReg['damagetext']);
+            $damage->setPrice($requestReg['price']);
+    
             $damage->setTstamp(time());
             $damage->setHidden(0);
             $damage->setDeleted(0);
             $damage->setCrdate(time());
+    
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($damage);
             $entityManager->flush();
-
-            return $this->redirectToRoute('damage_index');
+    
+            $entityManager = $this->getDoctrine()->getManager();
+            $booking = $entityManager->getRepository(Booking::class)->find($booking);
+            $booking->addDamage($damage);
+            $damage->setBooking($booking);
+            $entityManager->flush();
+            return $this->redirectToRoute('booking_show', [
+                'id' => $booking->getId(),
+            ]);
+            
+            
         }
-
+        $damage = new Damage();
+        $form = $this->createForm(DamageType::class, $damage);
+        $form->handleRequest($request);
         return $this->render('damage/new.html.twig', [
             'damage' => $damage,
-            'form' => $form->createView(),
+            'damageForm' => $form->createView(),
         ]);
     }
 

@@ -109,10 +109,13 @@ class GuestController extends AbstractController
                 'id' => $booking->getId(),
             ]);
         }
-
+    
+        $guest = new Guest();
+        $guestForm = $this->createForm(GuestType::class, $guest);
+        $guestForm->handleRequest($request);
         return $this->render('guest/new.html.twig', [
             'guest' => $guest,
-            'guestForm' => $form->createView(),
+            'guestForm' => $guestForm->createView(),
         ]);
     }
 

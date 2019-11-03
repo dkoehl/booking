@@ -453,6 +453,12 @@ class Booking
     {
         return $this->parking;
     }
+    public function setParking(?Payment $parking): self
+    {
+        $this->parking = $parking;
+        
+        return $this;
+    }
 
     /**
      * @return Collection|Payment[]

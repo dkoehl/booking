@@ -12,6 +12,7 @@ class DamageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->setAction('/damage/new')
             ->add('damageart')
             ->add('damagetext')
             ->add('price')

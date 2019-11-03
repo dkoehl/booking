@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col s3">
+        <p>
+            <b>beds</b><br>
+            <span class="black-text">{{ inventory.beds }}</span>
+        </p>
+        <p>
+            <b>closets</b><br>
+            <span class="black-text">{{ inventory.closets }}</span>
+        </p>
+        <p>
+            <b>tables</b><br>
+            <span class="black-text">{{ inventory.tables }}</span>
+        </p>
+
+    </div>
+    <div class="col s3">
+        <p>
+            <b>chairs</b><br>
+            <span class="black-text">{{ inventory.chairs }}</span>
+        </p>
+        <p>
+            <b>floor</b><br>
+            <span class="black-text">{{ inventory.floor }}</span>
+        </p>
+
+    </div>
+    <div class="col s2">
+        <p>
+            <b>walls</b><br>
+            <span class="black-text">{{ inventory.walls }}</span>
+        </p>
+        <p>
+            <b>windows</b><br>
+            <span class="black-text">{{ inventory.windows }}</span>
+        </p>
+    </div>
+    <div class="col s3">
+        <p>
+            <b>doors</b><br>
+            <span class="black-text">{{ inventory.doors }}</span>
+        </p>
+        <p>
+            <b>roomsspecial</b><br>
+            <span class="black-text">{{ inventory.roomsspecial }}</span>
+        </p>
+        <p>
+            <b>text</b><br>
+            <span class="black-text">{{ inventory.text }}</span>
+        </p>
+    </div>
+    <div class="col s1" style="text-align:right;">
+        <a class='dropdown-trigger' href='#'
+           data-target='dropdown_guests_{{ inventory.id }}'>
+            <i class="material-icons grey-text">more_vert</i>
+        </a>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown_guests_{{ inventory.id }}' class='dropdown-content'>
+            <li>
+                <a href="{{ path('inventory_show', {'id':inventory.id}) }}" class="blue-text">
+                    Show
+                </a>
+            </li>
+            <li class="divider" tabindex="-1"></li>
+            <li>
+                <a href="{{ path('inventory_edit', {'id': inventory.id}) }}" class="blue-text">
+                    Edit
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

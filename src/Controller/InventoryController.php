@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Entity\Inventory;
 use App\Form\InventoryType;
 use App\Repository\InventoryRepository;
@@ -30,25 +31,47 @@ class InventoryController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $inventory = new Inventory();
-        $form = $this->createForm(InventoryType::class, $inventory);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+    
+        $requestReg = $request->request->get('inventory');
+        $booking = $request->request->get('inventory')['booking'];
+        $request->request->remove('inventory')['booking'];
+    
+        if ($booking) {
+            $inventory = new Inventory();
+            $inventory->setBeds($requestReg['beds']);
+            $inventory->setClosets($requestReg['closets']);
+            $inventory->setTables($requestReg['tables']);
+            $inventory->setChairs($requestReg['chairs']);
+            $inventory->setFloor($requestReg['floor']);
+            $inventory->setWalls($requestReg['walls']);
+            $inventory->setWindows($requestReg['windows']);
+            $inventory->setDoors($requestReg['doors']);
+            $inventory->setRoomsspecial($requestReg['roomsspecial']);
+            $inventory->setText($requestReg['text']);
             $inventory->setTstamp(time());
             $inventory->setHidden(0);
             $inventory->setDeleted(0);
             $inventory->setCrdate(time());
+    
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($inventory);
             $entityManager->flush();
-
-            return $this->redirectToRoute('inventory_index');
+    
+            $entityManager = $this->getDoctrine()->getManager();
+            $booking = $entityManager->getRepository(Booking::class)->find($booking);
+            $booking->addInventory($inventory);
+            $inventory->setBooking($booking);
+            $entityManager->flush();
+            return $this->redirectToRoute('booking_show', [
+                'id' => $booking->getId(),
+            ]);
         }
-
+        $inventory = new Inventory();
+        $form = $this->createForm(InventoryType::class, $inventory);
+        $form->handleRequest($request);
         return $this->render('inventory/new.html.twig', [
             'inventory' => $inventory,
-            'form' => $form->createView(),
+            'inventoryForm' => $form->createView(),
         ]);
     }
 
@@ -78,7 +101,7 @@ class InventoryController extends AbstractController
 
         return $this->render('inventory/edit.html.twig', [
             'inventory' => $inventory,
-            'form' => $form->createView(),
+            'inventoryForm' => $form->createView(),
         ]);
     }
 

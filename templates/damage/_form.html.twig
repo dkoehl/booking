@@ -17,6 +17,7 @@
             <div class="col s12 m12">
                 {{ form_start(damageForm) }}
                 {{ form_widget(damageForm) }}
+                <input type="hidden" id="damage_booking" name="damage[booking]" value="">
                 <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" name="action">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ button_label|default('Save') }}
                     <i class="material-icons right">send</i>
                 </button>

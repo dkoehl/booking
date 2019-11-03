@@ -89,15 +89,10 @@
 
         <li class="collection-item  lighten-5 grey-text" id="booking_guest">
             {% if booking.guest.id == 1 %}
-                    <button class="btn waves-effect waves-light light-blue z-depth-0" type="submit" name="action" id="button_booking_guest">
-                        guest
-                        <i class="material-icons right">add</i>
-                    </button>
-                <br>
                 {{ include('guest/_form.html.twig') }}
             {% else %}
                 {{ include('booking/_booking_guest_body.html.twig') }}
-                {{ include('damage/_form.html.twig') }}
+{#                {{ include('damage/_form.html.twig') }}#}
 {#                {{ include('guest/_form.html.twig') }}#}
             {% endif %}
         </li>
@@ -130,24 +125,43 @@
         </li>
 
 
-
-
-
-        <li class="collection-item  lighten-5 grey-text">
+        <li class="collection-item  lighten-5 grey-text" id="booking_parking">
+            {% if booking.parkings is defined  %}
+                {% for parking in booking.parkings %}
+                    {{ include('booking/_booking_parking_body.html.twig') }}
+                {% endfor %}
+            {% endif %}
             <button class="btn waves-effect waves-light  light-blue z-depth-0" type="submit" name="action" id="button_booking_parking">
                 Parking
                 <i class="material-icons right">add</i>
             </button>
             {{ include('parking/_form.html.twig') }}
         </li>
-        <li class="collection-item  lighten-5 grey-text">
+
+
+
+{#        {{dump(booking.inventory)}}#}
+
+        <li class="collection-item  lighten-5 grey-text" id="booking_inventory">
+            {% if booking.inventories is defined  %}
+                {% for inventory in booking.inventories %}
+                    {{ include('booking/_booking_inventory_body.html.twig') }}
+                {% endfor %}
+            {% endif %}
             <button class="btn waves-effect waves-light  light-blue z-depth-0" type="submit" name="action" id="button_booking_inventory">
                 Inventory
                 <i class="material-icons right">add</i>
             </button>
             {{ include('inventory/_form.html.twig') }}
         </li>
-        <li class="collection-item  lighten-5 grey-text">
+
+
+        <li class="collection-item  lighten-5 grey-text" id="booking_damage">
+            {% if booking.damages is defined  %}
+                {% for damage in booking.damages %}
+                    {{ include('booking/_booking_damage_body.html.twig') }}
+                {% endfor %}
+            {% endif %}
                 <button class="btn waves-effect waves-light  light-blue z-depth-0" type="submit" name="action" id="button_booking_damage">
                     damages
                     <i class="material-icons right">add</i>

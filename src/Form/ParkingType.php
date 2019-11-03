@@ -13,6 +13,7 @@ class ParkingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->setAction('/parking/new')
             ->add('carplate')
             ->add('startdate', DateType::class, [
                 'widget' => 'single_text',

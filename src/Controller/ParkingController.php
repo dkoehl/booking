@@ -31,30 +31,53 @@ class ParkingController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $parking = new Parking();
-        $form = $this->createForm(ParkingType::class, $parking);
-        $form->handleRequest($request);
-
-        $booking = new Booking();
-        $parking->setBooking($booking);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        $requestReg = $request->request->get('parking');
+        $booking = $request->request->get('parking')['booking'];
+        $request->request->remove('parking')['booking'];
+    
+        if ($booking) {
+            $parking = new Parking();
+            $parking->setCarplate($requestReg['carplate']);
+            $parking->setStartdate(
+                \DateTime::createFromFormat(
+                    'Y-m-d H:i:s',
+                    date('Y-m-d H:i:s', strtotime($requestReg['startdate'])
+                
+                    )
+                ));
+            $parking->setEnddate(
+                \DateTime::createFromFormat(
+                    'Y-m-d H:i:s',
+                    date('Y-m-d H:i:s', strtotime($requestReg['enddate'])
+                
+                    )
+                ));
             $parking->setTstamp(time());
             $parking->setHidden(0);
             $parking->setDeleted(0);
             $parking->setCrdate(time());
+            
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($parking);
             $entityManager->flush();
-
-            return $this->redirectToRoute('parking_index');
+        
+            $entityManager = $this->getDoctrine()->getManager();
+            $booking = $entityManager->getRepository(Booking::class)->find($booking);
+            $booking->addParking($parking);
+            $parking->setBooking($booking);
+            $entityManager->flush();
+            return $this->redirectToRoute('booking_show', [
+                'id' => $booking->getId(),
+            ]);
         }
 
 //        dump($parking);
 //        die('here');
+        $parking = new Parking();
+        $parkingForm = $this->createForm(ParkingType::class, $parking);
         return $this->render('parking/new.html.twig', [
             'parking' => $parking,
-            'parkingForm' => $form->createView(),
+            'parkingForm' => $parkingForm->createView(),
         ]);
     }
 
