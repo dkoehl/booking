@@ -63,10 +63,10 @@ class Price
      */
     private $prices;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="price")
-//     */
-//    private $booking;
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="price")
+     */
+    private $booking;
 
     public function __construct()
     {
@@ -186,22 +186,19 @@ class Price
         return $this;
     }
 
-//    /**
-//     * @return Collection|Booking[]
-//     */
-//    public function getBooking(): Collection
-//    {
-//        return $this->booking;
-//    }
-//
-//    public function addBooking(Booking $booking): self
-//    {
-//        if (!$this->booking->contains($booking)) {
-//            $this->booking[] = $booking;
-//            $booking->addPrice($this);
-//        }
-//
-//        return $this;
-//    }
+    /**
+     * @return Collection|Booking[]
+     */
+    public function getBooking(): Collection
+    {
+        return $this->booking;
+    }
+    
+    public function setBooking(?Booking $booking): self
+    {
+        $this->booking = $booking;
+        
+        return $this;
+    }
 
 }

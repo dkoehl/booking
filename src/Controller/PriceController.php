@@ -54,6 +54,7 @@ class PriceController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $booking = $entityManager->getRepository(Booking::class)->find($booking);
             $booking->addPrice($price);
+            $price->setBooking($booking);
             $entityManager->flush();
             return $this->redirectToRoute('booking_show', [
                 'id' => $booking->getId(),

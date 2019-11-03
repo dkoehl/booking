@@ -53,6 +53,7 @@ class PaymentController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $booking = $entityManager->getRepository(Booking::class)->find($booking);
             $booking->addPayment($payment);
+            $payment->setBooking($booking);
             $entityManager->flush();
     
             return $this->redirectToRoute('booking_show', [
