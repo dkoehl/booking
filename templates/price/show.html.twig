@@ -9,46 +9,46 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ booking.prices.0.id }}</td>
+                <td>{{ price.id }}</td>
             </tr>
             <tr>
                 <th>Type</th>
-                <td>{{ booking.prices.0.type }}</td>
+                <td>{{ price.type }}</td>
             </tr>
             <tr>
                 <th>Price</th>
-                <td>{{ booking.prices.0.price }}</td>
+                <td>{{ price.price }}</td>
             </tr>
             <tr>
                 <th>Tax</th>
-                <td>{{ booking.prices.0.tax }}</td>
+                <td>{{ price.tax }}</td>
             </tr>
             <tr>
                 <th>Amount</th>
-                <td>{{ booking.prices.0.amount }}</td>
+                <td>{{ price.amount }}</td>
             </tr>
             <tr>
                 <th>Hidden</th>
-                <td>{{ booking.prices.0.hidden ? 'Yes' : 'No' }}</td>
+                <td>{{ price.hidden ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
                 <th>Deleted</th>
-                <td>{{ booking.prices.0.deleted ? 'Yes' : 'No' }}</td>
+                <td>{{ price.deleted ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
                 <th>Crdate</th>
-                <td>{{ booking.prices.0.crdate }}</td>
+                <td>{{ price.crdate }}</td>
             </tr>
             <tr>
                 <th>Tstamp</th>
-                <td>{{ booking.prices.0.tstamp }}</td>
+                <td>{{ price.tstamp }}</td>
             </tr>
         </tbody>
     </table>
 
     <a href="{{ path('price_index') }}">back to list</a>
 
-    <a href="{{ path('price_edit', {'id': booking.prices.0.id}) }}">edit</a>
+    <a href="{{ path('price_edit', {'id': price.id}) }}">edit</a>
 
     {{ include('price/_delete_form.html.twig') }}
 {% endblock %}

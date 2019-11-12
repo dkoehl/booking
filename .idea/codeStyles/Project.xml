@@ -7,7 +7,6 @@
       <option name="RIGHT_MARGIN" value="72" />
     </MarkdownNavigatorCodeStyleSettings>
     <PHPCodeStyleSettings>
-      <option name="INDENT_CODE_IN_PHP_TAGS" value="true" />
       <option name="PHPDOC_BLANK_LINE_BEFORE_TAGS" value="true" />
       <option name="PHPDOC_BLANK_LINES_AROUND_PARAMETERS" value="true" />
       <option name="LOWER_CASE_BOOLEAN_CONST" value="true" />

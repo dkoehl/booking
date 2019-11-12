@@ -1,3 +1,6 @@
+
+{{ dump(booking.guest) }}
+
 <div class="row">
     <div class="col s3">
         <p>
@@ -19,7 +22,7 @@
     <div class="col s3">
         <p>
             <b>Address</b><br>
-            <span class="black-text">n/a</span>
+            <span class="black-text">{{ booking.guest.address }}</span>
         </p>
     </div>
     <div class="col s2">
@@ -31,9 +34,23 @@
             <b>Birthday</b><br>
             <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
         </p>
+        <p>
+            <b>City of birth</b><br>
+            <span class="black-text">{{ booking.guest.placeofbirth }}</span>
+        </p>
+        <p>
+            <b>Country of birth</b><br>
+            <span class="black-text">{{ booking.guest.country }}</span>
+        </p>
     </div>
     <div class="col s3">
+        {% if booking.guest.type == 2 %}
+            <p>
+                <b>Birthday</b><br>
+                <span class="black-text">{{ booking.guest.address }}</span>
+            </p>
 
+        {% endif %}
     </div>
     <div class="col s1" style="text-align:right;">
         <a class='dropdown-trigger' href='#'

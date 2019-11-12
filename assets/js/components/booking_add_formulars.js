@@ -11,6 +11,8 @@ if (button_booking_guest) {
         formularElementbutton_booking_guest.classList.remove('hide');
         // console.log(formularElement);
     });
+
+
 }
 if (button_booking_price) {
     let form_booking_payment = document.getElementById('button_booking_price').addEventListener('click', function () {
@@ -46,7 +48,20 @@ if (button_booking_damage) {
         formularElementbutton_booking_damage.classList.remove('hide');
     });
 }
-
+let formSwitch = document.getElementById('guest_type');
+if (formSwitch) {
+    document.getElementById('guest_type').value = 1;
+    let formTypePrivate = document.getElementById('guest_type_private').addEventListener('click', function () {
+        let resetCompanyForms = document.getElementById('guest_company');
+        resetCompanyForms.classList.add('hide');
+        document.getElementById('guest_type').value = 1;
+    });
+    let formTypeCompany = document.getElementById('guest_type_company').addEventListener('click', function () {
+        let selectedFormField = document.getElementById('guest_company');
+        selectedFormField.classList.remove('hide');
+        document.getElementById('guest_type').value = 2;
+    });
+}
 
 
 

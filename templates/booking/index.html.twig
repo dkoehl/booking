@@ -166,7 +166,6 @@
     </ul>
 
 
-
     <ul class="collapsible">
         <li class="collapsible-header" style="border-bottom:0px;">
             <div class="col s12">
@@ -247,85 +246,5 @@
         {% endif %}
     </ul>
 
-
-    {#<h3 class="section-title teal-text">All bookings</h3>#}
-    {#<ul class="collapsible">#}
-    {#{% for booking in bookings %}#}
-
-    {#{{ dump(booking.guest.lastname) }}#}
-    {#<li>#}
-    {#<div class="collapsible-header">#}
-    {#<i class="material-icons">person</i>#}
-    {#<span class="title">#}
-    {#<a href="{{ path('guest_show', {'id': booking.guest.id}) }}">{{ booking.guest.lastname |trim }}, {{ booking.guest.firstname|trim }}</a>#}
-    {#</span>#}
-    {#<span class="title">#}
-    {#<i class="material-icons">alarm</i>{{ booking.bookingfrom ? booking.bookingfrom|date('d.m.Y') : '' }}#}
-    {#- <i class="material-icons">alarm_on</i>{{ booking.bookingtill ? booking.bookingtill|date('d.m.Y') : '' }}#}
-    {#</span>#}
-
-    {#<span class="new badge">4</span></div>#}
-    {#<div class="collapsible-body">#}
-    {#<p>Lorem ipsum dolor sit amet.</p>#}
-    {#</div>#}
-    {#</li>#}
-    {#<li>#}
-
-    {#<li class="collection-item avatar">#}
-    {#<i class="material-icons circle">grade</i>#}
-    {#<span class="title">#}
-    {#<a href="{{ path('guest_show', {'id': booking.guest.id}) }}">{{ booking.guest.lastname |trim }}, {{ booking.guest.firstname|trim }}</a>#}
-    {#</span>#}
-    {#<p><br>#}
-    {#<p>#}
-
-    {#</p>#}
-    {#<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>#}
-    {#</li>#}
-    {#{% else %}#}
-    {#<li class="collection-item avatar">#}
-    {#<i class="material-icons circle">folder</i>#}
-    {#<span class="title">Title</span>#}
-    {#<p>First Line <br>#}
-
-    {#</p>#}
-    {#<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>#}
-    {#</li>#}
-    {#{% endfor %}#}
-
-
-    {#</ul>#}
-
-
-    {#<table class="responsive-table highlight display" id="dataTable">#}
-    {#<table class="responsive-table highlight display" id="">#}
-    {#<thead>#}
-    {#<tr>#}
-    {#<th>Bookingfrom</th>#}
-    {#<th>Bookingtill</th>#}
-    {#<th>actions</th>#}
-    {#</tr>#}
-    {#</thead>#}
-    {#<tbody>#}
-    {#{% for booking in bookings %}#}
-    {#<tr>#}
-    {#<td>{{ booking.bookingfrom ? booking.bookingfrom|date('Y-m-d H:i:s') : '' }}</td>#}
-    {#<td>{{ booking.bookingtill ? booking.bookingtill|date('Y-m-d H:i:s') : '' }}</td>#}
-    {#<td>#}
-    {#<a href="{{ path('booking_show', {'id': booking.id}) }}"><i class="material-icons" title="Show ">#}
-    {#remove_red_eye#}
-    {#</i></a>#}
-    {#<a href="{{ path('booking_edit', {'id': booking.id}) }}"><i class="material-icons" title="Edit">#}
-    {#edit#}
-    {#</i></a>#}
-    {#</td>#}
-    {#</tr>#}
-    {#{% else %}#}
-    {#<tr>#}
-    {#<td colspan="8">no records found</td>#}
-    {#</tr>#}
-    {#{% endfor %}#}
-    {#</tbody>#}
-    {#</table>#}
 
 {% endblock %}

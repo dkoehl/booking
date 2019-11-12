@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Booking{% endblock %}
+
+{% block body %}
+    <nav class="collection with-header blue-grey-text white">
+        <div class="nav-wrapper">
+            <ul id="nav-mobile" class="hide-on-med-and-down">
+                <li>
+                    <a href="#">
+                        <i class="material-icons small grey-text">local_printshop</i>
+
+                    </a>
+                </li>
+                <li><a href="#">
+                        <i class="material-icons small grey-text">send</i>
+
+                    </a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <ul class="collection with-header blue-grey-text">
+        <li class="collection-header">
+            Booking No.
+            <h5 class="section-title blue-text">{{ booking.id }}
+                <div class="right right-align right-aligned">
+                    <a href="javascript:history.back()">
+                        <i class="material-icons small grey-text">close</i>
+                    </a>
+                </div>
+            </h5>
+        </li>
+        <li class="collection-item lighten-5 grey-text">
+            {{ include('booking/_booking_body_small.html.twig') }}
+        </li>
+        <li class="collection-item lighten-5 grey-text">
+            {{ include('guest/_booking_guest_body_small.html.twig') }}
+        </li>
+        <li class="collection-item lighten-5 grey-text">
+            <p>
+                <label>
+                    <input type="checkbox"  />
+                    <span>AGBs drucken</span>
+                </label>
+            </p>
+        </li>
+    </ul>
+
+
+    {#    {{ dump(booking) }}#}
+    {#    {{ dump(booking.prices.0) }}#}
+    {#    {{ dump(booking.payments.0) }}#}
+
+    {#    checkout#}
+
+
+{% endblock %}

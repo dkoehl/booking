@@ -17,14 +17,8 @@ use App\Form\InventoryType;
 use App\Form\ParkingType;
 use App\Form\PaymentType;
 use App\Form\PriceType;
-use App\Form\RoomType;
 use App\Repository\BookingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -90,7 +84,23 @@ class BookingController extends AbstractController
 
         return $this->json($freeRoomsArray);
     }
-
+    
+    /**
+     * @Route("/checkout/{bookingid}", name="checkout")
+     */
+    public function checkout(Request $request)
+    {
+        $bookingID = $request->attributes->get('bookingid');
+        $entityManager = $this->getDoctrine()->getManager();
+        $booking = $entityManager->getRepository(Booking::class)->find($bookingID);
+//        dump($booking);
+//        die('im C');
+        $form = $this->createForm(BookingType::class, $booking);
+        return $this->render('booking/checkout.html.twig', [
+            'booking' => $booking,
+            'form' => $form->createView(),
+        ]);
+    }
 
     /**
      * @Route("/new", name="booking_new", methods={"GET","POST"})

@@ -1,0 +1,45 @@
+{#{{ dump(booking.guest) }}#}
+
+<div class="row">
+    <div class="col s3">
+        <p>
+            <b>Name</b><br>
+            <a href="{{ path('guest_show', {'id': booking.guest.id}) }}">
+                {{ booking.guest.lastnameFirstname|trim }}
+            </a>
+        </p>
+        <p>
+            <b>E-Mail</b><br>
+            <span class="black-text">{{ booking.guest.email }}</span>
+        </p>
+
+    </div>
+    <div class="col s3">
+        <p>
+            <b>Birthday</b><br>
+            <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
+        </p>
+        <p>
+            <b>Phone</b><br>
+            <span class="black-text">{{ booking.guest.phone }}</span>
+        </p>
+    </div>
+    <div class="col s3">
+        <p>
+            <b>Registered</b><br>
+            <span class="black-text">{{ booking.guest.crdate ? booking.guest.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+        </p>
+    </div>
+    <div class="col s3">
+        {% if booking.guest.type == 2 %}
+            <p>
+                <b>Company</b><br>
+                <span class="black-text">{{ booking.guest.companyname }}</span>
+            </p>
+            <p>
+                <b>Signature authorized</b><br>
+                <span class="black-text">{{ booking.guest.signatureauthorized }}</span>
+            </p>
+        {% endif %}
+    </div>
+</div>

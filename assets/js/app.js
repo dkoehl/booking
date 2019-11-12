@@ -31,10 +31,16 @@ const BookingVacancies = require ("./components/bookingform");
 const BookingUserSearch = require ("./components/bookingform_searchguest");
 const BookingFormAddForms = require("./components/booking_add_formulars");
 const BokkingFormSaveForms = require('./components/booking_save_formulars');
+const TakePhoto = require('./components/take_photo');
 /**
  * Nativ JS stuff
  */
 document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, {
+        format : 'YYYY-mm-dd',
+        minDate : new Date(1999, 10 - 1, 25)
+    });
 
     Highcharts;
     Collapsed;
@@ -43,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
     BookingVacancies;
     BookingUserSearch;
     BookingFormAddForms;
+    BokkingFormSaveForms;
+    TakePhoto;
 
 });
 /**

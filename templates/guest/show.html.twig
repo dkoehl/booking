@@ -41,34 +41,117 @@
         </li>
         <li class="collection-item grey-text">
             <div class="row">
-                <div class="col s4">
-                    <p>
-                        <b>Name</b><br>
-                        <span class="black-text">{{ guest.lastnameFirstname|trim }}</span>
-                    </p>
-                    <p>
-                        <b>Registered</b><br>
-                        <span class="black-text">{{ guest.crdate ? guest.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
-                    </p>
-                </div>
-                <div class="col s4">
-                    <p>
-                        <b>Lastname</b><br>
-                        <span class="black-text">{{ guest.lastname }}</span>
-                    </p>
-                    <p>
-                        <b>Birthday</b><br>
-                        <span class="black-text">{{ guest.birthday ? guest.birthday|date("d.m.Y") : '' }}</span>
-                    </p>
-                </div>
-                <div class="col s4">
+                <div class="col s3">
                     <p>
                         <b>Firstname</b><br>
                         <span class="black-text">{{ guest.firstname }}</span>
                     </p>
                 </div>
+                <div class="col s3">
+                    <p>
+                        <b>Lastname</b><br>
+                        <span class="black-text">{{ guest.lastname }}</span>
+                    </p>
+                </div>
+                <div class="col s3">
+
+                </div>
+                <div class="col s3">
+
+                </div>
             </div>
         </li>
+
+        <li class="collection-item grey-text">
+            <div class="row">
+                <div class="col s3">
+                    <p>
+                        <b>Phone</b><br>
+                        <span class="black-text">{{ guest.phone }}</span>
+                    </p>
+                </div>
+                <div class="col s3">
+                    <p>
+                        <b>E-Mail</b><br>
+                        <span class="black-text">{{ guest.email }}</span>
+                    </p>
+                </div>
+                <div class="col s3">
+                    <p>
+                        <b>Address</b><br>
+                        <span class="black-text">{{ guest.address }}</span>
+                    </p>
+                </div>
+                <div class="col s3">
+                </div>
+            </div>
+        </li>
+
+
+        <li class="collection-item grey-text">
+            <div class="row">
+                <div class="col s3">
+                    <p>
+                        <b>Birthday</b><br>
+                        <span class="black-text">{{ guest.birthday ? guest.birthday|date("d.m.Y") : '' }}</span>
+                    </p>
+                </div>
+                <div class="col s3">
+
+                    <p>
+                        <b>City of birth</b><br>
+                        <span class="black-text">{{ guest.placeofbirth }}</span>
+                    </p>
+
+                </div>
+                <div class="col s3">
+                    <p>
+                        <b>Country of birth</b><br>
+                        <span class="black-text">{{ guest.country }}</span>
+                    </p>
+                </div>
+                <div class="col s3">
+
+                </div>
+            </div>
+        </li>
+
+        {% if guest.type == 2 %}
+
+
+
+            <li class="collection-item grey-text">
+                <div class="row">
+                    <div class="col s3">
+                        <p>
+                            <b>Company</b><br>
+                            <span class="black-text">{{ guest.companyname }}</span>
+                        </p>
+                    </div>
+                    <div class="col s3">
+                        <p>
+                            <b>Tax number</b><br>
+                            <span class="black-text">{{ guest.taxnumber }}</span>
+                        </p>
+                    </div>
+                    <div class="col s3">
+                        <p>
+                            <b>Signatur</b><br>
+                            <span class="black-text">{{ guest.signatureauthorized }}</span>
+                        </p>
+                    </div>
+                    <div class="col s3">
+                    </div>
+                </div>
+            </li>
+        {% endif %}
+
+
+
+
+
+
+
     </ul>
 
 
@@ -125,7 +208,7 @@
                 </div>
                 <div class="collapsible-body blue-grey lighten-5 grey-text">
                     {{ include('booking/_booking_body_small.html.twig') }}
-                    {{ include('booking/_booking_room_body.html.twig') }}
+                    {{ include('room/_booking_room_body.html.twig') }}
                 </div>
             </li>
         {% else %}

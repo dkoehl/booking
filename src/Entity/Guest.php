@@ -96,6 +96,26 @@ class Guest
      */
     private $bookingids;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $companyname;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $taxnumber;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $signatureauthorized;
+
     public function getLastnameFirstname(): ?string
     {
         return $this->firstnameLastname = $this->lastname . ', ' . $this->firstname;
@@ -209,7 +229,6 @@ class Guest
             $this->bookings[] = $booking;
             $booking->setGuest($this);
         }
-
         return $this;
     }
 
@@ -306,6 +325,54 @@ class Guest
     public function setBookingids(?string $bookingids): self
     {
         $this->bookingids = $bookingids;
+
+        return $this;
+    }
+
+    public function getCompanyname(): ?string
+    {
+        return $this->companyname;
+    }
+
+    public function setCompanyname(?string $companyname): self
+    {
+        $this->companyname = $companyname;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getTaxnumber(): ?string
+    {
+        return $this->taxnumber;
+    }
+
+    public function setTaxnumber(?string $taxnumber): self
+    {
+        $this->taxnumber = $taxnumber;
+
+        return $this;
+    }
+
+    public function getSignatureauthorized(): ?string
+    {
+        return $this->signatureauthorized;
+    }
+
+    public function setSignatureauthorized(?string $signatureauthorized): self
+    {
+        $this->signatureauthorized = $signatureauthorized;
 
         return $this;
     }

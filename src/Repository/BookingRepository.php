@@ -54,7 +54,7 @@ class BookingRepository extends ServiceEntityRepository
         //bookingtill <= '2019-05-30'
 
         $vancancies =  $this->createQueryBuilder('b')
-            ->andWhere('b.bookingfrom <= :bookingfrom AND b.bookingtill >= :bookingtill')
+            ->andWhere('b.bookingfrom <= :bookingfrom AND b.bookingtill >= :bookingtill AND b.deleted = 0 AND b.hidden = 0')
             ->orWhere('b.bookingfrom >= :bookingfrom AND b.bookingtill <= :bookingtill')
             ->setParameter('bookingtill', $bookingTill)
             ->setParameter('bookingfrom' , $bookingFrom)

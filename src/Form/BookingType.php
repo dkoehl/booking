@@ -54,7 +54,8 @@ class BookingType extends AbstractType
                 'label' => 'Guest',
                 'attr' => ['class' => 'hide'],
 
-            ]);
+            ])
+        ;
 //            ->add('room', HiddenType::class,[])
 //            ->add('guest', HiddenType::class,[]);
     }

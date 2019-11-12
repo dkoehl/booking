@@ -12,20 +12,16 @@
             <b>tables</b><br>
             <span class="black-text">{{ inventory.tables }}</span>
         </p>
-
-    </div>
-    <div class="col s3">
         <p>
             <b>chairs</b><br>
             <span class="black-text">{{ inventory.chairs }}</span>
         </p>
+    </div>
+    <div class="col s3">
         <p>
             <b>floor</b><br>
             <span class="black-text">{{ inventory.floor }}</span>
         </p>
-
-    </div>
-    <div class="col s2">
         <p>
             <b>walls</b><br>
             <span class="black-text">{{ inventory.walls }}</span>
@@ -34,12 +30,13 @@
             <b>windows</b><br>
             <span class="black-text">{{ inventory.windows }}</span>
         </p>
-    </div>
-    <div class="col s3">
         <p>
             <b>doors</b><br>
             <span class="black-text">{{ inventory.doors }}</span>
         </p>
+    </div>
+
+    <div class="col s5">
         <p>
             <b>roomsspecial</b><br>
             <span class="black-text">{{ inventory.roomsspecial }}</span>
@@ -49,6 +46,8 @@
             <span class="black-text">{{ inventory.text }}</span>
         </p>
     </div>
+
+
     <div class="col s1" style="text-align:right;">
         <a class='dropdown-trigger' href='#'
            data-target='dropdown_guests_{{ inventory.id }}'>

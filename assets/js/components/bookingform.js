@@ -56,10 +56,7 @@ if (bookingVacancies) {
                         let newElement = document.createElement('li');
                         newElement.setAttribute('class', 'hoverable collapsible-header blue-grey-text');
                         newElement.setAttribute('data-room', response.data[i]['id']);
-                        returnHtml = '<div class="col s1">' +
-                            '<input type="checkbox" id="room_' + response.data[i]['id'] + '" name="booking[room]" style="opacity:1;">' +
-                            '</div>' +
-                            '<div class="col s3">' +
+                        returnHtml = '<div class="col s4">' +
                             response.data[i]['name'] +
                             '</div>' +
                             '<div class="col s3">' +
