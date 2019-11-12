@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0707c68f-ccee-4fa9-a1d5-c48272e61719" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/js/components/take_photo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191104112929.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191104113034.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/booking/checkout.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/guest/_booking_guest_body_small.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/guest/_booking_new_guest_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/components/booking_add_formulars.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/booking_add_formulars.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/components/bookingform.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/bookingform.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GuestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GuestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Guest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Guest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BookingType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/GuestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/GuestType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/BookingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookingRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_damage_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/damage/_booking_damage_body.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_guest_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guest/_booking_guest_body.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_inventory_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/inventory/_booking_inventory_body.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_parking_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parking/_booking_parking_body.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_payment_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/payment/_booking_payment_body.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_price_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/price/_booking_price_body.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_room_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/room/_booking_room_body.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/booking/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/booking/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/booking/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/booking/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/booking/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/booking/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/guest/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guest/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/guest/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guest/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/guest/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guest/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/guest/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guest/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/price/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/price/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileColors">
+    <fileColor scope="Non-Project Files (Material Default)" color="2E3C43" />
+    <fileColor scope="Non-Project Files (Material Darker)" color="323232" />
+    <fileColor scope="Non-Project Files (Material Lighter)" color="eae8e8" />
+    <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="PHPCodeSnifferProjectConfiguration">
+    <option name="selectedConfigurationId" value="DEFAULT_INTERPRETER" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.1">
+    <include_path>
+      <path value="$PROJECT_DIR$/../bu-st/web/typo3" />
+      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/profiler-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/test-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/vendor/symfony/contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/orm-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/inflector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/symfony/serializer-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-cache-bundle" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/reflection" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-eventmanager" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-code" />
+      <path value="$PROJECT_DIR$/vendor/easycorp/easy-log-handler" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1RZ5MuWxHS4L3HOJtrKPYLsyKRb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="ignore_missing_gitignore" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/booking" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="options.lastSelected" value="vcs.Git" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/room" />
+      <recent name="$PROJECT_DIR$/templates/damage" />
+      <recent name="$PROJECT_DIR$/templates/inventory" />
+      <recent name="$PROJECT_DIR$/templates/parking" />
+      <recent name="$PROJECT_DIR$/templates/payment" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/booking" />
+      <recent name="$PROJECT_DIR$/assets/js" />
+      <recent name="$PROJECT_DIR$/assets/css" />
+      <recent name="$PROJECT_DIR$/assets" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration" SSL_PROTOCOLS="sslv3">
+    <configuration useDefault="false">$USER_HOME$/.subversion_IDEA</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0707c68f-ccee-4fa9-a1d5-c48272e61719" name="Default Changelist" comment="" />
+      <created>1555144555362</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555144555362</updated>
+      <workItem from="1555144560035" duration="18000" />
+      <workItem from="1555144627845" duration="20000" />
+      <workItem from="1555144697817" duration="54000" />
+      <workItem from="1555144851164" duration="85000" />
+      <workItem from="1555144974996" duration="79000" />
+      <workItem from="1555145157414" duration="37000" />
+      <workItem from="1555145221842" duration="30000" />
+      <workItem from="1555145277363" duration="110000" />
+      <workItem from="1555145425239" duration="143000" />
+      <workItem from="1555145597522" duration="112106000" />
+      <workItem from="1556898961957" duration="31000" />
+      <workItem from="1556955646548" duration="2739000" />
+      <workItem from="1558435433966" duration="2090000" />
+      <workItem from="1558514996847" duration="93911000" />
+      <workItem from="1563467731933" duration="563000" />
+      <workItem from="1568302917806" duration="579000" />
+      <workItem from="1568303776690" duration="4348000" />
+      <workItem from="1568735169002" duration="3179000" />
+      <workItem from="1569073738721" duration="1113000" />
+      <workItem from="1569077575061" duration="28345000" />
+      <workItem from="1569861738706" duration="2125000" />
+      <workItem from="1569865254682" duration="1652000" />
+      <workItem from="1571325385471" duration="518000" />
+      <workItem from="1571495274741" duration="683000" />
+      <workItem from="1571496959937" duration="8192000" />
+      <workItem from="1571757611356" duration="42000" />
+      <workItem from="1571757690170" duration="43000" />
+      <workItem from="1571757740749" duration="31000" />
+      <workItem from="1571757833594" duration="29000" />
+      <workItem from="1571758078843" duration="337000" />
+      <workItem from="1571758446406" duration="24000" />
+      <workItem from="1571758493887" duration="4302000" />
+      <workItem from="1571848508893" duration="20011000" />
+      <workItem from="1572437197786" duration="51000" />
+      <workItem from="1572437283117" duration="36649000" />
+      <workItem from="1573057312559" duration="14322000" />
+    </task>
+    <task id="LOCAL-00001" summary="first commit &#10;-&gt; running app">
+      <created>1555269097710</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1555269097710</updated>
+    </task>
+    <task id="LOCAL-00002" summary="first commit &#10;-&gt; running app">
+      <created>1555273290606</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1555273290607</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Booking added">
+      <created>1555310614333</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1555310614333</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Booking styled">
+      <created>1555310828938</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1555310828938</updated>
+    </task>
+    <task id="LOCAL-00005" summary="befor adding related tables">
+      <created>1555319718942</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1555319718942</updated>
+    </task>
+    <task id="LOCAL-00006" summary="3 relations added&#10;guest, booking, room&#10;&#10;-&gt; working">
+      <created>1555434679461</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1555434679461</updated>
+    </task>
+    <task id="LOCAL-00007" summary="working datatables and datepickerrrrrr">
+      <created>1555442182520</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1555442182520</updated>
+    </task>
+    <task id="LOCAL-00008" summary="screens added">
+      <created>1555442895786</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1555442895786</updated>
+    </task>
+    <task id="LOCAL-00009" summary="screens added">
+      <created>1555442979552</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1555442979552</updated>
+    </task>
+    <task id="LOCAL-00010" summary="screens added">
+      <created>1555443084488</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1555443084488</updated>
+    </task>
+    <task id="LOCAL-00011" summary="screens added">
+      <created>1555443148465</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1555443148465</updated>
+    </task>
+    <task id="LOCAL-00012" summary="jquery select2 plugin added">
+      <created>1555607132362</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1555607132362</updated>
+    </task>
+    <task id="LOCAL-00013" summary="highcharts.js added">
+      <created>1555791549199</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1555791549199</updated>
+    </task>
+    <task id="LOCAL-00014" summary="highcharts.js added">
+      <created>1558540848706</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1558540848706</updated>
+    </task>
+    <task id="LOCAL-00015" summary="default route added">
+      <created>1558541271018</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1558541271018</updated>
+    </task>
+    <task id="LOCAL-00016" summary="bookings neu gemacht">
+      <created>1558619307579</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1558619307579</updated>
+    </task>
+    <task id="LOCAL-00017" summary="bookings neu gemacht">
+      <created>1558623658852</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1558623658852</updated>
+    </task>
+    <task id="LOCAL-00018" summary="bookings neu gemacht">
+      <created>1558633006980</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1558633006980</updated>
+    </task>
+    <task id="LOCAL-00019" summary="booking details optimiert">
+      <created>1558684818292</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1558684818292</updated>
+    </task>
+    <task id="LOCAL-00020" summary="user details optimiert">
+      <created>1558686559011</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1558686559012</updated>
+    </task>
+    <task id="LOCAL-00021" summary="room details optimiert">
+      <created>1558697342767</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1558697342767</updated>
+    </task>
+    <task id="LOCAL-00022" summary="javascript optimiert">
+      <created>1558770122105</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1558770122105</updated>
+    </task>
+    <task id="LOCAL-00023" summary="javascript optimiert">
+      <created>1558777734060</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1558777734060</updated>
+    </task>
+    <task id="LOCAL-00024" summary="new design added">
+      <created>1558785103778</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1558785103778</updated>
+    </task>
+    <task id="LOCAL-00025" summary="new design added">
+      <created>1558785730300</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1558785730300</updated>
+    </task>
+    <task id="LOCAL-00026" summary="new design added">
+      <created>1558786762170</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1558786762170</updated>
+    </task>
+    <task id="LOCAL-00027" summary="kleinere design anpassungen">
+      <created>1558795133976</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1558795133976</updated>
+    </task>
+    <task id="LOCAL-00028" summary="new screens added">
+      <created>1558817615982</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1558817615982</updated>
+    </task>
+    <task id="LOCAL-00029" summary="new screens added">
+      <created>1558870091738</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1558870091738</updated>
+    </task>
+    <task id="LOCAL-00030" summary="new screens added">
+      <created>1558880262430</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1558880262430</updated>
+    </task>
+    <task id="LOCAL-00031" summary="wieder bisschen schöner">
+      <created>1558898265001</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1558898265001</updated>
+    </task>
+    <task id="LOCAL-00032" summary="stand vor der relation booking &gt; price">
+      <created>1571847511440</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1571847511440</updated>
+    </task>
+    <task id="LOCAL-00033" summary="CRUD neu generiert">
+      <created>1571933313441</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1571933313441</updated>
+    </task>
+    <task id="LOCAL-00034" summary="add guest&#10;add price&#10;= fertig">
+      <created>1572459929217</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1572459929217</updated>
+    </task>
+    <task id="LOCAL-00035" summary="add payment&#10;= fertig">
+      <created>1572462514753</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1572462514753</updated>
+    </task>
+    <task id="LOCAL-00036" summary="alle relationen geadded">
+      <created>1572794355092</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1572794355092</updated>
+    </task>
+    <task id="LOCAL-00037" summary="alle relationen geadded">
+      <created>1572795216448</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1572795216448</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
+    <MESSAGE value="first commit &#10;-&gt; running app" />
+    <MESSAGE value="Booking added" />
+    <MESSAGE value="Booking styled" />
+    <MESSAGE value="befor adding related tables" />
+    <MESSAGE value="3 relations added&#10;guest, booking, room&#10;&#10;-&gt; working" />
+    <MESSAGE value="working datatables and datepickerrrrrr" />
+    <MESSAGE value="screens added" />
+    <MESSAGE value="jquery select2 plugin added" />
+    <MESSAGE value="highcharts.js added" />
+    <MESSAGE value="default route added" />
+    <MESSAGE value="bookings neu gemacht" />
+    <MESSAGE value="booking details optimiert" />
+    <MESSAGE value="user details optimiert" />
+    <MESSAGE value="room details optimiert" />
+    <MESSAGE value="javascript optimiert" />
+    <MESSAGE value="new design added" />
+    <MESSAGE value="kleinere design anpassungen" />
+    <MESSAGE value="new screens added" />
+    <MESSAGE value="wieder bisschen schöner" />
+    <MESSAGE value="stand vor der relation booking &gt; price" />
+    <MESSAGE value="CRUD neu generiert" />
+    <MESSAGE value="add guest&#10;add price&#10;= fertig" />
+    <MESSAGE value="add payment&#10;= fertig" />
+    <MESSAGE value="alle relationen geadded" />
+    <option name="LAST_COMMIT_MESSAGE" value="alle relationen geadded" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/assets/js/components/highcharts.js</url>
+          <line>9</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/assets/js/components/bookingform.js</url>
+          <line>70</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/assets/js/components/bookingform_searchguest.js</url>
+          <line>7</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/ParkingController.php</url>
+          <line>79</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/guest/edit.html.twig</url>
+          <line>14</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
