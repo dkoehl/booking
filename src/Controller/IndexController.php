@@ -8,6 +8,8 @@ use App\Entity\Room;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Translation\Translator;
+
 
 class IndexController extends AbstractController
 {
@@ -17,7 +19,7 @@ class IndexController extends AbstractController
     public function index()
     {
         return $this->render('index/index.html.twig', [
-            'controller_name' => 'IndexController',
+            'controller_name' => 'IndexController'
         ]);
     }
 

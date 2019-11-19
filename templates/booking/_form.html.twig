@@ -3,7 +3,7 @@
         <div class="col s12">
             <h5 class="section-title blue-text">
                 <i class="material-icons">today</i>
-                New Booking
+                {{ 'booking.newbooking'|trans }}
                 <div class="right right-align right-aligned">
                     <a href="javascript:history.back()">
                         <i class="material-icons small grey-text">close</i>
@@ -24,13 +24,13 @@
                     <div>
                         <label>
                             <input class="with-gap" name="group3" type="radio" id="ez" name="roomtype" value="ez" />
-                            <span>Einzel- Zimmer</span>
+                            <span>{{ 'booking.label.einzelzimmer'|trans }}</span>
                         </label>
                     </div>
                     <div>
                         <label>
                             <input class="with-gap" name="group3" type="radio" id="dz" name="roomtype" value="dz" />
-                            <span>Doppel- Zimmer</span>
+                            <span>{{ 'booking.label.doppelzimmer'|trans }}</span>
                         </label>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
 
 
 
-                <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" id="booking_submit" name="action">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ button_label|default('Save') }}
+                <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" id="booking_submit" name="action">{{ 'booking.button.save'|trans }}
                     <i class="material-icons right">send</i>
                 </button>
                 {{ form_end(form) }}

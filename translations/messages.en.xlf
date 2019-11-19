@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="booking.headline">
+                <source>booking.headline</source>
+                <target>J'aime Symfony</target>
+            </trans-unit>
+            <trans-unit id="navigation.rooms">
+                <source>navigation.rooms</source>
+                <target>Rooms</target>
+            </trans-unit>
+            <trans-unit id="navigation.bookings">
+                <source>navigation.bookings</source>
+                <target>Bookings</target>
+            </trans-unit>
+            <trans-unit id="navigation.Guests">
+                <source>navigation.Guests</source>
+                <target>Guests</target>
+            </trans-unit>
+            <trans-unit id="navigation.Arrivals">
+                <source>navigation.Arrivals</source>
+                <target>Arrivals</target>
+            </trans-unit>
+            <trans-unit id="navigation.Calendar">
+                <source>navigation.Calendar</source>
+                <target>Calendar</target>
+            </trans-unit>
+
+
+            <trans-unit id="booking.newbooking">
+                <source>booking.newbooking</source>
+                <target>New Booking</target>
+            </trans-unit>
+            <trans-unit id="booking.label.from">
+                <source>booking.label.from</source>
+                <target>Booking from:</target>
+            </trans-unit>
+            <trans-unit id="booking.label.to">
+                <source>booking.label.to</source>
+                <target>Booking to:</target>
+            </trans-unit>
+            <trans-unit id="booking.label.room">
+                <source>booking.label.room</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="booking.label.guest">
+                <source>booking.label.guest</source>
+                <target></target>
+            </trans-unit>
+
+            <trans-unit id="booking.label.einzelzimmer">
+                <source>booking.label.einzelzimmer</source>
+                <target>Einzel- Zimmer</target>
+            </trans-unit>
+            <trans-unit id="booking.label.doppelzimmer">
+                <source>booking.label.doppelzimmer</source>
+                <target>Doppel- Zimmer</target>
+            </trans-unit>
+            <trans-unit id="booking.button.save">
+                <source>booking.button.save</source>
+                <target>Save</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

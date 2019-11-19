@@ -26,7 +26,7 @@ class BookingType extends AbstractType
                 'html5' => true,
                 'placeholder' => 'Select a value',
                 'format' => 'YYYY-mm-dd',
-                'label' => 'From: ',
+                'label' => 'booking.label.from',
                 'attr' => ['class' => 'js-datepicker'],
             ])
             ->add('bookingtill', DateType::class, [
@@ -35,7 +35,7 @@ class BookingType extends AbstractType
                 'format' => 'YYYY-mm-dd',
                 'placeholder' => 'dd.mm.YYYY',
                 'attr' => ['class' => 'js-datepicker'],
-                'label' => 'To:',
+                'label' => 'booking.label.to',
             ])
 //            ->add('room', CollectionType::class, [
 //                'entry_type' => RoomType::class,
@@ -45,13 +45,14 @@ class BookingType extends AbstractType
                 'class' => Room::class,
                 'choice_label' => 'houseName',
                 'multiple' => true,
+                'label' => 'booking.label.room',
                 'attr' => ['class' => 'hide'],
             ])
             ->add('guest', EntityType::class, [
                 'class' => Guest::class,
                 'choice_label' => 'lastnameFirstname',
                 'multiple' => false,
-                'label' => 'Guest',
+                'label' => 'booking.label.guest',
                 'attr' => ['class' => 'hide'],
 
             ])

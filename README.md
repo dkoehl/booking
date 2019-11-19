@@ -18,7 +18,12 @@ Official booking application.
 * Asset Watch: yarn run encore dev --watch
 
 
-### Demo
+## Labels und Messages
+Pfad zur Labels/Sprachdatei: `translations/messages.xlf`
+
+{{ '`booking.headline`'|trans }}
+
+### Dmo
 * <https://material.io/develop/web/>
 * <https://dribbble.com/shots/6321346-Mission-Control-Full-view/attachments>
 * <http://preview.themeforest.net/item/material-design-admin-with-angularjs/full_screen_preview/13582227>

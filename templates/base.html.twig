@@ -41,7 +41,7 @@
                 <a href="/room"
                    class="{{ app.request.attributes.get('_route') starts with 'room' ? 'active light-blue-text' : 'white-text' }}">
                     <i class="material-icons ">meeting_room</i>
-                    <br>Rooms
+                    <br>{{ 'navigation.rooms'|trans }}
                 </a>
             </li>
             <br>
@@ -50,8 +50,8 @@
                 <a href="/booking"
                    class="{{ app.request.attributes.get('_route') starts with 'booking' ? 'active light-blue-text' : 'white-text' }}">
                     <i class="material-icons ">event_available</i>
-                    <br>
-                    Bookings
+                    <br>{{ 'navigation.bookings'|trans }}
+
                 </a>
             </li>
             <br>
@@ -60,15 +60,17 @@
                 <a href="/guest"
                    class="{{ app.request.attributes.get('_route') starts with 'guest' ? 'active light-blue-text' : 'white-text' }}">
                     <i class="material-icons ">group</i>
-                    <br>
-                    Guests
+                    <br>{{ 'navigation.Guests'|trans }}
+
                 </a>
             </li>
             <br>
 
-            <li><a href="" class="grey-text"><i class="material-icons">alarm</i><br>Arrivals</a></li>
+            <li><a href="" class="grey-text"><i class="material-icons">alarm</i><br>
+                    {{ 'navigation.Arrivals'|trans }}
+                </a></li>
             <br>
-            <li><a href="" class="grey-text"><i class="material-icons">today</i><br>Calendar</a></li>
+            <li><a href="" class="grey-text"><i class="material-icons">today</i><br>{{ 'navigation.Calendar'|trans }}</a></li>
         </ul>
     </div>
     <div class="col s11 m11 l11">
