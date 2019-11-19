@@ -2,40 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0707c68f-ccee-4fa9-a1d5-c48272e61719" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/js/components/take_photo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191104112929.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191104113034.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/booking/checkout.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/guest/_booking_guest_body_small.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/guest/_booking_new_guest_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/components/booking_add_formulars.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/booking_add_formulars.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/components/bookingform.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/bookingform.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GuestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GuestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Guest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Guest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BookingType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/GuestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/GuestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BookingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_damage_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/damage/_booking_damage_body.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_guest_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guest/_booking_guest_body.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_inventory_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/inventory/_booking_inventory_body.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_parking_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parking/_booking_parking_body.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_payment_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/payment/_booking_payment_body.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_price_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/price/_booking_price_body.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/booking/_booking_room_body.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/room/_booking_room_body.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/booking/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/booking/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/booking/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/booking/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/booking/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/booking/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/guest/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guest/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/guest/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guest/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/guest/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guest/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/guest/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guest/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/price/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/price/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-12.09.19_17-49_localDEV.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-18.04.19_21-45_localDev.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-18.04.19_21-48_localDev.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-18.04.19_22-44_localDev.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-19.04.19_11-04_localDev.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-19.10.19_16-49_DEV.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-22.05.19_10-57_Development.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-23.10.19_18-17_DEV.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-30.10.19_19-24_localDEV.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RoomController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Price.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Price.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +167,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="ignore_missing_gitignore" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/booking" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nightstand" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -269,7 +249,8 @@
       <workItem from="1571848508893" duration="20011000" />
       <workItem from="1572437197786" duration="51000" />
       <workItem from="1572437283117" duration="36649000" />
-      <workItem from="1573057312559" duration="14322000" />
+      <workItem from="1573057312559" duration="14710000" />
+      <workItem from="1573662282649" duration="3988000" />
     </task>
     <task id="LOCAL-00001" summary="first commit &#10;-&gt; running app">
       <created>1555269097710</created>
@@ -530,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572795216448</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="ux anpassungen&#10;booking user jouney usw.">
+      <created>1573575866659</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1573575866659</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -589,7 +577,8 @@
     <MESSAGE value="add guest&#10;add price&#10;= fertig" />
     <MESSAGE value="add payment&#10;= fertig" />
     <MESSAGE value="alle relationen geadded" />
-    <option name="LAST_COMMIT_MESSAGE" value="alle relationen geadded" />
+    <MESSAGE value="ux anpassungen&#10;booking user jouney usw." />
+    <option name="LAST_COMMIT_MESSAGE" value="ux anpassungen&#10;booking user jouney usw." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

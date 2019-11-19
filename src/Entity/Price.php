@@ -186,13 +186,13 @@ class Price
         return $this;
     }
 
-    /**
-     * @return Collection|Booking[]
-     */
-    public function getBooking(): Collection
-    {
-        return $this->booking;
-    }
+//    /**
+//     * @return Collection|Booking[]|null
+//     */
+//    public function getBooking(): ?Collection
+//    {
+//        return $this->booking;
+//    }
     
     public function setBooking(?Booking $booking): self
     {
