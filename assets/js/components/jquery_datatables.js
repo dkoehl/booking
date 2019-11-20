@@ -39,7 +39,7 @@ if (dataTableRooms) {
                             {
                                 targets: 4,
                                 render: function (data, type, row, meta) {
-                                    return data.bookings.length;
+                                    return data.bookings;
                                 }
                             },
                             {
@@ -134,14 +134,8 @@ if (dataTableGuests) {
                             {
                                 targets: 3,
                                 render: function (data, type, row, meta) {
-                                    var utcSeconds = data.timestamp;
-                                    var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
-                                    d.setUTCSeconds(utcSeconds);
-                                    let newDate = new Date(d);
-                                    let date = d.toLocaleString('de-DE');
-                                    let dataArray = date.split(",");
-                                    return dataArray[0];
-
+                                    let birthDate = new Date(data);
+                                    return birthDate.toLocaleDateString();
                                 }
                             },
                             {

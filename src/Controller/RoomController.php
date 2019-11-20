@@ -11,10 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Encoder\JsonEncode;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/room")
@@ -25,22 +22,23 @@ class RoomController extends AbstractController
     /**
      * @Route("/overview")
      */
-    public function overview(RoomRepository $roomRepository): Response
+    public function overview(RoomRepository $roomRepository)
     {
         $rooms = $roomRepository->findAll();
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new GetSetMethodNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-
-        $response = new JsonResponse();
-        $jsonObject = $serializer->serialize($rooms, 'json', [
-            'circular_reference_handler' => function ($object) {
-                return $object->getId();
+        foreach ($rooms as $room) {
+            if ($room->getHidden() || $room->getDeleted()) {
+                continue;
             }
-        ]);
-        $response->setData(json_decode($jsonObject));
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
+            $roomArray[] =[
+                'id' => $room->getId(),
+                'name' => $room->getName(),
+                'beds' => $room->getBeds(),
+                'floor' => $room->getFloor(),
+                'house' => $room->getHouse(),
+                'bookings' => count($room->getBookings())
+            ];
+        }
+        return $this->json($roomArray);
     }
 
 

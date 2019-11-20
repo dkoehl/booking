@@ -47,7 +47,15 @@ class RoomRepository extends ServiceEntityRepository
         ;
     }
     */
-
+    public function getAllRooms()
+    {
+        return $this->createQueryBuilder('r')
+            ->where('r.deleted != (:roomid)')
+            ->setParameter('roomid', 1)
+            ->getQuery()
+            ->setMaxResults(5)
+            ->execute();
+    }
     /**
      * @param string $rentedRoomIds
      * @return mixed
