@@ -107,7 +107,7 @@ class ParkingController extends AbstractController
 
         return $this->render('parking/edit.html.twig', [
             'parking' => $parking,
-            'form' => $form->createView(),
+            'parkingForm' => $form->createView(),
         ]);
     }
 

@@ -95,7 +95,7 @@ class PaymentController extends AbstractController
 
         return $this->render('payment/edit.html.twig', [
             'payment' => $payment,
-            'form' => $form->createView(),
+            'paymentForm' => $form->createView(),
         ]);
     }
 

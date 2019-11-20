@@ -96,7 +96,7 @@ class DamageController extends AbstractController
 
         return $this->render('damage/edit.html.twig', [
             'damage' => $damage,
-            'form' => $form->createView(),
+            'damageForm' => $form->createView(),
         ]);
     }
 
