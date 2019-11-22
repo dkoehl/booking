@@ -18,16 +18,22 @@ if (dataTableRooms) {
                     {
                         responsive: true,
                         stateSave: true,
-                        // oLanguage: {
-                        //     sSearch: "Find the bond you need:",
-                        //     language: {searchPlaceholder: "Search records"}
-                        // },
+                        oLanguage: {
+                            sSearch: " ",
+                            language: {searchPlaceholder: "Search records"}
+                        },
                         data: response.data,
+                        language: {
+                            searchPlaceholder: "Search"
+                        },
                         columns: [
                             {data: 'name'},
                             {data: 'house'},
                             {data: 'floor'},
                             {data: 'beds'},
+                            {
+                                "data": null,
+                            },
                             {
                                 "data": null,
                             },
@@ -39,11 +45,39 @@ if (dataTableRooms) {
                             {
                                 targets: 4,
                                 render: function (data, type, row, meta) {
-                                    return data.bookings;
+                                    let selectedFloor = '';
+                                    if (data.floor.includes('EG')) {
+                                        selectedFloor = '0';
+                                    }
+                                    if (data.floor.includes('OG')) {
+                                        selectedFloor = '1';
+                                    }
+                                    if (data.floor.includes('OG 1')) {
+                                        selectedFloor = '2';
+                                    }
+                                    if (data.floor.includes('OG 2')) {
+                                        selectedFloor = '3';
+                                    }
+                                    if (data.floor.includes('OG 3')) {
+                                        selectedFloor = '4';
+                                    }
+                                    if (data.floor.includes('OG 4')) {
+                                        selectedFloor = '5';
+                                    }
+                                    if (data.floor.includes('OG 5')) {
+                                        selectedFloor = '6';
+                                    }
+                                    return selectedFloor + '.'+data.house.replace('Haus', '').substr(1, 1) + '.'+  data.name + '.' + data.beds;
                                 }
                             },
                             {
                                 targets: 5,
+                                render: function (data, type, row, meta) {
+                                    return data.bookings;
+                                }
+                            },
+                            {
+                                targets: 6,
                                 render: function (data, type, row, meta) {
                                     if (type === 'display') {
                                         data = '<a class="blue-grey-text" href="/room/' + data.id + '"><i class="material-icons">more_horiz</i></a>';
