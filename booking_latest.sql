@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.26)
 # Datenbank: booking
-# Erstellt am: 2019-11-25 16:34:22 +0000
+# Erstellt am: 2019-11-25 17:22:35 +0000
 # ************************************************************
 
 
@@ -733,6 +733,18 @@ CREATE TABLE `occupancy` (
   CONSTRAINT `FK_850E50F634BFF5B0` FOREIGN KEY (`occupancies_id`) REFERENCES `booking` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+LOCK TABLES `occupancy` WRITE;
+/*!40000 ALTER TABLE `occupancy` DISABLE KEYS */;
+
+INSERT INTO `occupancy` (`id`, `name`, `birthday`, `hidden`, `deleted`, `tstamp`, `crdate`, `occupancies_id`)
+VALUES
+	(1,'Flynn Wilkinson','2019-11-25',0,0,1574701251,1574701251,107),
+	(2,'Marvin Austin','2019-11-25',0,0,1574701374,1574701374,108),
+	(3,'Reece Buckley','2019-11-25',0,0,1574701825,1574701825,108),
+	(4,'Britanney Floyd','2019-11-25',0,0,1574701836,1574701836,108);
+
+/*!40000 ALTER TABLE `occupancy` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle parking
@@ -948,7 +960,7 @@ INSERT INTO `room` (`id`, `name`, `beds`, `floor`, `house`, `hidden`, `deleted`,
 VALUES
 	(1,'Room: 01',3,'EG','Haus Ost',NULL,NULL,NULL,NULL,NULL),
 	(2,'Room: 02',NULL,'EG','Haus Ost',NULL,NULL,NULL,NULL,NULL),
-	(3,'Room: 03',NULL,'EG','Haus Ost',NULL,NULL,NULL,NULL,NULL),
+	(3,'Room: 03',6,'EG','Haus Ost',NULL,NULL,NULL,NULL,NULL),
 	(4,'Room: 04',2,'EG','Haus Ost',NULL,NULL,NULL,NULL,NULL),
 	(5,'Room: 05',NULL,'EG','Haus Ost',NULL,NULL,NULL,NULL,NULL),
 	(6,'Room: 06',4,'EG','Haus Ost',NULL,NULL,NULL,NULL,NULL),
