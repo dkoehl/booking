@@ -20,7 +20,7 @@
             <div class="col s1 left">Date</div>
             <div class="col s3">Guest</div>
             <div class="col s3">Check in time</div>
-            <div class="col s2">Room</div>
+            <div class="col s3">Room</div>
             <div class="col s2">Occupancy</div>
             <div class="col s1"></div>
         </li>
@@ -44,7 +44,7 @@
                         <div class="col s3">
                             <i class="material-icons">access_time</i>{{ booking.bookingfrom ? booking.bookingfrom|date("H:i"): '' }}
                         </div>
-                        <div class="col s4">
+                        <div class="col s3">
                             {{ booking.bookedroom.house }}
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
                         </div>
@@ -106,7 +106,7 @@
             <div class="col s1 left">Date</div>
             <div class="col s3">Guest</div>
             <div class="col s3">Check out time</div>
-            <div class="col s2">Room</div>
+            <div class="col s3">Room</div>
             <div class="col s2">Occupancy</div>
             <div class="col s1"></div>
         </li>
@@ -128,7 +128,7 @@
                         <div class="col s3">
                             <i class="material-icons">access_time</i>{{ booking.bookingtill ? booking.bookingtill|date("H:i"): '' }}
                         </div>
-                        <div class="col s2">
+                        <div class="col s3">
                             {{ booking.bookedroom.house }}
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
                         </div>
@@ -186,7 +186,7 @@
             <div class="col s1 left">Date</div>
             <div class="col s3">Guest</div>
             <div class="col s3">Check out</div>
-            <div class="col s2">Room</div>
+            <div class="col s3">Room</div>
             <div class="col s2">Occupancy</div>
             <div class="col s1"></div>
         </li>
@@ -215,12 +215,12 @@
                             <i class="material-icons">flight_takeoff</i>
                             {{ booking.bookingtill ? booking.bookingtill|date("D d M", "Europe/Paris"): '' }}
                         </div>
-                        <div class="col s2">
+                        <div class="col s3">
                             {{ booking.bookedroom.house }}
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
                         </div>
                         <div class="col s2">
-                            {{  booking.occupancies|length +1}} / {{ booking.bookedroom.beds }}
+                                                        {{  booking.occupancies|length +1}} / {{ booking.bookedroom.beds }}
                         </div>
                         <div class="col s1" style="text-align:right;">
                             <a class='dropdown-trigger' href='#'
