@@ -53,19 +53,19 @@ if (dataTableRooms) {
                                         selectedFloor = '1';
                                     }
                                     if (data.floor.includes('OG 1')) {
-                                        selectedFloor = '2';
+                                        selectedFloor = '1';
                                     }
                                     if (data.floor.includes('OG 2')) {
-                                        selectedFloor = '3';
+                                        selectedFloor = '2';
                                     }
                                     if (data.floor.includes('OG 3')) {
-                                        selectedFloor = '4';
+                                        selectedFloor = '3';
                                     }
                                     if (data.floor.includes('OG 4')) {
-                                        selectedFloor = '5';
+                                        selectedFloor = '4';
                                     }
                                     if (data.floor.includes('OG 5')) {
-                                        selectedFloor = '6';
+                                        selectedFloor = '5';
                                     }
                                     return selectedFloor + '.'+data.house.replace('Haus', '').substr(1, 1) + '.'+  data.name + '.' + data.beds;
                                 }

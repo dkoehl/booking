@@ -113,6 +113,11 @@ class Booking
      */
     private $payment;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Occupancy", mappedBy="occupancies")
+     */
+    private $occupancies;
+
     public function __construct()
     {
         $this->room = new ArrayCollection();
@@ -126,6 +131,7 @@ class Booking
         $this->inventory = new ArrayCollection();
         $this->parking = new ArrayCollection();
         $this->payment = new ArrayCollection();
+        $this->occupancies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -472,6 +478,37 @@ class Booking
     {
         $this->payment = $payment;
         
+        return $this;
+    }
+
+    /**
+     * @return Collection|Occupancy[]
+     */
+    public function getOccupancies(): Collection
+    {
+        return $this->occupancies;
+    }
+
+    public function addOccupancy(Occupancy $occupancy): self
+    {
+        if (!$this->occupancies->contains($occupancy)) {
+            $this->occupancies[] = $occupancy;
+            $occupancy->setOccupancies($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOccupancy(Occupancy $occupancy): self
+    {
+        if ($this->occupancies->contains($occupancy)) {
+            $this->occupancies->removeElement($occupancy);
+            // set the owning side to null (unless already changed)
+            if ($occupancy->getOccupancies() === $this) {
+                $occupancy->setOccupancies(null);
+            }
+        }
+
         return $this;
     }
 }

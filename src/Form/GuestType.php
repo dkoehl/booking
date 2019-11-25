@@ -108,7 +108,6 @@ class GuestType extends AbstractType
                 ->add('personalid', null, [
                     'label' => 'Photo of ID'
                 ]);
-            
         }
         
         

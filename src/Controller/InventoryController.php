@@ -36,8 +36,9 @@ class InventoryController extends AbstractController
         $booking = $request->request->get('inventory')['booking'];
         $request->request->remove('inventory')['booking'];
     
+        $inventory = new Inventory();
+    
         if ($booking) {
-            $inventory = new Inventory();
             $inventory->setBeds($requestReg['beds']);
             $inventory->setClosets($requestReg['closets']);
             $inventory->setTables($requestReg['tables']);
@@ -66,7 +67,7 @@ class InventoryController extends AbstractController
                 'id' => $booking->getId(),
             ]);
         }
-        $inventory = new Inventory();
+        
         $form = $this->createForm(InventoryType::class, $inventory);
         $form->handleRequest($request);
         return $this->render('inventory/new.html.twig', [

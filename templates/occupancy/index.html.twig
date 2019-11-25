@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Occupancy index{% endblock %}
+
+{% block body %}
+    <h1>Occupancy index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Birthday</th>
+                <th>Hidden</th>
+                <th>Deleted</th>
+                <th>Tstamp</th>
+                <th>Crdate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for occupancy in occupancies %}
+            <tr>
+                <td>{{ occupancy.id }}</td>
+                <td>{{ occupancy.name }}</td>
+                <td>{{ occupancy.birthday }}</td>
+                <td>{{ occupancy.hidden ? 'Yes' : 'No' }}</td>
+                <td>{{ occupancy.deleted ? 'Yes' : 'No' }}</td>
+                <td>{{ occupancy.tstamp }}</td>
+                <td>{{ occupancy.crdate }}</td>
+                <td>
+                    <a href="{{ path('occupancy_show', {'id': occupancy.id}) }}">show</a>
+                    <a href="{{ path('occupancy_edit', {'id': occupancy.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('occupancy_new') }}">Create new</a>
+{% endblock %}

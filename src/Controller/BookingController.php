@@ -6,6 +6,7 @@ use App\Entity\Booking;
 use App\Entity\Damage;
 use App\Entity\Guest;
 use App\Entity\Inventory;
+use App\Entity\Occupancy;
 use App\Entity\Parking;
 use App\Entity\Payment;
 use App\Entity\Price;
@@ -14,6 +15,7 @@ use App\Form\BookingType;
 use App\Form\DamageType;
 use App\Form\GuestType;
 use App\Form\InventoryType;
+use App\Form\OccupancyType;
 use App\Form\ParkingType;
 use App\Form\PaymentType;
 use App\Form\PriceType;
@@ -169,6 +171,7 @@ class BookingController extends AbstractController
             ->findOneBy(['id' => $booking->getBookedroom()]);
         
         $guestForm = $this->createForm(GuestType::class, new Guest());
+        $occupancyForm = $this->createForm(OccupancyType::class, new Occupancy());
         $priceForm = $this->createForm(PriceType::class, new Price());
         $paymentForm = $this->createForm(PaymentType::class, new Payment());
         $parkingForm = $this->createForm(ParkingType::class, new Parking());
@@ -179,6 +182,7 @@ class BookingController extends AbstractController
             'booking' => $booking,
             'room' => $roomForm->createView(),
             'guestForm' => $guestForm->createView(),
+            'occupancyForm' => $occupancyForm->createView(),
             'priceForm' => $priceForm->createView(),
             'paymentForm' => $paymentForm->createView(),
             'parkingForm' => $parkingForm->createView(),

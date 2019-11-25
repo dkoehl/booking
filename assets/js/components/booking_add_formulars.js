@@ -1,4 +1,5 @@
 let button_booking_guest = document.getElementById('button_booking_guest');
+let button_booking_occupancy = document.getElementById('button_booking_occupancy');
 let button_booking_damage = document.getElementById('button_booking_damage');
 let button_booking_inventory = document.getElementById('button_booking_inventory');
 let button_booking_parking = document.getElementById('button_booking_parking');
@@ -13,6 +14,12 @@ if (button_booking_guest) {
     });
 
 
+}
+if (button_booking_occupancy) {
+    let form_booking_occupancy = document.getElementById('button_booking_occupancy').addEventListener('click', function () {
+        let formularElementbutton_booking_occupancy = document.getElementById('form_booking_occupancy');
+        formularElementbutton_booking_occupancy.classList.remove('hide');
+    });
 }
 if (button_booking_price) {
     let form_booking_payment = document.getElementById('button_booking_price').addEventListener('click', function () {

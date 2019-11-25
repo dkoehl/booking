@@ -76,11 +76,11 @@ class GuestController extends AbstractController
         $guest->setTstamp(time());
         $guest->setHidden(0);
         $guest->setDeleted(0);
-        $guest->setCrdate(time());
         
         // create new user
         if ($booking === null) {
             if ($guestForm->isSubmitted() && $guestForm->isValid()) {
+                $guest->setCrdate(time());
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($guest);
                 $entityManager->flush();

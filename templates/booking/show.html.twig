@@ -90,6 +90,24 @@
         </li>
 
         <li class="collection-item  lighten-5 grey-text" id="booking_price">
+            {% if booking.occupancies.0.id is defined  %}
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Occupancies"></span>
+                </div>
+                {% for occupancy in booking.occupancies %}
+                    {{ include('occupancy/_booking_occupancy_body.html.twig') }}
+                {% endfor %}
+
+            {% endif %}
+                <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action" id="button_booking_occupancy">
+                    Occupancy
+                    <i class="material-icons right">add</i>
+                </button>
+                {{ include('occupancy/_form.html.twig') }}
+        </li>
+
+
+        <li class="collection-item  lighten-5 grey-text" id="booking_price">
             {% if booking.prices.0.id is defined  %}
                 <div class="row">
                     <span class="new badge left blue" data-badge-caption="Price"></span>
