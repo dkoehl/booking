@@ -65,9 +65,27 @@
                         <div class="col s12">
                             {{ form_row(guestForm.personalid) }}
                             <button class="btn waves-effect waves-light small red z-depth-0" id="button_photo" type="submit" name="action">
-                                Take photo
+                                Document/ID
                                 <i class="material-icons right">add_a_photo</i>
                             </button>
+                        </div>
+                        <div class="col s12">
+                            <div id="videocanvas" class=" hide">
+                                <div class="col s6">
+                                    <div class="camera">
+                                        <video id="video">Video stream not available.</video>
+                                        <button id="startbutton" class="btn waves-effect waves-light small blue z-depth-0">Take photo
+                                        </button>
+                                    </div>
+                                    <canvas id="canvas"></canvas>
+                                </div>
+                                <div class="col s6">
+                                    <div class="output">
+                                        <img id="photo" alt="The screen capture will appear in this box.">
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
 

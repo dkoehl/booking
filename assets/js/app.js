@@ -32,6 +32,8 @@ const BookingUserSearch = require ("./components/bookingform_searchguest");
 const BookingFormAddForms = require("./components/booking_add_formulars");
 const BokkingFormSaveForms = require('./components/booking_save_formulars');
 const TakePhoto = require('./components/take_photo');
+const CaptureWebcam = require('./components/capture_webcam');
+
 /**
  * Nativ JS stuff
  */
@@ -42,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         minDate : new Date(1999, 10 - 1, 25)
     });
 
+
     Highcharts;
     Collapsed;
     DropDownButtons;
@@ -51,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
     BookingFormAddForms;
     BokkingFormSaveForms;
     TakePhoto;
+    CaptureWebcam;
 
 });
 /**
