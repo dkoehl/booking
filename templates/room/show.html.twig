@@ -91,7 +91,11 @@
                         / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
                     </div>
                     <div class="col s2">
-                        {{  booking.occupancies|length +1}} / {{ booking.bookedroom.beds }}
+                        <i class="material-icons" style="margin-right:-10px;">person</i>
+                        {% for i in  booking.occupancies %}
+                            <i class="material-icons" style="margin-right:-10px;">person</i>
+                        {% endfor %}
+{#                        {{  booking.occupancies|length +1}} / {{ booking.bookedroom.beds }}#}
                     </div>
 
                     <div class="col s1" style="text-align:right;">
