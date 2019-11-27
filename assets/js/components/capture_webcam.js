@@ -11,7 +11,7 @@ if (photoButton) {
         // width to the value defined here, but the height will be
         // calculated based on the aspect ratio of the input stream.
 
-        var width = 650;    // We will scale the photo width to this
+        var width = 550;    // We will scale the photo width to this
         var height = 0;     // This will be computed based on the input stream
 
 
