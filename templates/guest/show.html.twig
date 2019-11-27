@@ -116,10 +116,23 @@
             </div>
         </li>
 
+        {% if  guest.personalid %}
+            <li class="collection-item grey-text">
+                <div class="row">
+                    <div class="col s6">
+                        <p>
+                            <img src="{{ guest.personalid }}"/>
+                        </p>
+                    </div>
+                    <div class="col s6">
+
+                    </div>
+                </div>
+
+        {% endif %}
+
+
         {% if guest.type == 2 %}
-
-
-
             <li class="collection-item grey-text">
                 <div class="row">
                     <div class="col s3">

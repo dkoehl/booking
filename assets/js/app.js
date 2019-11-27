@@ -31,7 +31,7 @@ const BookingVacancies = require ("./components/bookingform");
 const BookingUserSearch = require ("./components/bookingform_searchguest");
 const BookingFormAddForms = require("./components/booking_add_formulars");
 const BokkingFormSaveForms = require('./components/booking_save_formulars');
-const TakePhoto = require('./components/take_photo');
+// const TakePhoto = require('./components/take_photo');
 const CaptureWebcam = require('./components/capture_webcam');
 
 /**
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     BookingUserSearch;
     BookingFormAddForms;
     BokkingFormSaveForms;
-    TakePhoto;
+    // TakePhoto;
     CaptureWebcam;
 
 });

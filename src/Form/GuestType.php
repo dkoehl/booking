@@ -2,12 +2,8 @@
 
 namespace App\Form;
 
-use App\Entity\Booking;
 use App\Entity\Guest;
-use Doctrine\ORM\Mapping\Entity;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -62,9 +58,7 @@ class GuestType extends AbstractType
                 ->add('email', null, [
                     'attr' => ['placeholder' => 'Email Address']
                 ])
-                ->add('personalid', null, [
-                    'label' => 'Photo of ID'
-                ]);
+                ->add('personalid', HiddenType::class, []);
         }else{
             // edit guest
             $builder
@@ -105,9 +99,7 @@ class GuestType extends AbstractType
                 ->add('email', null, [
                     'attr' => ['placeholder' => 'Email Address']
                 ])
-                ->add('personalid', null, [
-                    'label' => 'Photo of ID'
-                ]);
+                ->add('personalid', HiddenType::class, []);
         }
         
         

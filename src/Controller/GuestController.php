@@ -114,6 +114,9 @@ class GuestController extends AbstractController
             $guest->setTaxnumber($requestReg['taxnumber']);
             $guest->setSignatureauthorized($requestReg['signatureauthorized']);
             $guest->setPlaceofbirth($requestReg['placeofbirth']);
+            $guest->setPersonalid(($requestReg['personalid']));
+    
+            $guest->setCrdate(time());
         
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($guest);

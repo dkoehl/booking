@@ -42,6 +42,7 @@ task('deploy', [
     'composer install',
     'yarn install',
     'yarn encore',
+    'clear cache',
     'deploy:symlink',
     'deploy:unlock',
     'cleanup',
@@ -50,5 +51,6 @@ task('deploy', [
 task('composer install', 'composer install');
 task('yarn install', '/usr/bin/yarn install');
 task('yarn encore', '/usr/bin/yarn encore dev');
+task('clear cache', 'php bin/console cache:clear');
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
