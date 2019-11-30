@@ -27,23 +27,20 @@ if (dataTableRooms) {
                             searchPlaceholder: "Search"
                         },
                         columns: [
-                            {data: 'name'},
+                            {
+                                "data": null,
+                            },
                             {data: 'house'},
                             {data: 'floor'},
                             {data: 'beds'},
-                            {
-                                "data": null,
-                            },
-                            {
-                                "data": null,
-                            },
+                            {data: 'name'},
                             {
                                 "data": null,
                             }
                         ],
                         columnDefs: [
                             {
-                                targets: 4,
+                                targets: 0,
                                 render: function (data, type, row, meta) {
                                     let selectedFloor = '';
                                     if (data.floor.includes('EG')) {
@@ -72,12 +69,6 @@ if (dataTableRooms) {
                             },
                             {
                                 targets: 5,
-                                render: function (data, type, row, meta) {
-                                    return data.bookings;
-                                }
-                            },
-                            {
-                                targets: 6,
                                 render: function (data, type, row, meta) {
                                     if (type === 'display') {
                                         data = '<a class="blue-grey-text" href="/room/' + data.id + '"><i class="material-icons">more_horiz</i></a>';
