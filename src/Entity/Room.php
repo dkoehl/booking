@@ -24,7 +24,7 @@ class Room
     private $name;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $beds;
 
@@ -98,12 +98,12 @@ class Room
         return $this;
     }
 
-    public function getBeds(): ?int
+    public function getBeds(): ?string
     {
         return $this->beds;
     }
 
-    public function setBeds(?int $beds): self
+    public function setBeds(?string $beds): self
     {
         $this->beds = $beds;
 

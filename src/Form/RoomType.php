@@ -21,7 +21,16 @@ class RoomType extends AbstractType
                     ],
                 ]
             )
-            ->add('beds')
+            ->add('beds', ChoiceType::class, [
+                'choices' => [
+                    'Please choose' => null,
+                    'A' => 'A',
+                    'B' => 'B',
+                    'C' => 'C',
+                    'D' => 'D',
+                    'E' => 'E',
+                ],
+            ])
             ->add('floor', ChoiceType::class, [
                 'choices' => [
                     'Please choose' => null,
