@@ -36,6 +36,9 @@ if (dataTableRooms) {
                             {data: 'name'},
                             {
                                 "data": null,
+                            },
+                            {
+                                "data": null,
                             }
                         ],
                         columnDefs: [
@@ -69,6 +72,12 @@ if (dataTableRooms) {
                             },
                             {
                                 targets: 5,
+                                render: function (data, type, row, meta) {
+                                    return data.occupancies;
+                                }
+                            },
+                            {
+                                targets: 6,
                                 render: function (data, type, row, meta) {
                                     if (type === 'display') {
                                         data = '<a class="blue-grey-text" href="/room/' + data.id + '"><i class="material-icons">more_horiz</i></a>';

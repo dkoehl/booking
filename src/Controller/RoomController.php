@@ -7,11 +7,9 @@ use App\Entity\Room;
 use App\Form\RoomType;
 use App\Repository\RoomRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/room")
@@ -25,9 +23,27 @@ class RoomController extends AbstractController
     public function overview(RoomRepository $roomRepository)
     {
         $rooms = $roomRepository->findAll();
+        $occunciesArray = [];
         foreach ($rooms as $room) {
             if ($room->getHidden() || $room->getDeleted()) {
                 continue;
+            }
+            if ($room->getBookings()) {
+                foreach ($room->getBookings() as $booking) {
+                    $dateToday = new \DateTime();
+            
+                    if ($booking->getBookingfrom() <= $dateToday && $booking->getBookingtill() >= $dateToday) {
+                        if ($booking->getOccupancies()) {
+                            $occupancies = $booking->getOccupancies();
+                            if ($occupancies) {
+                                foreach ($occupancies as $occupancy) {
+                                    $occunciesArray[] = $occupancy;
+                                }
+                                $occunciesArray[] = 'a';
+                            }
+                        }
+                    }
+                }
             }
             $roomArray[] =[
                 'id' => $room->getId(),
@@ -35,7 +51,7 @@ class RoomController extends AbstractController
                 'beds' => $room->getBeds(),
                 'floor' => $room->getFloor(),
                 'house' => $room->getHouse(),
-                'bookings' => count($room->getBookings())
+                'occupancies' => count($occunciesArray),
             ];
         }
         return $this->json($roomArray);
