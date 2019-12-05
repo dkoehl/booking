@@ -35,9 +35,9 @@ class RoomController extends AbstractController
                         $occupancies = $booking->getOccupancies();
                         if ($occupancies) {
                             foreach ($occupancies as $occupancy) {
-                                $occ™zunciesArray[] = $occupancy;
+                                $occunciesArray[] = $occupancy;
                             }
-                            $occunciesArray[] = 'a';
+                            $occunciesArray[] = ['a'];
                         }
                     }
                 }
