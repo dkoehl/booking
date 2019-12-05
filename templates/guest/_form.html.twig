@@ -2,141 +2,137 @@
 
 {#    {{ dump(guestForm) }}#}
     {#Booking Data#}
-    <li class="collection-item lighten-5 grey-text">
-        <div class="row">
-            <div class="col s12 m12">
-                    <input name="User" type="text" placeholder="Search guest" class="autocomplete" id="guestajaxsearch">
-                    <div id="guestajaxsearchresult" class=""></div>
+<li class="collection-item lighten-5 grey-text">
+    <div class="row">
+        <div class="col s12 m12">
+            <input name="User" type="text" placeholder="Search guest" class="autocomplete" id="guestajaxsearch">
+            <div id="guestajaxsearchresult" class=""></div>
 
-                {{ form_start(guestForm) }}
+            {{ form_start(guestForm) }}
 
-                <div class="my-custom-class-for-errors">
-                    {{ form_errors(guestForm) }}
-                </div>
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(guestForm) }}
+            </div>
 
-                <div class="row">
-                    <div class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    <label>
+                        Type
+                    </label>
+                    <p>
                         <label>
-                            Type
-                        </label>
-                        <p>
-                        <label>
-                            <input class="with-gap blue blue-text" name="group1" type="radio" id="guest_type_private" checked />
+                            <input class="with-gap blue blue-text" name="group1" type="radio" id="guest_type_private"
+                                   checked/>
                             <span>Private</span>
                         </label>
-                        <br />
+                        <br/>
                         <label>
-                            <input class="with-gap" name="group1" type="radio" id="guest_type_company" />
+                            <input class="with-gap" name="group1" type="radio" id="guest_type_company"/>
                             <span>Company</span>
                         </label>
-                        </p>
-                        {{ form_row(guestForm.type) }}
-                    </div>
+                    </p>
+                    {{ form_row(guestForm.type) }}
                 </div>
+            </div>
 
-                    <div class="row">
-                        <div class="input-field col s6">
-                            {{ form_row(guestForm.firstname) }}
-                        </div>
-                        <div class="input-field col s6">
-                            {{ form_row(guestForm.lastname) }}
-                        </div>
-{#                        <div class="col s6">#}
+            <div class="row">
+                <div class="input-field col s6">
+                    {{ form_row(guestForm.firstname) }}
+                </div>
+                <div class="input-field col s6">
+                    {{ form_row(guestForm.lastname) }}
+                </div>
+            </div>
 
-{#                        </div>#}
-{#                        <div class="col s6" id="some-custom-id">#}
-{#                            {{ form_row(guestForm.firstname) }}#}
-{#                        </div>#}
-                    </div>
-                    <div class="row">
-                        <div class="col s4">
-                            {{ form_row(guestForm.birthday) }}
-                        </div>
-                        <div class="col s4">
-                            {{ form_row(guestForm.placeofbirth) }}
-                        </div>
-                        <div class="col s4">
-                            {{ form_row(guestForm.country) }}
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col s4">
+                    {{ form_row(guestForm.birthday) }}
+                </div>
+                <div class="col s4">
+                    {{ form_row(guestForm.placeofbirth) }}
+                </div>
+                <div class="col s4">
+                    {{ form_row(guestForm.country) }}
+                </div>
+            </div>
 
 
-                    <div class="row">
-                        <div class="col s12">
-                            {{ form_row(guestForm.personalid) }}
-                            <button class="btn waves-effect waves-light small red z-depth-0" id="button_photo" type="submit" name="action">
-                                Document/ID
-                                <i class="material-icons right">add_a_photo</i>
-                            </button>
-                        </div>
-                        <div class="col s12">
-                            <div id="videocanvas" class=" hide">
-                                <div class="col s6">
-                                    <div class="camera">
-                                        <div id="cameraframe"></div>
-                                        <video id="video">Video stream not available.</video>
-                                        <button id="startbutton" class="btn waves-effect waves-light small blue z-depth-0">Take photo
-                                        </button>
-                                    </div>
+            <div class="row">
+                <div class="col s12">
+                    {{ form_row(guestForm.personalid) }}
+                    <button class="btn waves-effect waves-light small red z-depth-0" id="button_photo" type="submit"
+                            name="action">
+                        Document/ID
+                        <i class="material-icons right">add_a_photo</i>
+                    </button>
+                </div>
+                <div class="col s12">
+                    <div id="videocanvas" class=" hide">
+                        <div class="col s6">
+                            <div class="camera">
+                                <div id="cameraframe"></div>
+                                <video id="video">Video stream not available.</video>
+                                <button id="startbutton" class="btn waves-effect waves-light small blue z-depth-0">Take
+                                    photo
+                                </button>
+                            </div>
 
-                                    <canvas id="canvas"></canvas>
-                                </div>
-                                <div class="col s6">
-                                    <div class="output">
-                                        <img id="photo" alt="The screen capture will appear in this box.">
-                                    </div>
-                                </div>
+                            <canvas id="canvas"></canvas>
+                        </div>
+                        <div class="col s6">
+                            <div class="output">
+                                <img id="photo" alt="The screen capture will appear in this box.">
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
 
+            <div class="row">
+                <div class="col s6">
+                    {{ form_row(guestForm.phone) }}
+                </div>
+                <div class="col s6">
+                    {{ form_row(guestForm.email) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    {{ form_row(guestForm.address) }}
+                </div>
+            </div>
 
 
+            <div id="guest_company" class="hide">
                 <div class="row">
                     <div class="col s6">
-                        {{ form_row(guestForm.phone) }}
+                        {{ form_row(guestForm.companyname) }}
                     </div>
                     <div class="col s6">
-                        {{ form_row(guestForm.email) }}
+                        {{ form_row(guestForm.taxnumber) }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12">
-                        {{ form_row(guestForm.address) }}
+                        {{ form_row(guestForm.signatureauthorized) }}
                     </div>
                 </div>
-
-
-                <div id="guest_company" class="hide">
-                    <div class="row">
-                        <div class="col s6">
-                            {{ form_row(guestForm.companyname) }}
-                        </div>
-                        <div class="col s6">
-                            {{ form_row(guestForm.taxnumber) }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                            {{ form_row(guestForm.signatureauthorized) }}
-                        </div>
-                    </div>
-                </div>
-
-
-{#                {{ form_widget(guestForm) }}#}
-
-                <br />
-                <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" name="action">
-                    {{ button_label|default('Save') }}
-                    <i class="material-icons right">send</i>
-                </button>
-                {{ form_end(guestForm) }}
             </div>
 
+
+            {#                {{ form_widget(guestForm) }}#}
+
+            <br/>
+            <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" name="action">
+                {{ button_label|default('Save') }}
+                <i class="material-icons right">send</i>
+            </button>
+            {{ form_end(guestForm) }}
         </div>
-    </li>
+
+    </div>
+</li>
 
 
 

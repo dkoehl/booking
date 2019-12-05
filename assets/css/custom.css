@@ -111,3 +111,6 @@ li.hoverable.active{
 
 
 
+#booking > div{
+    min-height:0;
+}

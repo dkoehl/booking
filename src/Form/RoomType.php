@@ -24,11 +24,11 @@ class RoomType extends AbstractType
             ->add('beds', ChoiceType::class, [
                 'choices' => [
                     'Please choose' => null,
-                    'A' => 'A',
-                    'B' => 'B',
-                    'C' => 'C',
-                    'D' => 'D',
-                    'E' => 'E',
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
                 ],
             ])
             ->add('floor', ChoiceType::class, [

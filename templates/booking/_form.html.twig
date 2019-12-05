@@ -18,18 +18,16 @@
             <div class="col s12 m12">
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
-
-
                 <div id="radios">
                     <div>
                         <label>
-                            <input class="with-gap" name="group3" type="radio" id="ez" name="roomtype" value="ez" />
+                            <input class="with-gap" name="group3" type="radio" id="ez" name="roomtype" value="ez"/>
                             <span>{{ 'booking.label.einzelzimmer'|trans }}</span>
                         </label>
                     </div>
                     <div>
                         <label>
-                            <input class="with-gap" name="group3" type="radio" id="dz" name="roomtype" value="dz" />
+                            <input class="with-gap" name="group3" type="radio" id="dz" name="roomtype" value="dz"/>
                             <span>{{ 'booking.label.doppelzimmer'|trans }}</span>
                         </label>
                     </div>
@@ -46,8 +44,8 @@
                 </div>
 
 
-
-                <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" id="booking_submit" name="action">{{ 'booking.button.save'|trans }}
+                <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit"
+                        id="booking_submit" name="action">{{ 'booking.button.save'|trans }}
                     <i class="material-icons right">send</i>
                 </button>
                 {{ form_end(form) }}
