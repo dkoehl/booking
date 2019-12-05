@@ -37,8 +37,11 @@ class BookingRepository extends ServiceEntityRepository
     */
 
     /**
+     * Gets bookings by startdate and enddate
+     * 
+     * 
      * @param array $bookingFrom
-     * @param array $bookingTill
+     * @param array $bookingTillƒ
      * @return array
      */
     public function getVacanciesbydate($bookingFrom = [], $bookingTill = [])
@@ -57,18 +60,16 @@ class BookingRepository extends ServiceEntityRepository
             ->andWhere('b.bookingfrom <= :bookingfrom AND b.bookingtill >= :bookingtill AND b.deleted = 0 AND b.hidden = 0')
             ->orWhere('b.bookingfrom >= :bookingfrom AND b.bookingtill <= :bookingtill')
             ->setParameter('bookingtill', $bookingTill)
-            ->setParameter('bookingfrom' , $bookingFrom)
+            ->setParameter('bookingfrom', $bookingFrom)
             ->getQuery()
             ->execute();
         $vacanceIds = [];
-        if(is_array($vacanceIds)){
-            foreach($vancancies as $vancance){
-                if(!in_array($vancance->getBookedRoom()->getId(), $vacanceIds)){
-                    $vacanceIds[] = $vancance->getBookedRoom()->getId();
-                }
+        foreach ($vancancies as $vancance) {
+            if (!in_array($vancance->getBookedRoom()->getId(), $vacanceIds)) {
+                $vacanceIds[] = $vancance->getBookedRoom()->getId();
             }
-            return $vacanceIds;
         }
+        return $vacanceIds;
     }
 
     /**

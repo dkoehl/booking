@@ -67,7 +67,7 @@ if (dataTableRooms) {
                                     if (data.floor.includes('OG 5')) {
                                         selectedFloor = '5';
                                     }
-                                    return selectedFloor + '.'+data.house.replace('Haus', '').substr(1, 1) + '.'+  data.name + '.' + data.beds;
+                                    return selectedFloor + '.'+data.house.replace('Haus', '').substr(1, 1) + '.'+  data.name;
                                 }
                             },
                             {

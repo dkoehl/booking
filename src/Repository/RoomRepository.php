@@ -66,7 +66,7 @@ class RoomRepository extends ServiceEntityRepository
             ->where('r.id NOT IN (:roomid)')
             ->setParameter('roomid', $rentedRoomIds)
             ->getQuery()
-            ->setMaxResults(5)
+//            ->setMaxResults(5)
             ->execute();
     }
 }

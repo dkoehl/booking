@@ -31,16 +31,13 @@ class RoomController extends AbstractController
             if ($room->getBookings()) {
                 foreach ($room->getBookings() as $booking) {
                     $dateToday = new \DateTime();
-            
-                    if ($booking->getBookingfrom() <= $dateToday && $booking->getBookingtill() >= $dateToday) {
-                        if ($booking->getOccupancies()) {
-                            $occupancies = $booking->getOccupancies();
-                            if ($occupancies) {
-                                foreach ($occupancies as $occupancy) {
-                                    $occunciesArray[] = $occupancy;
-                                }
-                                $occunciesArray[] = 'a';
+                    if ($booking->getBookingfrom()->getTimestamp() <= $dateToday->getTimestamp() && $booking->getBookingtill()->getTimestamp() >= $dateToday->getTimestamp()) {
+                        $occupancies = $booking->getOccupancies();
+                        if ($occupancies) {
+                            foreach ($occupancies as $occupancy) {
+                                $occ™zunciesArray[] = $occupancy;
                             }
+                            $occunciesArray[] = 'a';
                         }
                     }
                 }
@@ -53,6 +50,7 @@ class RoomController extends AbstractController
                 'house' => $room->getHouse(),
                 'occupancies' => count($occunciesArray),
             ];
+            $occunciesArray = [];
         }
         return $this->json($roomArray);
     }

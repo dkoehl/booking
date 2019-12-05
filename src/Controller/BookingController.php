@@ -44,7 +44,7 @@ class BookingController extends AbstractController
 
 
     /**
-     * @Route("/getvacanciesbydate/{bookingfrom}/{bookingtill}", name="getvacanciesbydate")
+     * @Route("/getvacanciesbydate/{bookingfrom}/{bookingtill}/{roomType}", name="getvacanciesbydate")
      */
     public function getVacanciesbydate(Request $request)
     {
@@ -73,15 +73,21 @@ class BookingController extends AbstractController
          * @todo: check this function again, soon!
          */
         foreach ($freeRooms as $room) {
-            if (!$room->getHidden() && !$room->getDeleted()) {
-                $freeRoomsArray[] = [
-                    'id' => $room->getId(),
-                    'name' => $room->getName(),
-                    'beds' => $room->getBeds(),
-                    'floor' => $room->getFloor(),
-                    'house' => $room->getHouse()
-                ];
+            if ($room->getHidden() === true || $room->getDeleted() === true) {
+                continue;
             }
+            if ($requestUri[5] === '1') {
+                if ($room->getBeds() != 1) {
+                    continue;
+                }
+            }
+            $freeRoomsArray[] = [
+                'id' => $room->getId(),
+                'name' => $room->getName(),
+                'beds' => $room->getBeds(),
+                'floor' => $room->getFloor(),
+                'house' => $room->getHouse()
+            ];
         }
 
         return $this->json($freeRoomsArray);

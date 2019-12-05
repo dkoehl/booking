@@ -11,13 +11,13 @@ if (bookingVacancies) {
         selectedRoomType = this.value;
         bookingFrom = document.getElementById('booking_bookingfrom').value;
         bookingTill = document.getElementById('booking_bookingtill').value;
-        getvacanciesbydate(bookingFrom, bookingTill)
+        getvacanciesbydate(bookingFrom, bookingTill, 1)
     });
     let DZ = document.getElementById('dz').addEventListener('click', function () {
         selectedRoomType = this.value;
         bookingFrom = document.getElementById('booking_bookingfrom').value;
         bookingTill = document.getElementById('booking_bookingtill').value;
-        getvacanciesbydate(bookingFrom, bookingTill)
+        getvacanciesbydate(bookingFrom, bookingTill, 2)
     });
 
 
@@ -43,15 +43,15 @@ if (bookingVacancies) {
     /**
      * Gets free rooms for list view
      */
-    function getvacanciesbydate(bookingFrom, bookingTill) {
-        let url = "/booking/getvacanciesbydate/" + bookingFrom + '/' + bookingTill;
+    function getvacanciesbydate(bookingFrom, bookingTill, roomType = '') {
+        let url = "/booking/getvacanciesbydate/" + bookingFrom + '/' + bookingTill + '/' + roomType;
         axios.get(url)
             .then(
                 function (response) {
                     // console.log(response.data);
                     let returnHtml = '';
+                    document.getElementById('bookingVacancies').innerHTML = '';
                     let containerDiv = document.getElementById('bookingVacancies');
-
                     for (let i = 0; i < response.data.length; i++) {
                         let newElement = document.createElement('li');
                         newElement.setAttribute('class', 'hoverable collapsible-header blue-grey-text');
@@ -72,45 +72,24 @@ if (bookingVacancies) {
                         containerDiv.appendChild(newElement);
                         delete newElement;
                     }
-
                     /**
                      * Click event on <li> of rooms
                      */
                     var lis = document.getElementById("bookingVacancies").getElementsByTagName('li');
                     for (var i = 0; i < lis.length; i++) {
                         lis[i].addEventListener('click', function () {
-                            // let selectedRooms = this.getAttribute('data-room');
                             let defaultClasses = this.getAttribute('class');
-                            // let hiddenInputValues = document.getElementById('booking_room').getAttribute('value');
-
                             if (defaultClasses.includes('active')) {
                                 // removes active state
                                 this.setAttribute('class', 'hoverable collapsible-header blue-grey-text');
-                                // if (hiddenInputValues) {
-                                //     if (hiddenInputValues.includes(selectedRooms)) {
-                                //         let newHiddenValues = hiddenInputValues.replace(selectedRooms + ',', '');
-                                //         document.getElementById('booking_room').setAttribute('value', newHiddenValues);
-                                //     }
-                                // }
                             } else {
                                 // sets active state
                                 this.setAttribute('class', defaultClasses + ' active light-blue white-text');
-                                // if (hiddenInputValues) {
-                                //     if (!hiddenInputValues.includes(selectedRooms)) {
-                                //         document.getElementById('booking_room').setAttribute('value', hiddenInputValues + selectedRooms + ',');
-                                //     }
-                                // } else {
-                                //     document.getElementById('booking_room').setAttribute('value', selectedRooms + ',');
-                                // }
                             }
 
                         }, false);
                     }
-                    // console.log(returnHtml);
-                    // bookingVacancies
                 }
             )
     }
-
-
 }
