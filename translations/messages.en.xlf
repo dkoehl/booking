@@ -51,16 +51,38 @@
 
             <trans-unit id="booking.label.einzelzimmer">
                 <source>booking.label.einzelzimmer</source>
-                <target>Einzel- Zimmer</target>
+                <target>Einzelzimmer</target>
             </trans-unit>
             <trans-unit id="booking.label.doppelzimmer">
                 <source>booking.label.doppelzimmer</source>
-                <target>Doppel- Zimmer</target>
+                <target>Mehrbettzimmer</target>
             </trans-unit>
             <trans-unit id="booking.button.save">
                 <source>booking.button.save</source>
                 <target>Save</target>
             </trans-unit>
+
+            <trans-unit id="room.label.room">
+                <source>room.label.room</source>
+                <target>Room</target>
+            </trans-unit>
+
+            <trans-unit id="room.label.house">
+                <source>room.label.house</source>
+                <target>House</target>
+            </trans-unit>
+
+            <trans-unit id="room.label.floor">
+                <source>room.label.floor</source>
+                <target>Floor</target>
+            </trans-unit>
+
+            <trans-unit id="room.label.beds">
+                <source>room.label.beds</source>
+                <target>Beds</target>
+            </trans-unit>
+
+
 
         </body>
     </file>

@@ -76,8 +76,15 @@ class BookingController extends AbstractController
             if ($room->getHidden() === true || $room->getDeleted() === true) {
                 continue;
             }
+            // checkt auf EINZELZIMMER
             if ($requestUri[5] === '1') {
-                if ($room->getBeds() != 1) {
+                if ($room->getBeds() != '1') {
+                    continue;
+                }
+            }
+            // checkt auf MEHRBETTZIMMER
+            if ($requestUri[5] === '2') {
+                if ($room->getBeds() === '1') {
                     continue;
                 }
             }
