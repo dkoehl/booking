@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Price;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,10 +14,38 @@ class PriceType extends AbstractType
     {
         $builder
             ->setAction('/price/new')
-            ->add('type')
-            ->add('price')
-            ->add('tax')
-            ->add('amount')
+            ->add('type', ChoiceType::class, [
+                'label' => 'price.label.type',
+                'attr' => [
+                  'placeholder' => 'price.label.type.placeholder'
+                ],
+                'choices' => [
+                    'Please choose' => null,
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                ],
+            ])
+            ->add('price', NULL, [
+                'label' => 'price.label.price',
+                'attr' => [
+                    'placeholder' => 'price.label.price.placeholder'
+                ]
+            ])
+            ->add('tax', NULL, [
+                'label' => 'price.label.tax',
+                'attr' => [
+                    'placeholder' => 'price.label.tax.placeholder'
+                ]
+            ])
+            ->add('amount', NULL, [
+                'label' => 'price.label.amount',
+                'attr' => [
+                    'placeholder' => 'price.label.amount.placeholder'
+                ]
+            ])
 //            ->add('booking', HiddenType::class,[])
 //            ->add('hidden')
 //            ->add('deleted')

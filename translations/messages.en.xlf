@@ -42,13 +42,12 @@
             </trans-unit>
             <trans-unit id="booking.label.room">
                 <source>booking.label.room</source>
-                <target></target>
+                <target>Room</target>
             </trans-unit>
             <trans-unit id="booking.label.guest">
                 <source>booking.label.guest</source>
-                <target></target>
+                <target>Guest</target>
             </trans-unit>
-
             <trans-unit id="booking.label.einzelzimmer">
                 <source>booking.label.einzelzimmer</source>
                 <target>Einzelzimmer</target>
@@ -62,24 +61,316 @@
                 <target>Save</target>
             </trans-unit>
 
+
+            <trans-unit id="guest.button.save">
+                <source>guest.button.save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="guest.label.companyname">
+                <source>guest.label.companyname</source>
+                <target>Company name</target>
+            </trans-unit>
+            <trans-unit id="guest.label.companyname.placeholder">
+                <source>guest.label.companyname.placeholder</source>
+                <target>Acme Inc.</target>
+            </trans-unit>
+            <trans-unit id="guest.label.address">
+                <source>guest.label.address</source>
+                <target>Address</target>
+            </trans-unit>
+            <trans-unit id="guest.label.address.placeholder">
+                <source>guest.label.address.placeholder</source>
+                <target>Musterstraße 12, 12345 Musterhausen</target>
+            </trans-unit>
+            <trans-unit id="guest.label.taxnumber">
+                <source>guest.label.taxnumber</source>
+                <target>Taxnumber</target>
+            </trans-unit>
+            <trans-unit id="guest.label.taxnumber.placeholder">
+                <source>guest.label.taxnumber.placeholder</source>
+                <target>119 / 115 / 20178</target>
+            </trans-unit>
+            <trans-unit id="guest.label.lastname">
+                <source>guest.label.lastname</source>
+                <target>Lastname</target>
+            </trans-unit>
+            <trans-unit id="guest.label.lastname.placeholder">
+                <source>guest.label.lastname.placeholder</source>
+                <target>Mustermann</target>
+            </trans-unit>
+            <trans-unit id="guest.label.firstname">
+                <source>guest.label.firstname</source>
+                <target>Lastname</target>
+            </trans-unit>
+            <trans-unit id="guest.label.firstname.placeholder">
+                <source>guest.label.firstname.placeholder</source>
+                <target>Max</target>
+            </trans-unit>
+            <trans-unit id="guest.label.birthday">
+                <source>guest.label.birthday</source>
+                <target>Birthday</target>
+            </trans-unit>
+            <trans-unit id="guest.label.birthday.placeholder">
+                <source>guest.label.birthday.placeholder</source>
+                <target>YYYY.MM.DD</target>
+            </trans-unit>
+            <trans-unit id="guest.label.placeofbirth">
+                <source>guest.label.placeofbirth</source>
+                <target>City of birth</target>
+            </trans-unit>
+            <trans-unit id="guest.label.placeofbirth.placeholder">
+                <source>guest.label.placeofbirth.placeholder</source>
+                <target>Musterhausen, Bayern</target>
+            </trans-unit>
+            <trans-unit id="guest.label.country">
+                <source>guest.label.country</source>
+                <target>Country of birth</target>
+            </trans-unit>
+            <trans-unit id="guest.label.country.placeholder">
+                <source>guest.label.country.placeholder</source>
+                <target>Musterland</target>
+            </trans-unit>
+
+
             <trans-unit id="room.label.room">
                 <source>room.label.room</source>
                 <target>Room</target>
             </trans-unit>
-
             <trans-unit id="room.label.house">
                 <source>room.label.house</source>
                 <target>House</target>
             </trans-unit>
-
             <trans-unit id="room.label.floor">
                 <source>room.label.floor</source>
                 <target>Floor</target>
             </trans-unit>
-
             <trans-unit id="room.label.beds">
                 <source>room.label.beds</source>
                 <target>Beds</target>
+            </trans-unit>
+            <trans-unit id="room.label.name">
+                <source>room.label.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="room.label.name.placeholder">
+                <source>room.label.name.placeholder</source>
+                <target>Room name</target>
+            </trans-unit>
+
+
+            <trans-unit id="occupancy.label.name">
+                <source>occupancy.label.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="occupancy.label.name.placeholder">
+                <source>occupancy.label.name.placeholder</source>
+                <target>Lastname, Firstname</target>
+            </trans-unit>
+            <trans-unit id="occupancy.label.birthday">
+                <source>occupancy.label.birthday</source>
+                <target>Birthday</target>
+            </trans-unit>
+            <trans-unit id="occupancy.label.birthday.placeholder">
+                <source>occupancy.label.birthday.placeholder</source>
+                <target>YYYY.MM.DD</target>
+            </trans-unit>
+
+
+            <trans-unit id="price.label.type">
+                <source>price.label.type</source>
+                <target>Price</target>
+            </trans-unit>
+            <trans-unit id="price.label.price">
+                <source>price.label.price</source>
+                <target>Price</target>
+            </trans-unit>
+            <trans-unit id="price.label.price.placeholder">
+                <source>price.label.price.placeholder</source>
+                <target>EUR 11,00</target>
+            </trans-unit>
+            <trans-unit id="price.label.tax">
+                <source>price.label.tax</source>
+                <target>Tax</target>
+            </trans-unit>
+            <trans-unit id="price.label.tax.placeholder">
+                <source>price.label.tax.placeholder</source>
+                <target>% 19</target>
+            </trans-unit>
+            <trans-unit id="price.label.amount">
+                <source>price.label.amount</source>
+                <target>Amount</target>
+            </trans-unit>
+            <trans-unit id="price.label.amount.placeholder">
+                <source>price.label.amount.placeholder</source>
+                <target>4</target>
+            </trans-unit>
+
+
+            <trans-unit id="payment.label.payment">
+                <source>payment.label.payment</source>
+                <target>Bank</target>
+            </trans-unit>
+            <trans-unit id="payment.label.payment.placeholder">
+                <source>payment.label.payment.placeholder</source>
+                <target>Musterbank Inc.</target>
+            </trans-unit>
+            <trans-unit id="payment.label.number">
+                <source>payment.label.number</source>
+                <target>Banknumber</target>
+            </trans-unit>
+            <trans-unit id="payment.label.number.placeholder">
+                <source>payment.label.number.placeholder</source>
+                <target>DE27100777770209299700</target>
+            </trans-unit>
+            <trans-unit id="payment.label.securitynumber">
+                <source>payment.label.securitynumber</source>
+                <target>Security number</target>
+            </trans-unit>
+            <trans-unit id="payment.label.securitynumber.placeholder">
+                <source>payment.label.securitynumber.placeholder</source>
+                <target>122/122</target>
+            </trans-unit>
+
+
+            <trans-unit id="parking.label.carplate">
+                <source>parking.label.carplate</source>
+                <target>Car plate</target>
+            </trans-unit>
+            <trans-unit id="parking.label.carplate.placeholder">
+                <source>parking.label.carplate.placeholder</source>
+                <target>M-AB-1234</target>
+            </trans-unit>
+            <trans-unit id="parking.label.startdate">
+                <source>parking.label.startdate</source>
+                <target>From</target>
+            </trans-unit>
+            <trans-unit id="parking.label.startdate.placeholder">
+                <source>parking.label.startdate.placeholder</source>
+                <target>YYYY-MM-DD</target>
+            </trans-unit>
+            <trans-unit id="parking.label.enddate">
+                <source>parking.label.enddate</source>
+                <target>To</target>
+            </trans-unit>
+            <trans-unit id="parking.label.enddate.placeholder">
+                <source>parking.label.enddate.placeholder</source>
+                <target>YYYY-MM-DD</target>
+            </trans-unit>
+
+
+            <trans-unit id="inventory.label.beds">
+                <source>inventory.label.beds</source>
+                <target>Beds</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.beds.placeholder">
+                <source>inventory.label.beds.placeholder</source>
+                <target>1-6</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.closets">
+                <source>inventory.label.closets</source>
+                <target>Closets</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.closets.placeholder">
+                <source>inventory.label.closets.placeholder</source>
+                <target>1-6</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.tables">
+                <source>inventory.label.tables</source>
+                <target>Tables</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.tables.placeholder">
+                <source>inventory.label.tables.placeholder</source>
+                <target>1-6</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.chairs">
+                <source>inventory.label.chairs</source>
+                <target>Chairs</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.chairs.placeholder">
+                <source>inventory.label.chairs.placeholder</source>
+                <target>1-6</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.floor">
+                <source>inventory.label.floor</source>
+                <target>Floor</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.floor.placeholder">
+                <source>inventory.label.floor.placeholder</source>
+                <target>1-6</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.walls">
+                <source>inventory.label.walls</source>
+                <target>Walls</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.walls.placeholder">
+                <source>inventory.label.walls.placeholder</source>
+                <target>1-6</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.windows">
+                <source>inventory.label.windows</source>
+                <target>Windows</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.windows.placeholder">
+                <source>inventory.label.windows.placeholder</source>
+                <target>1-6</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.doors">
+                <source>inventory.label.doors</source>
+                <target>Doors</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.doors.placeholder">
+                <source>inventory.label.doors.placeholder</source>
+                <target>1-6</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.roomsspecial">
+                <source>inventory.label.roomsspecial</source>
+                <target>Specials</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.roomsspecial.placeholder">
+                <source>inventory.label.roomsspecial.placeholder</source>
+                <target>Some text here..</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.text">
+                <source>inventory.label.text</source>
+                <target>Text</target>
+            </trans-unit>
+            <trans-unit id="inventory.label.text.placeholder">
+                <source>inventory.label.text.placeholder</source>
+                <target>Some text here..</target>
+            </trans-unit>
+
+
+            <trans-unit id="damage.title.new">
+                <source>damage.title.new</source>
+                <target>New Damage</target>
+            </trans-unit>
+            <trans-unit id="damage.label.damageart">
+                <source>damage.label.damageart</source>
+                <target>Type of damage</target>
+            </trans-unit>
+            <trans-unit id="damage.label.damageart.placeholder">
+                <source>damage.label.damageart.placeholder</source>
+                <target>What is damaged?</target>
+            </trans-unit>
+            <trans-unit id="damage.label.damagetext">
+                <source>damage.label.damagetext</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="damage.label.damagetext.placeholder">
+                <source>damage.label.damagetext.placeholder</source>
+                <target>Some text here</target>
+            </trans-unit>
+            <trans-unit id="damage.label.price">
+                <source>damage.label.price</source>
+                <target>Amount/Price</target>
+            </trans-unit>
+            <trans-unit id="damage.label.price.placeholder">
+                <source>damage.label.price.placeholder</source>
+                <target>EUR 99,00</target>
+            </trans-unit>
+            <trans-unit id="damage.button.save">
+                <source>damage.button.save</source>
+                <target>Save</target>
             </trans-unit>
 
 

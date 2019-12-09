@@ -16,8 +16,9 @@ class RoomType extends AbstractType
         $builder
             ->add('name', \Symfony\Component\Form\Extension\Core\Type\TextType::class,
                 [
+                    'label' => 'room.label.name',
                     'attr' => [
-                        'class' => 'mdc-text-field__input'
+                        'placeholder' => 'room.label.name.placeholder'
                     ],
                 ]
             )

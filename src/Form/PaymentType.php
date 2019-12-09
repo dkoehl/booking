@@ -13,9 +13,24 @@ class PaymentType extends AbstractType
     {
         $builder
             ->setAction('/payment/new')
-            ->add('payment')
-            ->add('number')
-            ->add('securitynumber')
+            ->add('payment', NULL, [
+                'label' => 'payment.label.payment',
+                'attr' => [
+                    'placeholder' => 'payment.label.payment.placeholder'
+                ]
+            ])
+            ->add('number', NULL, [
+                'label' => 'payment.label.number',
+                'attr' => [
+                    'placeholder' => 'payment.label.number.placeholder'
+                ]
+            ])
+            ->add('securitynumber', NULL, [
+                'label' => 'payment.label.securitynumber',
+                'attr' => [
+                    'placeholder' => 'payment.label.securitynumber.placeholder'
+                ]
+            ])
 //            ->add('hidden')
 //            ->add('deleted')
 //            ->add('crdate')

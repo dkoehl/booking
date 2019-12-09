@@ -13,9 +13,24 @@ class DamageType extends AbstractType
     {
         $builder
             ->setAction('/damage/new')
-            ->add('damageart')
-            ->add('damagetext')
-            ->add('price')
+            ->add('damageart', null, [
+                'label' => 'damage.label.damageart',
+                'attr' => [
+                    'placeholder' => 'damage.label.damageart.placeholder'
+                ],
+            ])
+            ->add('damagetext', null, [
+                'label' => 'damage.label.damagetext',
+                'attr' => [
+                    'placeholder' => 'damage.label.damagetext.placeholder'
+                ],
+            ])
+            ->add('price', null, [
+                'label' => 'damage.label.price',
+                'attr' => [
+                    'placeholder' => 'damage.label.price.placeholder'
+                ],
+            ])
 //            ->add('hidden')
 //            ->add('deleted')
 //            ->add('crdate')

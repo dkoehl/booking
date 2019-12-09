@@ -14,22 +14,31 @@ class ParkingType extends AbstractType
     {
         $builder
             ->setAction('/parking/new')
-            ->add('carplate')
+            ->add('carplate', NULL, [
+                'label' => 'parking.label.carplate',
+                'attr' => [
+                    'placeholder' => 'parking.label.carplate.placeholder'
+                ]
+            ])
             ->add('startdate', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => true,
                 'format' => 'YYYY-mm-dd',
-                'placeholder' => 'dd.mm.YYYY',
-                'attr' => ['class' => 'js-datepicker'],
-                'label' => 'From:',
+                'attr' => [
+                    'class' => 'js-datepicker',
+                    'placeholder' => 'parking.label.startdate.placeholder'
+                ],
+                'label' => 'parking.label.startdate',
             ])
             ->add('enddate', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => true,
                 'format' => 'YYYY-mm-dd',
-                'placeholder' => 'dd.mm.YYYY',
-                'attr' => ['class' => 'js-datepicker'],
-                'label' => 'To:',
+                'attr' => [
+                    'class' => 'js-datepicker',
+                    'placeholder' => 'parking.label.enddate.placeholder'
+                ],
+                'label' => 'parking.label.enddate',
             ])
 //            ->add('hidden')
 //            ->add('deleted')

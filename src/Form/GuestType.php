@@ -18,39 +18,72 @@ class GuestType extends AbstractType
             // new guest
             $builder
                 ->setAction('/guest/new')
-                ->setMethod('POST')
+                ->add('bookings', HiddenType::class, [])
+                ->setMethod('POST');
+        }
+            // edit guest
+            $builder
                 ->add('type', HiddenType::class, [])
                 ->add('companyname', null, [
-                    'attr' => ['placeholder' => 'Acme Inc.'],
+                    'label' => 'guest.label.companyname',
+                    'attr' => [
+                        'placeholder' => 'guest.label.companyname.placeholder'
+                    ],
                 ])
                 ->add('address', TextareaType::class, [
-                    'attr' => ['class' => 'materialize-textarea']
+                    'label' => 'guest.label.address',
+                    'attr' => [
+                        'class' => 'materialize-textarea',
+                        'placeholder' => 'guest.label.address.placeholder'
+                    ]
                 ])
-                ->add('taxnumber')
+                ->add('taxnumber', null, [
+                    'label' => 'guest.label.taxnumber',
+                    'attr' => [
+                        'placeholder' => 'guest.label.taxnumber.placeholder'
+                    ]
+                ])
                 ->add('signatureauthorized')
-        
-                ->add('lastname')
-                ->add('firstname')
+                ->add('lastname', null, [
+                    'label' => 'guest.label.lastname',
+                    'attr' => [
+                        'placeholder' => 'guest.label.lastname.placeholder'
+                    ]
+                ])
+                ->add('firstname', null, [
+                    'label' => 'guest.label.firstname',
+                    'attr' => [
+                        'placeholder' => 'guest.label.firstname.placeholder'
+                    ]
+                ])
                 ->add('birthday', DateType::class, [
                     'widget' => 'single_text',
                     'html5' => true,
                     'format' => 'YYYY-mm-dd',
-                    'placeholder' => 'dd.mm.YYYY',
-                    'attr' => ['class' => 'js-datepicker'],
-                    'label' => 'Birthday:',
+                    'attr' => [
+                        'class' => 'js-datepicker',
+                        'placeholder' => 'guest.label.birthday.placeholder'
+                    ],
+                    'label' => 'guest.label.birthday',
                 ])
 //                ->add('bookings', CollectionType::class, [
 //                    'attr' => ['class' => 'hide']
 //                ])
-                ->add('bookings', HiddenType::class, [])
+               
                 ->add('placeofbirth', null, [
-                    'label' => 'City of birth'
+                    'label' => 'guest.label.placeofbirth',
+                    'attr' => [
+                        'placeholder' => 'guest.label.placeofbirth.placeholder'
+                    ]
                 ])
 //            ->add('country', CountryType::class, [
 //                'label' => 'Country of birth',
 //            ])
                 ->add('country', null, [
-                    'label' => 'Country of birth',
+                    'label' => 'guest.label.country',
+                    'attr' => [
+                        'placeholder' => 'guest.label.country.placeholder'
+                    ]
                 ])
                 ->add('phone', null, [
                     'attr' => ['placeholder' => '+49 89 22223333']
@@ -59,48 +92,6 @@ class GuestType extends AbstractType
                     'attr' => ['placeholder' => 'Email Address']
                 ])
                 ->add('personalid', HiddenType::class, []);
-        }else{
-            // edit guest
-            $builder
-//                ->setAction('/guest/new')
-                ->setMethod('POST')
-                ->add('type', HiddenType::class, [])
-                ->add('companyname', null, [
-                    'attr' => ['placeholder' => 'Acme Inc.'],
-                ])
-                ->add('address', TextareaType::class, [
-                    'attr' => ['class' => 'materialize-textarea']
-                ])
-                ->add('taxnumber')
-                ->add('signatureauthorized')
-        
-                ->add('lastname')
-                ->add('firstname')
-                ->add('birthday', DateType::class, [
-                    'widget' => 'single_text',
-                    'html5' => true,
-                    'format' => 'YYYY-mm-dd',
-                    'placeholder' => 'dd.mm.YYYY',
-                    'attr' => ['class' => 'js-datepicker'],
-                    'label' => 'Birthday:',
-                ])
-                ->add('placeofbirth', null, [
-                    'label' => 'City of birth'
-                ])
-//            ->add('country', CountryType::class, [
-//                'label' => 'Country of birth',
-//            ])
-                ->add('country', null, [
-                    'label' => 'Country of birth',
-                ])
-                ->add('phone', null, [
-                    'attr' => ['placeholder' => '+49 89 22223333']
-                ])
-                ->add('email', null, [
-                    'attr' => ['placeholder' => 'Email Address']
-                ])
-                ->add('personalid', HiddenType::class, []);
-        }
         
         
 //        dump($builder);

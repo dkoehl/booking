@@ -14,14 +14,21 @@ class OccupancyType extends AbstractType
     {
         $builder
             ->setAction('/occupancy/new')
-            ->add('name')
+            ->add('name', null, [
+                'label' => 'occupancy.label.name',
+                'attr' => [
+                    'placeholder' => 'occupancy.label.name.placeholder'
+                ]
+            ])
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => true,
                 'format' => 'YYYY-mm-dd',
-                'placeholder' => 'dd.mm.YYYY',
-                'attr' => ['class' => 'js-datepicker'],
-                'label' => 'Birthday:',
+                'attr' => [
+                    'class' => 'js-datepicker',
+                    'placeholder' => 'occupancy.label.birthday.placeholder'
+                ],
+                'label' => 'occupancy.label.birthday',
             ])
 //            ->add('hidden')
 //            ->add('deleted')

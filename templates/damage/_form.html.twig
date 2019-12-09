@@ -2,7 +2,7 @@
     <li class="collapsible-header" style="border-bottom:0px;">
         <div class="col s12">
             <h5 class="section-title blue-text"><i class="material-icons">today</i>
-                New Damage
+                {{ 'damage.title.new'|trans }}
                 <div class="right right-align right-aligned">
                     <a href="javascript:history.back()">
                         <i class="material-icons small grey-text">close</i>
@@ -18,7 +18,8 @@
                 {{ form_start(damageForm) }}
                 {{ form_widget(damageForm) }}
                 <input type="hidden" id="damage_booking" name="damage[booking]" value="">
-                <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" name="action">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ button_label|default('Save') }}
+                <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" name="action">
+                    {{ 'damage.button.save'|trans }}
                     <i class="material-icons right">send</i>
                 </button>
                 {{ form_end(damageForm) }}
