@@ -44,6 +44,22 @@
                 <source>booking.label.room</source>
                 <target>Room</target>
             </trans-unit>
+
+            <trans-unit id="booking.label.date">
+                <source>booking.label.date</source>
+                <target>Date</target>
+            </trans-unit>
+
+            <trans-unit id="booking.label.checkintime">
+                <source>booking.label.checkintime</source>
+                <target>Check in time</target>
+            </trans-unit>
+            
+            <trans-unit id="booking.label.occupancy">
+                <source>booking.label.occupancy</source>
+                <target>Occupancy</target>
+            </trans-unit>
+            
             <trans-unit id="booking.label.guest">
                 <source>booking.label.guest</source>
                 <target>Guest</target>

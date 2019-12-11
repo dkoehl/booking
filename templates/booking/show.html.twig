@@ -99,11 +99,14 @@
                 {% endfor %}
 
             {% endif %}
+            {% if booking.occupancies|length+1 < booking.bookedroom.beds %}
                 <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action" id="button_booking_occupancy">
                     Occupancy
                     <i class="material-icons right">add</i>
                 </button>
                 {{ include('occupancy/_form.html.twig') }}
+            {% endif %}
+                
         </li>
 
 

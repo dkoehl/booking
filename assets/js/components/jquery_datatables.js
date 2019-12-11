@@ -76,7 +76,7 @@ if (dataTableRooms) {
                                 }
 
                                 if (data.occupancies > data.beds) {
-                                    return '<i class="material-icons">people</i> <i class="material-icons">notifications_active</i> ';
+                                    return '<i class="material-icons">people</i> <i class="material-icons">notifications_active</i>';
                                 }
 
                                 let occupants = '';

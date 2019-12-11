@@ -17,11 +17,11 @@
 
         </li>
         <li class="collapsible-header grey-text" style="border-top:0px;">
-            <div class="col s1 left">Date</div>
-            <div class="col s3">Guest</div>
-            <div class="col s3">Check in time</div>
-            <div class="col s3">Room</div>
-            <div class="col s2">Occupancy</div>
+            <div class="col s1 left">{{ 'booking.label.date'|trans }}</div>
+            <div class="col s3">{{ 'booking.label.guest'|trans }}</div>
+            <div class="col s3">{{ 'booking.label.checkintime'|trans }}</div>
+            <div class="col s3">{{ 'booking.label.room'|trans }}</div>
+            <div class="col s2">{{ 'booking.label.occupancy'|trans }}</div>
             <div class="col s1"></div>
         </li>
         {% if bookingsCheckInsToday %}
@@ -49,11 +49,7 @@
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
                         </div>
                         <div class="col s2">
-                            <i class="material-icons" style="margin-right:-10px;">person</i>
-                            {% for i in  booking.occupancies %}
-                                <i class="material-icons" style="margin-right:-10px;">person</i>
-                            {% endfor %}
-{#                            {{  booking.occupancies|length +1}} / {{ booking.bookedroom.beds }}#}
+                            {{  booking.occupancies|length +1}} / {{ booking.bookedroom.beds }}
                         </div>
                         <div class="col s1" style="text-align:right;">
                             <a class='dropdown-trigger' href='#'
@@ -107,11 +103,11 @@
             </div>
         </li>
         <li class="collapsible-header grey-text" style="border-top:0px;">
-            <div class="col s1 left">Date</div>
-            <div class="col s3">Guest</div>
-            <div class="col s3">Check out time</div>
-            <div class="col s3">Room</div>
-            <div class="col s2">Occupancy</div>
+            <div class="col s1 left">{{ 'booking.label.date'|trans }}</div>
+            <div class="col s3">{{ 'booking.label.guest'|trans }}</div>
+            <div class="col s3">{{ 'booking.label.checkintime'|trans }}</div>
+            <div class="col s3">{{ 'booking.label.room'|trans }}</div>
+            <div class="col s2">{{ 'booking.label.occupancy'|trans }}</div>
             <div class="col s1"></div>
         </li>
         {% if bookingsCheckOutsToday %}
@@ -138,10 +134,7 @@
                         </div>
                         <div class="col s2">
                             <i class="material-icons" style="margin-right:-10px;">person</i>
-                            {% for i in  booking.occupancies %}
-                                <i class="material-icons" style="margin-right:-10px;">person</i>
-                            {% endfor %}
-{#                            {{  booking.occupancies|length +1}} / {{ booking.bookedroom.beds }}#}
+                            {{  booking.occupancies|length +1}} / {{ booking.bookedroom.beds }}occupancies|length +1}} / {{ booking.bookedroom.beds }}#}
                         </div>
 
                         <div class="col s1" style="text-align:right;">
@@ -191,11 +184,11 @@
             </div>
         </li>
         <li class="collapsible-header grey-text" style="border-top:0px;">
-            <div class="col s1 left">Date</div>
-            <div class="col s3">Guest</div>
-            <div class="col s3">Check out</div>
-            <div class="col s3">Room</div>
-            <div class="col s2">Occupancy</div>
+            <div class="col s1 left">{{ 'booking.label.date'|trans }}</div>
+            <div class="col s3">{{ 'booking.label.guest'|trans }}</div>
+            <div class="col s3">{{ 'booking.label.checkintime'|trans }}</div>
+            <div class="col s3">{{ 'booking.label.room'|trans }}</div>
+            <div class="col s2">{{ 'booking.label.occupancy'|trans }}</div>
             <div class="col s1"></div>
         </li>
 
@@ -228,11 +221,23 @@
                             / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
                         </div>
                         <div class="col s2">
-                            <i class="material-icons" style="margin-right:-10px;">person</i>
-                            {% for i in  booking.occupancies %}
-                                <i class="material-icons" style="margin-right:-10px;">person</i>
-                            {% endfor %}
-                            {#                            {{  booking.occupancies|length +1}} / {{ booking.bookedroom.beds }}#}
+
+
+                            {{  booking.occupancies|length +1}} / {{ booking.bookedroom.beds }}
+
+                            {# {% if booking.occupancies|length+1 <= booking.bookedroom.beds %}
+                                {% for i in  booking.bookedroom.beds+0 %}
+                                    {% if i <= booking.occupancies %}
+                                        <i class="material-icons" style="margin-right:-10px;">person</i>
+                                    {% else %}
+                                        <i class="material-icons" style="margin-right:-10px;">person_outline</i>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <i class="material-icons">people</i>
+                                <i class="material-icons">notifications_active</i>
+                            {% endif %} #}
+                            
                         </div>
                         <div class="col s1" style="text-align:right;">
                             <a class='dropdown-trigger' href='#'
