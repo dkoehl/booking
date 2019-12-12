@@ -61,7 +61,6 @@ class GuestType extends AbstractType
                     'html5' => true,
                     'format' => 'YYYY-mm-dd',
                     'attr' => [
-                        'class' => 'js-datepicker',
                         'placeholder' => 'guest.label.birthday.placeholder'
                     ],
                     'label' => 'guest.label.birthday',
