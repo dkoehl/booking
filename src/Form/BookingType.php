@@ -24,17 +24,19 @@ class BookingType extends AbstractType
             ->add('bookingfrom', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => true,
-                'placeholder' => 'Select a value',
                 'format' => 'YYYY-mm-dd',
                 'label' => 'booking.label.from',
-                // 'attr' => ['class' => 'js-datepicker'],
+                'attr' => [
+                    'placeholder' => 'YYYY-mm-dd',
+                ],
             ])
             ->add('bookingtill', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => true,
                 'format' => 'YYYY-mm-dd',
-                'placeholder' => 'dd.mm.YYYY',
-                // 'attr' => ['class' => 'js-datepicker'],
+                'attr' => [
+                    'placeholder' => 'YYYY-mm-dd',
+                ],
                 'label' => 'booking.label.to',
             ])
 //            ->add('room', CollectionType::class, [
