@@ -7,13 +7,13 @@ if (bookingVacancies) {
     let bookingFrom = '';
     let bookingTill = '';
 
-    let EZ = document.getElementById('ez').addEventListener('click', function () {
+    let EZ = document.getElementById('ez').addEventListener('click', function() {
         selectedRoomType = this.value;
         bookingFrom = document.getElementById('booking_bookingfrom').value;
         bookingTill = document.getElementById('booking_bookingtill').value;
         getvacanciesbydate(bookingFrom, bookingTill, 1)
     });
-    let DZ = document.getElementById('dz').addEventListener('click', function () {
+    let DZ = document.getElementById('dz').addEventListener('click', function() {
         selectedRoomType = this.value;
         bookingFrom = document.getElementById('booking_bookingfrom').value;
         bookingTill = document.getElementById('booking_bookingtill').value;
@@ -22,9 +22,14 @@ if (bookingVacancies) {
 
 
     /**
-     * Saves values to booking formular
+     * Saves ROOMID to booking formular
+     * 
+     * Beim Absenden wird die ausgewählte 
+     * ROOM-ID in ein verstecktes Formular- 
+     * Feld eingefügt.
+     * 
      */
-    let bookingSubmitAction = document.getElementById('booking_submit').addEventListener('click', function (e) {
+    let bookingSubmitAction = document.getElementById('booking_submit').addEventListener('click', function(e) {
         let lis = document.getElementById("bookingVacancies").getElementsByTagName('li');
         for (var i = 0; i < lis.length; i++) {
             let elementClasses = lis[i].getAttribute('class');
@@ -42,12 +47,18 @@ if (bookingVacancies) {
 
     /**
      * Gets free rooms for list view
+     * 
+     * Ruft BookingController auf und fragt dort
+     * freie Zimmer für einen eingegebenen Zeitraum ab.
+     * 
+     * Bei Erfolg wird eine Liste mit Ergebnissen angezeigt
+     * 
      */
     function getvacanciesbydate(bookingFrom, bookingTill, roomType = '') {
         let url = "/booking/getvacanciesbydate/" + bookingFrom + '/' + bookingTill + '/' + roomType;
         axios.get(url)
             .then(
-                function (response) {
+                function(response) {
                     // console.log(response.data);
                     let returnHtml = '';
                     document.getElementById('bookingVacancies').innerHTML = '';
@@ -77,7 +88,7 @@ if (bookingVacancies) {
                      */
                     var lis = document.getElementById("bookingVacancies").getElementsByTagName('li');
                     for (var i = 0; i < lis.length; i++) {
-                        lis[i].addEventListener('click', function () {
+                        lis[i].addEventListener('click', function() {
                             let defaultClasses = this.getAttribute('class');
                             if (defaultClasses.includes('active')) {
                                 // removes active state

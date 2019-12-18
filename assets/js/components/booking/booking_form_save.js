@@ -1,10 +1,8 @@
-
-
-
-
-
+/**
+ * Adds forms to the booking form
+ */
 let bookingId = document.location.pathname.split('/');
-if (bookingId){
+if (bookingId) {
     let guestSaveButton = document.getElementById('guest_bookings');
     let occupancySaveButton = document.getElementById('occupancy_booking');
     let priceSaveButton = document.getElementById('price_booking');
@@ -13,17 +11,17 @@ if (bookingId){
     let inventorySaveButton = document.getElementById('inventory_booking');
     let damageSaveButton = document.getElementById('damage_booking');
 
-    if (occupancySaveButton){
+    if (occupancySaveButton) {
         occupancySaveButton.value = bookingId[2];
     }
-    if (guestSaveButton){
+    if (guestSaveButton) {
         guestSaveButton.value = bookingId[2];
     }
 
-    if (priceSaveButton){
+    if (priceSaveButton) {
         priceSaveButton.value = bookingId[2];
     }
-    if (paymentSaveButton){
+    if (paymentSaveButton) {
         paymentSaveButton.value = bookingId[2];
     }
     if (parkingSaveButton) {

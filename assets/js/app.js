@@ -22,39 +22,36 @@ import 'materialize-css';
 import 'material-icons';
 import * as mdc from 'material-components-web';
 mdc.autoInit();
-
-const Highcharts = require ("./components/highcharts");
-const Collapsed = require ("./components/collapsed");
-const DropDownButtons = require("./components/dropdownbuttons");
-const Actionbuttons = require("./components/actionbuttons");
-const BookingVacancies = require ("./components/bookingform");
-const BookingUserSearch = require ("./components/bookingform_searchguest");
-const BookingFormAddForms = require("./components/booking_add_formulars");
-const BokkingFormSaveForms = require('./components/booking_save_formulars');
-// const TakePhoto = require('./components/take_photo');
-const CaptureWebcam = require('./components/capture_webcam');
-
+// global stuff
+const Dashboard_Highcharts = require("./components/index/highcharts");
+// const Collapsed = require("./components/helper/collapsed");
+// const DropDownButtons = require("./components/helper/dropdownbuttons");
+const Global_Actionbuttons = require("./components/helper/actionbuttons");
+// Booking JS
+const Booking_AddEntitiesToForm = require("./components/booking/booking_add_formulars");
+const Booking_CreateBookingForm = require("./components/booking/booking_form_new");
+const Booking_SaveForm = require("./components/booking/booking_form_save");
+// Guest
+const Guest_CaptureWebcamImage = require("./components/guest/capture_webcam");
+const Guest_SearchGuest = require("./components/guest/guest_form_searchguest");
 /**
  * Nativ JS stuff
  */
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
     var instances = M.Datepicker.init(elems, {
-        format : 'YYYY-mm-dd',
-        minDate : new Date(1999, 10 - 1, 25)
+        format: 'YYYY-mm-dd',
+        minDate: new Date(1999, 10 - 1, 25)
     });
+    Dashboard_Highcharts;
+    Global_Actionbuttons;
 
+    Booking_AddEntitiesToForm;
+    Booking_CreateBookingForm;
+    Booking_SaveForm;
 
-    Highcharts;
-    Collapsed;
-    DropDownButtons;
-    Actionbuttons;
-    BookingVacancies;
-    BookingUserSearch;
-    BookingFormAddForms;
-    BokkingFormSaveForms;
-    // TakePhoto;
-    CaptureWebcam;
+    Guest_CaptureWebcamImage;
+    Guest_SearchGuest;
 
 });
 /**
@@ -62,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
  *
  *
  *
- * jquery stuff
+ * jQuery stuff
  *
  *
  *
@@ -74,17 +71,22 @@ if (typeof window !== 'undefined') {
     window.jQuery = $;
     require('materialize-css');
 }
-const DataTables = require ("./components/jquery_datatables");
-const DateTimePicker = require ("./components/jquery_datetimepicker");
-const MultipleSelect = require ("./components/jquery_multipleselect");
+const Guest_Datatable = require("./components/guest/guest_jquery_datatable");
+const Room_Datatable = require("./components/room/room_jquery_datatable");
+const Booking_Datepicker = require("./components/booking/booking_jquery_datetimepicker");
+const Guest_Datepicker = require("./components/guest/guest_jquery_datetimepicker");
+const Global_DateTimePicker = require("./components/helper/jquery_datetimepicker");
+// const GlobalMultipleSelect = require("./components/helper/jquery_multipleselect");
 // Or with jQuery
 $(document).ready(
-    function () {
-        DataTables;
-        DateTimePicker;
-        MultipleSelect;
+    function() {
+        Guest_Datatable;
+        Guest_Datepicker;
 
+        Room_Datatable;
+
+        Booking_Datepicker;
+
+        Global_DateTimePicker;
     }
 );
-
-

@@ -1,18 +1,20 @@
+/**
+ * Captures webcam image
+ */
 let photoButton = document.getElementById('button_photo');
 if (photoButton) {
-    let addphotoButton = document.getElementById('button_photo').addEventListener('click', function (event) {
+    let addphotoButton = document.getElementById('button_photo').addEventListener('click', function(event) {
         event.preventDefault();
         let videoCanvas = document.getElementById('videocanvas');
         videoCanvas.classList.remove('hide');
         photoButton.classList.add('hide');
 
-
         // The width and height of the captured photo. We will set the
         // width to the value defined here, but the height will be
         // calculated based on the aspect ratio of the input stream.
 
-        var width = 550;    // We will scale the photo width to this
-        var height = 0;     // This will be computed based on the input stream
+        var width = 550; // We will scale the photo width to this
+        var height = 0; // This will be computed based on the input stream
 
 
 
@@ -35,16 +37,16 @@ if (photoButton) {
             photo = document.getElementById('photo');
             startbutton = document.getElementById('startbutton');
 
-            navigator.mediaDevices.getUserMedia({video: true, audio: false})
-                .then(function (stream) {
+            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                .then(function(stream) {
                     video.srcObject = stream;
                     video.play();
                 })
-                .catch(function (err) {
+                .catch(function(err) {
                     console.log("An error occurred: " + err);
                 });
 
-            video.addEventListener('canplay', function (ev) {
+            video.addEventListener('canplay', function(ev) {
                 if (!streaming) {
                     height = video.videoHeight / (video.videoWidth / width);
 
@@ -63,7 +65,7 @@ if (photoButton) {
                 }
             }, false);
 
-            startbutton.addEventListener('click', function (ev) {
+            startbutton.addEventListener('click', function(ev) {
                 takepicture();
                 ev.preventDefault();
             }, false);

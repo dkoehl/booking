@@ -1,17 +1,6 @@
 // https://xdsoft.net/jqplugins/datetimepicker/
 import "jquery-datetimepicker";
 
-$('.js-datepicker').datetimepicker({
-    format: 'Y-m-d',
-    dateFormat: "dd.mm.yy",
-    showAnim: 'blind',
-    inline: false,
-    timepicker: false,
-    startDate: new Date(),
-    weeks: true,
-
-}, );
-
 $('#booking_bookingfrom').datetimepicker({
     format: 'Y-m-d',
     dateFormat: "dd.mm.yy",
@@ -42,17 +31,4 @@ $('#booking_bookingtill').datetimepicker({
     },
 });
 
-
-let today = new Date();
-today.setDate(today.getDate() - 6570);
-
-$('#guest_birthday').datetimepicker({
-    format: 'Y-m-d',
-    dateFormat: "dd.mm.yy",
-    showAnim: 'blind',
-    inline: false,
-    timepicker: false,
-    inline: false,
-    startDate: today
-});
 $.datetimepicker.setLocale('de');
