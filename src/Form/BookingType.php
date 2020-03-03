@@ -7,12 +7,7 @@ use App\Entity\Guest;
 use App\Entity\Room;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -48,14 +43,18 @@ class BookingType extends AbstractType
                 'choice_label' => 'houseName',
                 'multiple' => true,
                 'label' => 'booking.label.room',
-                'attr' => ['class' => 'hide'],
+                'attr' => [
+                    'class' => 'hide'
+                ],
             ])
             ->add('guest', EntityType::class, [
                 'class' => Guest::class,
                 'choice_label' => 'lastnameFirstname',
                 'multiple' => false,
                 'label' => 'booking.label.guest',
-                'attr' => ['class' => 'hide'],
+                'attr' => [
+                    'class' => 'hide'
+                ],
 
             ])
         ;
