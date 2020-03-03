@@ -194,7 +194,15 @@
 
             <trans-unit id="price.label.type">
                 <source>price.label.type</source>
-                <target>Price</target>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="price.option.type.1">
+                <source>price.option.type.1</source>
+                <target>Monthly</target>
+            </trans-unit>
+            <trans-unit id="price.option.type.2">
+                <source>price.option.type.2</source>
+                <target>Daily</target>
             </trans-unit>
             <trans-unit id="price.label.price">
                 <source>price.label.price</source>
@@ -214,7 +222,7 @@
             </trans-unit>
             <trans-unit id="price.label.amount">
                 <source>price.label.amount</source>
-                <target>Amount</target>
+                <target>Amount of type (3 month/30days/etc)</target>
             </trans-unit>
             <trans-unit id="price.label.amount.placeholder">
                 <source>price.label.amount.placeholder</source>

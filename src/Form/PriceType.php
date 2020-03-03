@@ -21,11 +21,11 @@ class PriceType extends AbstractType
                 ],
                 'choices' => [
                     'Please choose' => null,
-                    '1' => '1',
-                    '2' => '2',
-                    '3' => '3',
-                    '4' => '4',
-                    '5' => '5',
+                    'price.option.type.1' => '1',
+                    'price.option.type.2' => '2',
+//                    '3' => '3',
+//                    '4' => '4',
+//                    '5' => '5',
                 ],
             ])
             ->add('price', NULL, [

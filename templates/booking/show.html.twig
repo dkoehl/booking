@@ -62,7 +62,6 @@
             {{ include('room/_booking_room_body.html.twig') }}
         </li>
 
-        {#Guest Data#}
         <li class="collection-item  lighten-5 grey-text" id="booking_guest">
             {% if booking.guest.id == 1 %}
                 <ul class="collection with-header blue-grey-text booking_guest" id="form_booking_guest">
@@ -89,7 +88,7 @@
             {% endif %}
         </li>
 
-        <li class="collection-item  lighten-5 grey-text" id="booking_price">
+        <li class="collection-item  lighten-5 grey-text" id="booking_occupancies">
             {% if booking.occupancies.0.id is defined  %}
                 <div class="row">
                     <span class="new badge left blue" data-badge-caption="Occupancies"></span>
@@ -109,39 +108,6 @@
                 
         </li>
 
-
-        <li class="collection-item  lighten-5 grey-text" id="booking_price">
-            {% if booking.prices.0.id is defined  %}
-                <div class="row">
-                    <span class="new badge left blue" data-badge-caption="Price"></span>
-                </div>
-                {{ include('price/_booking_price_body.html.twig') }}
-            {% else %}
-                <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action" id="button_booking_price">
-                    Price
-                    <i class="material-icons right">add</i>
-                </button>
-                {{ include('price/_form.html.twig') }}
-            {% endif %}
-        </li>
-
-{#                {{dump(booking.payments.0)}}#}
-        <li class="collection-item  lighten-5 grey-text" id="booking_payment">
-            {% if booking.payments.0.id is defined  %}
-                <div class="row">
-                    <span class="new badge left blue" data-badge-caption="Payment"></span>
-                </div>
-                {{ include('payment/_booking_payment_body.html.twig') }}
-            {% else %}
-                <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action" id="button_booking_payment">
-                    Payment
-                    <i class="material-icons right">add</i>
-                </button>
-                {{ include('payment/_form.html.twig') }}
-            {% endif %}
-        </li>
-
-
         <li class="collection-item  lighten-5 grey-text" id="booking_parking">
             {% if booking.parkings.0.id is defined  %}
                 <div class="row">
@@ -158,7 +124,6 @@
             {{ include('parking/_form.html.twig') }}
         </li>
 
-{#        {{dump(booking.inventory)}}#}
         <li class="collection-item  lighten-5 grey-text" id="booking_inventory">
             {% if booking.inventories.0.id is defined  %}
                 <div class="row">
@@ -174,6 +139,36 @@
             </button>
             {{ include('inventory/_form.html.twig') }}
         </li>
+
+        <li class="collection-item  lighten-5 grey-text" id="booking_price">
+            {% if booking.prices.0.id is defined  %}
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Price"></span>
+                </div>
+                {{ include('price/_booking_price_body.html.twig') }}
+            {% else %}
+                <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action" id="button_booking_price">
+                    Price
+                    <i class="material-icons right">add</i>
+                </button>
+                {{ include('price/_form.html.twig') }}
+            {% endif %}
+        </li>
+
+{#        <li class="collection-item  lighten-5 grey-text" id="booking_payment">#}
+{#            {% if booking.payments.0.id is defined  %}#}
+{#                <div class="row">#}
+{#                    <span class="new badge left blue" data-badge-caption="Payment"></span>#}
+{#                </div>#}
+{#                {{ include('payment/_booking_payment_body.html.twig') }}#}
+{#            {% else %}#}
+{#                <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action" id="button_booking_payment">#}
+{#                    Payment#}
+{#                    <i class="material-icons right">add</i>#}
+{#                </button>#}
+{#                {{ include('payment/_form.html.twig') }}#}
+{#            {% endif %}#}
+{#        </li>#}
 
 
         <li class="collection-item  lighten-5 grey-text" id="booking_damage">
