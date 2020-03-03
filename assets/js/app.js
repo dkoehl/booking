@@ -24,8 +24,8 @@ import * as mdc from 'material-components-web';
 mdc.autoInit();
 // global stuff
 const Dashboard_Highcharts = require("./components/index/highcharts");
-// const Collapsed = require("./components/helper/collapsed");
-// const DropDownButtons = require("./components/helper/dropdownbuttons");
+const Collapsed = require("./components/helper/collapsed");
+const DropDownButtons = require("./components/helper/dropdownbuttons");
 const Global_Actionbuttons = require("./components/helper/actionbuttons");
 // Booking JS
 const Booking_AddEntitiesToForm = require("./components/booking/booking_add_formulars");
@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
     Booking_AddEntitiesToForm;
     Booking_CreateBookingForm;
     Booking_SaveForm;
+    Collapsed;
+    DropDownButtons;
 
     Guest_CaptureWebcamImage;
     Guest_SearchGuest;
