@@ -46,11 +46,13 @@ task('deploy', [
     'deploy:symlink',
     'deploy:unlock',
     'cleanup',
+    'setPerms',
     'success'
 ]);
 task('composer install', 'composer install');
 task('yarn install', '/usr/bin/yarn install');
 task('yarn encore', '/usr/bin/yarn encore dev');
 task('clear cache', 'php bin/console cache:clear');
+task('setPerms', 'chmod -R 0777 /var/www/booking/current/*');
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
