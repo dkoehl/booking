@@ -4,24 +4,24 @@
             <b>Carplate</b><br>
             <span class="black-text">{{ parking.carplate }}</span>
         </p>
-
-
     </div>
     <div class="col s3">
         <p>
             <b>From</b><br>
             <span class="black-text">{{ parking.startdate ? parking.startdate|date("d.m.Y") : '' }}</span>
         </p>
-
     </div>
-    <div class="col s2">
+    <div class="col s3">
         <p>
             <b>To</b><br>
             <span class="black-text">{{ parking.enddate ? parking.enddate|date("d.m.Y") : '' }}</span>
         </p>
     </div>
     <div class="col s3">
-
+        <p>
+            <b>Price</b><br>
+            <span class="black-text">{{ parking.price }}</span>
+        </p>
     </div>
     <div class="col s1" style="text-align:right;">
         <a class='dropdown-trigger' href='#'
