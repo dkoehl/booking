@@ -88,8 +88,8 @@
             {% endif %}
         </li>
 
-        <li class="collection-item  lighten-5 grey-text" id="booking_occupancies">
-            {% if booking.occupancies.0.id is defined  %}
+        {% if booking.occupancies.0.id is defined %}
+            <li class="collection-item  lighten-5 grey-text" id="booking_occupancies">
                 <div class="row">
                     <span class="new badge left blue" data-badge-caption="Occupancies"></span>
                 </div>
@@ -97,16 +97,17 @@
                     {{ include('occupancy/_booking_occupancy_body.html.twig') }}
                 {% endfor %}
 
-            {% endif %}
+            </li>
+        {% endif %}
             {% if booking.occupancies|length+1 < booking.bookedroom.beds %}
-                <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action" id="button_booking_occupancy">
-                    Occupancy
-                    <i class="material-icons right">add</i>
-                </button>
-                {{ include('occupancy/_form.html.twig') }}
+                <li class="collection-item  lighten-5 grey-text" id="booking_occupancies">
+                    <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action" id="button_booking_occupancy">
+                        Occupancy
+                        <i class="material-icons right">add</i>
+                    </button>
+                    {{ include('occupancy/_form.html.twig') }}
+                </li>
             {% endif %}
-                
-        </li>
 
         <li class="collection-item  lighten-5 grey-text" id="booking_parking">
             {% if booking.parkings.0.id is defined  %}
