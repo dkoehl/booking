@@ -264,6 +264,15 @@
                 <source>parking.label.carplate.placeholder</source>
                 <target>M-AB-1234</target>
             </trans-unit>
+
+            <trans-unit id="parking.label.price">
+                <source>parking.label.price</source>
+                <target>Price</target>
+            </trans-unit>
+            <trans-unit id="parking.label.price.placeholder">
+                <source>parking.label.price.placeholder</source>
+                <target>EUR</target>
+            </trans-unit>
             <trans-unit id="parking.label.startdate">
                 <source>parking.label.startdate</source>
                 <target>From</target>

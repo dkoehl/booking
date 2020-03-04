@@ -63,6 +63,11 @@ class Parking
 
     private $booking_id;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $price;
+
 
     public function getId(): ?int
     {
@@ -174,6 +179,18 @@ class Parking
     public function setTstamp(?int $tstamp): self
     {
         $this->tstamp = $tstamp;
+
+        return $this;
+    }
+
+    public function getPrice(): ?string
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?string $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

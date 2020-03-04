@@ -18,7 +18,7 @@
                 {{ form_start(parkingForm) }}
 {#                {{ form_widget(parkingForm) }}#}
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s3">
                         {{ form_row(parkingForm.carplate) }}
                     </div>
                     <div class="input-field col s3">
@@ -26,6 +26,9 @@
                     </div>
                     <div class="input-field col s3">
                         {{ form_row(parkingForm.enddate) }}
+                    </div>
+                    <div class="input-field col s3">
+                        {{ form_row(parkingForm.price) }}
                     </div>
                 </div>
 
