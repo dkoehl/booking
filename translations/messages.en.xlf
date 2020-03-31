@@ -291,6 +291,24 @@
             </trans-unit>
 
 
+            <trans-unit id="deposite.label.amount">
+                <source>deposite.label.amount</source>
+                <target>Amount/Price</target>
+            </trans-unit>
+            <trans-unit id="deposite.label.amount.placeholder">
+                <source>deposite.label.amount.placeholder</source>
+                <target>EUR</target>
+            </trans-unit>
+            <trans-unit id="deposite.button.save">
+                <source>deposite.button.save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="deposite.title.new">
+                <source>deposite.title.new</source>
+                <target>New Deposite</target>
+            </trans-unit>
+
+
             <trans-unit id="inventory.label.beds">
                 <source>inventory.label.beds</source>
                 <target>Beds</target>

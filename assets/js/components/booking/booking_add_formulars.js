@@ -8,6 +8,7 @@ let button_booking_inventory = document.getElementById('button_booking_inventory
 let button_booking_parking = document.getElementById('button_booking_parking');
 let button_booking_payment = document.getElementById('button_booking_payment');
 let button_booking_price = document.getElementById('button_booking_price');
+let button_booking_deposite = document.getElementById('button_booking_deposite');
 /**
  * Adds guest form
  */
@@ -56,6 +57,12 @@ if (button_booking_damage) {
     let form_booking_damage = document.getElementById('button_booking_damage').addEventListener('click', function() {
         let formularElementbutton_booking_damage = document.getElementById('form_booking_damage');
         formularElementbutton_booking_damage.classList.remove('hide');
+    });
+}
+if (button_booking_deposite) {
+    let form_booking_deposite = document.getElementById('button_booking_deposite').addEventListener('click', function() {
+        let formularElementbutton_booking_deposite = document.getElementById('form_booking_deposite');
+        formularElementbutton_booking_deposite.classList.remove('hide');
     });
 }
 

@@ -118,6 +118,11 @@ class Booking
      */
     private $occupancies;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Deposite", inversedBy="booking", cascade={"persist", "remove"})
+     */
+    private $deposite;
+
     public function __construct()
     {
         $this->room = new ArrayCollection();
@@ -508,6 +513,18 @@ class Booking
                 $occupancy->setOccupancies(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDeposite(): ?Deposite
+    {
+        return $this->deposite;
+    }
+
+    public function setDeposite(?Deposite $deposite): self
+    {
+        $this->deposite = $deposite;
 
         return $this;
     }

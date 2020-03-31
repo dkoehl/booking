@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Booking;
 use App\Entity\Damage;
+use App\Entity\Deposite;
 use App\Entity\Guest;
 use App\Entity\Inventory;
 use App\Entity\Occupancy;
@@ -13,6 +14,7 @@ use App\Entity\Price;
 use App\Entity\Room;
 use App\Form\BookingType;
 use App\Form\DamageType;
+use App\Form\DepositeType;
 use App\Form\GuestType;
 use App\Form\InventoryType;
 use App\Form\OccupancyType;
@@ -191,6 +193,7 @@ class BookingController extends AbstractController
         $inventoryForm = $this->createForm(InventoryType::class, new Inventory());
         $damageForm = $this->createForm(DamageType::class, new Damage());
         $roomForm = $this->createForm(DamageType::class, new Damage());
+        $depositeForm = $this->createForm(DepositeType::class, new Deposite());
         return $this->render('booking/show.html.twig', [
             'booking' => $booking,
             'room' => $roomForm->createView(),
@@ -201,7 +204,8 @@ class BookingController extends AbstractController
             'parkingForm' => $parkingForm->createView(),
             'inventoryForm' => $inventoryForm->createView(),
             'damageForm' => $damageForm->createView(),
-
+            'depositeForm' => $depositeForm->createView(),
+            
         ]);
     }
 

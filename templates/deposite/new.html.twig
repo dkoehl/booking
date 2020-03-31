@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Deposite{% endblock %}
+
+{% block body %}
+    <h1>Create new Deposite</h1>
+
+    {{ include('deposite/_form.html.twig') }}
+
+    <a href="{{ path('deposite_index') }}">back to list</a>
+{% endblock %}
