@@ -35,20 +35,21 @@ class DepositeController extends AbstractController
         $requestReg = $request->request->get('deposite');
         $booking = $request->request->get('deposite')['booking'];
         $request->request->remove('deposite');
-        $deposite = new Deposite();
+
         if ($booking) {
+            $deposite = new Deposite();
             $deposite->setAmount($requestReg['amount']);
             $deposite->setTstamp(time());
             $deposite->setHidden(0);
             $deposite->setDeleted(0);
             $deposite->setCrdate(time());
-        
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($deposite);
             $entityManager->flush();
-        
+
             $entityManager = $this->getDoctrine()->getManager();
-            $booking = $entityManager->getRepository(Booking::class)->find($deposite);
+            $booking = $entityManager->getRepository(Booking::class)->find($booking);
             $booking->addDeposite($deposite);
             $deposite->setBooking($booking);
             $entityManager->flush();
@@ -56,7 +57,8 @@ class DepositeController extends AbstractController
                 'id' => $booking->getId(),
             ]);
         }
-        
+
+        $deposite = new Deposite();
         $form = $this->createForm(DepositeType::class, $deposite);
         $form->handleRequest($request);
         return $this->render('deposite/new.html.twig', [
@@ -100,7 +102,7 @@ class DepositeController extends AbstractController
      */
     public function delete(Request $request, Deposite $deposite): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$deposite->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $deposite->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($deposite);
             $entityManager->flush();
