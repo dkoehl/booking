@@ -33,7 +33,7 @@ class DamageController extends AbstractController
     {
         $requestReg = $request->request->get('damage');
         $booking = $request->request->get('damage')['booking'];
-        $request->request->remove('damage')['booking'];
+        $request->request->remove('damage');
     
         if ($booking) {
             $damage = new Damage();

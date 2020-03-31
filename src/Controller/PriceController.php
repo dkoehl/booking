@@ -33,7 +33,7 @@ class PriceController extends AbstractController
     {
         $requestReg = $request->request->get('price');
         $booking = $request->request->get('price')['booking'];
-        $request->request->remove('price')['booking'];
+        $request->request->remove('price');
     
         if ($booking) {
             $price = new Price();

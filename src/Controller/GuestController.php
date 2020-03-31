@@ -69,7 +69,7 @@ class GuestController extends AbstractController
     {
         $requestReg = $request->request->get('guest');
         $booking = $request->request->get('guest')['bookings'];
-        $request->request->remove('guest')['bookings'];
+        $request->request->remove('guest');
         $guest = new Guest();
         $guestForm = $this->createForm(GuestType::class, $guest);
         $guestForm->handleRequest($request);

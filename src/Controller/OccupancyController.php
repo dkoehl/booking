@@ -33,7 +33,7 @@ class OccupancyController extends AbstractController
     {
         $requestReg = $request->request->get('occupancy');
         $booking = $request->request->get('occupancy')['booking'];
-        $request->request->remove('occupancy')['booking'];
+        $request->request->remove('occupancy');
         
         $occupancy = new Occupancy();
         

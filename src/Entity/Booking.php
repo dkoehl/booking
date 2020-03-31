@@ -119,7 +119,11 @@ class Booking
     private $occupancies;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Deposite", inversedBy="booking", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Deposite",  mappedBy="deposites")
+     */
+    private $deposites;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Deposite", mappedBy="booking")
      */
     private $deposite;
 
@@ -137,6 +141,8 @@ class Booking
         $this->parking = new ArrayCollection();
         $this->payment = new ArrayCollection();
         $this->occupancies = new ArrayCollection();
+        $this->deposites = new ArrayCollection();
+        $this->deposite = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -517,7 +523,43 @@ class Booking
         return $this;
     }
 
-    public function getDeposite(): ?Deposite
+
+
+    /**
+     * @return Collection|Deposite[]
+     */
+    public function getDeposites(): Collection
+    {
+        return $this->deposite;
+    }
+
+    public function addDeposite(Deposite $deposite): self
+    {
+        if (!$this->deposite->contains($deposite)) {
+            $this->deposites[] = $deposite;
+            $deposite->setDeposites($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDeposite(Deposite $deposite): self
+    {
+        if ($this->deposites->contains($deposite)) {
+            $this->deposites->removeElement($deposite);
+            // set the owning side to null (unless already changed)
+            if ($deposite->getDeposites() === $this) {
+                $deposite->setDeposites(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Deposite[]
+     */
+    public function getDeposite(): Collection
     {
         return $this->deposite;
     }

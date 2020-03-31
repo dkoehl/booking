@@ -34,9 +34,8 @@ class DepositeController extends AbstractController
     {
         $requestReg = $request->request->get('deposite');
         $booking = $request->request->get('deposite')['booking'];
-        $request->request->remove('deposite')['booking'];
+        $request->request->remove('deposite');
         $deposite = new Deposite();
-        
         if ($booking) {
             $deposite->setAmount($requestReg['amount']);
             $deposite->setTstamp(time());

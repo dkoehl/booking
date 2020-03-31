@@ -10,6 +10,7 @@ if (bookingId) {
     let parkingSaveButton = document.getElementById('parking_booking');
     let inventorySaveButton = document.getElementById('inventory_booking');
     let damageSaveButton = document.getElementById('damage_booking');
+    let depositeSaveButton = document.getElementById('deposite_booking');
 
     if (occupancySaveButton) {
         occupancySaveButton.value = bookingId[2];
@@ -32,5 +33,8 @@ if (bookingId) {
     }
     if (damageSaveButton) {
         damageSaveButton.value = bookingId[2];
+    }
+    if (depositeSaveButton) {
+        depositeSaveButton.value = bookingId[2];
     }
 }

@@ -156,12 +156,13 @@
             {% endif %}
         </li>
 
+
         <li class="collection-item  lighten-5 grey-text" id="booking_deposite">
-            {% if booking.deposite.0.id is defined  %}
+            {% if booking.deposites.0.id is defined  %}
                 <div class="row">
-                    <span class="new badge left blue" data-badge-caption="Price"></span>
+                    <span class="new badge left blue" data-badge-caption="Deposite"></span>
                 </div>
-                {{ include('price/_booking_deposite_body.html.twig') }}
+                {{ include('deposite/_booking_deposite_body.html.twig') }}
             {% else %}
                 <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action" id="button_booking_deposite">
                     Deposite

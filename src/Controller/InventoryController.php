@@ -34,7 +34,7 @@ class InventoryController extends AbstractController
     
         $requestReg = $request->request->get('inventory');
         $booking = $request->request->get('inventory')['booking'];
-        $request->request->remove('inventory')['booking'];
+        $request->request->remove('inventory');
     
         $inventory = new Inventory();
     

@@ -42,7 +42,12 @@ class Deposite
     private $tstamp;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Booking", mappedBy="deposite", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="deposites")
+     */
+    private $deposites;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="deposite")
      */
     private $booking;
 
@@ -111,20 +116,21 @@ class Deposite
         return $this;
     }
 
-    public function getBooking(): ?Booking
+    public function getDeposites(): ?Booking
     {
-        return $this->booking;
+        return $this->deposites;
+    }
+
+    public function setDeposites(?Booking $deposites): self
+    {
+        $this->deposites = $deposites;
+
+        return $this;
     }
 
     public function setBooking(?Booking $booking): self
     {
         $this->booking = $booking;
-
-        // set (or unset) the owning side of the relation if necessary
-        $newDeposite = null === $booking ? null : $this;
-        if ($booking->getDeposite() !== $newDeposite) {
-            $booking->setDeposite($newDeposite);
-        }
 
         return $this;
     }

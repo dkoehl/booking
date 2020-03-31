@@ -33,7 +33,7 @@ class ParkingController extends AbstractController
     {
         $requestReg = $request->request->get('parking');
         $booking = $request->request->get('parking')['booking'];
-        $request->request->remove('parking')['booking'];
+        $request->request->remove('parking');
     
         if ($booking) {
             $parking = new Parking();
