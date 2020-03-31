@@ -40,6 +40,12 @@ class ParkingType extends AbstractType
                 ],
                 'label' => 'parking.label.enddate',
             ])
+            ->add('parkingspot', NULL, [
+                'label' => 'parking.label.parkingspot',
+                'attr' => [
+                    'placeholder' => 'parking.label.parkingspot.placeholder'
+                ]
+            ])
             ->add('price', NULL, [
                 'label' => 'parking.label.price',
                 'attr' => [

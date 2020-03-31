@@ -68,6 +68,11 @@ class Price
      */
     private $booking;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $paymentmethod;
+
     public function __construct()
     {
 //        $this->booking = new ArrayCollection();
@@ -198,6 +203,18 @@ class Price
     {
         $this->booking = $booking;
         
+        return $this;
+    }
+
+    public function getPaymentmethod(): ?int
+    {
+        return $this->paymentmethod;
+    }
+
+    public function setPaymentmethod(?int $paymentmethod): self
+    {
+        $this->paymentmethod = $paymentmethod;
+
         return $this;
     }
 

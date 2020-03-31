@@ -68,6 +68,11 @@ class Parking
      */
     private $price;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $parkingspot;
+
 
     public function getId(): ?int
     {
@@ -191,6 +196,18 @@ class Parking
     public function setPrice(?string $price): self
     {
         $this->price = str_replace(',', '.', $price);
+
+        return $this;
+    }
+
+    public function getParkingspot(): ?string
+    {
+        return $this->parkingspot;
+    }
+
+    public function setParkingspot(?string $parkingspot): self
+    {
+        $this->parkingspot = $parkingspot;
 
         return $this;
     }

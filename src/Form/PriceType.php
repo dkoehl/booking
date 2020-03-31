@@ -40,6 +40,18 @@ class PriceType extends AbstractType
                     'placeholder' => 'price.label.tax.placeholder'
                 ]
             ])
+            ->add('paymentmethod', ChoiceType::class, [
+                'label' => 'price.label.paymentmethod',
+                'attr' => [
+                    'placeholder' => 'price.label.paymentmethod.placeholder'
+                ],
+                'choices' => [
+                    'Please choose' => null,
+                    'price.option.paymentmethod.1' => '1',
+                    'price.option.paymentmethod.2' => '2',
+                    'price.option.paymentmethod.3' => '3',
+                ],
+            ])
             ->add('amount', NULL, [
                 'label' => 'price.label.amount',
                 'attr' => [

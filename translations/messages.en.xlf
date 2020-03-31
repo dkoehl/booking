@@ -228,6 +228,22 @@
                 <source>price.label.amount.placeholder</source>
                 <target>4</target>
             </trans-unit>
+            <trans-unit id="price.label.paymentmethod">
+                <source>price.label.paymentmethod</source>
+                <target>Payment method</target>
+            </trans-unit>
+            <trans-unit id="price.option.paymentmethod.1">
+                <source>price.option.paymentmethod.1</source>
+                <target>Cash payment</target>
+            </trans-unit>
+            <trans-unit id="price.option.paymentmethod.2">
+                <source>price.option.paymentmethod.2</source>
+                <target>Credit card</target>
+            </trans-unit>
+            <trans-unit id="price.option.paymentmethod.3">
+                <source>price.option.paymentmethod.3</source>
+                <target>Pay by invoice</target>
+            </trans-unit>
 
 
             <trans-unit id="payment.label.payment">
@@ -263,6 +279,15 @@
             <trans-unit id="parking.label.carplate.placeholder">
                 <source>parking.label.carplate.placeholder</source>
                 <target>M-AB-1234</target>
+            </trans-unit>
+
+            <trans-unit id="parking.label.parkingspot">
+                <source>parking.label.parkingspot</source>
+                <target>Spot</target>
+            </trans-unit>
+            <trans-unit id="parking.label.parkingspot.placeholder">
+                <source>parking.label.parkingspot.placeholder</source>
+                <target>Parking spot</target>
             </trans-unit>
 
             <trans-unit id="parking.label.price">
