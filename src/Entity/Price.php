@@ -97,7 +97,7 @@ class Price
 
     public function setPrice(?string $price): self
     {
-        $this->price = $price;
+        $this->price = str_replace(',', '.', $price);
 
         return $this;
     }

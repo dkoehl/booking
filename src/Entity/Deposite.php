@@ -63,7 +63,7 @@ class Deposite
 
     public function setAmount(?string $amount): self
     {
-        $this->amount = $amount;
+        $this->amount = str_replace(',', '.', $amount);
 
         return $this;
     }

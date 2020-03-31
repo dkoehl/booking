@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    {{ dump(booking) }}
+{#    {{ dump(booking) }}#}
 
     <nav class="collection with-header blue-grey-text white">
         <div class="nav-wrapper">
@@ -65,6 +65,7 @@
                         <td>
                                 {% set difference = date(booking.bookingtill).diff(date(booking.bookingfrom)) %}
                                 {% set leftDays = difference.days %}
+
                                 {% if leftDays == 1 %}
                                     1
                                 {% else %}
@@ -72,9 +73,9 @@
                                 {% endif %}
                         </td>
                         <td>
-                            {{ booking.prices.0.amount }}
+                            {{ booking.prices.0.price | number_format(2, ',', '.') }}
 
-                            {% set endSum = booking.prices.0.amount * leftDays %}
+                            {% set endSum = booking.prices.0.price * leftDays %}
                         </td>
                     </tr>
 
@@ -84,7 +85,7 @@
                         <tr class="black-text">
                             <td>{{ damage.damageart }}</td>
                             <td></td>
-                            <td>{{ damage.price }}</td>
+                            <td>{{ damage.price  | number_format(2, ',', '.') }}</td>
                         </tr>
                         {% set endSum = endSum + damage.price %}
                     {% endfor %}
@@ -95,7 +96,7 @@
                         <tr class="black-text">
                             <td>{{ parking.carplate }}</td>
                             <td></td>
-                            <td>{{ parking.price }}</td>
+                            <td>{{ parking.price | number_format(2, ',', '.')}}</td>
                         </tr>
                         {% set endSum = endSum + parking.price %}
                     {% endfor %}
@@ -104,13 +105,13 @@
                     <tr class="black-text">
                         <td></td>
                         <td>SUM</td>
-                        <td>{{endSum}}</td>
+                        <td>{{endSum | number_format(2, ',', '.') }}</td>
                     </tr>
                     <tr class="black-text">
                         <td></td>
                         <td>TAX</td>
                         <td>
-                            {{ (endSum * 1.19) - endSum}}
+                            {{ ((endSum * 1.19) - endSum )  | number_format(2, ',', '.')  }}
                         </td>
                     </tr>
                     <tr class="black-text">
@@ -118,7 +119,7 @@
                         <td>TOTAL</td>
                         <td>
                             <b>
-                                {{ (endSum * 1.19) - endSum + endSum}}
+                                 {{ ((endSum * 1.19) - endSum + endSum ) | number_format(2, ',', '.') }}
                             </b>
                         </td>
                     </tr>
