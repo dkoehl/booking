@@ -4,7 +4,7 @@
 
 {% block body %}
 
-{#    {{ dump(booking) }}#}
+    {#    {{ dump(booking) }}#}
 
     <nav class="collection with-header blue-grey-text white">
         <div class="nav-wrapper">
@@ -36,97 +36,206 @@
                 </div>
             </h5>
         </li>
-        <li class="collection-item lighten-5 grey-text">
-            {{ include('booking/_booking_body_small.html.twig') }}
-        </li>
-        <li class="collection-item lighten-5 grey-text">
-            {{ include('guest/_booking_guest_body_small.html.twig') }}
-        </li>
 
         <li class="collection-item lighten-5 grey-text">
+
+
             <div class="row">
-                <span class="new badge left blue" data-badge-caption="Bill"></span>
+                <div class="col s9">
+                    <p>
+                        <b>Description/Text</b>
+                    </p>
+                </div>
+                <div class="col s1">
+                    <p>
+                        <b>Amount</b>
+                    </p>
+                </div>
+                <div class="col s2">
+                    <p>
+                        <b>Price / EUR</b>
+                    </p>
+                </div>
             </div>
+
             <div class="row">
-                <table class="highlight">
-                    <thead>
-                    <tr>
-                        <th>Position</th>
-                        <th>Amount</th>
-                        <th>Price / EUR</th>
-                    </tr>
-                    </thead>
+                <span class="new badge left blue" data-badge-caption="Room"></span>
+            </div>
 
-                    <tbody>
-                    <tr class="black-text">
-                        <td>
-                                {{ booking.bookedroom.house }} / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
-                        </td>
-                        <td>
-                                {% set difference = date(booking.bookingtill).diff(date(booking.bookingfrom)) %}
-                                {% set leftDays = difference.days %}
+            <div class="row">
+                <div class="col s9">
+                    <p>
+                        <span class="black-text">
+                            {{ booking.bookedroom.house }} / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
+                        </span>
+                    </p>
+                </div>
+                <div class="col s1">
+                    <p>
+                        <span class="black-text">
+                            {% set difference = date(booking.bookingtill).diff(date(booking.bookingfrom)) %}
+                            {% set leftDays = difference.days %}
 
-                                {% if leftDays == 1 %}
-                                    1
-                                {% else %}
-                                    {{ leftDays }}
-                                {% endif %}
-                        </td>
-                        <td>
+                            {% if leftDays == 1 %}
+                                1
+                            {% else %}
+                                {{ leftDays }}
+                            {% endif %}
+                        </span>
+                    </p>
+                </div>
+                <div class="col s2">
+                    <p>
+                        <span class="black-text">
                             {{ booking.prices.0.price | number_format(2, ',', '.') }}
+                        </span>
+                    </p>
+                    {% set endSum = booking.prices.0.price * leftDays %}
+                </div>
+            </div>
+        </li>
 
-                            {% set endSum = booking.prices.0.price * leftDays %}
-                        </td>
-                    </tr>
 
-
-
+        {% if booking.damages.0 is defined %}
+            <li class="collection-item lighten-5 grey-text">
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Damages"></span>
+                </div>
+                <div class="row black-text">
                     {% for damage in booking.damages %}
-                        <tr class="black-text">
-                            <td>{{ damage.damageart }}</td>
-                            <td></td>
-                            <td>{{ damage.price  | number_format(2, ',', '.') }}</td>
-                        </tr>
+                        <div class="col s9">
+                            <p>
+                                <span class="black-text">
+                                    {{ damage.damageart }}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col s1">
+
+                        </div>
+                        <div class="col s2">
+                            <p>
+                                <span class="black-text">
+                                    {{ damage.price  | number_format(2, ',', '.') }}
+                                </span>
+                            </p>
+                        </div>
                         {% set endSum = endSum + damage.price %}
                     {% endfor %}
+                </div>
+            </li>
+        {% endif %}
 
 
 
+
+        {% if booking.parkings.0 is defined %}
+            <li class="collection-item lighten-5 grey-text">
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Parking"></span>
+                </div>
+                <div class="row black-text">
                     {% for parking in booking.parkings %}
-                        <tr class="black-text">
-                            <td>{{ parking.carplate }}</td>
-                            <td></td>
-                            <td>{{ parking.price | number_format(2, ',', '.')}}</td>
-                        </tr>
+                        <div class="col s9">
+                            <p>
+                                {{ parking.carplate }} / {{ parking.parkingspot }}
+                            </p>
+                        </div>
+                        <div class="col s1">
+
+                        </div>
+                        <div class="col s2">
+                            <p>
+                                <span class="black-text">
+                                    {{ parking.price | number_format(2, ',', '.') }}
+                                </span>
+                            </p>
+                        </div>
                         {% set endSum = endSum + parking.price %}
                     {% endfor %}
+                </div>
+            </li>
+        {% endif %}
 
 
-                    <tr class="black-text">
-                        <td></td>
-                        <td>SUM</td>
-                        <td>{{endSum | number_format(2, ',', '.') }}</td>
-                    </tr>
-                    <tr class="black-text">
-                        <td></td>
-                        <td>TAX</td>
-                        <td>
-                            {{ ((endSum * 1.19) - endSum )  | number_format(2, ',', '.')  }}
-                        </td>
-                    </tr>
-                    <tr class="black-text">
-                        <td></td>
-                        <td>TOTAL</td>
-                        <td>
+        <li class="collection-item lighten-5 grey-text">
+
+
+            {% if booking.deposites.0 is defined %}
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Deposite"></span>
+                </div>
+                <div class="row black-text">
+                    <div class="col s9">
+                        <p>
+                            Deposite
+                        </p>
+                    </div>
+                    <div class="col s1">
+
+                    </div>
+                    <div class="col s2">
+                        <p>
+                                <span class="black-text">
+                                    {{ booking.deposites.0.amount | number_format(2, ',', '.') }}
+                                </span>
+                        </p>
+                    </div>
+                    {% set endSum = endSum + booking.deposites.0.amount %}
+                </div>
+            {% endif %}
+
+
+        </li>
+
+        <li class="collection-item lighten-5 grey-text">
+
+
+            <div class="row">
+                <span class="new badge left blue" data-badge-caption="Final amount"></span>
+            </div>
+            <div class="row">
+                <div class="col s9">
+                </div>
+                <div class="col s1">
+                    SUM
+                </div>
+                <div class="col s2">
+                        <span class="black-text">
                             <b>
-                                 {{ ((endSum * 1.19) - endSum + endSum ) | number_format(2, ',', '.') }}
+                                {{ endSum | number_format(2, ',', '.') }}
                             </b>
-                        </td>
-                    </tr>
+                        </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s9">
+                </div>
+                <div class="col s1">
+                    TAX
+                </div>
+                <div class="col s2">
+                        <span class="black-text">
+                            <b>
+                                {{ ((endSum * 1.19) - endSum )  | number_format(2, ',', '.') }}
+                            </b>
+                        </span>
 
-
-                    </tbody>
-                </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s9">
+                </div>
+                <div class="col s1">
+                    TOTAL
+                </div>
+                <div class="col s2">
+                        <span class="black-text">
+                            <b>
+                                {{ ((endSum * 1.19) - endSum + endSum ) | number_format(2, ',', '.') }}
+                            </b>
+                        </span>
+                </div>
             </div>
         </li>
 

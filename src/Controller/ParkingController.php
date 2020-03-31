@@ -53,6 +53,7 @@ class ParkingController extends AbstractController
                     )
                 ));
             $parking->setPrice($requestReg['price']);
+            $parking->setParkingspot($requestReg['parkingspot']);
             $parking->setTstamp(time());
             $parking->setHidden(0);
             $parking->setDeleted(0);

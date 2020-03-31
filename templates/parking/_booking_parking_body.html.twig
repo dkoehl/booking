@@ -5,13 +5,19 @@
             <span class="black-text">{{ parking.carplate }}</span>
         </p>
     </div>
-    <div class="col s3">
+    <div class="col s2">
+        <p>
+            <b>Parking spot</b><br>
+            <span class="black-text">{{ parking.parkingspot }}</span>
+        </p>
+    </div>
+    <div class="col s2">
         <p>
             <b>From</b><br>
             <span class="black-text">{{ parking.startdate ? parking.startdate|date("d.m.Y") : '' }}</span>
         </p>
     </div>
-    <div class="col s3">
+    <div class="col s2">
         <p>
             <b>To</b><br>
             <span class="black-text">{{ parking.enddate ? parking.enddate|date("d.m.Y") : '' }}</span>
