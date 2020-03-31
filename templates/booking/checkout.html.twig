@@ -3,6 +3,9 @@
 {% block title %}Booking{% endblock %}
 
 {% block body %}
+
+    {{ dump(booking) }}
+
     <nav class="collection with-header blue-grey-text white">
         <div class="nav-wrapper">
             <ul id="nav-mobile" class="hide-on-med-and-down">
@@ -12,10 +15,11 @@
 
                     </a>
                 </li>
-                <li><a href="#">
+                <li>
+                    <a href="#">
                         <i class="material-icons small grey-text">send</i>
-
-                    </a></li>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -38,13 +42,137 @@
         <li class="collection-item lighten-5 grey-text">
             {{ include('guest/_booking_guest_body_small.html.twig') }}
         </li>
+
         <li class="collection-item lighten-5 grey-text">
-            <p>
-                <label>
-                    <input type="checkbox"  />
-                    <span>AGBs drucken</span>
-                </label>
-            </p>
+            <div class="row">
+                <span class="new badge left blue" data-badge-caption="Bill"></span>
+            </div>
+            <div class="row">
+                <table class="highlight">
+                    <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Amount</th>
+                        <th>Price / EUR</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr class="black-text">
+                        <td>
+                                {{ booking.bookedroom.house }} / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
+                        </td>
+                        <td>
+                                {% set difference = date(booking.bookingtill).diff(date(booking.bookingfrom)) %}
+                                {% set leftDays = difference.days %}
+                                {% if leftDays == 1 %}
+                                    1
+                                {% else %}
+                                    {{ leftDays }}
+                                {% endif %}
+                        </td>
+                        <td>
+                            {{ booking.prices.0.amount }}
+
+                            {% set endSum = booking.prices.0.amount * leftDays %}
+                        </td>
+                    </tr>
+
+
+
+                    {% for damage in booking.damages %}
+                        <tr class="black-text">
+                            <td>{{ damage.damageart }}</td>
+                            <td></td>
+                            <td>{{ damage.price }}</td>
+                        </tr>
+                        {% set endSum = endSum + damage.price %}
+                    {% endfor %}
+
+
+
+                    {% for parking in booking.parkings %}
+                        <tr class="black-text">
+                            <td>{{ parking.carplate }}</td>
+                            <td></td>
+                            <td>{{ parking.price }}</td>
+                        </tr>
+                        {% set endSum = endSum + parking.price %}
+                    {% endfor %}
+
+
+                    <tr class="black-text">
+                        <td></td>
+                        <td>SUM</td>
+                        <td>{{endSum}}</td>
+                    </tr>
+                    <tr class="black-text">
+                        <td></td>
+                        <td>TAX</td>
+                        <td>
+                            {{ (endSum * 1.19) - endSum}}
+                        </td>
+                    </tr>
+                    <tr class="black-text">
+                        <td></td>
+                        <td>TOTAL</td>
+                        <td>
+                            <b>
+                                {{ (endSum * 1.19) - endSum + endSum}}
+                            </b>
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </li>
+
+
+        <li class="collection-item lighten-5 grey-text">
+            <div class="row">
+                <span class="new badge left blue" data-badge-caption="Print"></span>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label>
+                        <input type="checkbox"/>
+                        <span>AGBs drucken</span>
+                    </label>
+                </div>
+                <div class="col">
+                    <label>
+                        <input type="checkbox"/>
+                        <span>Aufnahmevertrag drucken</span>
+                    </label>
+                </div>
+                <div class="col">
+                    <label>
+                        <input type="checkbox"/>
+                        <span>Meldeschein drucken</span>
+                    </label>
+                </div>
+                <div class="col">
+                    <label>
+                        <input type="checkbox"/>
+                        <span>Inventarliste drucken</span>
+                    </label>
+                </div>
+                <div class="col">
+                    <label>
+                        <input type="checkbox"/>
+                        <span>Preisliste drucken</span>
+                    </label>
+                </div>
+                <div class="col">
+                    <label>
+                        <input type="checkbox"/>
+                        <span>Hausordnung drucken</span>
+                    </label>
+                </div>
+            </div>
+
         </li>
     </ul>
 
