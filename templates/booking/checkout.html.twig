@@ -158,10 +158,10 @@
         {% endif %}
 
 
-        <li class="collection-item lighten-5 grey-text">
 
 
-            {% if booking.deposites.0 is defined %}
+        {% if booking.deposites.0 is defined %}
+            <li class="collection-item lighten-5 grey-text">
                 <div class="row">
                     <span class="new badge left blue" data-badge-caption="Deposite"></span>
                 </div>
@@ -183,14 +183,11 @@
                     </div>
                     {% set endSum = endSum + booking.deposites.0.amount %}
                 </div>
-            {% endif %}
+            </li>
+        {% endif %}
 
-
-        </li>
 
         <li class="collection-item lighten-5 grey-text">
-
-
             <div class="row">
                 <span class="new badge left blue" data-badge-caption="Final amount"></span>
             </div>
@@ -245,37 +242,37 @@
                 <span class="new badge left blue" data-badge-caption="Print"></span>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col s2">
                     <label>
                         <input type="checkbox"/>
                         <span>AGBs drucken</span>
                     </label>
                 </div>
-                <div class="col">
+                <div class="col s2">
                     <label>
                         <input type="checkbox"/>
                         <span>Aufnahmevertrag drucken</span>
                     </label>
                 </div>
-                <div class="col">
+                <div class="col s2">
                     <label>
                         <input type="checkbox"/>
                         <span>Meldeschein drucken</span>
                     </label>
                 </div>
-                <div class="col">
+                <div class="col s2">
                     <label>
                         <input type="checkbox"/>
                         <span>Inventarliste drucken</span>
                     </label>
                 </div>
-                <div class="col">
+                <div class="col s2">
                     <label>
                         <input type="checkbox"/>
                         <span>Preisliste drucken</span>
                     </label>
                 </div>
-                <div class="col">
+                <div class="col s2">
                     <label>
                         <input type="checkbox"/>
                         <span>Hausordnung drucken</span>

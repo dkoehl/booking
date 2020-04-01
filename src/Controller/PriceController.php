@@ -41,6 +41,7 @@ class PriceController extends AbstractController
             $price->setPrice($requestReg['price']);
             $price->setTax($requestReg['tax']);
             $price->setAmount($requestReg['amount']);
+            $price->setPaymentmethod($requestReg['paymentmethod']);
             $price->setTstamp(time());
             $price->setHidden(0);
             $price->setDeleted(0);
