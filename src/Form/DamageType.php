@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Damage;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -11,8 +12,15 @@ class DamageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+
+
+        if(empty($options['data']->getId())){
+            $builder->setAction('/damage/new')
+                ->setMethod('POST');
+        }
         $builder
-            ->setAction('/damage/new')
+
             ->add('damageart', null, [
                 'label' => 'damage.label.damageart',
                 'attr' => [

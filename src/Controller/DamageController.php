@@ -86,9 +86,11 @@ class DamageController extends AbstractController
     public function edit(Request $request, Damage $damage): Response
     {
         $form = $this->createForm(DamageType::class, $damage);
+        $request->query->remove('booking');
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $damage->setTstamp(time());
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('damage_index');
