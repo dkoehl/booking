@@ -44,6 +44,14 @@
                 <source>booking.label.room</source>
                 <target>Room</target>
             </trans-unit>
+            <trans-unit id="booking.label.days">
+                <source>booking.label.days</source>
+                <target>Days</target>
+            </trans-unit>
+            <trans-unit id="booking.label.bookedon">
+                <source>booking.label.bookedon</source>
+                <target>Booked on</target>
+            </trans-unit>
 
             <trans-unit id="booking.label.date">
                 <source>booking.label.date</source>
@@ -53,6 +61,14 @@
             <trans-unit id="booking.label.checkintime">
                 <source>booking.label.checkintime</source>
                 <target>Check in time</target>
+            </trans-unit>
+            <trans-unit id="booking.label.checkout">
+                <source>booking.label.checkout</source>
+                <target>Check out</target>
+            </trans-unit>
+            <trans-unit id="booking.label.checkin">
+                <source>booking.label.checkin</source>
+                <target>Check in</target>
             </trans-unit>
             
             <trans-unit id="booking.label.occupancy">
@@ -86,6 +102,10 @@
                 <source>guest.label.companyname</source>
                 <target>Company name</target>
             </trans-unit>
+            <trans-unit id="guest.label.company">
+                <source>guest.label.company</source>
+                <target>Company</target>
+            </trans-unit>
             <trans-unit id="guest.label.companyname.placeholder">
                 <source>guest.label.companyname.placeholder</source>
                 <target>Acme Inc.</target>
@@ -93,6 +113,10 @@
             <trans-unit id="guest.label.address">
                 <source>guest.label.address</source>
                 <target>Address</target>
+            </trans-unit>
+            <trans-unit id="guest.label.signatureauthorized">
+                <source>guest.label.signatureauthorized</source>
+                <target>Signature authorized</target>
             </trans-unit>
             <trans-unit id="guest.label.address.placeholder">
                 <source>guest.label.address.placeholder</source>
@@ -106,6 +130,23 @@
                 <source>guest.label.taxnumber.placeholder</source>
                 <target>119 / 115 / 20178</target>
             </trans-unit>
+            <trans-unit id="guest.label.lastnamefirstname">
+                <source>guest.label.lastnamefirstname</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="guest.label.email">
+                <source>guest.label.email</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="guest.label.phone">
+                <source>guest.label.phone</source>
+                <target>Phone</target>
+            </trans-unit>
+            <trans-unit id="guest.label.registered">
+                <source>guest.label.registered</source>
+                <target>Registered</target>
+            </trans-unit>
+
             <trans-unit id="guest.label.lastname">
                 <source>guest.label.lastname</source>
                 <target>Lastname</target>
@@ -283,7 +324,7 @@
 
             <trans-unit id="parking.label.parkingspot">
                 <source>parking.label.parkingspot</source>
-                <target>Spot</target>
+                <target>Parking spot</target>
             </trans-unit>
             <trans-unit id="parking.label.parkingspot.placeholder">
                 <source>parking.label.parkingspot.placeholder</source>
@@ -447,6 +488,10 @@
             <trans-unit id="damage.button.save">
                 <source>damage.button.save</source>
                 <target>Save</target>
+            </trans-unit>
+            <trans-unit id="damage.label.text">
+                <source>damage.label.text</source>
+                <target>Text</target>
             </trans-unit>
 
 

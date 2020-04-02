@@ -1,31 +1,31 @@
 <div class="row">
     <div class="col s3">
         <p>
-            <b>Carplate</b><br>
+            <b>{{ 'parking.label.carplate'|trans }}</b><br>
             <span class="black-text">{{ parking.carplate }}</span>
         </p>
     </div>
     <div class="col s2">
         <p>
-            <b>Parking spot</b><br>
+            <b>{{ 'parking.label.parkingspot'|trans }}</b><br>
             <span class="black-text">{{ parking.parkingspot }}</span>
         </p>
     </div>
     <div class="col s2">
         <p>
-            <b>From</b><br>
+            <b>{{ 'parking.label.startdate'|trans }}</b><br>
             <span class="black-text">{{ parking.startdate ? parking.startdate|date("d.m.Y") : '' }}</span>
         </p>
     </div>
     <div class="col s2">
         <p>
-            <b>To</b><br>
+            <b>{{ 'parking.label.enddate'|trans }}</b><br>
             <span class="black-text">{{ parking.enddate ? parking.enddate|date("d.m.Y") : '' }}</span>
         </p>
     </div>
     <div class="col s2">
         <p>
-            <b>Price</b><br>
+            <b>{{ 'parking.label.price'|trans }}</b><br>
             <span class="black-text">EUR {{ parking.price | number_format(2, ',', '.')}}</span>
         </p>
     </div>

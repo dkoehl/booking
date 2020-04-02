@@ -25,19 +25,19 @@
             <div class="row">
                 <div class="col s3">
                     <p>
-                        <b>Checkin</b><br>
+                        <b>{{ 'booking.label.checkin'|trans }}</b><br>
                         <span class="black-text">{{ booking.bookingfrom ? booking.bookingfrom|date("D d.m.Y H:i"): '' }}</span>
                     </p>
                 </div>
                 <div class="col s3">
                     <p>
-                        <b>Checkout</b><br>
+                        <b>{{ 'booking.label.checkout'|trans }}</b><br>
                         <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
                     </p>
                 </div>
                 <div class="col s3">
                     <p>
-                        <b>Days</b><br>
+                        <b>{{ 'booking.label.days'|trans }}</b><br>
                         <span class="black-text">
                             {% set difference = date(booking.bookingtill).diff(date(booking.bookingfrom)) %}
                             {% set leftDays = difference.days %}
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col s3">
                     <p>
-                        <b>Booked on</b><br>
+                        <b>{{ 'booking.label.bookedon'|trans }}</b><br>
                         <span class="black-text">{{ booking.crdate ? booking.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
                     </p>
                 </div>

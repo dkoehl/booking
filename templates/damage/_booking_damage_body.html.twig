@@ -1,19 +1,19 @@
 <div class="row">
     <div class="col s6">
         <p>
-            <b>Type of damage</b><br>
+            <b>{{ 'damage.label.damageart'|trans }}</b><br>
             <span class="black-text">{{ damage.damageart }}</span>
         </p>
 
         <p>
-            <b>Price</b><br>
+            <b>{{ 'damage.label.price'|trans }}</b><br>
             <span class="black-text">EUR {{ damage.price | number_format(2, ',', '.') }}</span>
         </p>
 
     </div>
     <div class="col s5">
         <p>
-            <b>Text</b><br>
+            <b>{{ 'damage.label.text'|trans }}</b><br>
             <span class="black-text">{{ damage.damagetext }}</span>
         </p>
 

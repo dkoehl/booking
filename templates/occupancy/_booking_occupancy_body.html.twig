@@ -1,14 +1,14 @@
 <div class="row">
     <div class="col s3">
         <p>
-            <b>Name</b><br>
+            <b>{{ 'occupancy.label.name'|trans }}</b><br>
             <span class="black-text">{{ occupancy.name }}</span>
         </p>
 
     </div>
     <div class="col s3">
         <p>
-            <b>Birthday</b><br>
+            <b>{{ 'occupancy.label.birthday'|trans }}</b><br>
             <span class="black-text">{{ occupancy.birthday ? occupancy.birthday|date("d.m.Y") : '' }}</span>
         </p>
     </div>

@@ -2,7 +2,7 @@
     <div class="col s3">
 
         <p>
-            <b>Price</b><br>
+            <b>{{ 'price.label.price'|trans }}</b><br>
             <span class="black-text">EUR {{ booking.prices.0.price | number_format(2, ',', '.') }}</span>
         </p>
 
@@ -10,7 +10,7 @@
     </div>
     <div class="col s3">
         <p>
-            <b>Tax</b><br>
+            <b>{{ 'price.label.tax'|trans }}</b><br>
             <span class="black-text">{{ booking.prices.0.tax }} %</span>
         </p>
 
@@ -32,7 +32,7 @@
     </div>
     <div class="col s3">
         <p>
-            <b>Type</b><br>
+            <b>{{ 'price.label.type'|trans }}</b><br>
             <span class="black-text">
                 {% if  booking.prices.0.type == '1' %}
                     {{ 'price.option.type.1'|trans }}
