@@ -1,68 +1,53 @@
-<ul class="collection with-header blue-grey-text hide " id="form_booking_inventory">
-    <li class="collapsible-header" style="border-bottom:0px;">
-        <div class="col s12">
-            <h5 class="section-title blue-text"><i class="material-icons">today</i>
-                New Inventory
-                <div class="right right-align right-aligned">
-                    <a href="javascript:history.back()">
-                        <i class="material-icons small grey-text">close</i>
-                    </a>
-                </div>
-            </h5>
-        </div>
-    </li>
-    {#Booking Data#}
-    <li class="collection-item lighten-5 grey-text">
-        <div class="row">
-            <div class="col s12 m12">
-                {{ form_start(inventoryForm) }}
-                {#                {{ form_widget(inventoryForm) }}#}
+<li class="collection-item lighten-5 grey-text">
+    <div class="row">
+        <div class="col s12 m12">
+            {{ form_start(inventoryForm) }}
+            {#                {{ form_widget(inventoryForm) }}#}
 
-                <div class="row">
-                    <div class="input-field col s3">
-                        {{ form_row(inventoryForm.beds) }}
-                    </div>
-                    <div class="input-field col s3">
-                        {{ form_row(inventoryForm.closets) }}
-                    </div>
-                    <div class="input-field col s3">
-                        {{ form_row(inventoryForm.tables) }}
-                    </div>
-                    <div class="input-field col s3">
-                        {{ form_row(inventoryForm.walls) }}
-                    </div>
+            <div class="row">
+                <div class="input-field col s3">
+                    {{ form_row(inventoryForm.beds) }}
                 </div>
-                <div class="row">
-                    <div class="input-field col s3">
-                        {{ form_row(inventoryForm.chairs) }}
-                    </div>
-                    <div class="input-field col s3">
-                        {{ form_row(inventoryForm.floor) }}
-                    </div>
-                    <div class="input-field col s3">
-                        {{ form_row(inventoryForm.windows) }}
-                    </div>
-                    <div class="input-field col s3">
-                        {{ form_row(inventoryForm.doors) }}
-                    </div>
+                <div class="input-field col s3">
+                    {{ form_row(inventoryForm.closets) }}
                 </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        {{ form_row(inventoryForm.roomsspecial) }}
-                    </div>
-                    <div class="input-field col s6">
-                        {{ form_row(inventoryForm.text) }}
-                    </div>
+                <div class="input-field col s3">
+                    {{ form_row(inventoryForm.tables) }}
                 </div>
-
-
-                <input type="hidden" id="inventory_booking" name="inventory[booking]" value="">
-                <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" name="action">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ button_label|default('Save') }}
-                    <i class="material-icons right">send</i>
-                </button>
-                {{ form_end(inventoryForm) }}
+                <div class="input-field col s3">
+                    {{ form_row(inventoryForm.walls) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s3">
+                    {{ form_row(inventoryForm.chairs) }}
+                </div>
+                <div class="input-field col s3">
+                    {{ form_row(inventoryForm.floor) }}
+                </div>
+                <div class="input-field col s3">
+                    {{ form_row(inventoryForm.windows) }}
+                </div>
+                <div class="input-field col s3">
+                    {{ form_row(inventoryForm.doors) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    {{ form_row(inventoryForm.roomsspecial) }}
+                </div>
+                <div class="input-field col s6">
+                    {{ form_row(inventoryForm.text) }}
+                </div>
             </div>
 
+
+            <input type="hidden" id="inventory_booking" name="inventory[booking]" value="">
+            <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" name="action">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ button_label|default('Save') }}
+                <i class="material-icons right">send</i>
+            </button>
+            {{ form_end(inventoryForm) }}
         </div>
-    </li>
-</ul>
+
+    </div>
+</li>

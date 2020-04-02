@@ -93,7 +93,7 @@ class DepositeController extends AbstractController
 
         return $this->render('deposite/edit.html.twig', [
             'deposite' => $deposite,
-            'form' => $form->createView(),
+            'depositeForm' => $form->createView(),
         ]);
     }
 

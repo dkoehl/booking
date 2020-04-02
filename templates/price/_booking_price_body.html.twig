@@ -3,7 +3,7 @@
 
         <p>
             <b>Price</b><br>
-            <span class="black-text">{{ booking.prices.0.price }}</span>
+            <span class="black-text">EUR {{ booking.prices.0.price | number_format(2, ',', '.') }}</span>
         </p>
 
 
@@ -11,7 +11,7 @@
     <div class="col s3">
         <p>
             <b>Tax</b><br>
-            <span class="black-text">{{ booking.prices.0.tax }}</span>
+            <span class="black-text">{{ booking.prices.0.tax }} %</span>
         </p>
 
 
@@ -19,13 +19,27 @@
     <div class="col s2">
         <p>
             <b>Amount</b><br>
-            <span class="black-text">{{ booking.prices.0.paymentmethod }}</span>
+            <span class="black-text">
+                {% if  booking.prices.0.paymentmethod == '1' %}
+                    {{ 'price.option.paymentmethod.1'|trans }}
+                {% elseif booking.prices.0.paymentmethod == '2' %}
+                    {{ 'price.option.paymentmethod.2'|trans }}
+                {% elseif booking.prices.0.paymentmethod == '3' %}
+                    {{ 'price.option.paymentmethod.3'|trans }}
+                {% endif %}
+            </span>
         </p>
     </div>
     <div class="col s3">
         <p>
             <b>Type</b><br>
-            <span class="black-text">{{ booking.prices.0.type }}</span>
+            <span class="black-text">
+                {% if  booking.prices.0.type == '1' %}
+                    {{ 'price.option.type.1'|trans }}
+                {% elseif booking.prices.0.type == '2' %}
+                    {{ 'price.option.type.1'|trans }}
+                {% endif %}
+            </span>
         </p>
     </div>
     <div class="col s1" style="text-align:right;">

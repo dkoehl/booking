@@ -22,7 +22,7 @@ class Occupancy
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $birthday;
 
@@ -68,12 +68,12 @@ class Occupancy
         return $this;
     }
 
-    public function getBirthday(): ?string
+    public function getBirthday(): ?\DateTimeInterface
     {
         return $this->birthday;
     }
 
-    public function setBirthday(?string $birthday): self
+    public function setBirthday(?\DateTimeInterface $birthday): self
     {
         $this->birthday = $birthday;
 

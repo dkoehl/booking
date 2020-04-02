@@ -34,27 +34,31 @@ class OccupancyController extends AbstractController
         $requestReg = $request->request->get('occupancy');
         $booking = $request->request->get('occupancy')['booking'];
         $request->request->remove('occupancy');
-        
+
         $occupancy = new Occupancy();
-        
+
 //        dump($requestReg);
 //        die('her');
-        
-       
-        
-        if($booking){
+
+
+        if ($booking) {
             $occupancy->setName($requestReg['name']);
-            $occupancy->setBirthday($requestReg['birthday']);
-    
+            $occupancy->setBirthday(
+                \DateTime::createFromFormat(
+                    'Y-m-d H:i:s',
+                    date('Y-m-d H:i:s', strtotime($requestReg['birthday'])
+
+                    )
+                ));
             $occupancy->setTstamp(time());
             $occupancy->setHidden(0);
             $occupancy->setDeleted(0);
             $occupancy->setCrdate(time());
-    
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($occupancy);
             $entityManager->flush();
-    
+
             $entityManager = $this->getDoctrine()->getManager();
             $booking = $entityManager->getRepository(Booking::class)->find($booking);
             $booking->addOccupancy($occupancy);
@@ -64,7 +68,7 @@ class OccupancyController extends AbstractController
                 'id' => $booking->getId(),
             ]);
         }
-        
+
         $form = $this->createForm(OccupancyType::class, $occupancy);
         $form->handleRequest($request);
         return $this->render('occupancy/new.html.twig', [
@@ -99,7 +103,7 @@ class OccupancyController extends AbstractController
 
         return $this->render('occupancy/edit.html.twig', [
             'occupancy' => $occupancy,
-            'form' => $form->createView(),
+            'occupancyForm' => $form->createView(),
         ]);
     }
 
@@ -108,7 +112,7 @@ class OccupancyController extends AbstractController
      */
     public function delete(Request $request, Occupancy $occupancy): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$occupancy->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $occupancy->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($occupancy);
             $entityManager->flush();

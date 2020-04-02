@@ -7,7 +7,7 @@
 
         <p>
             <b>Price</b><br>
-            <span class="black-text">{{ damage.price }}</span>
+            <span class="black-text">EUR {{ damage.price | number_format(2, ',', '.') }}</span>
         </p>
 
     </div>

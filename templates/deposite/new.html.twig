@@ -1,11 +1,15 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}New Deposite{% endblock %}
-
-{% block body %}
-    <h1>Create new Deposite</h1>
-
+<ul class="collection with-header blue-grey-text hide " id="form_booking_deposite">
+    <li class="collapsible-header" style="border-bottom:0px;">
+        <div class="col s12">
+            <h5 class="section-title blue-text"><i class="material-icons">today</i>
+                {{ 'deposite.title.new'|trans }}
+                <div class="right right-align right-aligned">
+                    <a href="javascript:history.back()">
+                        <i class="material-icons small grey-text">close</i>
+                    </a>
+                </div>
+            </h5>
+        </div>
+    </li>
     {{ include('deposite/_form.html.twig') }}
-
-    <a href="{{ path('deposite_index') }}">back to list</a>
-{% endblock %}
+</ul>

@@ -1,11 +1,22 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}New Parking{% endblock %}
-
-{% block body %}
-    <h1>Create new Parking</h1>
-
+<ul class="collection with-header blue-grey-text hide " id="form_booking_parking">
+    <li class="collapsible-header" style="border-bottom:0px;">
+        <div class="col s12">
+            <h5 class="section-title blue-text"><i class="material-icons">today</i>
+                New Parking
+                <div class="right right-align right-aligned">
+                    <a href="javascript:history.back()">
+                        <i class="material-icons small grey-text">close</i>
+                    </a>
+                </div>
+            </h5>
+        </div>
+    </li>
+    {#Booking Data#}
     {{ include('parking/_form.html.twig') }}
 
-    <a href="{{ path('parking_index') }}">back to list</a>
-{% endblock %}
+</ul>
+
+
+
+
+

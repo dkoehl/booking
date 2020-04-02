@@ -204,7 +204,7 @@ class BookingController extends AbstractController
             'parkingForm' => $parkingForm->createView(),
             'inventoryForm' => $inventoryForm->createView(),
             'damageForm' => $damageForm->createView(),
-            'depositeForm' => $depositeForm->createView(),
+                'depositeForm' => $depositeForm->createView(),
             
         ]);
     }

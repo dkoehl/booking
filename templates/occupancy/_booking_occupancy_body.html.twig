@@ -9,7 +9,7 @@
     <div class="col s3">
         <p>
             <b>Birthday</b><br>
-            <span class="black-text">{{ occupancy.birthday }}</span>
+            <span class="black-text">{{ occupancy.birthday ? occupancy.birthday|date("d.m.Y") : '' }}</span>
         </p>
     </div>
 

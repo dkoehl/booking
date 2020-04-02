@@ -2,7 +2,7 @@
     <div class="col s6">
         <p>
             <b>Amount of deposite</b><br>
-            <span class="black-text">{{ booking.deposites.0.amount }}</span>
+            <span class="black-text">EUR {{ booking.deposites.0.amount | number_format(2, ',', '.')  }}</span>
         </p>
 
 
