@@ -50,7 +50,7 @@ task('deploy', [
     'setPerms',
     'success'
 ]);
-task('composer install', 'composer install');
+task('composer install', 'composer update');
 task('yarn install', '/usr/bin/yarn install');
 task('yarn encore', '/usr/bin/yarn encore dev');
 task('clear cache', 'php bin/console cache:clear');
