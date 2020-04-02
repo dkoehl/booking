@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Occupancy;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,8 +13,13 @@ class OccupancyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        if(empty($options['data']->getId())){
+            // new guest
+            $builder
+                ->setAction('/guest/new')
+                ->setMethod('POST');
+        }
         $builder
-            ->setAction('/occupancy/new')
             ->add('name', null, [
                 'label' => 'occupancy.label.name',
                 'attr' => [
