@@ -11,7 +11,7 @@ set('repository', 'git@gitlab.com:dkoehl/booking.git');
 set('symfony_env', 'prod');
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true);
-
+set('keep_releases', '3');
 // Shared files/dirs between deploys 
 set('shared_files', ['.env']);
 set('shared_dirs', []);
