@@ -13,7 +13,9 @@
                         {{ form_row(occupancyForm.birthday) }}
                     </div>
                 </div>
-                <input type="hidden" id="occupancy_booking" name="occupancy[booking]" value="">
+                {% if occupancyForm.vars.action %}
+                    <input type="hidden" id="occupancy_booking" name="occupancy[booking]" value="">
+                {% endif %}
                 <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" name="action">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ button_label|default('Save') }}
                     <i class="material-icons right">send</i>
                 </button>
@@ -22,4 +24,5 @@
 
         </div>
     </li>
+
 

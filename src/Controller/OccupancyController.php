@@ -98,7 +98,7 @@ class OccupancyController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('occupancy_index');
+//            return $this->redirectToRoute('booking_index');
         }
 
         return $this->render('occupancy/edit.html.twig', [
