@@ -41,6 +41,7 @@
         "install": "^0.12.2",
         "material-components-web": "^2.2.0",
         "moment": "^2.24.0",
+        "print-js": "^1.0.63",
         "select2": "^4.0.6-rc.1"
     }
 }

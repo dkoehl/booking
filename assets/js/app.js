@@ -34,6 +34,8 @@ const Booking_SaveForm = require("./components/booking/booking_form_save");
 // Guest
 const Guest_CaptureWebcamImage = require("./components/guest/capture_webcam");
 const Guest_SearchGuest = require("./components/guest/guest_form_searchguest");
+// Checkout
+const Checkout_ModalPrint = require('./components/checkout/checkout_print');
 /**
  * Nativ JS stuff
  */
@@ -43,6 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
         format: 'YYYY-mm-dd',
         minDate: new Date(1999, 10 - 1, 25)
     });
+    // Checkout Modals
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, {
+
+        });
+
     Dashboard_Highcharts;
     Global_Actionbuttons;
 
@@ -54,6 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     Guest_CaptureWebcamImage;
     Guest_SearchGuest;
+
+    Checkout_ModalPrint;
 
 });
 /**
