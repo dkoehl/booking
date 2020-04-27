@@ -133,6 +133,10 @@ class BookingController extends AbstractController
 
     public function generateAufnahmevertrag_PDF(Booking $booking)
     {
+//        die(
+//        dump($booking->getBookedroom()->getBeds())
+//        );
+
         $pdf = new Fpdi();
         $pdf->setSourceFile(__DIR__ . '/../../documents/HSN_Aufnahmevertrag_Muster_06.2019.pdf');
         $firstPage = $pdf->importPage(1);
@@ -192,9 +196,25 @@ class BookingController extends AbstractController
         $pdf->SetFont('Helvetica');
         // Set Price
         #// @todo: check for real prices
-        $pdf->SetXY(140, 102);
+//        die(
+//            dump($booking->getPrice()[0]->getType())
+//        );
+        // Einzelzimmer und monatliche Bezahlung
+        if ($booking->getBookedroom()->getBeds() > '1' && $booking->getPrice()[0]->getType() === '2') {
+            $pdf->SetXY(140, 102);
+        }
+        if ($booking->getBookedroom()->getBeds() === '1' && $booking->getPrice()[0]->getType() === '2') {
+            $pdf->SetXY(140, 120);
+        }
+        // Einzelzimmer und täglich Bezahlung
+        if ($booking->getBookedroom()->getBeds() === '1' && $booking->getPrice()[0]->getType() === '1') {
+            $pdf->SetXY(140, 162);
+        }
+        if ($booking->getBookedroom()->getBeds() > '1' && $booking->getPrice()[0]->getType() === '1') {
+            $pdf->SetXY(140, 137);
+        }
         $pdf->SetFontSize('11');
-        $pdf->Write(5, 'EUR ' . $booking->getPrice()[0]->getPrice(). ',00');
+        $pdf->Write(5, 'EUR ' . $booking->getPrice()[0]->getPrice() . ',00');
 
         $fourthPage = $pdf->importPage(4);
         $pdf->AddPage();
@@ -223,6 +243,10 @@ class BookingController extends AbstractController
         $pdf->AddPage();
         $pdf->useTemplate($seventhPage, ['adjustPageSize' => true]);
         $pdf->SetFont('Helvetica');
+        // Set Parking
+        $pdf->SetXY(115, 22);
+        $pdf->SetFontSize('11');
+        $pdf->Write(5, $booking->getParkings()[0]->getParkingspot());
         /**
          * Eigth Page
          */
@@ -230,7 +254,14 @@ class BookingController extends AbstractController
         $pdf->AddPage();
         $pdf->useTemplate($eighthPage, ['adjustPageSize' => true]);
         $pdf->SetFont('Helvetica');
-
+        // Set Date
+        $pdf->SetXY(52, 149.5);
+        $pdf->SetFontSize('11');
+        $pdf->Write(5, date('d.m.Y'));
+        // Set Date
+//        $pdf->SetXY(140, 149.5);
+//        $pdf->SetFontSize('11');
+//        $pdf->Write(5, date('d.m.Y'));
 
 
         // make folder
@@ -238,7 +269,8 @@ class BookingController extends AbstractController
             throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
         }
         // Output the new PDF
-        $pdf->Output('F', $concurrentDirectory . '/' . date('Y-m-d') . '-HSN_Aufnahmevertrag_Muster_06.2019-' . $booking->getId() . '.pdf');
+        $pdf->Output('F',
+            $concurrentDirectory . '/' . date('Y-m-d') . '-HSN_Aufnahmevertrag_Muster_06.2019-' . $booking->getId() . '.pdf');
     }
 
 

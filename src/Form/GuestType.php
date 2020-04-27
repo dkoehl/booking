@@ -90,7 +90,22 @@ class GuestType extends AbstractType
                 ->add('email', null, [
                     'attr' => ['placeholder' => 'Email Address']
                 ])
-                ->add('personalid', HiddenType::class, []);
+                ->add('personalid', HiddenType::class, [
+
+                ])
+                ->add('city', null, [
+                    'label' => 'guest.label.city',
+                    'attr' => [
+                        'placeholder' => 'guest.label.city.placeholder'
+                    ]
+                ])
+                ->add('zipcode', null, [
+                    'label' => 'guest.label.zipcode',
+                    'attr' => [
+                        'placeholder' => 'guest.label.zipcode.placeholder'
+                    ]
+                ])
+            ;
         
         
 //        dump($builder);

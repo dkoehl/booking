@@ -136,7 +136,7 @@
             </trans-unit>
             <trans-unit id="guest.label.email">
                 <source>guest.label.email</source>
-                <target>Name</target>
+                <target>Email</target>
             </trans-unit>
             <trans-unit id="guest.label.phone">
                 <source>guest.label.phone</source>
@@ -186,6 +186,24 @@
             <trans-unit id="guest.label.country.placeholder">
                 <source>guest.label.country.placeholder</source>
                 <target>Musterland</target>
+            </trans-unit>
+
+            <trans-unit id="guest.label.zipcode">
+                <source>guest.label.zipcode</source>
+                <target>Zipcode</target>
+            </trans-unit>
+            <trans-unit id="guest.label.zipcode.placeholder">
+                <source>guest.label.zipcode.placeholder</source>
+                <target>e.g. 89999</target>
+            </trans-unit>
+
+            <trans-unit id="guest.label.city">
+                <source>guest.label.city</source>
+                <target>City</target>
+            </trans-unit>
+            <trans-unit id="guest.label.city.placeholder">
+                <source>guest.label.city.placeholder</source>
+                <target>Munich</target>
             </trans-unit>
 
 
