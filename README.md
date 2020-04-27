@@ -58,4 +58,6 @@ Pfad zur Labels/Sprachdatei: `translations/messages.xlf`
  
 
  
- 
+#### Links
+* https://www.setasign.com/products/fpdi/demos/simple-demo/#p-249.60000610351562
+* https://printjs.crabbly.com/
