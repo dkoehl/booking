@@ -20,7 +20,11 @@ set('shared_dirs', ['node_modules', 'vendor', 'documents']);
 set('allow_anonymous_stats', false);
 set('branch', 'master');
 set('default_stage', 'prod');
-
+// Writable dirs by web server
+set('writable_dirs', [
+    'var',
+    'documents',
+]);
 // Hosts
 
 host('boardinghouse.westeurope.cloudapp.azure.com')
