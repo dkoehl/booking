@@ -122,6 +122,7 @@ class BookingController extends AbstractController
 
         $this->generateRegistrationCertificate_PDF($booking);
         $this->generateAufnahmevertrag_PDF($booking);
+//        $this->generateInventorylist($booking);
 
 //        dump($booking);
 //        die('im C');
@@ -130,8 +131,15 @@ class BookingController extends AbstractController
         ]);
     }
 
-
-    public function generateAufnahmevertrag_PDF(Booking $booking)
+    /**
+     * @param Booking $booking
+     * @throws PdfReader\PdfReaderException
+     * @throws \setasign\Fpdi\PdfParser\CrossReference\CrossReferenceException
+     * @throws \setasign\Fpdi\PdfParser\Filter\FilterException
+     * @throws \setasign\Fpdi\PdfParser\PdfParserException
+     * @throws \setasign\Fpdi\PdfParser\Type\PdfTypeException
+     */
+    public function generateAufnahmevertrag_PDF(Booking $booking): void
     {
 //        die(
 //        dump($booking->getBookedroom()->getBeds())
@@ -283,7 +291,7 @@ class BookingController extends AbstractController
      * @throws \setasign\Fpdi\PdfParser\PdfParserException
      * @throws \setasign\Fpdi\PdfParser\Type\PdfTypeException
      */
-    public function generateInventorylist(&$booking): void
+    public function generateInventorylist(Booking $booking): void
     {
         $pdf = new Fpdi();
         $pdf->setSourceFile(__DIR__ . '/../../documents/Inventarliste.pdf');
