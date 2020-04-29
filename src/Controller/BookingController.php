@@ -133,6 +133,33 @@ class BookingController extends AbstractController
 
     /**
      * @param Booking $booking
+     * @param \Swift_Mailer $mailer
+     */
+    public function sendFiles(Booking $booking, \Swift_Mailer $mailer): void
+    {
+        $message = (new \Swift_Message('Hello Email'))
+            ->setFrom('send@example.com')
+            ->setTo('tester@domain.de')
+            ->setBody(
+                $this->renderView(
+                    'booking/index.html.twig',
+                    ['booking' => $booking]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->renderView(
+                    'booking/show.index.twig',
+                    ['booking' => $booking]
+                ),
+                'text/plain'
+            );
+        $mailer->send($message);
+    }
+
+    /**
+     * @param Booking $booking
+     * https://www.setasign.com/products/fpdi/demos/simple-demo/#p-329.6000061035156
      * @throws PdfReader\PdfReaderException
      * @throws \setasign\Fpdi\PdfParser\CrossReference\CrossReferenceException
      * @throws \setasign\Fpdi\PdfParser\Filter\FilterException
@@ -284,6 +311,7 @@ class BookingController extends AbstractController
 
     /**
      * Generates Inventory List
+     * https://www.setasign.com/products/fpdi/demos/simple-demo/#p-329.6000061035156
      * @param $booking
      * @throws PdfReader\PdfReaderException
      * @throws \setasign\Fpdi\PdfParser\CrossReference\CrossReferenceException
