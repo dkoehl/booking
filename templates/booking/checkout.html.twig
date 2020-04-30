@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col s12 m4">
-            <a href="#modalprint" class="modal-trigger">
+            <a href="#modalprint" class="modal-trigger" id="printPDFs">
                 <div class="card horizontal light-blue">
                     <div class="card-content white-text">
                         <span class="card-title center-align">
@@ -269,19 +269,19 @@
                 <div class="row">
                     <div class="col s4">
                         <label>
-                            <input name="agbs" type="checkbox"/>
+                            <input name="agbs" type="checkbox" checked/>
                             <span>AGBs</span>
                         </label>
                     </div>
                     <div class="col s4">
                         <label>
-                            <input name="contract" type="checkbox"/>
+                            <input name="contract" type="checkbox" checked/>
                             <span>Aufnahmevertrag</span>
                         </label>
                     </div>
                     <div class="col s4">
                         <label>
-                            <input name="meldeschein" type="checkbox"/>
+                            <input name="meldeschein" type="checkbox" checked/>
                             <span>Meldeschein</span>
                         </label>
                     </div>
@@ -289,19 +289,19 @@
                 <div class="row">
                     <div class="col s4">
                         <label>
-                            <input name="inventory" type="checkbox"/>
+                            <input name="inventory" type="checkbox" checked/>
                             <span>Inventarliste</span>
                         </label>
                     </div>
                     <div class="col s4">
                         <label>
-                            <input name="pricelist" type="checkbox"/>
+                            <input name="pricelist" type="checkbox" checked/>
                             <span>Preisliste</span>
                         </label>
                     </div>
                     <div class="col s4">
                         <label>
-                            <input name="hausordnung" type="checkbox"/>
+                            <input name="houserules" type="checkbox" checked/>
                             <span>Hausordnung</span>
                         </label>
                     </div>
@@ -319,13 +319,74 @@
 
 
     <div id="modalsend" class="modal">
-        <div class="modal-content">
-            <h4>Send</h4>
-            <p>Sending documents and bills</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
+        <form id="modalprintformular" name="modalPrint" >
+            <input type="hidden" name="bookingid" value="{{ booking.id }}" />
+            <div class="modal-content">
+                <h4>Send files</h4>
+                <p>Select documents for sending</p>
+                <div class="row">
+                    <div class="col s4">
+                        <label>
+                            <input name="agbs" type="checkbox" checked/>
+                            <span>AGBs</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="contract" type="checkbox" checked/>
+                            <span>Aufnahmevertrag</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="meldeschein" type="checkbox" checked/>
+                            <span>Meldeschein</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        <label>
+                            <input name="inventory" type="checkbox" checked/>
+                            <span>Inventarliste</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="pricelist" type="checkbox" checked/>
+                            <span>Preisliste</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="houserules" type="checkbox" checked/>
+                            <span>Hausordnung</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate" name="receiver">
+                        <label for="email">Receiver</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="input_text" type="text" data-length="255" name="subject">
+                        <label for="input_text">Subject</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textarea2" class="materialize-textarea" data-length="120" name="bodytext"></textarea>
+                        <label for="textarea2">Text</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="modalsend_button" class="modal-close waves-effect waves-green btn-flat light-blue white-text">Print</a>
+            </div>
+        </form>
     </div>
 
     {#    {{ dump(booking) }}#}

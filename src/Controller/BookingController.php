@@ -112,9 +112,15 @@ class BookingController extends AbstractController
     /**
      * @Route("/checkout/{bookingid}", name="checkout")
      * @param Request $request
+     * @param \Swift_Mailer $mailer
      * @return Response
+     * @throws PdfReader\PdfReaderException
+     * @throws \setasign\Fpdi\PdfParser\CrossReference\CrossReferenceException
+     * @throws \setasign\Fpdi\PdfParser\Filter\FilterException
+     * @throws \setasign\Fpdi\PdfParser\PdfParserException
+     * @throws \setasign\Fpdi\PdfParser\Type\PdfTypeException
      */
-    public function checkout(Request $request): Response
+    public function checkout(Request $request, \Swift_Mailer $mailer): Response
     {
         $bookingID = $request->attributes->get('bookingid');
         $entityManager = $this->getDoctrine()->getManager();
@@ -124,6 +130,7 @@ class BookingController extends AbstractController
         $this->generateAufnahmevertrag_PDF($booking);
 //        $this->generateInventorylist($booking);
 
+
 //        dump($booking);
 //        die('im C');
         return $this->render('booking/checkout.html.twig', [
@@ -131,31 +138,41 @@ class BookingController extends AbstractController
         ]);
     }
 
-    /**
-     * @param Booking $booking
-     * @param \Swift_Mailer $mailer
-     */
-    public function sendFiles(Booking $booking, \Swift_Mailer $mailer): void
+    public function sendPDFFiles(Request $request, &$booking)
     {
+
+        $mailer = \Swift_Mailer::class;
+
+        $requestData = json_decode($request->getContent(), true);
+        die(
+            dump($requestData)
+        );
+
+
+
+
+        $fileWithPath = __DIR__ . '/../../public/documents/' . $booking->getId() . '/' . date('Y-m-d') . '-meldeschein-' . $booking->getId() . '.pdf';
         $message = (new \Swift_Message('Hello Email'))
             ->setFrom('send@example.com')
             ->setTo('tester@domain.de')
             ->setBody(
                 $this->renderView(
-                    'booking/index.html.twig',
+                    'booking/_booking_body_small.html.twig',
                     ['booking' => $booking]
                 ),
                 'text/html'
             )
+            ->attach(\Swift_Attachment::fromPath($fileWithPath))
             ->addPart(
                 $this->renderView(
-                    'booking/show.index.twig',
+                    'booking/_booking_body_small.html.twig',
                     ['booking' => $booking]
                 ),
                 'text/plain'
             );
         $mailer->send($message);
     }
+
 
     /**
      * @param Booking $booking
@@ -166,14 +183,14 @@ class BookingController extends AbstractController
      * @throws \setasign\Fpdi\PdfParser\PdfParserException
      * @throws \setasign\Fpdi\PdfParser\Type\PdfTypeException
      */
-    public function generateAufnahmevertrag_PDF(Booking $booking): void
+    public function generateAufnahmevertrag_PDF(&$booking): void
     {
 //        die(
 //        dump($booking->getBookedroom()->getBeds())
 //        );
 
         $pdf = new Fpdi();
-        $pdf->setSourceFile(__DIR__ . '/../../documents/HSN_Aufnahmevertrag_Muster_06.2019.pdf');
+        $pdf->setSourceFile(__DIR__ . '/../../assets/pdfs/HSN_Aufnahmevertrag_Muster_06.2019.pdf');
         $firstPage = $pdf->importPage(1);
         $pdf->AddPage();
         $pdf->useTemplate($firstPage, ['adjustPageSize' => true]);
@@ -300,7 +317,7 @@ class BookingController extends AbstractController
 
 
         // make folder
-        if (!@mkdir($concurrentDirectory = __DIR__ . '/../../documents/' . $booking->getId()) && !@is_dir($concurrentDirectory)) {
+        if (!@mkdir($concurrentDirectory = __DIR__ . '/../../public/documents/' . $booking->getId()) && !@is_dir($concurrentDirectory)) {
             throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
         }
         // Output the new PDF
@@ -319,10 +336,10 @@ class BookingController extends AbstractController
      * @throws \setasign\Fpdi\PdfParser\PdfParserException
      * @throws \setasign\Fpdi\PdfParser\Type\PdfTypeException
      */
-    public function generateInventorylist(Booking $booking): void
+    public function generateInventorylist(&$booking): void
     {
         $pdf = new Fpdi();
-        $pdf->setSourceFile(__DIR__ . '/../../documents/Inventarliste.pdf');
+        $pdf->setSourceFile(__DIR__ . '/../../assets/pdfs/Inventarliste.pdf');
         $templateId = $pdf->importPage(1);
         $pdf->AddPage();
         $pdf->useTemplate($templateId, ['adjustPageSize' => true]);
@@ -335,7 +352,7 @@ class BookingController extends AbstractController
 
 
         // make folder
-        if (!@mkdir($concurrentDirectory = __DIR__ . '/../../documents/' . $booking->getId()) && !@is_dir($concurrentDirectory)) {
+        if (!@mkdir($concurrentDirectory = __DIR__ . '/../../public/documents/' . $booking->getId()) && !@is_dir($concurrentDirectory)) {
             throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
         }
         // Output the new PDF
@@ -349,11 +366,11 @@ class BookingController extends AbstractController
      *
      * @todo: entity guest um felder erweitern, siehe meldeschein pdf
      */
-    public function generateRegistrationCertificate_PDF(Booking $booking): void
+    public function generateRegistrationCertificate_PDF(&$booking): void
     {
 //        dump($booking->getGuest()->getId());
         $pdf = new Fpdi();
-        $pdf->setSourceFile(__DIR__ . '/../../documents/Meldeschein.pdf');
+        $pdf->setSourceFile(__DIR__ . '/../../assets/pdfs/Meldeschein.pdf');
         $templateId = $pdf->importPage(1);
         $pdf->AddPage();
         $pdf->useTemplate($templateId, ['adjustPageSize' => true]);
@@ -408,7 +425,7 @@ class BookingController extends AbstractController
         $pdf->SetFontSize('9');
         $pdf->Write(5, $booking->getGuest()->getCompanyname());
         // make folder
-        if (!@mkdir($concurrentDirectory = __DIR__ . '/../../documents/' . $booking->getId()) && !@is_dir($concurrentDirectory)) {
+        if (!@mkdir($concurrentDirectory = __DIR__ . '/../../public/documents/' . $booking->getId()) && !@is_dir($concurrentDirectory)) {
             throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
         }
         // Output the new PDF

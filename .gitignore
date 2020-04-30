@@ -370,3 +370,4 @@ yarn-error.log
 .history/translations/messages.en_20191211201255.xlf
 .history/translations/messages.en_20191211201330.xlf
 .history/translations/messages.en_20191211201340.xlf
+/public/documents/*
