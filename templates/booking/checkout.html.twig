@@ -20,7 +20,7 @@
             </a>
         </div>
         <div class="col s12 m4">
-            <a href="#modalsend" class="modal-trigger">
+            <a href="#modalsend" class="modal-trigger" id="sendPDFs">
                 <div class="card horizontal light-blue">
                     <div class="card-content white-text">
                         <span class="card-title center-align">
@@ -319,7 +319,7 @@
 
 
     <div id="modalsend" class="modal">
-        <form id="modalprintformular" name="modalPrint" >
+        <form id="modalsendformular" name="modalSend" >
             <input type="hidden" name="bookingid" value="{{ booking.id }}" />
             <div class="modal-content">
                 <h4>Send files</h4>
@@ -384,7 +384,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="#!" id="modalsend_button" class="modal-close waves-effect waves-green btn-flat light-blue white-text">Print</a>
+                <a href="#!" id="modalsend_button" class="modal-close waves-effect waves-green btn-flat light-blue white-text">Send</a>
             </div>
         </form>
     </div>

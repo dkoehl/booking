@@ -109,6 +109,86 @@ class BookingController extends AbstractController
         return $this->json($freeRoomsArray);
     }
 
+
+    /**
+     * @Route("/checkout/sendfiles", name="checkout_sendpdfs", methods={"POST"})
+     * @param Request $request
+     * @param \Swift_Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function sendPDFFiles(
+        Request $request,
+        \Swift_Mailer $mailer
+    ): \Symfony\Component\HttpFoundation\JsonResponse {
+        $requestDataJson = json_encode(json_decode($request->getContent(), true));
+        $requestDataArray = json_decode($requestDataJson, true);
+        $entityManager = $this->getDoctrine()->getManager();
+        $booking = $entityManager->getRepository(Booking::class)
+            ->find($requestDataArray['data']['bookingid']);
+
+        $message = (new \Swift_Message($requestDataArray['data']['subject']))
+            ->setFrom('no-reply@boardinghouse-neufahrn.de')
+            ->setTo($requestDataArray['data']['receiver'])
+            ->setBody($requestDataArray['data']['bodytext'])
+            ->addPart(
+                $this->renderView(
+                    'booking/_booking_body_small.html.twig',
+                    ['booking' => $booking]
+                ),
+                'text/plain'
+            );
+
+        if(isset($requestDataArray['data']['agbs'])){
+            $agbPDF = __DIR__ . '/../../assets/pdfs/_Datenschutzerklaerung.pdf';
+            $message->attach(\Swift_Attachment::fromPath($agbPDF));
+        }
+        if(isset($requestDataArray['data']['contract'])){
+            $contractPdf = __DIR__ . '/../../public/documents/' . $requestDataArray['data']['bookingid'] . '/' . date('Y-m-d') . '-HSN_Aufnahmevertrag_Muster_06.2019-' . $requestDataArray['data']['bookingid'] . '.pdf';
+            $message->attach(\Swift_Attachment::fromPath($contractPdf));
+        }
+        if(isset($requestDataArray['data']['meldeschein'])){
+            $meldeschein = __DIR__ . '/../../public/documents/' . $requestDataArray['data']['bookingid'] . '/' . date('Y-m-d') . '-meldeschein-' . $requestDataArray['data']['bookingid'] . '.pdf';
+            $message->attach(\Swift_Attachment::fromPath($meldeschein));
+        }
+//        if(isset($requestDataArray['data']['inventory'])){
+//            $meldeschein = __DIR__ . '/../../public/documents/' . $requestDataArray['data']['bookingid'] . '/' . date('Y-m-d') . '-meldeschein-' . $requestDataArray['data']['bookingid'] . '.pdf';
+//        }
+        if(isset($requestDataArray['data']['pricelist'])){
+            $priceListPdf = __DIR__ . '/../../assets/pdfs/_Preisliste.pdf';
+            $message ->attach(\Swift_Attachment::fromPath($priceListPdf));
+        }
+        if(isset($requestDataArray['data']['houserules'])){
+            $houseRulesPdf = __DIR__ . '/../../assets/pdfs/_Hausordnung.pdf';
+            $message ->attach(\Swift_Attachment::fromPath($houseRulesPdf));
+        }
+        $mailer->send($message);
+
+        return $this->json([
+            'generating' => true
+        ]);
+    }
+
+    /**
+     * @Route("/checkout/generatepdfs", name="checkout_generatepdfs", methods={"POST"})
+     * @param Request $request
+     * @return Response
+     */
+    public function checkoutGeneratePDFs(Request $request)
+    {
+        $requestData = json_decode($request->getContent(), true);
+        $entityManager = $this->getDoctrine()->getManager();
+        $booking = $entityManager->getRepository(Booking::class)
+            ->find($requestData['bookingid']);
+
+        $this->generateRegistrationCertificate($booking);
+
+
+        return $this->json([
+            'generating' => true
+        ]);
+    }
+
+
     /**
      * @Route("/checkout/{bookingid}", name="checkout")
      * @param Request $request
@@ -136,41 +216,6 @@ class BookingController extends AbstractController
         return $this->render('booking/checkout.html.twig', [
             'booking' => $booking
         ]);
-    }
-
-    public function sendPDFFiles(Request $request, &$booking)
-    {
-
-        $mailer = \Swift_Mailer::class;
-
-        $requestData = json_decode($request->getContent(), true);
-        die(
-            dump($requestData)
-        );
-
-
-
-
-        $fileWithPath = __DIR__ . '/../../public/documents/' . $booking->getId() . '/' . date('Y-m-d') . '-meldeschein-' . $booking->getId() . '.pdf';
-        $message = (new \Swift_Message('Hello Email'))
-            ->setFrom('send@example.com')
-            ->setTo('tester@domain.de')
-            ->setBody(
-                $this->renderView(
-                    'booking/_booking_body_small.html.twig',
-                    ['booking' => $booking]
-                ),
-                'text/html'
-            )
-            ->attach(\Swift_Attachment::fromPath($fileWithPath))
-            ->addPart(
-                $this->renderView(
-                    'booking/_booking_body_small.html.twig',
-                    ['booking' => $booking]
-                ),
-                'text/plain'
-            );
-        $mailer->send($message);
     }
 
 
@@ -368,6 +413,9 @@ class BookingController extends AbstractController
      */
     public function generateRegistrationCertificate_PDF(&$booking): void
     {
+        if (empty($booking)) {
+            return;
+        }
 //        dump($booking->getGuest()->getId());
         $pdf = new Fpdi();
         $pdf->setSourceFile(__DIR__ . '/../../assets/pdfs/Meldeschein.pdf');

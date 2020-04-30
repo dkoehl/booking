@@ -36,6 +36,7 @@ const Guest_CaptureWebcamImage = require("./components/guest/capture_webcam");
 const Guest_SearchGuest = require("./components/guest/guest_form_searchguest");
 // Checkout
 const Checkout_ModalPrint = require('./components/checkout/checkout_print');
+const Checkout_ModalSend = require('./components/checkout/checkout_send');
 /**
  * Nativ JS stuff
  */
@@ -64,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     Guest_SearchGuest;
 
     Checkout_ModalPrint;
+    Checkout_ModalSend;
 
 });
 /**

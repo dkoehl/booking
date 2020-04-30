@@ -4,9 +4,7 @@ import printJS from "print-js";
 const axios = require('axios');
 let generatePDFButton = document.getElementById('printPDFs');
 
-
 if (generatePDFButton) {
-
     let modalPrintButton = document.getElementById('modalprint_button').addEventListener('click', function () {
         // getting print- formula data
         let elements = document.getElementById("modalprintformular").elements;
