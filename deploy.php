@@ -35,8 +35,6 @@ host('boardinghouse.westeurope.cloudapp.azure.com')
 
 
 task('deploy', [
-    'setPerms',
-    'setGroup',
     'deploy:info',
     'deploy:prepare',
     'deploy:lock',
