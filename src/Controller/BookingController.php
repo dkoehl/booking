@@ -330,9 +330,13 @@ class BookingController extends AbstractController
         $pdf->useTemplate($sixthPage, ['adjustPageSize' => true]);
         $pdf->SetFont('Helvetica');
         // Set Parking
-        $pdf->SetXY(99, 231.5);
-        $pdf->SetFontSize('11');
-        $pdf->Write(5, $booking->getParkings()[0]->getParkingspot());
+//        dump($booking->getParking()[0]);
+//        die('3');
+        if($booking->getParkings()[0] !== null){
+            $pdf->SetXY(99, 231.5);
+            $pdf->SetFontSize('11');
+            $pdf->Write(5, $booking->getParkings()[0]->getParkingspot());
+        }
         /**
          * Seventh Page
          */
@@ -341,9 +345,11 @@ class BookingController extends AbstractController
         $pdf->useTemplate($seventhPage, ['adjustPageSize' => true]);
         $pdf->SetFont('Helvetica');
         // Set Parking
-        $pdf->SetXY(115, 22);
-        $pdf->SetFontSize('11');
-        $pdf->Write(5, $booking->getParkings()[0]->getParkingspot());
+        if($booking->getParkings()[0] !== null){
+            $pdf->SetXY(115, 22);
+            $pdf->SetFontSize('11');
+            $pdf->Write(5, $booking->getParkings()[0]->getParkingspot());
+        }
         /**
          * Eigth Page
          */
