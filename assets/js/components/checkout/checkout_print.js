@@ -18,57 +18,19 @@ if (generatePDFButton) {
                 printFormularData[item.name] = item.value;
             }
         }
-        let printPDFFileArray = [];
         let bookingID = printFormularData['bookingid'];
-        let documentfolder = '/../../../../documents/';
-        let today = new Date();
-        let date = today.getFullYear() + '-' + '0' + (today.getMonth() + 1) + '-' + today.getDate();
 
-        if (printFormularData['agbs']) {
-            let agbsPDF = documentfolder + '_Datenschutzerklaerung.pdf'
-            printPDFFileArray.push(agbsPDF);
-            // printJS({
-            //     printable: agbsPDF,
-            //     type: "pdf",
-            //     showModal: true
-            // });
-        }
-        if (printFormularData['houserules']) {
-            let houserulesPDF = documentfolder + '_Hausordnung.pdf'
-            printPDFFileArray.push(houserulesPDF);
-            // printJS({
-            //     printable: houserulesPDF,
-            //     type: "pdf",
-            //     showModal: true
-            // });
-        }
-        if (printFormularData['pricelist']) {
-            let pricelistPDF = documentfolder + '_Preisliste.pdf'
-            printPDFFileArray.push(pricelistPDF);
-            // printJS({
-            //     printable: pricelistPDF,
-            //     type: "pdf",
-            //     showModal: true
-            // });
-        }
-        if (printFormularData['contract']) {
-            let contractPDF = documentfolder + bookingID + '/' + date + '-HSN_Aufnahmevertrag_Muster_06.2019-' + bookingID + '.pdf'
-            printPDFFileArray.push(contractPDF);
-
-        }
-        if (printFormularData['meldeschein']) {
-            let meldescheinPDF = documentfolder + bookingID + '/' + date + '-meldeschein-' + bookingID + '.pdf'
-            printPDFFileArray.push(meldescheinPDF);
-
-        }
-
-        console.log(printPDFFileArray);
-
-        // for (let i = 0; i < printPDFFileArray.length; i++) {
-        //     var oWindow = window.open(printPDFFileArray[i], "print");
-        //     oWindow.print();
-        //     oWindow.close();
-        // }
-
+        axios({
+            method: 'POST',
+            url: '/booking/printpdfs',
+            data: printFormularData
+        })
+            .then(function (response) {
+                printJS({
+                    printable: response.data[0],
+                    type: "pdf",
+                    showModal: true
+                });
+            });
     });
 }

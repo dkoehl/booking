@@ -138,28 +138,28 @@ class BookingController extends AbstractController
                 'text/plain'
             );
 
-        if(isset($requestDataArray['data']['agbs'])){
+        if (isset($requestDataArray['data']['agbs'])) {
             $agbPDF = __DIR__ . '/../../assets/pdfs/_Datenschutzerklaerung.pdf';
             $message->attach(\Swift_Attachment::fromPath($agbPDF));
         }
-        if(isset($requestDataArray['data']['contract'])){
+        if (isset($requestDataArray['data']['contract'])) {
             $contractPdf = __DIR__ . '/../../public/documents/' . $requestDataArray['data']['bookingid'] . '/' . date('Y-m-d') . '-HSN_Aufnahmevertrag_Muster_06.2019-' . $requestDataArray['data']['bookingid'] . '.pdf';
             $message->attach(\Swift_Attachment::fromPath($contractPdf));
         }
-        if(isset($requestDataArray['data']['meldeschein'])){
+        if (isset($requestDataArray['data']['meldeschein'])) {
             $meldeschein = __DIR__ . '/../../public/documents/' . $requestDataArray['data']['bookingid'] . '/' . date('Y-m-d') . '-meldeschein-' . $requestDataArray['data']['bookingid'] . '.pdf';
             $message->attach(\Swift_Attachment::fromPath($meldeschein));
         }
 //        if(isset($requestDataArray['data']['inventory'])){
 //            $meldeschein = __DIR__ . '/../../public/documents/' . $requestDataArray['data']['bookingid'] . '/' . date('Y-m-d') . '-meldeschein-' . $requestDataArray['data']['bookingid'] . '.pdf';
 //        }
-        if(isset($requestDataArray['data']['pricelist'])){
+        if (isset($requestDataArray['data']['pricelist'])) {
             $priceListPdf = __DIR__ . '/../../assets/pdfs/_Preisliste.pdf';
-            $message ->attach(\Swift_Attachment::fromPath($priceListPdf));
+            $message->attach(\Swift_Attachment::fromPath($priceListPdf));
         }
-        if(isset($requestDataArray['data']['houserules'])){
+        if (isset($requestDataArray['data']['houserules'])) {
             $houseRulesPdf = __DIR__ . '/../../assets/pdfs/_Hausordnung.pdf';
-            $message ->attach(\Swift_Attachment::fromPath($houseRulesPdf));
+            $message->attach(\Swift_Attachment::fromPath($houseRulesPdf));
         }
         $mailer->send($message);
 
@@ -205,10 +205,14 @@ class BookingController extends AbstractController
         $bookingID = $request->attributes->get('bookingid');
         $entityManager = $this->getDoctrine()->getManager();
         $booking = $entityManager->getRepository(Booking::class)->find($bookingID);
-
+        // copies default pdfs in output folder
+        $this->copyUneditedPdfs($booking);
+        // generates pdfs
         $this->generateRegistrationCertificate_PDF($booking);
         $this->generateAufnahmevertrag_PDF($booking);
 //        $this->generateInventorylist($booking);
+        // merge generated pdfs
+//        $this->mergerGeneratedPdfs($booking);
 
 
 //        dump($booking);
@@ -216,6 +220,102 @@ class BookingController extends AbstractController
         return $this->render('booking/checkout.html.twig', [
             'booking' => $booking
         ]);
+    }
+
+
+    /**
+     * @Route("/printpdfs", name="booking_printpdfs", methods={"POST"})
+     * @param Request $request
+     */
+    public function printPdfs(Request $request)
+    {
+        $postData = $request->getContent();
+        $pdfs = json_decode($postData, true);
+        $response = $this->mergerGeneratedPdfs($pdfs, $pdfs['bookingid']);
+
+        return $response;
+    }
+
+    public function mergerGeneratedPdfs($pdfs)
+    {
+        dump($pdfs);
+        $pdfFolder = __DIR__ . '/../../public/documents/' . $pdfs['bookingid'] . '/';
+        $pdfArray = [
+            'agbs' => '_Datenschutzerklaerung.pdf',
+            'contract' => date('Y-m-d') . '-HSN_Aufnahmevertrag_Muster_06.2019-' . $pdfs['bookingid'] . '.pdf',
+            'meldeschein' => date('Y-m-d') . '-meldeschein-' . $pdfs['bookingid'] . '.pdf',
+//            'inventory' => '',
+            'pricelist' => '_Preisliste.pdf',
+            'houserules' => '_Hausordnung.pdf'
+        ];
+
+        foreach ($pdfs as $key => $value) {
+            if ($key === 'bookingid' || $key === 'inventory') {
+                continue;
+            }
+            $allPdfsInFolder[] = $pdfArray[$key];
+        }
+
+        $pdf = new Fpdi();
+        foreach ($allPdfsInFolder as $file) {
+            if ($file === '.' || $file === '..') {
+                continue;
+            }
+            // get the page count
+            $pageCount = $pdf->setSourceFile($pdfFolder . $file);
+            // iterate through all pages
+            for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
+                // import a page
+                $templateId = $pdf->importPage($pageNo);
+                // get the size of the imported page
+                $size = $pdf->getTemplateSize($templateId);
+//                dump($size);
+//                die();
+
+                // create a page (landscape or portrait depending on the imported page size)
+                if ($size['width'] > $size['height']) {
+                    $pdf->AddPage('L', array($size['width'], $size['height']));
+                } else {
+                    $pdf->AddPage('P', array($size['width'], $size['height']));
+                }
+
+                // use the imported page
+                $pdf->useTemplate($templateId);
+            }
+        }
+
+        $pdf->Output('F',
+            $pdfFolder . date('Y-m-d') . '_Booking-selected-documents_' . $pdfs['bookingid'] . '.pdf');
+
+        return $this->json(
+            [
+                '/documents/' . $pdfs['bookingid'] . '/' . date('Y-m-d') . '_Booking-selected-documents_' . $pdfs['bookingid'] . '.pdf'
+            ]
+        );
+    }
+
+
+    /**
+     * copies default (not edited) pdf in export folder for printing js
+     *
+     * @param $booking
+     */
+    public function copyUneditedPdfs(&$booking)
+    {
+        $defaultPdfStoragePath = __DIR__ . '/../../assets/pdfs/';
+        $targetFolder = __DIR__ . '/../../public/documents/' . $booking->getId() . '/';
+        $defaultPDFs = [
+            '_Datenschutzerklaerung.pdf',
+            '_Hausordnung.pdf',
+            '_Preisliste.pdf'
+        ];
+        foreach ($defaultPDFs as $pdf) {
+            if (!@mkdir($concurrentDirectory = $targetFolder) && !@is_dir($concurrentDirectory)) {
+                throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+            }
+
+            copy($defaultPdfStoragePath . $pdf, $targetFolder . $pdf);
+        }
     }
 
 
@@ -330,9 +430,13 @@ class BookingController extends AbstractController
         $pdf->useTemplate($sixthPage, ['adjustPageSize' => true]);
         $pdf->SetFont('Helvetica');
         // Set Parking
-        $pdf->SetXY(99, 231.5);
-        $pdf->SetFontSize('11');
-        $pdf->Write(5, $booking->getParkings()[0]->getParkingspot());
+//        dump($booking->getParking()[0]);
+//        die('3');
+        if ($booking->getParkings()[0] !== null) {
+            $pdf->SetXY(99, 231.5);
+            $pdf->SetFontSize('11');
+            $pdf->Write(5, $booking->getParkings()[0]->getParkingspot());
+        }
         /**
          * Seventh Page
          */
@@ -341,9 +445,11 @@ class BookingController extends AbstractController
         $pdf->useTemplate($seventhPage, ['adjustPageSize' => true]);
         $pdf->SetFont('Helvetica');
         // Set Parking
-        $pdf->SetXY(115, 22);
-        $pdf->SetFontSize('11');
-        $pdf->Write(5, $booking->getParkings()[0]->getParkingspot());
+        if ($booking->getParkings()[0] !== null) {
+            $pdf->SetXY(115, 22);
+            $pdf->SetFontSize('11');
+            $pdf->Write(5, $booking->getParkings()[0]->getParkingspot());
+        }
         /**
          * Eigth Page
          */
