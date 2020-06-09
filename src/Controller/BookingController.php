@@ -238,7 +238,6 @@ class BookingController extends AbstractController
 
     public function mergerGeneratedPdfs($pdfs)
     {
-        dump($pdfs);
         $pdfFolder = __DIR__ . '/../../public/documents/' . $pdfs['bookingid'] . '/';
         $pdfArray = [
             'agbs' => '_Datenschutzerklaerung.pdf',
