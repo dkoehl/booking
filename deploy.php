@@ -50,8 +50,6 @@ task('deploy', [
     'deploy:symlink',
     'deploy:unlock',
     'cleanup',
-    'setPerms',
-    'setGroup',
     'success'
 ]);
 task('composer install', 'composer update');
