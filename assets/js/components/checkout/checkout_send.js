@@ -1,9 +1,11 @@
+import printJS from "print-js";
+
 const axios = require('axios');
-let generatePDFButton = document.getElementById('sendPDFs');
+let sendPDFButton = document.getElementById('sendPDFs');
 
-if (generatePDFButton) {
+if (sendPDFButton) {
 
-    let modalPrintButton = document.getElementById('modalsend_button').addEventListener('click', function () {
+    let modalSendButton = document.getElementById('modalsend_button').addEventListener('click', function () {
         // getting formula data
         let elements = document.getElementById("modalsendformular").elements;
         let sendFormularData = {};
@@ -25,13 +27,15 @@ if (generatePDFButton) {
                 sendFormularData['bodytext'] = item.value;
             }
         }
-        // send formular data to booking- controller for generating pdf files
-        axios.post('/booking/checkout/sendfiles', {
+        let bookingID = sendFormularData['bookingid'];
+        // sends data
+        axios({
+            method: 'POST',
+            url: '/booking/checkout/sendfiles',
             data: sendFormularData
         })
-            .catch(function (error) {
-                console.log(error);
+            .then(function (response) {
+                console.log(response);
             });
-
     });
 }

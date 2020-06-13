@@ -23,8 +23,14 @@ use App\Form\PaymentType;
 use App\Form\PriceType;
 use App\Repository\BookingRepository;
 use setasign\Fpdi\Fpdi;
+use setasign\Fpdi\PdfParser\CrossReference\CrossReferenceException;
+use setasign\Fpdi\PdfParser\Filter\FilterException;
+use setasign\Fpdi\PdfParser\PdfParserException;
+use setasign\Fpdi\PdfParser\Type\PdfTypeException;
 use setasign\Fpdi\PdfReader;
+use setasign\Fpdi\PdfReader\PdfReaderException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -53,9 +59,9 @@ class BookingController extends AbstractController
     /**
      * @Route("/getvacanciesbydate/{bookingfrom}/{bookingtill}/{roomType}", name="getvacanciesbydate")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
-    public function getVacanciesbydate(Request $request): \Symfony\Component\HttpFoundation\JsonResponse
+    public function getVacanciesbydate(Request $request): JsonResponse
     {
 //        $bookingFrom = '2019-05-01';
 //        $bookingTill = '2019-05-30';
@@ -114,22 +120,33 @@ class BookingController extends AbstractController
      * @Route("/checkout/sendfiles", name="checkout_sendpdfs", methods={"POST"})
      * @param Request $request
      * @param \Swift_Mailer $mailer
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
     public function sendPDFFiles(
         Request $request,
         \Swift_Mailer $mailer
-    ): \Symfony\Component\HttpFoundation\JsonResponse {
-        $requestDataJson = json_encode(json_decode($request->getContent(), true));
-        $requestDataArray = json_decode($requestDataJson, true);
+    ): JsonResponse {
+        $postData = $request->getContent();
+        $formData = json_decode($postData, true);
+        // if no formdata available
+        // builds array for pdf merging
+        foreach($formData as $formKey => $formValue){
+            if(!in_array($formKey, ['receiver', 'subject', 'bodytext'])){
+                $pdfs[$formKey] = $formValue;
+            }
+        }
+        $pdfFileObject = $this->mergeGeneratedPdfs($pdfs, $pdfs['bookingid']);
+        $pdfFileArray = json_decode($pdfFileObject->getContent());
+
+
         $entityManager = $this->getDoctrine()->getManager();
         $booking = $entityManager->getRepository(Booking::class)
-            ->find($requestDataArray['data']['bookingid']);
+            ->find($formData['bookingid']);
 
-        $message = (new \Swift_Message($requestDataArray['data']['subject']))
+        $message = (new \Swift_Message($formData['subject']))
             ->setFrom('no-reply@boardinghouse-neufahrn.de')
-            ->setTo($requestDataArray['data']['receiver'])
-            ->setBody($requestDataArray['data']['bodytext'])
+            ->setTo($formData['receiver'])
+            ->setBody($formData['bodytext'])
             ->addPart(
                 $this->renderView(
                     'booking/_booking_body_small.html.twig',
@@ -137,29 +154,10 @@ class BookingController extends AbstractController
                 ),
                 'text/plain'
             );
-
-        if (isset($requestDataArray['data']['agbs'])) {
-            $agbPDF = __DIR__ . '/../../assets/pdfs/_Datenschutzerklaerung.pdf';
-            $message->attach(\Swift_Attachment::fromPath($agbPDF));
-        }
-        if (isset($requestDataArray['data']['contract'])) {
-            $contractPdf = __DIR__ . '/../../public/documents/' . $requestDataArray['data']['bookingid'] . '/' . date('Y-m-d') . '-HSN_Aufnahmevertrag_Muster_06.2019-' . $requestDataArray['data']['bookingid'] . '.pdf';
-            $message->attach(\Swift_Attachment::fromPath($contractPdf));
-        }
-        if (isset($requestDataArray['data']['meldeschein'])) {
-            $meldeschein = __DIR__ . '/../../public/documents/' . $requestDataArray['data']['bookingid'] . '/' . date('Y-m-d') . '-meldeschein-' . $requestDataArray['data']['bookingid'] . '.pdf';
-            $message->attach(\Swift_Attachment::fromPath($meldeschein));
-        }
-//        if(isset($requestDataArray['data']['inventory'])){
-//            $meldeschein = __DIR__ . '/../../public/documents/' . $requestDataArray['data']['bookingid'] . '/' . date('Y-m-d') . '-meldeschein-' . $requestDataArray['data']['bookingid'] . '.pdf';
-//        }
-        if (isset($requestDataArray['data']['pricelist'])) {
-            $priceListPdf = __DIR__ . '/../../assets/pdfs/_Preisliste.pdf';
-            $message->attach(\Swift_Attachment::fromPath($priceListPdf));
-        }
-        if (isset($requestDataArray['data']['houserules'])) {
-            $houseRulesPdf = __DIR__ . '/../../assets/pdfs/_Hausordnung.pdf';
-            $message->attach(\Swift_Attachment::fromPath($houseRulesPdf));
+        if (isset($pdfFileArray[0])) {
+            $message->attach(\Swift_Attachment::fromPath(
+                __DIR__ . '/../../public/' . $pdfFileArray[0]
+            ));
         }
         $mailer->send($message);
 
@@ -168,6 +166,18 @@ class BookingController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/printpdfs", name="booking_printpdfs", methods={"POST"})
+     * @param Request $request
+     */
+    public function printPdfs(Request $request)
+    {
+        $postData = $request->getContent();
+        $pdfs = json_decode($postData, true);
+        $response = $this->mergeGeneratedPdfs($pdfs, $pdfs['bookingid']);
+
+        return $response;
+    }
     /**
      * @Route("/checkout/generatepdfs", name="checkout_generatepdfs", methods={"POST"})
      * @param Request $request
@@ -194,11 +204,11 @@ class BookingController extends AbstractController
      * @param Request $request
      * @param \Swift_Mailer $mailer
      * @return Response
-     * @throws PdfReader\PdfReaderException
-     * @throws \setasign\Fpdi\PdfParser\CrossReference\CrossReferenceException
-     * @throws \setasign\Fpdi\PdfParser\Filter\FilterException
-     * @throws \setasign\Fpdi\PdfParser\PdfParserException
-     * @throws \setasign\Fpdi\PdfParser\Type\PdfTypeException
+     * @throws PdfReaderException
+     * @throws CrossReferenceException
+     * @throws FilterException
+     * @throws PdfParserException
+     * @throws PdfTypeException
      */
     public function checkout(Request $request, \Swift_Mailer $mailer): Response
     {
@@ -210,9 +220,10 @@ class BookingController extends AbstractController
         // generates pdfs
         $this->generateRegistrationCertificate_PDF($booking);
         $this->generateAufnahmevertrag_PDF($booking);
-//        $this->generateInventorylist($booking);
+        //@todo: add inventory list pdf functions
+//        $this->generateInventorylist_PDF($booking);
         // merge generated pdfs
-//        $this->mergerGeneratedPdfs($booking);
+//        $this->mergeGeneratedPdfs($booking);
 
 
 //        dump($booking);
@@ -223,20 +234,20 @@ class BookingController extends AbstractController
     }
 
 
+
+
     /**
-     * @Route("/printpdfs", name="booking_printpdfs", methods={"POST"})
-     * @param Request $request
+     * Merges selected PDFs into one PDF
+     *
+     * @param $pdfs
+     * @return JsonResponse
+     * @throws CrossReferenceException
+     * @throws FilterException
+     * @throws PdfParserException
+     * @throws PdfReaderException
+     * @throws PdfTypeException
      */
-    public function printPdfs(Request $request)
-    {
-        $postData = $request->getContent();
-        $pdfs = json_decode($postData, true);
-        $response = $this->mergerGeneratedPdfs($pdfs, $pdfs['bookingid']);
-
-        return $response;
-    }
-
-    public function mergerGeneratedPdfs($pdfs)
+    public function mergeGeneratedPdfs($pdfs)
     {
         $pdfFolder = __DIR__ . '/../../public/documents/' . $pdfs['bookingid'] . '/';
         $pdfArray = [
@@ -247,7 +258,7 @@ class BookingController extends AbstractController
             'pricelist' => '_Preisliste.pdf',
             'houserules' => '_Hausordnung.pdf'
         ];
-
+        $allPdfsInFolder = [];
         foreach ($pdfs as $key => $value) {
             if ($key === 'bookingid' || $key === 'inventory') {
                 continue;
@@ -268,9 +279,6 @@ class BookingController extends AbstractController
                 $templateId = $pdf->importPage($pageNo);
                 // get the size of the imported page
                 $size = $pdf->getTemplateSize($templateId);
-//                dump($size);
-//                die();
-
                 // create a page (landscape or portrait depending on the imported page size)
                 if ($size['width'] > $size['height']) {
                     $pdf->AddPage('L', array($size['width'], $size['height']));
@@ -282,7 +290,7 @@ class BookingController extends AbstractController
                 $pdf->useTemplate($templateId);
             }
         }
-
+        // output merged pdf file
         $pdf->Output('F',
             $pdfFolder . date('Y-m-d') . '_Booking-selected-documents_' . $pdfs['bookingid'] . '.pdf');
 
@@ -317,15 +325,16 @@ class BookingController extends AbstractController
         }
     }
 
-
     /**
+     * PDF: Generates Aufnahmevertrag PDF
+     *
      * @param Booking $booking
      * https://www.setasign.com/products/fpdi/demos/simple-demo/#p-329.6000061035156
-     * @throws PdfReader\PdfReaderException
-     * @throws \setasign\Fpdi\PdfParser\CrossReference\CrossReferenceException
-     * @throws \setasign\Fpdi\PdfParser\Filter\FilterException
-     * @throws \setasign\Fpdi\PdfParser\PdfParserException
-     * @throws \setasign\Fpdi\PdfParser\Type\PdfTypeException
+     * @throws PdfReaderException
+     * @throws CrossReferenceException
+     * @throws FilterException
+     * @throws PdfParserException
+     * @throws PdfTypeException
      */
     public function generateAufnahmevertrag_PDF(&$booking): void
     {
@@ -477,16 +486,17 @@ class BookingController extends AbstractController
 
 
     /**
-     * Generates Inventory List
+     * PDF: Generates Inventory List
+     *
      * https://www.setasign.com/products/fpdi/demos/simple-demo/#p-329.6000061035156
      * @param $booking
-     * @throws PdfReader\PdfReaderException
-     * @throws \setasign\Fpdi\PdfParser\CrossReference\CrossReferenceException
-     * @throws \setasign\Fpdi\PdfParser\Filter\FilterException
-     * @throws \setasign\Fpdi\PdfParser\PdfParserException
-     * @throws \setasign\Fpdi\PdfParser\Type\PdfTypeException
+     * @throws PdfReaderException
+     * @throws CrossReferenceException
+     * @throws FilterException
+     * @throws PdfParserException
+     * @throws PdfTypeException
      */
-    public function generateInventorylist(&$booking): void
+    public function generateInventorylist_PDF(&$booking): void
     {
         $pdf = new Fpdi();
         $pdf->setSourceFile(__DIR__ . '/../../assets/pdfs/Inventarliste.pdf');
@@ -510,9 +520,11 @@ class BookingController extends AbstractController
     }
 
     /**
+     * PDF: Generates Registration PDF
+     *
      * @param Booking $booking
-     * @throws \setasign\Fpdi\PdfParser\PdfParserException
-     * @throws \setasign\Fpdi\PdfReader\PdfReaderException
+     * @throws PdfParserException
+     * @throws PdfReaderException
      *
      * @todo: entity guest um felder erweitern, siehe meldeschein pdf
      */

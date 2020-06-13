@@ -23,6 +23,7 @@ class BookingType extends AbstractType
                 'label' => 'booking.label.from',
                 'attr' => [
                     'placeholder' => 'YYYY-mm-dd',
+                    'autocomplete' => 'off'
                 ],
             ])
             ->add('bookingtill', DateType::class, [
@@ -31,6 +32,7 @@ class BookingType extends AbstractType
                 'format' => 'YYYY-mm-dd',
                 'attr' => [
                     'placeholder' => 'YYYY-mm-dd',
+                    'autocomplete' => 'off'
                 ],
                 'label' => 'booking.label.to',
             ])

@@ -50,13 +50,15 @@ task('deploy', [
     'deploy:symlink',
     'deploy:unlock',
     'cleanup',
+    'setPerms',
+    'setGroup',
     'success'
 ]);
 task('composer install', 'composer update');
 task('yarn install', '/usr/bin/yarn install');
 task('yarn encore', '/usr/bin/yarn encore dev');
 task('clear cache', 'php bin/console cache:clear');
-task('setPerms', 'chmod -R 0777 /var/www/booking/current/');
-task('setGroup', 'chown -R dkoehl:www-data /var/www/booking/');
+task('setPerms', 'sudo chmod -R 0777 /var/www/booking/current/');
+task('setGroup', 'sudo chown -R www-data:www-data /var/www/booking/');
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
