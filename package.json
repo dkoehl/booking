@@ -1,0 +1,47 @@
+{
+    "devDependencies": {
+        "@material-ui/core": "^4.0.0",
+        "@material/top-app-bar": "^1.1.1",
+        "@symfony/webpack-encore": "^0.27.0",
+        "bootstrap": "4",
+        "core-js": "^3.0.0",
+        "datatables.net-buttons": "^1.5.6",
+        "datatables.net-jqui": "^1.10.19",
+        "jquery": "^3.4.0",
+        "jquery-datetimepicker": "^2.5.21",
+        "jquery-ui": "^1.12.1",
+        "material-icons": "^0.3.1",
+        "materialize": "^1.0.0",
+        "materialize-css": "^1.0.0",
+        "popper.js": "^1.15.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "webpack-notifier": "^1.6.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "@fullcalendar/core": "^4.1.0",
+        "@fullcalendar/daygrid": "^4.1.0",
+        "@fullcalendar/timegrid": "^4.1.0",
+        "@fullcalendar/timeline": "^4.1.0",
+        "@material/select": "^2.2.0",
+        "@material/textfield": "^2.1.1",
+        "axios": "^0.18.0",
+        "datatables.net-buttons-dt": "^1.5.6",
+        "datatables.net-responsive-jqui": "^2.2.3",
+        "fullcalendar": "^3.10.0",
+        "highcharts": "^7.1.1",
+        "install": "^0.12.2",
+        "material-components-web": "^2.2.0",
+        "moment": "^2.24.0",
+        "print-js": "^1.0.63",
+        "select2": "^4.0.6-rc.1"
+    }
+}

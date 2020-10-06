@@ -1,0 +1,59 @@
+<div class="row">
+    <span class="badge new left" data-badge-caption="">{{ booking.id }}</span>
+</div>
+<div class="row">
+    <div class="col s3">
+        <p>
+            <b>Checkin</b><br>
+            <span class="black-text">{{ booking.bookingfrom ? booking.bookingfrom|date("D d.m.Y H:i"): '' }}</span>
+        </p>
+    </div>
+    <div class="col s3">
+        <p>
+            <b>Checkout</b><br>
+            <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
+        </p>
+    </div>
+    <div class="col s3">
+        <p>
+            <b>Days</b><br>
+            <span class="black-text">
+                {% set difference = date(booking.bookingtill).diff(date(booking.bookingfrom)) %}
+                {% set leftDays = difference.days %}
+                {% if leftDays == 1 %}
+                    1
+                {% else %}
+                    {{ leftDays }}
+                {% endif %}
+            </span>
+        </p>
+    </div>
+    <div class="col s2">
+        <p>
+            <b>Booked on</b><br>
+            <span class="black-text">{{ booking.crdate ? booking.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+        </p>
+    </div>
+    {#<div class="col s1" style="text-align:right;">#}
+        {#<a class='dropdown-trigger' href='#' data-target='dropdown{{ booking.crdate }}'>#}
+            {#<i class="material-icons grey-text">more_vert</i>#}
+        {#</a>#}
+        {#<!-- Dropdown Structure -->#}
+        {#<ul id='dropdown{{ booking.crdate }}' class='dropdown-content'>#}
+            {#<li>#}
+                {#<a href="{{ path('booking_edit', {'id': booking.id}) }}"#}
+                   {#class="blue-text">Edit</a>#}
+            {#</li>#}
+            {#<li class="divider" tabindex="-1"></li>#}
+            {#<li>#}
+                {#<a href="{{ path('booking_show', {'id': booking.id}) }}"#}
+                   {#class="blue-text">Show</a>#}
+            {#</li>#}
+            {#<li class="divider" tabindex="-1"></li>#}
+            {#<li>#}
+                {#<a href="#" class="blue-text">Print</a>#}
+            {#</li>#}
+        {#</ul>#}
+    {#</div>#}
+</div>
+

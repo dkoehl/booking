@@ -1,0 +1,18 @@
+/*@import "~materialize-css/dist/css/materialize.css";*/
+@import "~material-components-web/dist/material-components-web.min.css";
+@import "~materialize-css/dist/css/materialize.min.css";
+@import "~@material/theme/dist/mdc.theme.min.css";
+@import "~@material/top-app-bar/dist/mdc.top-app-bar.min.css";
+@import "~jquery-datetimepicker/build/jquery.datetimepicker.min.css";
+@import "~material-icons/iconfont/material-icons.css";
+@import "~select2/dist/css/select2.min.css";
+
+/*@import '~@fullcalendar/core/main.min.css';*/
+/*@import "~@fullcalendar/daygrid/main.min.css";*/
+/*@import "~@fullcalendar/timegrid/main.min.css";*/
+/*@import "~@fullcalendar/timeline/main.min.css";*/
+
+@import "./components/jquery_datatable.css";
+@import "./components/jquery_datetimepicker.css";
+@import "./components/capture_webcam.css";
+@import "custom.css";

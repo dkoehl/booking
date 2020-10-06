@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col s3">
+
+        <p>
+            <b>{{ 'price.label.price'|trans }}</b><br>
+            <span class="black-text">EUR {{ booking.prices.0.price | number_format(2, ',', '.') }}</span>
+        </p>
+
+
+    </div>
+    <div class="col s3">
+        <p>
+            <b>{{ 'price.label.tax'|trans }}</b><br>
+            <span class="black-text">{{ booking.prices.0.tax }} %</span>
+        </p>
+
+
+    </div>
+    <div class="col s2">
+        <p>
+            <b>Amount</b><br>
+            <span class="black-text">
+                {% if  booking.prices.0.paymentmethod == '1' %}
+                    {{ 'price.option.paymentmethod.1'|trans }}
+                {% elseif booking.prices.0.paymentmethod == '2' %}
+                    {{ 'price.option.paymentmethod.2'|trans }}
+                {% elseif booking.prices.0.paymentmethod == '3' %}
+                    {{ 'price.option.paymentmethod.3'|trans }}
+                {% endif %}
+            </span>
+        </p>
+    </div>
+    <div class="col s3">
+        <p>
+            <b>{{ 'price.label.type'|trans }}</b><br>
+            <span class="black-text">
+                {% if  booking.prices.0.type == '1' %}
+                    {{ 'price.option.type.1'|trans }}
+                {% elseif booking.prices.0.type == '2' %}
+                    {{ 'price.option.type.1'|trans }}
+                {% endif %}
+            </span>
+        </p>
+    </div>
+    <div class="col s1" style="text-align:right;">
+        <a class='dropdown-trigger' href='#'
+           data-target='dropdown_prices_{{ booking.prices.0.id }}'>
+            <i class="material-icons grey-text">more_vert</i>
+        </a>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown_prices_{{ booking.prices.0.id }}' class='dropdown-content'>
+            <li>
+                <a href="{{ path('price_show', {'id': booking.prices.0.id}) }}" class="blue-text">
+                    Show
+                </a>
+            </li>
+            <li class="divider" tabindex="-1"></li>
+            <li>
+                <a href="{{ path('price_edit', {'id': booking.prices.0.id}) }}" class="blue-text">
+                    Edit
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

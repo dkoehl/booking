@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Price index{% endblock %}
+
+{% block body %}
+    <h1>Price index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Tax</th>
+                <th>Amount</th>
+                <th>Hidden</th>
+                <th>Deleted</th>
+                <th>Crdate</th>
+                <th>Tstamp</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for price in prices %}
+            <tr>
+                <td>{{ price.id }}</td>
+                <td>{{ price.type }}</td>
+                <td>{{ price.price }}</td>
+                <td>{{ price.tax }}</td>
+                <td>{{ price.amount }}</td>
+                <td>{{ price.hidden ? 'Yes' : 'No' }}</td>
+                <td>{{ price.deleted ? 'Yes' : 'No' }}</td>
+                <td>{{ price.crdate }}</td>
+                <td>{{ price.tstamp }}</td>
+                <td>
+                    <a href="{{ path('price_show', {'id': price.id}) }}">show</a>
+                    <a href="{{ path('price_edit', {'id': price.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('price_new') }}">Create new</a>
+{% endblock %}

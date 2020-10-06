@@ -1,0 +1,60 @@
+<ul class="collection with-header blue-grey-text">
+    <li class="collapsible-header" style="border-bottom:0px;">
+        <div class="col s12">
+            <h5 class="section-title blue-text">
+                <i class="material-icons">today</i>
+                {{ 'booking.newbooking'|trans }}
+                <div class="right right-align right-aligned">
+                    <a href="javascript:history.back()">
+                        <i class="material-icons small grey-text">close</i>
+                    </a>
+                </div>
+            </h5>
+        </div>
+    </li>
+    {#Booking Data#}
+    <li class="collection-item lighten-5 grey-text">
+        <div class="row">
+            <div class="col s12 m12">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <div id="radios">
+                    <div>
+                        <label>
+                            <input class="with-gap" name="group3" type="radio" id="ez" name="roomtype" value="ez"/>
+                            <span>{{ 'booking.label.einzelzimmer'|trans }}</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input class="with-gap" name="group3" type="radio" id="dz" name="roomtype" value="dz"/>
+                            <span>{{ 'booking.label.doppelzimmer'|trans }}</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="collapsible-header " data-room="5" id="booking_result_header">
+                        <div class="col s4">{{ 'room.label.room'|trans }}</div>
+                        <div class="col s3">{{ 'room.label.floor'|trans }}</div>
+                        <div class="col s2">{{ 'room.label.beds'|trans }}</div>
+                        <div class="col s3">{{ 'room.label.house'|trans }}</div>
+                    </div>
+                    <ul id="bookingVacancies"></ul>
+                </div>
+
+
+                <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit"
+                        id="booking_submit" name="action">{{ 'booking.button.save'|trans }}
+                    <i class="material-icons right">send</i>
+                </button>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </li>
+</ul>
+
+
+
+

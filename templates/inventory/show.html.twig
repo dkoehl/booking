@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inventory{% endblock %}
+
+{% block body %}
+    <h1>Inventory</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ inventory.id }}</td>
+            </tr>
+            <tr>
+                <th>Beds</th>
+                <td>{{ inventory.beds }}</td>
+            </tr>
+            <tr>
+                <th>Closets</th>
+                <td>{{ inventory.closets }}</td>
+            </tr>
+            <tr>
+                <th>Tables</th>
+                <td>{{ inventory.tables }}</td>
+            </tr>
+            <tr>
+                <th>Chairs</th>
+                <td>{{ inventory.chairs }}</td>
+            </tr>
+            <tr>
+                <th>Floor</th>
+                <td>{{ inventory.floor }}</td>
+            </tr>
+            <tr>
+                <th>Walls</th>
+                <td>{{ inventory.walls }}</td>
+            </tr>
+            <tr>
+                <th>Windows</th>
+                <td>{{ inventory.windows }}</td>
+            </tr>
+            <tr>
+                <th>Doors</th>
+                <td>{{ inventory.doors }}</td>
+            </tr>
+            <tr>
+                <th>Roomsspecial</th>
+                <td>{{ inventory.roomsspecial }}</td>
+            </tr>
+            <tr>
+                <th>Hidden</th>
+                <td>{{ inventory.hidden ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Deleted</th>
+                <td>{{ inventory.deleted ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Crdate</th>
+                <td>{{ inventory.crdate }}</td>
+            </tr>
+            <tr>
+                <th>Tstamp</th>
+                <td>{{ inventory.tstamp }}</td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ inventory.text }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('inventory_index') }}">back to list</a>
+
+    <a href="{{ path('inventory_edit', {'id': inventory.id}) }}">edit</a>
+
+    {{ include('inventory/_delete_form.html.twig') }}
+{% endblock %}

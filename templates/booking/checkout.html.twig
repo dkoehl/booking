@@ -1,0 +1,397 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Booking{% endblock %}
+
+{% block body %}
+
+    {#    {{ dump(booking) }}#}
+
+    <div class="row">
+        <div class="col s12 m4">
+            <a href="#modalprint" class="modal-trigger" id="printPDFs">
+                <div class="card horizontal light-blue">
+                    <div class="card-content white-text">
+                        <span class="card-title center-align">
+                            <i class="material-icons small ">local_printshop</i>
+                            Print
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col s12 m4">
+            <a href="#modalsend" class="modal-trigger" id="sendPDFs">
+                <div class="card horizontal light-blue">
+                    <div class="card-content white-text">
+                        <span class="card-title center-align">
+                            <i class="material-icons small">send</i>
+                            Send
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col s12 m4">
+            <a href="#modal1" class="modal-trigger">
+                <div class="card horizontal light-blue">
+                    <div class="card-content white-text">
+                        <span class="card-title center-align">
+                            <i class="material-icons">report</i>
+                            Erledigt
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+{#    Values#}
+    <ul class="collection with-header blue-grey-text">
+
+        <li class="collection-header">
+            Booking No.
+            <h5 class="section-title blue-text">{{ booking.id }}
+                <div class="right right-align right-aligned">
+                    <a href="javascript:history.back()">
+                        <i class="material-icons small grey-text">close</i>
+                    </a>
+                </div>
+            </h5>
+        </li>
+
+        <li class="collection-item lighten-5 grey-text">
+            <div class="row">
+                <div class="col s9">
+                    <p>
+                        <b>Description/Text</b>
+                    </p>
+                </div>
+                <div class="col s1">
+                    <p>
+                        <b>Amount</b>
+                    </p>
+                </div>
+                <div class="col s2">
+                    <p>
+                        <b>Price / EUR</b>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <span class="new badge left blue" data-badge-caption="Room"></span>
+            </div>
+
+            <div class="row">
+                <div class="col s9">
+                    <p>
+                        <span class="black-text">
+                            {{ booking.bookedroom.house }} / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
+                        </span>
+                    </p>
+                </div>
+                <div class="col s1">
+                    <p>
+                        <span class="black-text">
+                            {% set difference = date(booking.bookingtill).diff(date(booking.bookingfrom)) %}
+                            {% set leftDays = difference.days %}
+
+                            {% if leftDays == 1 %}
+                                1
+                            {% else %}
+                                {{ leftDays }}
+                            {% endif %}
+                        </span>
+                    </p>
+                </div>
+                <div class="col s2">
+                    <p>
+                        <span class="black-text">
+                            {{ booking.prices.0.price | number_format(2, ',', '.') }}
+                        </span>
+                    </p>
+                    {% set endSum = booking.prices.0.price * leftDays %}
+                </div>
+            </div>
+        </li>
+
+
+        {% if booking.damages.0 is defined %}
+            <li class="collection-item lighten-5 grey-text">
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Damages"></span>
+                </div>
+                <div class="row black-text">
+                    {% for damage in booking.damages %}
+                        <div class="col s9">
+                            <p>
+                                <span class="black-text">
+                                    {{ damage.damageart }}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col s1">
+
+                        </div>
+                        <div class="col s2">
+                            <p>
+                                <span class="black-text">
+                                    {{ damage.price  | number_format(2, ',', '.') }}
+                                </span>
+                            </p>
+                        </div>
+                        {% set endSum = endSum + damage.price %}
+                    {% endfor %}
+                </div>
+            </li>
+        {% endif %}
+
+
+
+
+        {% if booking.parkings.0 is defined %}
+            <li class="collection-item lighten-5 grey-text">
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Parking"></span>
+                </div>
+                <div class="row black-text">
+                    {% for parking in booking.parkings %}
+                        <div class="col s9">
+                            <p>
+                                {{ parking.carplate }} / {{ parking.parkingspot }}
+                            </p>
+                        </div>
+                        <div class="col s1">
+
+                        </div>
+                        <div class="col s2">
+                            <p>
+                                <span class="black-text">
+                                    {{ parking.price | number_format(2, ',', '.') }}
+                                </span>
+                            </p>
+                        </div>
+                        {% set endSum = endSum + parking.price %}
+                    {% endfor %}
+                </div>
+            </li>
+        {% endif %}
+
+
+
+
+        {% if booking.deposites.0 is defined %}
+            <li class="collection-item lighten-5 grey-text">
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Deposite"></span>
+                </div>
+                <div class="row black-text">
+                    <div class="col s9">
+                        <p>
+                            Deposite
+                        </p>
+                    </div>
+                    <div class="col s1">
+
+                    </div>
+                    <div class="col s2">
+                        <p>
+                                <span class="black-text">
+                                    {{ booking.deposites.0.amount | number_format(2, ',', '.') }}
+                                </span>
+                        </p>
+                    </div>
+                    {% set endSum = endSum + booking.deposites.0.amount %}
+                </div>
+            </li>
+        {% endif %}
+
+
+        <li class="collection-item lighten-5 grey-text">
+            <div class="row">
+                <span class="new badge left blue" data-badge-caption="Final amount"></span>
+            </div>
+            <div class="row">
+                <div class="col s9">
+                </div>
+                <div class="col s1">
+                    SUM
+                </div>
+                <div class="col s2">
+                        <span class="black-text">
+                            <b>
+                                {{ endSum | number_format(2, ',', '.') }}
+                            </b>
+                        </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s9">
+                </div>
+                <div class="col s1">
+                    TAX
+                </div>
+                <div class="col s2">
+                        <span class="black-text">
+                            <b>
+                                {{ ((endSum * 1.19) - endSum )  | number_format(2, ',', '.') }}
+                            </b>
+                        </span>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s9">
+                </div>
+                <div class="col s1">
+                    TOTAL
+                </div>
+                <div class="col s2">
+                        <span class="black-text">
+                            <b>
+                                {{ ((endSum * 1.19) - endSum + endSum ) | number_format(2, ',', '.') }}
+                            </b>
+                        </span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+
+
+    <!-- Modal Structure -->
+    <div id="modalprint" class="modal">
+        <form id="modalprintformular" name="modalPrint" >
+            <input type="hidden" name="bookingid" value="{{ booking.id }}" />
+            <div class="modal-content">
+                <h4>Print files</h4>
+                <p>Select documents for printing</p>
+                <div class="row">
+                    <div class="col s4">
+                        <label>
+                            <input name="agbs" type="checkbox" checked/>
+                            <span class="black-text">AGBs</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="contract" type="checkbox" checked/>
+                            <span class="black-text">Aufnahmevertrag</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="meldeschein" type="checkbox" checked/>
+                            <span class="black-text">Meldeschein</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        <label>
+                            <input name="inventory" type="checkbox" checked/>
+                            <span class="black-text">Inventarliste</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="pricelist" type="checkbox" checked/>
+                            <span class="black-text">Preisliste</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="houserules" type="checkbox" checked/>
+                            <span class="black-text">Hausordnung</span>
+                        </label>
+                    </div>
+                </div>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="modalprint_button" class="modal-close waves-effect waves-green btn-flat light-blue white-text">Print</a>
+            </div>
+        </form>
+
+    </div>
+
+
+
+
+    <div id="modalsend" class="modal">
+        <form id="modalsendformular" name="modalSend" >
+            <input type="hidden" name="bookingid" value="{{ booking.id }}" />
+            <div class="modal-content">
+                <h4>Send files</h4>
+                <p>Select documents for sending</p>
+                <div class="row">
+                    <div class="col s4">
+                        <label>
+                            <input name="agbs" type="checkbox" checked/>
+                            <span class="black-text">AGBs</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="contract" type="checkbox" checked/>
+                            <span class="black-text">Aufnahmevertrag</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="meldeschein" type="checkbox" checked/>
+                            <span class="black-text">Meldeschein</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        <label>
+                            <input name="inventory" type="checkbox" checked/>
+                            <span class="black-text">Inventarliste</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="pricelist" type="checkbox" checked/>
+                            <span class="black-text">Preisliste</span>
+                        </label>
+                    </div>
+                    <div class="col s4">
+                        <label>
+                            <input name="houserules" type="checkbox" checked/>
+                            <span class="black-text">Hausordnung</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate" name="receiver">
+                        <label for="email">Receiver</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="input_text" type="text" data-length="255" name="subject">
+                        <label for="input_text">Subject</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textarea2" class="materialize-textarea" data-length="120" name="bodytext"></textarea>
+                        <label for="textarea2">Text</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="modalsend_button" class="modal-close waves-effect waves-green btn-flat light-blue white-text">Send</a>
+            </div>
+        </form>
+    </div>
+
+    {#    {{ dump(booking) }}#}
+    {#    {{ dump(booking.prices.0) }}#}
+    {#    {{ dump(booking.payments.0) }}#}
+
+    {#    checkout#}
+{% endblock %}

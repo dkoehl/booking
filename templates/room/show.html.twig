@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Room{% endblock %}
+
+{% block body %}
+    {#{{ dump(room) }}#}
+    {#{{ dump(booking) }}#}
+
+    <ul class="collection with-header blue-grey-text">
+        <li class="collection-header">
+            <h5 class="section-title blue-text">{{ room.name }}
+                <div class="right right-align right-aligned">
+                    <a class='dropdown-trigger' href='#' data-target='dropdown_room_{{ room.crdate }}'>
+                        <i class="material-icons small grey-text">more_vert</i>
+                    </a>
+                    <!-- Dropdown Structure -->
+                    <p>
+                    <ul id='dropdown_room_{{ room.crdate }}' class='dropdown-content'>
+                        <li>
+                            <a class="blue-text" href="{{ path('room_index') }}">
+                                Back
+                            </a>
+                        </li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li>
+                            <a class="blue-text" href="{{ path('room_edit', {'id': room.id}) }}">Edit</a>
+                        </li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li>
+                            {{ include('room/_delete_form.html.twig') }}
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </h5>
+        </li>
+        <li class="collection-item lighten-5 grey-text">
+            <div class="row">
+                <div class="col s4">
+                    <p>
+                        <b>House</b><br>
+                        <span class="black-text">{{ room.housename}}</span>
+                    </p>
+
+                </div>
+                <div class="col s4">
+                    <p>
+                        <b>Floor</b><br>
+                        <span class="black-text">{{ room.floor}}</span>
+                    </p>
+
+                </div>
+                <div class="col s4">
+                    <p>
+                        <b>Beds</b><br>
+                        <span class="black-text">{{ room.beds}}</span>
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+
+    {#Bookings#}
+    <ul class="collapsible">
+        <li class="collapsible-header" style="border-bottom:0px;">
+            <div class="col s12">
+                <h5 class="section-title blue-text"><i class="material-icons">today</i> Bookings</h5>
+            </div>
+        </li>
+        <li class="collapsible-header grey-text" style="border-top:0px;">
+            <div class="col s3">Check in</div>
+            <div class="col s3">Check out</div>
+            <div class="col s3">Room</div>
+            <div class="col s2">Occupancy</div>
+            <div class="col s1"></div>
+        </li>
+        {% for booking in room.bookings %}
+            <li class="hoverable">
+                <div class="collapsible-header blue-grey-text">
+                    <div class="col s3">
+                        <i class="material-icons">today</i>
+                        {{ booking.bookingfrom ? booking.bookingfrom|date("D d M", "Europe/Paris"): '' }}
+                    </div>
+                    <div class="col s3">
+                        <i class="material-icons">today</i>
+                        {{ booking.bookingtill ? booking.bookingtill|date("D d M", "Europe/Paris"): '' }}
+                    </div>
+                    <div class="col s3">
+                        <i class="material-icons">home</i>{{ booking.bookedroom.house }}
+                        / {{ booking.bookedroom.floor }} / {{ booking.bookedroom.name }}
+                    </div>
+                    <div class="col s2">
+                        <i class="material-icons" style="margin-right:-10px;">person</i>
+                        {% for i in  booking.occupancies %}
+                            <i class="material-icons" style="margin-right:-10px;">person</i>
+                        {% endfor %}
+{#                        {{  booking.occupancies|length +1}} / {{ booking.bookedroom.beds }}#}
+                    </div>
+
+                    <div class="col s1" style="text-align:right;">
+                        <a class='dropdown-trigger' href='#' data-target='dropdown{{ booking.crdate }}'>
+                            <i class="material-icons grey-text">more_vert</i>
+                        </a>
+                        <!-- Dropdown Structure -->
+                        <ul id='dropdown{{ booking.crdate }}' class='dropdown-content'>
+                            <li>
+                                <a href="{{ path('booking_edit', {'id': booking.id}) }}"
+                                   class="blue-text">Edit</a>
+                            </li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li>
+                                <a href="{{ path('booking_show', {'id': booking.id}) }}"
+                                   class="blue-text">Show</a>
+                            </li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li>
+                                <a href="#" class="blue-text">Print</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-body blue-grey lighten-5 grey-text">
+                    {{ include('booking/_booking_body_small.html.twig') }}
+                    {{ include('guest/_booking_guest_body.html.twig') }}
+                </div>
+            </li>
+        {% else %}
+            <li>
+                <div class="collapsible-header blue-grey-text">
+                    <p>no records founds</p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

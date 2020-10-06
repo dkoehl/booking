@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Guest{% endblock %}
+
+{% block body %}
+    <ul class="collection with-header blue-grey-text booking_guest" id="form_booking_guest">
+        <li class="collapsible-header" style="border-bottom:0px;">
+            <div class="col s12">
+                <h5 class="section-title blue-text"><i class="material-icons">today</i>
+                    Edit Guest
+                </h5>
+            </div>
+        </li>
+        {{ include('guest/_form.html.twig', {'button_label': 'Update'}) }}
+    </ul>
+{% endblock %}

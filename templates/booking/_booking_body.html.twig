@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col s4">
+        <p>
+            <strong>Name</strong><br>
+            <a href="{{ path('guest_show', {'id': booking.guest.id}) }}">
+                {{ booking.guest.lastnameFirstname|trim }}
+            </a>
+        </p>
+        <p>
+            <strong>Birthday</strong><br>
+            <span class="black-text">{{ booking.guest.birthday ? booking.guest.birthday|date("d.m.Y") : '' }}</span>
+        </p>
+    </div>
+    <div class="col s4">
+        <p>
+            <strong>Booked on</strong><br>
+            <span class="black-text">{{ booking.crdate ? booking.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+            <br>
+            <br>
+            <strong>Checkin</strong><br>
+            <span class="black-text">{{ booking.bookingfrom ? booking.bookingfrom|date("D d.m.Y H:i"): '' }}</span>
+            <br>
+            <br>
+            <strong>Checkout</strong><br>
+            <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
+        </p>
+    </div>
+    <div class="col s3">
+        <p>
+            <strong>Room:</strong>
+            <span class="black-text"> {{ booking.bookedroom.name }}</span>
+            <br>
+            <strong>Beds:</strong>
+            <span class="black-text"> {{ booking.bookedroom.beds }}</span>
+            <br>
+            <strong>House:</strong>
+            <span class="black-text">{{ booking.bookedroom.house }}</span>
+            <br>
+            <strong>Floor:</strong>
+            <span class="black-text">{{ booking.bookedroom.floor }}</span>
+        </p>
+    </div>
+</div>
+
+

@@ -1,0 +1,280 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Booking{% endblock %}
+
+{% block body %}
+
+    {#    {{ dump(booking) }}#}
+
+
+
+    <ul class="collection with-header blue-grey-text">
+        <li class="collection-header">
+            Booking No.
+            <h5 class="section-title blue-text">{{ booking.id }}
+                <div class="right right-align right-aligned">
+                    <a href="javascript:history.back()">
+                        <i class="material-icons small grey-text">close</i>
+                    </a>
+                </div>
+            </h5>
+        </li>
+
+        {#Booking Data#}
+        <li class="collection-item lighten-5 grey-text">
+            <div class="row">
+                <div class="col s3">
+                    <p>
+                        <b>{{ 'booking.label.checkin'|trans }}</b><br>
+                        <span class="black-text">{{ booking.bookingfrom ? booking.bookingfrom|date("D d.m.Y H:i"): '' }}</span>
+                    </p>
+                </div>
+                <div class="col s3">
+                    <p>
+                        <b>{{ 'booking.label.checkout'|trans }}</b><br>
+                        <span class="black-text">{{ booking.bookingtill ? booking.bookingtill|date("D d.m.Y H:i"): '' }}</span>
+                    </p>
+                </div>
+                <div class="col s3">
+                    <p>
+                        <b>{{ 'booking.label.days'|trans }}</b><br>
+                        <span class="black-text">
+                            {% set difference = date(booking.bookingtill).diff(date(booking.bookingfrom)) %}
+                            {% set leftDays = difference.days %}
+                            {% if leftDays == 1 %}
+                                1
+                            {% else %}
+                                {{ leftDays }}
+                            {% endif %}
+                        </span>
+                    </p>
+                </div>
+                <div class="col s3">
+                    <p>
+                        <b>{{ 'booking.label.bookedon'|trans }}</b><br>
+                        <span class="black-text">{{ booking.crdate ? booking.crdate|date("D d.m.Y H:i", "Europe/Paris"): '' }}</span>
+                    </p>
+                </div>
+            </div>
+        </li>
+
+
+
+        {#Room#}
+        <li class="collection-item lighten-5 grey-text">
+            {{ include('room/_booking_room_body.html.twig') }}
+        </li>
+
+
+
+        {#Guest#}
+        <li class="collection-item  lighten-5 grey-text" id="booking_guest">
+            {% if booking.guest.id == 1 %}
+                <ul class="collection with-header blue-grey-text booking_guest" id="form_booking_guest">
+                    <li class="collapsible-header" style="border-bottom:0px;">
+                        <div class="col s12">
+                            <h5 class="section-title blue-text"><i class="material-icons">today</i>
+                                New Guest
+                                <div class="right right-align right-aligned">
+                                    <a href="javascript:history.back()">
+                                        <i class="material-icons small grey-text">close</i>
+                                    </a>
+                                </div>
+                            </h5>
+                        </div>
+                    </li>
+                    {{ include('guest/_form.html.twig') }}
+                </ul>
+            {% else %}
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Guest"></span>
+                </div>
+
+                {{ include('guest/_booking_guest_body_small.html.twig') }}
+            {% endif %}
+        </li>
+
+
+        {#occupancy#}
+        {% if booking.occupancies.0.id is defined %}
+            <li class="collection-item  lighten-5 grey-text" id="booking_occupancies">
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Occupancies"></span>
+                </div>
+                {% for occupancy in booking.occupancies %}
+                    {{ include('occupancy/_booking_occupancy_body.html.twig') }}
+                {% endfor %}
+
+            </li>
+        {% endif %}
+        {% if booking.occupancies|length+1 < booking.bookedroom.beds %}
+            <li class="collection-item  lighten-5 grey-text" id="booking_occupancies">
+                <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action"
+                        id="button_booking_occupancy">
+                    Occupancy
+                    <i class="material-icons right">add</i>
+                </button>
+                {{ include('occupancy/new.html.twig') }}
+            </li>
+        {% endif %}
+
+
+
+        {#parking#}
+        <li class="collection-item  lighten-5 grey-text" id="booking_parking">
+            {% if booking.parkings.0.id is defined %}
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Parkings"></span>
+                </div>
+                {% for parking in booking.parkings %}
+                    {{ include('parking/_booking_parking_body.html.twig') }}
+                {% endfor %}
+            {% endif %}
+            <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action"
+                    id="button_booking_parking">
+                Parking
+                <i class="material-icons right">add</i>
+            </button>
+            {{ include('parking/new.html.twig') }}
+        </li>
+
+
+
+        {#inventory#}
+        <li class="collection-item  lighten-5 grey-text" id="booking_inventory">
+            {% if booking.inventories.0.id is defined %}
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Inventories"></span>
+                </div>
+                {% for inventory in booking.inventories %}
+                    {{ include('inventory/_booking_inventory_body.html.twig') }}
+                {% endfor %}
+            {% endif %}
+            <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action"
+                    id="button_booking_inventory">
+                Inventory
+                <i class="material-icons right">add</i>
+            </button>
+            {{ include('inventory/new.html.twig') }}
+        </li>
+
+
+
+        {#prices#}
+        <li class="collection-item  lighten-5 grey-text" id="booking_price">
+            {% if booking.prices.0.id is defined %}
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Price"></span>
+                </div>
+                {{ include('price/_booking_price_body.html.twig') }}
+            {% else %}
+                <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action"
+                        id="button_booking_price">
+                    Price
+                    <i class="material-icons right">add</i>
+                </button>
+                {{ include('price/new.html.twig') }}
+            {% endif %}
+        </li>
+
+
+
+        {#deposites#}
+        <li class="collection-item  lighten-5 grey-text" id="booking_deposite">
+            {% if booking.deposites.0.id is defined %}
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Deposite"></span>
+                </div>
+                {{ include('deposite/_booking_deposite_body.html.twig') }}
+            {% else %}
+                <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action"
+                        id="button_booking_deposite">
+                    Deposite
+                    <i class="material-icons right">add</i>
+                </button>
+                {{ include('deposite/new.html.twig') }}
+            {% endif %}
+        </li>
+
+
+
+        {#payment#}
+        {#        <li class="collection-item  lighten-5 grey-text" id="booking_payment">#}
+        {#            {% if booking.payments.0.id is defined  %}#}
+        {#                <div class="row">#}
+        {#                    <span class="new badge left blue" data-badge-caption="Payment"></span>#}
+        {#                </div>#}
+        {#                {{ include('payment/_booking_payment_body.html.twig') }}#}
+        {#            {% else %}#}
+        {#                <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action" id="button_booking_payment">#}
+        {#                    Payment#}
+        {#                    <i class="material-icons right">add</i>#}
+        {#                </button>#}
+        {#                {{ include('payment/_form.html.twig') }}#}
+        {#            {% endif %}#}
+        {#        </li>#}
+
+
+
+        {#damage#}
+        <li class="collection-item  lighten-5 grey-text" id="booking_damage">
+            {% if booking.damages.0.id is defined %}
+                <div class="row">
+                    <span class="new badge left blue" data-badge-caption="Damages"></span>
+                </div>
+                {% for damage in booking.damages %}
+                    {{ include('damage/_booking_damage_body.html.twig') }}
+                {% endfor %}
+            {% endif %}
+            <button class="btn waves-effect waves-light  light-green z-depth-0" type="submit" name="action"
+                    id="button_booking_damage">
+                damage
+                <i class="material-icons right">add</i>
+            </button>
+            {{ include('damage/new.html.twig') }}
+        </li>
+    </ul>
+
+
+    {#Action Buttons#}
+    {% if booking.prices.0 is defined %}
+        <div class="row">
+            <div class="col s12 m12">
+                <a href="checkout/{{ booking.id }}">
+                    <div class="card horizontal light-green">
+                        <div class="card-content white-text">
+                            <span class="card-title center-align">
+                                <i class="material-icons small">exit_to_app</i>
+                                Check- In
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col s12 m6">
+            <a href="#">
+                <div class="card horizontal orange">
+                    <div class="card-content white-text">
+                        <span class="card-title center-align">
+                            <i class="material-icons">report</i> Stornieren
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col s12 m6">
+            <a href="#">
+                <div class="card horizontal red">
+                    <div class="card-content white-text">
+                        <span class="card-title center-align">
+                            <i class="material-icons">report</i> Problem melden
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

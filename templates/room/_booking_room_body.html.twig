@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col s3">
+        <p>
+            <b>{{ 'room.label.room'|trans }}</b><br>
+            <a href="{{ path('room_show', {'id': booking.bookedroom.id}) }}">
+                {{ booking.bookedroom.name }}
+            </a>
+        </p>
+    </div>
+    <div class="col s3">
+        <p>
+            <b>{{ 'room.label.beds'|trans }}</b><br>
+            {% if booking.bookedroom.beds %}
+                <span class="black-text"> {{ booking.bookedroom.beds }}</span>
+            {% else %}
+                <span class="black-text">N/A</span>
+            {% endif %}
+
+        </p>
+    </div>
+    <div class="col s3">
+        <p>
+            <b>{{ 'room.label.house'|trans }}</b><br>
+            <span class="black-text">{{ booking.bookedroom.house }}</span>
+        </p>
+    </div>
+    <div class="col s3">
+        <p>
+            <b>{{ 'room.label.floor'|trans }}</b><br>
+            <span class="black-text">{{ booking.bookedroom.floor }}</span>
+        </p>
+    </div>
+</div>

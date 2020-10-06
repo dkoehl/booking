@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guest index{% endblock %}
+
+{% block body %}
+    <div id="datatableLoading">
+        <div class="spinner">
+            <div class="spinner-wrapper">
+                <div class="rotator">
+                    <div class="inner-spin"></div>
+                    <div class="inner-spin"></div>
+                </div>
+            </div>
+            <center class="blue-grey-text">Loading Table</center>
+        </div>
+    </div>
+
+
+    <div id="datatablewrapper" style="display:none">
+        <table id="dataTableGuests" class="responsive-table highlight display blue-grey-text">
+            <thead>
+            <tr>
+                <th>Client ID</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Birthday</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

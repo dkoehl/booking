@@ -1,0 +1,41 @@
+<li class="collection-item lighten-5 grey-text">
+    <div class="row">
+        <div class="col s12 m12">
+            {{ form_start(priceForm) }}
+            {#                {{ form_widget(priceForm) }}#}
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form_row(priceForm.type) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    {{ form_row(priceForm.tax) }}
+                </div>
+                <div class="input-field col s6">
+                    {{ form_row(priceForm.amount) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    {{ form_row(priceForm.paymentmethod) }}
+                </div>
+                <div class="input-field col s6">
+                    {{ form_row(priceForm.price) }}
+                </div>
+            </div>
+
+
+
+
+            <input type="hidden" id="price_booking" name="price[booking]" value="">
+            <button class="btn waves-effect waves-light large light-blue z-depth-0" type="submit" name="action">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ button_label|default('Save') }}
+                <i class="material-icons right">send</i>
+            </button>
+            {{ form_end(priceForm) }}
+        </div>
+
+    </div>
+</li>
+
+

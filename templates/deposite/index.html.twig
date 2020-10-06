@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Deposite index{% endblock %}
+
+{% block body %}
+    <h1>Deposite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Amount</th>
+                <th>Hidden</th>
+                <th>Deleted</th>
+                <th>Crdate</th>
+                <th>Tstamp</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for deposite in deposites %}
+            <tr>
+                <td>{{ deposite.id }}</td>
+                <td>{{ deposite.amount }}</td>
+                <td>{{ deposite.hidden ? 'Yes' : 'No' }}</td>
+                <td>{{ deposite.deleted ? 'Yes' : 'No' }}</td>
+                <td>{{ deposite.crdate }}</td>
+                <td>{{ deposite.tstamp }}</td>
+                <td>
+                    <a href="{{ path('deposite_show', {'id': deposite.id}) }}">show</a>
+                    <a href="{{ path('deposite_edit', {'id': deposite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('deposite_new') }}">Create new</a>
+{% endblock %}
