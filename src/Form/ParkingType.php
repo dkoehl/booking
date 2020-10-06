@@ -22,7 +22,7 @@ class ParkingType extends AbstractType
             ])
             ->add('startdate', DateType::class, [
                 'widget' => 'single_text',
-                'html5' => true,
+                'html5' => false,
                 'format' => 'YYYY-mm-dd',
                 'attr' => [
                     'class' => 'js-datepicker',
@@ -32,7 +32,7 @@ class ParkingType extends AbstractType
             ])
             ->add('enddate', DateType::class, [
                 'widget' => 'single_text',
-                'html5' => true,
+                'html5' => false,
                 'format' => 'YYYY-mm-dd',
                 'attr' => [
                     'class' => 'js-datepicker',

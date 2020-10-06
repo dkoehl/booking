@@ -58,12 +58,13 @@ class GuestType extends AbstractType
                 ])
                 ->add('birthday', DateType::class, [
                     'widget' => 'single_text',
-                    'html5' => true,
+                    'html5' => false,
                     'format' => 'YYYY-mm-dd',
                     'attr' => [
                         'placeholder' => 'guest.label.birthday.placeholder'
                     ],
                     'label' => 'guest.label.birthday',
+
                 ])
 //                ->add('bookings', CollectionType::class, [
 //                    'attr' => ['class' => 'hide']

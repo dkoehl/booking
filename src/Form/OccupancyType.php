@@ -28,7 +28,7 @@ class OccupancyType extends AbstractType
             ])
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
-                'html5' => true,
+                'html5' => false,
                 'format' => 'YYYY-mm-dd',
                 'attr' => [
                     'class' => 'js-datepicker',

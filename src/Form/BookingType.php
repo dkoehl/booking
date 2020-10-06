@@ -18,7 +18,7 @@ class BookingType extends AbstractType
         $builder
             ->add('bookingfrom', DateType::class, [
                 'widget' => 'single_text',
-                'html5' => true,
+                'html5' => false,
                 'format' => 'YYYY-mm-dd',
                 'label' => 'booking.label.from',
                 'attr' => [
@@ -28,7 +28,7 @@ class BookingType extends AbstractType
             ])
             ->add('bookingtill', DateType::class, [
                 'widget' => 'single_text',
-                'html5' => true,
+                'html5' => false,
                 'format' => 'YYYY-mm-dd',
                 'attr' => [
                     'placeholder' => 'YYYY-mm-dd',
