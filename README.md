@@ -1,41 +1,30 @@
 # Booking Software
 Official booking application.
 
-## Symfony
-* Creating Entities: <https://symfony.com/doc/current/doctrine.html>
-* Creating CRUD: <https://symfony.com/doc/master/bundles/SensioGeneratorBundle/commands/generate_doctrine_crud.html>
+## Symfony 5.x
 
 
-## Server
+
+## Installation
+* Clone respository ````git clone git@github.com:dkoehl/booking.git````
+* Install application via ````composer install````
+* Install assets with ```yarn install```
 
 
-### Todos
-
-## Basic steps
-* Plain App erstellen: composer create-project symfony/skeleton amazonapp
-* Server installieren: composer require server --dev
-* Server starten: php bin/console server:run
-* Asset Watch: yarn run encore dev --watch
-
-
-## Labels und Messages
-Pfad zur Labels/Sprachdatei: `translations/messages.xlf`
+## Labels and Messages
+Path to the Labels/Languagefile: `translations/messages.xlf`
 
 {{ '`booking.headline`'|trans }}
 
-### Dmo
+### Demo
 * <https://material.io/develop/web/>
 * <https://dribbble.com/shots/6321346-Mission-Control-Full-view/attachments>
 * <http://preview.themeforest.net/item/material-design-admin-with-angularjs/full_screen_preview/13582227>
 * <https://materializecss.com>
 
 
-### Commands
-* Project init: ```composer create-project symfony/website-keleton```
-* php bin/console server:start 0.0.0.0:8000
-* Watcher starten: ```yarn run encore dev --watch```
-
 #### Screens
+##### First Development Screens
 ![screen](assets/_screens/screen1.png)
 ![screen](assets/_screens/screen2.png)
 ![screen](assets/_screens/screen3.png)
@@ -44,6 +33,8 @@ Pfad zur Labels/Sprachdatei: `translations/messages.xlf`
 ![screen](assets/_screens/screen6.png)
 ![screen](assets/_screens/screen7.png)
 ![screen](assets/_screens/screen8.png)
+##### Final UI Screens
+
 ![screen](assets/_screens/screen9.png)
 ![screen](assets/_screens/screen10.png)
 ![screen](assets/_screens/screen11.png)
