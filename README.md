@@ -24,17 +24,6 @@ Path to the Labels/Languagefile: `translations/messages.xlf`
 
 
 #### Screens
-##### First Development Screens
-![screen](assets/_screens/screen1.png)
-![screen](assets/_screens/screen2.png)
-![screen](assets/_screens/screen3.png)
-![screen](assets/_screens/screen4.png)
-![screen](assets/_screens/screen5.png)
-![screen](assets/_screens/screen6.png)
-![screen](assets/_screens/screen7.png)
-![screen](assets/_screens/screen8.png)
-##### Final UI Screens
-
 ![screen](assets/_screens/screen9.png)
 ![screen](assets/_screens/screen10.png)
 ![screen](assets/_screens/screen11.png)
