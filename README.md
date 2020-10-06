@@ -1,5 +1,5 @@
-# Booking Software
-Official booking application.
+# Hotel Booking Software
+This is an easy-to-user hotel booking software application. You can manage your bookings of your rooms and houses.
 
 ## Symfony 5.x
 
@@ -52,3 +52,7 @@ Path to the Labels/Languagefile: `translations/messages.xlf`
 #### Links
 * https://www.setasign.com/products/fpdi/demos/simple-demo/#p-249.60000610351562
 * https://printjs.crabbly.com/
+
+
+#### Contact
+You can contact me Twitter: @denniskoehl
