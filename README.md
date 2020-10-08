@@ -1,5 +1,5 @@
 # Hotel Booking Software
-This is an easy-to-user hotel booking software application. You can manage your bookings of your rooms and houses.
+This is an easy-to-use hotel booking software application. You can manage your bookings of your rooms and houses.
 
 ## System and setup
 * Symfony Framework ```v. 5.x```
