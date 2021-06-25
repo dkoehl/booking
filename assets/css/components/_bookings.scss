@@ -1,0 +1,9 @@
+#booking > div:nth-child(4),
+#booking > div:nth-child(3),
+#booking > div:nth-child(3) > label,
+#booking > div:nth-child(4) > label{
+  display:none;
+}
+#booking_result_header{
+  border-bottom: 1px solid #e9ecef;
+}
