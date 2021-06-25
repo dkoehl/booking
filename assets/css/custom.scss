@@ -2,10 +2,7 @@
 /*@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');*/
 /*@import url('https://fonts.googleapis.com/icon?family=Material+Icons');*/
 
-html {
-    background-color: #fafafa !important;
-    height: 100%;
-}
+
 
 table {
     background-color: #fff;
@@ -20,42 +17,13 @@ select {
 
 
 
-#sitebar {
-    position: fixed;
-    height: 100%;
-    bottom: 0px;
-    padding: 0px;
-    /*background-color: #e8eaf6;*/
-}
 
-.sitebar {
-    height: 100%;
-}
-
-.sitebar a {
-    /*color: #666666;*/
-    font-size: 13px;
-}
 
 .content-container{
     overflow:scroll;
 }
 
-.sitebar a.active,
-#sitebar > ul > li > a.active > i{
-    /*color: dodgerblue;*/
 
-}
-.sitebar a.active{
-    display:block;
-    padding:10px;
-    position:relative;
-    width:100%;
-    border-left:5px solid dodgerblue;
-    /*margin-right:-20px;*/
-    /*text-align: left;*/
-    background:#fafafa;
-}
 
 
 
@@ -84,7 +52,6 @@ select {
 #demoContainer,
 #bookingMonthContainer{
     height:340px;
-    border:1px solid #DDDDDD;
 }
 
 .bookingdateday{
@@ -117,3 +84,8 @@ li.hoverable.active{
 #booking > div{
     min-height:0;
 }
+
+
+
+
+

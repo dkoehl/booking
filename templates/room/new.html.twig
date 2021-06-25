@@ -3,12 +3,21 @@
 {% block title %}New Room{% endblock %}
 
 {% block body %}
-    {#<a class="waves-effect waves-light btn" href="{{ path('room_index') }}">back to list</a>#}
-    {#<h3 class="section-title teal-text">Create new Room</h3>#}
-    {#<p> </p>#}
-    {{ include('room/_form.html.twig') }}
 
+    <div class="card floating-container">
+        <div class="card-content">
+            <div class="card-title blue-text">
+                <i class="material-icons">today</i> Add new room
+                <div class="right right-align right-aligned">
+                    <a href="javascript:history.back()">
+                        <i class="material-icons small grey-text">close</i>
+                    </a>
+                </div>
+            </div>
+            <br>
+            {{ include('room/_form.html.twig') }}
 
-
-
+        </div>
+    </div>
+    <br>
 {% endblock %}

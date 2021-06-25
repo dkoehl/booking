@@ -2,177 +2,194 @@
 @import "~datatables.net-jqui/css/dataTables.jqueryui.min.css";
 
 /*https://datatables.net/extensions/buttons/config*/
+#datatablewrapper {
+  font-weight: 300;
+  background-color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
-#dataTableRooms,
-#dataTableGuests{
+  tr {
+    .odd {
+      border: 2px solid red;
+    }
+  }
+
+  .DataTables_sort_wrapper {
+    opacity: .7;
+    font-weight: bolder;
+    color: #8392ab;
+    text-transform: uppercase;
+    font-size: .65rem;
+  }
+
+  #dataTableRooms,
+  #dataTableGuests {
     border: none;
     padding: 0px;
     width: 100% !important;
     color: #607d8b !important;
     /*box-shadow:none !important;*/
     /*border:1px solid #afafaf;*/
-    border-radius:0px;
-}
-#datatablewrapper{
-    background-color:#fff;
-    border:1px solid #ddd;
-    padding-top:10px;
-    padding-bottom:10px;
-}
-.footerline{
-    padding:10px;
-}
-#dataTableRooms_paginate > span > a,
-#dataTableRooms_paginate > a,
-#dataTableRooms_paginate a{
-    color:#607d8b !important;
-    font-size:12px;
-}
+    border-radius: 0px;
+  }
 
-.dataTables_info {
+  .footerline {
+    padding: 10px;
+  }
+
+  .dataTables_paginate {
+    a {
+      color: #607d8b !important;
+      font-size: 12px;
+    }
+  }
+
+  .dataTables_info {
     color: #607d8b !important;
-}
+  }
 
-#dataTableRooms table,
-#dataTableGuests table {
-    border: 1px solid blue;
-}
-div.dt-buttons{
+  div.dt-buttons {
     text-align: right;
-}
-div.dt-buttons > button.dt-button {
-    padding:5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    background-color:#fafafa;
-    border:1px solid #ccc;
-    color:grey;
-    border-radius: 7px 7px 7px 0px;
-}
 
-#dataTableRooms_filter,
-#dataTableGuests_filter{
+    button.dt-button {
+      padding: 5px;
+      padding-left: 15px;
+      padding-right: 15px;
+      background-color: #fafafa;
+      border: 1px solid #ccc;
+      color: grey;
+      border-radius: 7px 7px 7px 0px;
+    }
+  }
+
+  .dataTables_filter {
     width: 100%;
-}
+  }
 
-#dataTableRooms_length > label > select,
-#dataTableGuests_length > label > select {
-    margin-top: -20px;
-}
+  .dataTables_length > label {
+    opacity: 0;
+  }
 
-.dataTables_length > label {
-    opacity:0;
-}
-
-.dataTables_wrapper .dataTables_filter input {
+  .dataTables_wrapper .dataTables_filter input {
     margin: 0px !important;
+  }
+
+  table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
+    background: none;
+  }
+
+  table.dataTable.display tbody tr.even > .sorting_1, table.dataTable.order-column.stripe tbody tr.even > .sorting_1 {
+    background: none;
+  }
+
+  table.dataTable.display tbody tr.odd > .sorting_1, table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+    background: none;
+  }
 }
 
 
-/*.spinner {*/
-    /*display: block;*/
-    /*margin-top: 2em;*/
-    /*margin-right: auto;*/
-    /*margin-left: auto;*/
-    /*width: 4em;*/
-    /*height: 4em;*/
-    /*padding: 7px;*/
-    /*border: 1px solid #ccc;*/
-    /*border-radius: 50%;*/
-    /*transform: scale(.7);*/
-/*}*/
-.spinner{
-    margin-top:20%;
+
+
+
+
+
+.spinner {
+  margin-top: 20%;
 }
+
 .medium {
-    transform: scale(1)
+  transform: scale(1)
 }
 
 .large {
-    margin-top: 4em;
-    transform: scale(1.5)
+  margin-top: 4em;
+  transform: scale(1.5)
 }
 
 .spinner-wrapper {
-    position: relative;
-    width: 4em;
-    height: 4em;
-    border-radius: 100%;
-    left: calc(50% - 2em);
+  position: relative;
+  width: 4em;
+  height: 4em;
+  border-radius: 100%;
+  left: calc(50% - 2em);
 }
 
 .spinner-wrapper::after {
-    content: "";
-    background: #fafafa;
-    border-radius: 50%;
-    width: 3em;
-    height: 3em;
-    position: absolute;
-    top: 0.5em;
-    left: 0.5em;
+  content: "";
+  background: #fafafa;
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
 }
 
 .rotator {
-    position: relative;
-    width: 4em;
-    border-radius: 4em;
-    overflow: hidden;
-    animation: rotate 2000ms infinite linear;
+  position: relative;
+  width: 4em;
+  border-radius: 4em;
+  overflow: hidden;
+  animation: rotate 2000ms infinite linear;
 }
 
 .rotator:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: grey;
-    border: 3px solid #fafafa;
-    border-radius: 100%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: grey;
+  border: 3px solid #fafafa;
+  border-radius: 100%;
 }
 
 .inner-spin {
-    background: #fafafa;
-    height: 4em;
-    width: 2em;
+  background: #fafafa;
+  height: 4em;
+  width: 2em;
 }
 
 .inner-spin {
-    animation: rotate-left 2500ms infinite cubic-bezier(0.445, 0.050, 0.550, 0.950);
-    border-radius: 2em 0 0 2em;
-    transform-origin: 2em 2em;
+  animation: rotate-left 2500ms infinite cubic-bezier(0.445, 0.050, 0.550, 0.950);
+  border-radius: 2em 0 0 2em;
+  transform-origin: 2em 2em;
 }
 
 .inner-spin:last-child {
-    animation: rotate-right 2500ms infinite cubic-bezier(0.445, 0.050, 0.550, 0.950);
-    margin-top: -4em;
-    border-radius: 0 2em 2em 0;
-    float: right;
-    transform-origin: 0 50%;
+  animation: rotate-right 2500ms infinite cubic-bezier(0.445, 0.050, 0.550, 0.950);
+  margin-top: -4em;
+  border-radius: 0 2em 2em 0;
+  float: right;
+  transform-origin: 0 50%;
 }
 
 @keyframes rotate-left {
-    60%, 75%, 100% {
-        transform: rotate(360deg);
-    }
+  60%, 75%, 100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes rotate {
-    0% {
-        transform: rotate(0);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes rotate-right {
-    0%, 25%, 45% {
-        transform: rotate(0);
-    }
+  0%, 25%, 45% {
+    transform: rotate(0);
+  }
 
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }
+
+
+
+

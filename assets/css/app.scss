@@ -12,7 +12,14 @@
 /*@import "~@fullcalendar/timegrid/main.min.css";*/
 /*@import "~@fullcalendar/timeline/main.min.css";*/
 
+@import "./components/variables.scss";
+@import "./components/Theme.scss";
+@import "./components/_sitebar.scss";
 @import "./components/jquery_datatable.scss";
 @import "./components/jquery_datetimepicker.scss";
 @import "./components/capture_webcam.scss";
-@import "custom.scss";
+@import "./components/_dashboard.scss";
+@import "./components/_rooms.scss";
+@import "./components/_guests.scss";
+@import "./components/_bookings.scss";
+//@import "custom.scss";

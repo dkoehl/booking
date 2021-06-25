@@ -1,0 +1,34 @@
+html {
+  background-color: #f8f9fa!important;
+  height: 100%;
+}
+.floating-container{
+  box-shadow: 0 20px 27px 0 rgb(0 0 0 / .05) !important;
+  word-wrap: break-word !important;
+  background-color: #fff !important;
+  background-clip: border-box !important;
+  border: 0 solid rgba(0, 0, 0, .125) !important;
+  border-radius: 1rem !important;
+}
+.collapsible{
+  border:none;
+  box-shadow: none;
+}
+.hoverable:hover{
+  color: #2196F3 !important;
+}
+.collection{
+  border:none;
+}
+select{
+  display:block;
+}
+ul.collapsible > li{
+  border-bottom: 1px solid #e9ecef;
+}
+ul.collapsible > li:last-child{
+  border-bottom:none;
+}
+.collapsible-header{
+  border:none;
+}

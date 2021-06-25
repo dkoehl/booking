@@ -32,6 +32,10 @@
                 <source>booking.newbooking</source>
                 <target>New Booking</target>
             </trans-unit>
+            <trans-unit id="booking.editbooking">
+                <source>booking.editbooking</source>
+                <target>Edit Booking</target>
+            </trans-unit>
             <trans-unit id="booking.label.from">
                 <source>booking.label.from</source>
                 <target>Booking from:</target>
@@ -207,6 +211,14 @@
             </trans-unit>
 
 
+            <trans-unit id="room.newroom">
+                <source>room.newroom</source>
+                <target>Add Room</target>
+            </trans-unit>
+            <trans-unit id="room.editroom">
+                <source>room.editroom</source>
+                <target>Edit Room</target>
+            </trans-unit>
             <trans-unit id="room.label.room">
                 <source>room.label.room</source>
                 <target>Room</target>

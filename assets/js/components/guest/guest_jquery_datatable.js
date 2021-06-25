@@ -19,11 +19,14 @@ if (dataTableGuests) {
                 $('#dataTableGuests').DataTable({
                     responsive: true,
                     stateSave: true,
-                    // oLanguage: {
-                    //     sSearch: "Find the bond you need:",
-                    //     language: {searchPlaceholder: "Search records"}
-                    // },
+                    oLanguage: {
+                        sSearch: " ",
+                        language: { searchPlaceholder: "Search records" }
+                    },
                     data: response.data,
+                    language: {
+                        searchPlaceholder: "Search"
+                    },
                     columns: [
                         { data: 'id' },
                         { data: 'lastname' },

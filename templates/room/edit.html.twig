@@ -3,10 +3,29 @@
 {% block title %}Edit Room{% endblock %}
 
 {% block body %}
-    <a class="waves-effect waves-light btn"  href="{{ path('room_index') }}">back to list</a>
-    <h3 class="section-title teal-text">Edit Room</h3>
-    <p>{{ include('room/_form.html.twig', {'button_label': 'Update'}) }}</p>
+    <div class="row">
+        <div class="col"><a class="waves-effect waves-light btn"  href="{{ path('room_index') }}">back to list</a></div>
+        <div class="col">{{ include('room/_delete_form.html.twig') }}</div>
+    </div>
 
-    {{ include('room/_delete_form.html.twig') }}
+
+
+<div class="card floating-container">
+    <div class="card-content">
+            <div class="card-title blue-text">
+                <i class="material-icons">today</i> {{ 'room.editroom'|trans }}
+                <div class="right right-align right-aligned">
+                    <a href="javascript:history.back()">
+                        <i class="material-icons small grey-text">close</i>
+                    </a>
+                </div>
+            </div>
+        <br>
+
+        {{ include('room/_form.html.twig', {'button_label': 'Update'}) }}
+    </div>
+</div>
+
+
 
 {% endblock %}

@@ -3,22 +3,23 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
+    <div id="dashboard">
+        <div class="row">
+            <div class="col s12">
+                <div id="bookingMonthContainer" class="floating-container"></div>
+            </div>
+        </div>
 
-    <div class="row">
-        <div class="col s12">
-            <div id="bookingMonthContainer"></div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col s4 ">
-            <div id="roomsChartContainer" class="white"></div>
-        </div>
-        <div class="col s4 ">
-            <div id="demoContainer" class="white"></div>
-        </div>
-        <div class="col s4 ">
-            <div id="seconddemoContainer" class="white"></div>
+        <div class="row">
+            <div class="col s4 ">
+                <div id="roomsChartContainer" class="white floating-container"></div>
+            </div>
+            <div class="col s4 ">
+                <div id="demoContainer" class="white floating-container"></div>
+            </div>
+            <div class="col s4 ">
+                <div id="seconddemoContainer" class="white floating-container"></div>
+            </div>
         </div>
     </div>
 {% endblock %}

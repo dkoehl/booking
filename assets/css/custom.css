@@ -1,0 +1,53 @@
+/*@import 'material-icons/iconfont/material-icons.scss';*/
+/*@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');*/
+/*@import url('https://fonts.googleapis.com/icon?family=Material+Icons');*/
+table {
+  background-color: #fff;
+  margin-bottom: 20px;
+  border: 20px solid #fff; }
+
+select {
+  display: block; }
+
+.content-container {
+  overflow: scroll; }
+
+/*.col{*/
+/*border:1px solid red;*/
+/*}*/
+.material-icons {
+  vertical-align: bottom !important; }
+
+.collapsible {
+  box-shadow: none;
+  /*border:none;*/ }
+
+#roomsChartContainer,
+#seconddemoContainer,
+#demoContainer,
+#bookingMonthContainer {
+  height: 340px; }
+
+.bookingdateday {
+  font-size: 1.64rem;
+  float: left;
+  margin-right: 4px;
+  font-weight: 600;
+  line-height: 26px;
+  opacity: 0.7; }
+
+.bookingdatemonth {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  text-transform: uppercase; }
+
+.collapsible-header {
+  padding: 10px; }
+
+li.hoverable.active {
+  /*box-shadow: 0px 0px 7px #ddd;*/ }
+
+#booking > div {
+  min-height: 0; }
+
+/*# sourceMappingURL=custom.css.map */

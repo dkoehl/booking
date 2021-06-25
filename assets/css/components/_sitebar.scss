@@ -1,0 +1,33 @@
+#sitebar {
+  position: fixed;
+  height: 100%;
+  bottom: 0px;
+  padding: 0px;
+  /*background-color: #e8eaf6;*/
+
+  .sitebar {
+    height: 100%;
+  }
+
+  .sitebar a {
+    /*color: #666666;*/
+    font-size: 13px;
+  }
+  .sitebar a.active,
+  #sitebar > ul > li > a.active > i{
+    /*color: dodgerblue;*/
+
+  }
+  .sitebar a.active{
+    display:block;
+    padding:10px;
+    position:relative;
+    width:100%;
+    border-left:5px solid dodgerblue;
+    /*margin-right:-20px;*/
+    /*text-align: left;*/
+    background:#fafafa;
+  }
+}
+
+
