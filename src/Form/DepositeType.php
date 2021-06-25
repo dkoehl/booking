@@ -11,8 +11,13 @@ class DepositeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        if (empty($options['data']->getId())) {
+            // new occupancy
+            $builder
+                ->setAction('/deposite/new')
+                ->setMethod('POST');
+        }
         $builder
-            ->setAction('/deposite/new')
             ->add('amount', NULL,[
                 'label' => 'deposite.label.amount',
                 'attr' => [

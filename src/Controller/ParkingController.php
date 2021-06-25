@@ -100,11 +100,13 @@ class ParkingController extends AbstractController
     {
         $form = $this->createForm(ParkingType::class, $parking);
         $form->handleRequest($request);
+        if ($form->isSubmitted()) {
 
-        if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('parking_index');
+            return $this->redirectToRoute('booking_show', [
+                'id' => $parking->getBooking()->getId(),
+            ]);
+//            return $this->redirectToRoute('parking_index');
         }
 
         return $this->render('parking/edit.html.twig', [

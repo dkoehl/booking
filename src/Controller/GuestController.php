@@ -68,7 +68,7 @@ class GuestController extends AbstractController
     public function new(Request $request): Response
     {
         $requestReg = $request->request->get('guest');
-        $booking = $request->request->get('guest')['bookings'];
+        $booking = @$request->request->get('guest')['bookings'];
         $request->request->remove('guest');
         $guest = new Guest();
         $guestForm = $this->createForm(GuestType::class, $guest);

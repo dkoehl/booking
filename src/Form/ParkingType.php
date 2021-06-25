@@ -12,9 +12,14 @@ class ParkingType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        if (empty($options['data']->getId())) {
+            // new occupancy
+            $builder
+                ->setAction('/parking/new')
+                ->setMethod('POST');
+        }
         $builder
-            ->setAction('/parking/new')
-            ->add('carplate', NULL, [
+            ->add('carplate', null, [
                 'label' => 'parking.label.carplate',
                 'attr' => [
                     'placeholder' => 'parking.label.carplate.placeholder'
@@ -40,13 +45,13 @@ class ParkingType extends AbstractType
                 ],
                 'label' => 'parking.label.enddate',
             ])
-            ->add('parkingspot', NULL, [
+            ->add('parkingspot', null, [
                 'label' => 'parking.label.parkingspot',
                 'attr' => [
                     'placeholder' => 'parking.label.parkingspot.placeholder'
                 ]
             ])
-            ->add('price', NULL, [
+            ->add('price', null, [
                 'label' => 'parking.label.price',
                 'attr' => [
                     'placeholder' => 'parking.label.price.placeholder'

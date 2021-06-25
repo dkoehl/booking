@@ -3,48 +3,72 @@
 {% block title %}Parking{% endblock %}
 
 {% block body %}
-    <h1>Parking</h1>
+    <div class="card floating-container">
+        <div class="card-content">
+            <div class="card-title blue-text">
+                Parking
+                <div class="right right-align right-aligned">
+                    <a class='dropdown-trigger' href='#' data-target='dropdown0{{ parking.id }}'>
+                        <i class="material-icons small grey-text">more_vert</i>
+                    </a>
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown0{{ parking.id }}' class='dropdown-content'>
+                        <li>
+                            <a class="blue-text" href="javascript:history.back()">
+                                Back
+                            </a>
+                        </li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li>
+                            <a class="blue-text" href="{{ path('parking_edit', {'id': parking.id}) }}">Edit</a>
+                        </li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li>
+                            <a class="blue-text" href="#">
+                                Print
+                            </a>
+                        </li>
+                        <li>
+                            {{ include('parking/_delete_form.html.twig') }}
+                        </li>
+                    </ul>
+                </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ parking.id }}</td>
-            </tr>
-            <tr>
-                <th>Carplate</th>
-                <td>{{ parking.carplate }}</td>
-            </tr>
-            <tr>
-                <th>Startdate</th>
-                <td>{{ parking.startdate ? parking.startdate|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Enddate</th>
-                <td>{{ parking.enddate ? parking.enddate|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Hidden</th>
-                <td>{{ parking.hidden ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Deleted</th>
-                <td>{{ parking.deleted ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Crdate</th>
-                <td>{{ parking.crdate }}</td>
-            </tr>
-            <tr>
-                <th>Tstamp</th>
-                <td>{{ parking.tstamp }}</td>
-            </tr>
-        </tbody>
-    </table>
+            </div>
+            <ul class="collection with-header blue-grey-text">
+                <li class="collection-item grey-text">
+                    <div class="row">
+                        <div class="col s3">
+                            <p>
+                                <b>Carplate</b><br>
+                                <span class="black-text">{{ parking.carplate }}</span>
+                            </p>
+                        </div>
+                        <div class="col s3">
+                            <p>
+                                <b>Startdate</b><br>
+                                <span class="black-text">{{ parking.startdate ? parking.startdate|date('d.m.Y') : '' }}</span>
+                            </p>
+                        </div>
+                        <div class="col s3">
+                            <p>
+                                <b>Enddate</b><br>
+                                <span class="black-text">{{ parking.enddate ? parking.enddate|date('d.m.Y') : '' }}</span>
+                            </p>
+                        </div>
+                        <div class="col s3">
 
-    <a href="{{ path('parking_index') }}">back to list</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-    <a href="{{ path('parking_edit', {'id': parking.id}) }}">edit</a>
 
-    {{ include('parking/_delete_form.html.twig') }}
+{#    <a href="{{ path('parking_index') }}">back to list</a>#}
+
+{#    <a href="{{ path('parking_edit', {'id': parking.id}) }}">edit</a>#}
+
+{#    {{ include('parking/_delete_form.html.twig') }}#}
 {% endblock %}

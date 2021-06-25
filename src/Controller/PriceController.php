@@ -87,11 +87,16 @@ class PriceController extends AbstractController
     {
         $form = $this->createForm(PriceType::class, $price);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        //
+        if ($form->isSubmitted()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('price_index');
+            //
+            if(!empty($price->getPrices())){
+                return $this->redirectToRoute('booking_show', [
+                    'id' => $price->getPrices()->getId(),
+                ]);
+            }
+            return $this->redirectToRoute('booking_index');
         }
 
         return $this->render('price/edit.html.twig', [

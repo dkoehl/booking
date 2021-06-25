@@ -13,7 +13,8 @@ class OccupancyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        if(empty($options['data']->getId())){
+
+        if (empty($options['data']->getId())) {
             // new occupancy
             $builder
                 ->setAction('/occupancy/new')

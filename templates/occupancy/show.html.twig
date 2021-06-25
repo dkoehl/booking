@@ -3,44 +3,73 @@
 {% block title %}Occupancy{% endblock %}
 
 {% block body %}
-    <h1>Occupancy</h1>
+<div class="row">
+    <div class="col"><a class="waves-effect waves-light btn" href="javascript:history.back()">back to list</a></div>
+</div>
+<div class="card floating-container">
+    <div class="card-content">
+        <div class="card-title blue-text">
+            Occupancy
+            <div class="right right-align right-aligned">
+                <a class='dropdown-trigger' href='#' data-target='dropdown0{{ occupancy.id }}'>
+                    <i class="material-icons small grey-text">more_vert</i>
+                </a>
+                <!-- Dropdown Structure -->
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ occupancy.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ occupancy.name }}</td>
-            </tr>
-            <tr>
-                <th>Birthday</th>
-                <td>{{ occupancy.birthday ? occupancy.birthday|date("d.m.Y") : '' }}</td>
-            </tr>
-            <tr>
-                <th>Hidden</th>
-                <td>{{ occupancy.hidden ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Deleted</th>
-                <td>{{ occupancy.deleted ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Tstamp</th>
-                <td>{{ occupancy.tstamp }}</td>
-            </tr>
-            <tr>
-                <th>Crdate</th>
-                <td>{{ occupancy.crdate }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <ul id='dropdown0{{ occupancy.id }}' class='dropdown-content'>
+                    <li>
+                        <a class="blue-text" href="javascript:history.back()">
+                            Back
+                        </a>
+                    </li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li>
+                        <a class="blue-text" href="{{ path('occupancy_edit', {'id': occupancy.id}) }}">Edit</a>
+                    </li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li>
+                        <a class="blue-text" href="#">
+                            Print
+                        </a>
+                    </li>
+                    <li>
+                        {{ include('occupancy/_delete_form.html.twig') }}
+                    </li>
+                </ul>
+                </p>
+            </div>
 
-    <a href="{{ path('occupancy_index') }}">back to list</a>
+        </div>
 
-    <a href="{{ path('occupancy_edit', {'id': occupancy.id}) }}">edit</a>
+        <ul class="collection with-header blue-grey-text">
+            <li class="collection-item grey-text">
+                <div class="row">
+                    <div class="col s3">
+                        <p>
+                            <b>Name</b><br>
+                            <span class="black-text">{{ occupancy.name }}</span>
+                        </p>
+                    </div>
+                    <div class="col s3">
+                        <p>
+                            <b>Birthday</b><br>
+                            <span class="black-text">{{ occupancy.birthday ? occupancy.birthday|date("d.m.Y") : '' }}</span>
+                        </p>
+                    </div>
+                    <div class="col s3">
 
-    {{ include('occupancy/_delete_form.html.twig') }}
-{% endblock %}
+                    </div>
+                    <div class="col s3">
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    {# <a href="{{ path('occupancy_index') }}">back to list</a> #}
+
+    {# <a href="{{ path('occupancy_edit', {'id': occupancy.id}) }}">edit</a> #}
+
+    {# {{ include('occupancy/_delete_form.html.twig') }} #}
+    {% endblock %}

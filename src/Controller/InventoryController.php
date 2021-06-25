@@ -31,13 +31,13 @@ class InventoryController extends AbstractController
      */
     public function new(Request $request): Response
     {
-    
+
         $requestReg = $request->request->get('inventory');
         $booking = $request->request->get('inventory')['booking'];
         $request->request->remove('inventory');
-    
+
         $inventory = new Inventory();
-    
+
         if ($booking) {
             $inventory->setBeds($requestReg['beds']);
             $inventory->setClosets($requestReg['closets']);
@@ -53,11 +53,11 @@ class InventoryController extends AbstractController
             $inventory->setHidden(0);
             $inventory->setDeleted(0);
             $inventory->setCrdate(time());
-    
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($inventory);
             $entityManager->flush();
-    
+
             $entityManager = $this->getDoctrine()->getManager();
             $booking = $entityManager->getRepository(Booking::class)->find($booking);
             $booking->addInventory($inventory);
@@ -67,7 +67,7 @@ class InventoryController extends AbstractController
                 'id' => $booking->getId(),
             ]);
         }
-        
+
         $form = $this->createForm(InventoryType::class, $inventory);
         $form->handleRequest($request);
         return $this->render('inventory/new.html.twig', [
@@ -94,12 +94,16 @@ class InventoryController extends AbstractController
         $form = $this->createForm(InventoryType::class, $inventory);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $this->getDoctrine()->getManager()->flush();
+            if (!empty($inventory->getBooking()->getId())) {
+                return $this->redirectToRoute('booking_show', [
+                    'id' => $inventory->getBooking()->getId(),
+                ]);
+            }
+            return $this->redirectToRoute('booking_index');
 
-            return $this->redirectToRoute('inventory_index');
         }
-
         return $this->render('inventory/edit.html.twig', [
             'inventory' => $inventory,
             'inventoryForm' => $form->createView(),
@@ -109,9 +113,12 @@ class InventoryController extends AbstractController
     /**
      * @Route("/{id}", name="inventory_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Inventory $inventory): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$inventory->getId(), $request->request->get('_token'))) {
+    public
+    function delete(
+        Request $request,
+        Inventory $inventory
+    ): Response {
+        if ($this->isCsrfTokenValid('delete' . $inventory->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $inventory->setTstamp(time());
             $inventory->setDeleted(1);

@@ -11,14 +11,14 @@
 
     <div class="card floating-container">
         <div class="card-content">
-            <span class="card-title blue-text">
+            <div class="card-title blue-text">
                 <i class="material-icons">today</i> {{ 'room.editroom'|trans }}
                 <div class="right right-align right-aligned">
                     <a href="javascript:history.back()">
                         <i class="material-icons small grey-text">close</i>
                     </a>
                 </div>
-            </span>
+            </div>
             <br>
             {{ include('guest/_form.html.twig', {'button_label': 'Update'}) }}
         </div>

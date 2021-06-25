@@ -85,10 +85,15 @@ class DepositeController extends AbstractController
         $form = $this->createForm(DepositeType::class, $deposite);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('deposite_index');
+            if (!empty($deposite->getDeposites()->getId())) {
+                return $this->redirectToRoute('booking_show', [
+                    'id' => $deposite->getDeposites()->getId(),
+                ]);
+            }
+            return $this->redirectToRoute('booking_index');
         }
 
         return $this->render('deposite/edit.html.twig', [

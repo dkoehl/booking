@@ -89,11 +89,15 @@ class DamageController extends AbstractController
         $request->query->remove('booking');
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $damage->setTstamp(time());
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('damage_index');
+            if(!empty($damage->getDamage()->getId())){
+                return $this->redirectToRoute('booking_show', [
+                    'id' => $damage->getDamage()->getId(),
+                ]);
+            }
+            return $this->redirectToRoute('booking_index');
         }
 
         return $this->render('damage/edit.html.twig', [
